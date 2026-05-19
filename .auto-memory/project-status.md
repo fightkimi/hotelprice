@@ -4,7 +4,7 @@
 
 - Project: Hotel Pricing Capture
 - Workflow: Triad Workflow with Planner / Generator / Evaluator roles
-- Current role for this pass: Planner
+- Current role for this pass: Generator
 - Superpowers: mandatory sequence recorded in `.auto-memory/superpowers-workflow.md`
 - Branch rule: feature branch + PR only; no direct push to `main` / `master`
 
@@ -12,7 +12,7 @@
 
 - Batch id: `data-scope-capture-entry`
 - Goal: define the F-011 data-scope contract and compliant capture-entry preview before any live source or persistence work
-- Status: planning
+- Status: verifying
 
 ## Current Facts
 
@@ -36,19 +36,30 @@
 - F-011 spec: `docs/specs/2026-05-19-data-scope-capture-entry.md`.
 - F-011 plan: `docs/superpowers/plans/2026-05-19-data-scope-capture-entry.md`.
 - B-038 is complete.
-- B-039 is the next Generator task.
-- B-040 is the following Evaluator task.
+- B-039 is complete.
+- B-040 is the next Evaluator task.
 - B-041 is the PR-preparation task after F-011 acceptance.
 
 ## Current Design Decision
 
-F-011 will enrich the Setup/Data Scope surface and dataset contract rather than adding real collection:
+F-011 enriched the Setup/Data Scope surface and dataset contract rather than adding real collection:
 
-- add typed `dataScope` and `captureEntry` objects to `DemoDataset`;
-- derive scope from `domainSeed` so property, competitor, channel, stay-date, room-type, occupancy, currency, tax/fee, meal-plan, cancellation, freshness, and capture-time boundaries stay explicit;
-- render a customer-safe capture-entry preview for fixture demo, manual import preview, and approved API preview;
-- keep `productionConnectionEnabled` false;
-- preserve human-review-only behavior and avoid recommended prices or automatic pricing actions.
+- added typed `dataScope` and `captureEntry` objects to `DemoDataset`;
+- derived scope from `domainSeed` so property, competitor, channel, stay-date, room-type, occupancy, currency, tax/fee, meal-plan, cancellation, freshness, and capture-time boundaries stay explicit;
+- rendered a customer-safe capture-entry preview for fixture demo, manual import preview, and approved API preview;
+- kept `productionConnectionEnabled` false;
+- preserved human-review-only behavior and avoided recommended prices or automatic pricing actions.
+
+## F-011 Generator Evidence
+
+- Dataset contract and adapter TDD red/green completed.
+- Setup screen component TDD red/green completed.
+- Targeted regression passed: `4 files / 19 tests`.
+- Full app verification passed after sandbox escalation for the Playwright local server: build, Vitest `13 files / 66 tests`, Playwright `13 tests`.
+- Triad checks, JSON checks, and prototype regression passed before handoff state updates.
+- Static safety scan found no live collection, credential, cookie, CAPTCHA, storage, browser automation, recommended-price, or automatic-pricing terms in the F-011 touched paths.
+- Updated setup screenshots: `setup-data-scope--1280x800.png` and `setup-data-scope--768x1024.png`.
+- Generator notes: `docs/test-reports/2026-05-19-f-011-generator-notes.md`.
 
 ## Generator Evidence
 
@@ -78,4 +89,4 @@ F-011 will enrich the Setup/Data Scope surface and dataset contract rather than 
 
 ## Next Step
 
-Generator should execute B-039 from `docs/superpowers/plans/2026-05-19-data-scope-capture-entry.md` using strict TDD, then hand off to Evaluator for B-040. Before opening an F-011 PR, resolve the PR #4 dependency by rebasing after F-010 is merged or waiting until main includes F-010. Do not push directly to `main` or `master`.
+Evaluator should verify B-040 from `docs/superpowers/plans/2026-05-19-data-scope-capture-entry.md`, including typed scope boundaries, capture entry statuses, production connection disabled state, human-review-only behavior, customer-safe copy, responsive setup screenshots, safety scans, app/domain/prototype regression, and PR hygiene. Before opening an F-011 PR, resolve the PR #4 dependency by rebasing after F-010 is merged or waiting until main includes F-010. Do not push directly to `main` or `master`.
