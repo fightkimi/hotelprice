@@ -141,3 +141,32 @@ describe('domain-driven demo dataset charts', () => {
     expect(stalePlatformRow).toBeUndefined();
   });
 });
+
+describe('domain-driven data scope and capture entry', () => {
+  it('derives scope boundaries from domain seed hotels and snapshots', () => {
+    const dataset = buildDomainDrivenDemoDataset(domainSeed);
+
+    expect(dataset.dataScope.ownerPropertyId).toBe(domainSeed.context.ownerPropertyId);
+    expect(dataset.dataScope.ownerHotelId).toBe(domainSeed.context.ownerHotelId);
+    expect(dataset.dataScope.competitorGroupId).toBe(domainSeed.context.competitorGroupId);
+    expect(dataset.dataScope.competitorCoverage.coreCount).toBeGreaterThanOrEqual(3);
+    expect(dataset.dataScope.platforms.map((platform) => platform.label)).toEqual(domainSeed.platforms.map((platform) => platform.label));
+    expect(dataset.dataScope.stayWindow).toMatchObject({
+      startDate: '2026-05-24',
+      endDate: '2026-06-02',
+      focusDate: domainSeed.context.platformFocusDate
+    });
+    expect(dataset.dataScope.freshness.staleAfterHours).toBe(36);
+  });
+
+  it('keeps capture entry local, review-gated, and production-disabled', () => {
+    const dataset = buildDomainDrivenDemoDataset(domainSeed);
+
+    expect(dataset.captureEntry.productionConnectionEnabled).toBe(false);
+    expect(dataset.captureEntry.options).toEqual([
+      expect.objectContaining({ id: 'fixture-demo', status: 'active', sourceKind: 'fixture', humanReviewRequired: true }),
+      expect.objectContaining({ id: 'manual-import', status: 'available', sourceKind: 'manual', humanReviewRequired: true }),
+      expect.objectContaining({ id: 'approved-api', status: 'requires-approval', sourceKind: 'approved_api', humanReviewRequired: true })
+    ]);
+  });
+});

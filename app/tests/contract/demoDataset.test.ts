@@ -48,4 +48,21 @@ describe('demo dataset boundaries', () => {
     expect(demoDataset.heatmap.days.some((day) => day.status === 'unavailable')).toBe(true);
     expect(demoDataset.trend.series.some((series) => series.points.some((point) => point.value === null))).toBe(true);
   });
+
+  it('exposes bounded data scope and capture entry preview', () => {
+    expect(demoDataset.dataScope.ownerPropertyId).toBeTruthy();
+    expect(demoDataset.dataScope.ownerHotelId).toBeTruthy();
+    expect(demoDataset.dataScope.competitorGroupId).toBeTruthy();
+    expect(demoDataset.dataScope.competitorCoverage.coreCount).toBeGreaterThanOrEqual(3);
+    expect(demoDataset.dataScope.platforms.length).toBeGreaterThanOrEqual(4);
+    expect(demoDataset.dataScope.stayWindow.totalStayDates).toBeGreaterThan(0);
+    expect(demoDataset.dataScope.rateBasis.currency).toBe('CNY');
+    expect(demoDataset.dataScope.rateBasis.roomTypes.length).toBeGreaterThan(0);
+    expect(demoDataset.dataScope.rateBasis.taxFeeBasis.length).toBeGreaterThan(0);
+
+    expect(demoDataset.captureEntry.productionConnectionEnabled).toBe(false);
+    expect(demoDataset.captureEntry.activeEntryId).toBe('fixture-demo');
+    expect(demoDataset.captureEntry.options.map((option) => option.id)).toEqual(['fixture-demo', 'manual-import', 'approved-api']);
+    expect(demoDataset.captureEntry.options.every((option) => option.humanReviewRequired)).toBe(true);
+  });
 });

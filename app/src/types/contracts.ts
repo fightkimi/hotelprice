@@ -58,7 +58,7 @@ export interface Signal {
 export interface TrendSeries {
   id: string;
   label: string;
-  colorToken: string;
+  colorVar: string;
   points: PricePoint[];
 }
 
@@ -89,11 +89,73 @@ export interface PlatformGapRow {
   coverage: number;
 }
 
+export interface DataScopePlatform {
+  label: string;
+  channel: string;
+  sourceId: string;
+  sourceKind: 'fixture' | 'manual' | 'approved_api';
+  enabled: boolean;
+}
+
+export interface DataScopeSummary {
+  ownerPropertyId: string;
+  ownerHotelId: string;
+  ownerHotelName: string;
+  competitorGroupId: string;
+  competitorGroupLabel: string;
+  competitorCoverage: {
+    coreCount: number;
+    referenceCount: number;
+    activeHotelIds: string[];
+  };
+  platforms: DataScopePlatform[];
+  stayWindow: {
+    startDate: string;
+    endDate: string;
+    totalStayDates: number;
+    focusDate: string;
+  };
+  rateBasis: {
+    currency: 'CNY';
+    occupancyAdults: number[];
+    roomTypes: string[];
+    mealPlans: string[];
+    cancellationPolicies: string[];
+    taxFeeBasis: string[];
+  };
+  freshness: {
+    currentCaptureTime: string;
+    staleAfterHours: number;
+  };
+  guardrails: string[];
+}
+
+export type CaptureEntryId = 'fixture-demo' | 'manual-import' | 'approved-api';
+export type CaptureEntryStatus = 'active' | 'available' | 'requires-approval' | 'blocked';
+
+export interface CaptureEntryOption {
+  id: CaptureEntryId;
+  label: string;
+  sourceKind: 'fixture' | 'manual' | 'approved_api';
+  status: CaptureEntryStatus;
+  description: string;
+  humanReviewRequired: boolean;
+}
+
+export interface CaptureEntryPreview {
+  productionConnectionEnabled: false;
+  activeEntryId: CaptureEntryId;
+  options: CaptureEntryOption[];
+  policyNotes: string[];
+}
+
 export interface DemoDataset {
   sourceKind: SourceKind;
   liveCollectionEnabled: false;
   demoDisclosure: string;
   context: ContextSelection;
+  dataScope: DataScopeSummary;
+  captureEntry: CaptureEntryPreview;
   trend: {
     series: TrendSeries[];
     events: EventMarker[];
