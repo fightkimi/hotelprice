@@ -118,14 +118,15 @@
     {
       "id": "F-007-formal-app-foundation",
       "title": "Formal app foundation with premium UI contract gates",
-      "status": "reverifying",
-      "executor": "generator",
+      "status": "done",
+      "executor": "evaluator",
       "artifacts": [
         ".gitignore",
         "docs/specs/2026-05-19-formal-app-foundation.md",
         "docs/superpowers/plans/2026-05-19-formal-app-foundation.md",
         "docs/superpowers/plans/2026-05-19-f-007-formal-app-foundation-fixes.md",
         "docs/test-reports/2026-05-19-f-007-formal-app-foundation-evaluator.md",
+        "docs/test-reports/2026-05-19-f-007-formal-app-foundation-reverification.md",
         "docs/test-reports/2026-05-19-f-007-fix-generator-notes.md",
         "app/package.json",
         "app/package-lock.json",
@@ -158,8 +159,8 @@
         "docs/test-reports/f-007-app-foundation/"
       ],
       "handoff": {
-        "generator": "B-020 fixes implemented: .gitignore added, ContextRibbon contract completed with focusable read-only controls, screenshots now assert exact viewport PNG dimensions, raw layout rgba moved into token variables, and fix TDD notes recorded.",
-        "evaluator": "Reverify Git/PR readiness, exact screenshot dimensions, ContextRibbon fields/focus state, token-layer compliance, app verification, and no live data or automatic pricing."
+        "planner": "F-007 accepted after B-021 reverification. Use this formal app foundation as the UI baseline for later domain-core planning.",
+        "evaluator": "Accepted: app verification passed, screenshot dimensions match the matrix, ContextRibbon contract is complete, token-layer gates pass, generated artifacts are ignored, and no live collection or automatic pricing was found."
       }
     }
   ]

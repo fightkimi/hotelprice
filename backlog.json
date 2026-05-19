@@ -136,9 +136,16 @@
     {
       "id": "B-021",
       "title": "Evaluator reverifies F-007 after fixes",
+      "status": "done",
+      "feature_id": "F-007-formal-app-foundation",
+      "notes": "Reverification report written at docs/test-reports/2026-05-19-f-007-formal-app-foundation-reverification.md. Verdict: accepted; app verify, exact screenshot dimensions, ContextRibbon contract, token-layer checks, PR hygiene, and safety scans passed."
+    },
+    {
+      "id": "B-022",
+      "title": "Prepare F-007 PR after final acceptance",
       "status": "new",
       "feature_id": "F-007-formal-app-foundation",
-      "notes": "After B-020, verify git tracked PR diff, ignored generated artifacts, exact screenshot pixel dimensions, ContextRibbon contract/focus state, no raw RGBA in layout.css, npm run verify, workflow checks, and no live data or automatic pricing."
+      "notes": "Stage the final reverification report and updated status files, commit on feature/f-007-formal-app-foundation, push the branch, and open a PR against main."
     }
   ]
 }
