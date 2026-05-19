@@ -1,0 +1,18 @@
+{
+  "project": "hotel-pricing-capture",
+  "status": "reverifying",
+  "batch_id": "formal-app-foundation",
+  "current_sprint": "F-007-formal-app-foundation",
+  "total_features": 8,
+  "completed_features": 4,
+  "features": [
+    "F-000-workflow-bootstrap",
+    "F-001-hotel-rate-watch-mvp",
+    "F-002-client-demo-html-prototype",
+    "F-003-investor-demo-prototype-enhancement",
+    "F-004-formal-design-philosophy-roadmap",
+    "F-005-premium-product-experience-system",
+    "F-006-production-ui-contract",
+    "F-007-formal-app-foundation"
+  ]
+}

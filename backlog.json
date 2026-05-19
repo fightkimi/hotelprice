@@ -1,0 +1,144 @@
+{
+  "items": [
+    {
+      "id": "B-001",
+      "title": "Use Planner to define the first real hotel pricing capture feature slice",
+      "status": "done",
+      "notes": "Defined F-001-hotel-rate-watch-mvp from the hotel competitor price monitoring PRD."
+    },
+    {
+      "id": "B-002",
+      "title": "Generator implements F-001 hotel rate watch MVP",
+      "status": "new",
+      "feature_id": "F-001-hotel-rate-watch-mvp",
+      "notes": "Use docs/superpowers/plans/2026-05-18-hotel-rate-watch-mvp.md with test-driven development. Keep live OTA scraping out of scope."
+    },
+    {
+      "id": "B-003",
+      "title": "Evaluator verifies F-001 hotel rate watch MVP",
+      "status": "new",
+      "feature_id": "F-001-hotel-rate-watch-mvp",
+      "notes": "Verify alert thresholds, comparable rate boundaries, fixture/demo labeling, compliance constraints, and test evidence."
+    },
+    {
+      "id": "B-004",
+      "title": "Plan compliant real data source discovery after F-001",
+      "status": "new",
+      "notes": "Evaluate official API, partner feed, channel manager, PMS, or manually exported data before any live collection work."
+    },
+    {
+      "id": "B-005",
+      "title": "Generator implements F-002 client demo HTML prototype",
+      "status": "done",
+      "feature_id": "F-002-client-demo-html-prototype",
+      "notes": "Generator created the local static prototype with demo data only and produced test/screenshot evidence for Evaluator review."
+    },
+    {
+      "id": "B-006",
+      "title": "Evaluator verifies F-002 client demo HTML prototype",
+      "status": "new",
+      "feature_id": "F-002-client-demo-html-prototype",
+      "notes": "Verify customer demo flow, interactions, responsive screenshots, compliance wording, and absence of live data collection."
+    },
+    {
+      "id": "B-007",
+      "title": "Generator implements F-003 investor prototype enhancement",
+      "status": "done",
+      "feature_id": "F-003-investor-demo-prototype-enhancement",
+      "notes": "Generator added room-type, platform, holiday/event trend, and investor-grade chart/visual polish to the existing static prototype with test-first changes."
+    },
+    {
+      "id": "B-008",
+      "title": "Evaluator verifies F-003 investor prototype enhancement",
+      "status": "new",
+      "feature_id": "F-003-investor-demo-prototype-enhancement",
+      "notes": "Verify investor demo narrative, room/platform/event interactions, premium chart quality, responsive screenshots, demo-data caveats, and absence of live collection."
+    },
+    {
+      "id": "B-009",
+      "title": "Evaluator reviews F-004 formal design philosophy baseline",
+      "status": "done",
+      "feature_id": "F-004-formal-design-philosophy-roadmap",
+      "notes": "F-004 conditionally accepted as a baseline. F-005 must convert it into explicit tokens, primitives, screenshot gates, and pass/fail criteria."
+    },
+    {
+      "id": "B-010",
+      "title": "Planner prepares F-005 product app foundation",
+      "status": "done",
+      "notes": "After F-004 acceptance, define the formal app shell, design tokens, chart primitives, responsive layout, and visual verification gates."
+    },
+    {
+      "id": "B-011",
+      "title": "Generator implements F-005 only after design baseline acceptance",
+      "status": "new",
+      "notes": "Do not carry prototype CSS directly into the formal app. Build from the accepted F-005 premium product experience system after Evaluator review."
+    },
+    {
+      "id": "B-012",
+      "title": "Evaluator reviews F-005 premium product experience system",
+      "status": "done",
+      "feature_id": "F-005-premium-product-experience-system",
+      "notes": "F-005 accepted as premium experience baseline but not direct coding contract. F-006 is required before app foundation implementation."
+    },
+    {
+      "id": "B-013",
+      "title": "Resolve repository readiness for PR-only workflow",
+      "status": "done",
+      "notes": "Resolved locally on 2026-05-19: initialized Git, set origin to https://github.com/fightkimi/hotelprice.git, fetched origin, and created feature/f-007-formal-app-foundation. Remote main now exists via B-019."
+    },
+    {
+      "id": "B-014",
+      "title": "Planner prepares future domain core plan with F-001 precheck carryover",
+      "status": "new",
+      "notes": "After F-007 app foundation planning, carry unavailable-source modeling and hotel_id + rate_key isolation into the formal domain core plan."
+    },
+    {
+      "id": "B-015",
+      "title": "Evaluator reviews F-006 production UI contract",
+      "status": "done",
+      "feature_id": "F-006-production-ui-contract",
+      "notes": "F-006 accepted as the production UI contract source of truth for F-007. Retained risks: repository readiness, visible-copy scan scope for token, and machine-checkable contrast gates carried into F-007."
+    },
+    {
+      "id": "B-016",
+      "title": "Planner creates F-007 formal app foundation implementation plan",
+      "status": "done",
+      "feature_id": "F-007-formal-app-foundation",
+      "notes": "Created docs/specs/2026-05-19-formal-app-foundation.md and docs/superpowers/plans/2026-05-19-formal-app-foundation.md. B-013 is resolved locally; Generator can start F-007 on feature/f-007-formal-app-foundation."
+    },
+    {
+      "id": "B-017",
+      "title": "Generator implements F-007 formal app foundation",
+      "status": "done",
+      "feature_id": "F-007-formal-app-foundation",
+      "notes": "Generator implemented F-007 with TDD evidence: exact F-006 tokens, contrast gates, typed demo dataset, AppShell/ContextRibbon, SignalPanel/EvidenceDrawer, chart primitives, five formal screens, visible-copy gate, and 12 screenshot artifacts. App verification passed."
+    },
+    {
+      "id": "B-018",
+      "title": "Evaluator verifies F-007 formal app foundation",
+      "status": "done",
+      "feature_id": "F-007-formal-app-foundation",
+      "notes": "Evaluator report written at docs/test-reports/2026-05-19-f-007-formal-app-foundation-evaluator.md. Verdict: not accepted; move F-007 to fixing due P1 PR readiness, viewport screenshot dimensions, and ContextRibbon contract gaps."
+    },
+    {
+      "id": "B-019",
+      "title": "Confirm remote base branch for first PR",
+      "status": "done",
+      "notes": "Resolved on 2026-05-19: created remote main via GitHub contents API with README.md initialization commit 616838c88806aa3b40d1b4e62ebd15e9578827f0, fetched origin/main, and reset feature/f-007-formal-app-foundation to start from origin/main."
+    },
+    {
+      "id": "B-020",
+      "title": "Generator fixes F-007 acceptance blockers",
+      "status": "done",
+      "feature_id": "F-007-formal-app-foundation",
+      "notes": "Generator fixed PR hygiene/tracking with .gitignore, exact viewport screenshot capture and PNG dimension assertions, ContextRibbon competitorGroup/demandContext/focusable read-only controls, raw RGBA token cleanup, and TDD evidence notes."
+    },
+    {
+      "id": "B-021",
+      "title": "Evaluator reverifies F-007 after fixes",
+      "status": "new",
+      "feature_id": "F-007-formal-app-foundation",
+      "notes": "After B-020, verify git tracked PR diff, ignored generated artifacts, exact screenshot pixel dimensions, ContextRibbon contract/focus state, no raw RGBA in layout.css, npm run verify, workflow checks, and no live data or automatic pricing."
+    }
+  ]
+}

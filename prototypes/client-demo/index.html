@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>酒店竞品价格雷达 · 投资人演示</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar" aria-label="监测范围">
+        <div class="brand-block">
+          <p class="eyebrow">酒店竞品价格雷达</p>
+          <h1>云栖城市酒店价格看板</h1>
+        </div>
+        <div class="scope-strip" aria-label="演示数据范围">
+          <span class="badge demo">演示数据</span>
+          <span id="scope-platform">携程演示源</span>
+          <span>2026-05-18 08:30</span>
+          <span id="scope-room">标准大床房 · 含税费估算</span>
+        </div>
+      </header>
+
+      <section id="analysis-controls" class="analysis-controls" aria-label="投资人演示分析控件"></section>
+
+      <nav class="tabs" aria-label="产品视图">
+        <button class="nav-tab active" type="button" data-view="overview" aria-pressed="true">今日概览</button>
+        <button class="nav-tab" type="button" data-view="calendar" aria-pressed="false">价格日历</button>
+        <button class="nav-tab" type="button" data-view="competitors" aria-pressed="false">竞品监控</button>
+        <button class="nav-tab" type="button" data-view="alerts" aria-pressed="false">异常提醒</button>
+        <button class="nav-tab" type="button" data-view="setup" aria-pressed="false">设置预览</button>
+      </nav>
+
+      <main class="workspace">
+        <section id="overview-view" class="view active" data-panel="overview" aria-labelledby="overview-title">
+          <h2 id="overview-title" class="sr-only">今日市场概览</h2>
+        </section>
+        <section id="calendar-view" class="view" data-panel="calendar" aria-labelledby="calendar-title">
+          <h2 id="calendar-title" class="sr-only">未来 30 天价格日历</h2>
+        </section>
+        <section id="competitors-view" class="view" data-panel="competitors" aria-labelledby="competitors-title">
+          <h2 id="competitors-title" class="sr-only">核心竞品监控</h2>
+        </section>
+        <section id="alerts-view" class="view" data-panel="alerts" aria-labelledby="alerts-title">
+          <h2 id="alerts-title" class="sr-only">异常提醒中心</h2>
+        </section>
+        <section id="setup-view" class="view" data-panel="setup" aria-labelledby="setup-title">
+          <h2 id="setup-title" class="sr-only">简化版设置流程预览</h2>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
