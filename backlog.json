@@ -242,9 +242,16 @@
     {
       "id": "B-036",
       "title": "Evaluator verifies F-010 owner-position evidence enrichment",
+      "status": "done",
+      "feature_id": "F-010-owner-position-evidence-enrichment",
+      "notes": "Evaluator report written at docs/test-reports/2026-05-19-f-010-owner-position-evidence-enrichment-evaluator.md. Verdict: accepted; owner/competitor evidence roles, UI evidence marker labels, human-review-only behavior, safety scan, app/domain/prototype regressions, and PR hygiene passed."
+    },
+    {
+      "id": "B-037",
+      "title": "Prepare F-010 PR after final acceptance",
       "status": "new",
       "feature_id": "F-010-owner-position-evidence-enrichment",
-      "notes": "Verify owner-position evidence roles, owner and competitor sample evidence, UI evidence marker labels, human-review-only behavior, no recommended price, static safety scan, app/domain/prototype regressions, and PR readiness."
+      "notes": "Push feature/f-010-owner-position-evidence-planning after fresh verification and open the F-010 pull request against main."
     }
   ]
 }

@@ -4,7 +4,7 @@
 
 - Project: Hotel Pricing Capture
 - Workflow: Triad Workflow with Planner / Generator / Evaluator roles
-- Current role for this pass: Generator
+- Current role for this pass: Planner
 - Superpowers: mandatory sequence recorded in `.auto-memory/superpowers-workflow.md`
 - Branch rule: feature branch + PR only; no direct push to `main` / `master`
 
@@ -12,7 +12,7 @@
 
 - Batch id: `owner-position-evidence-enrichment`
 - Goal: close the F-008/F-009 owner-position evidence follow-up by adding explicit owner-side evidence and customer-safe evidence labels
-- Status: verifying
+- Status: preparing-pr
 
 ## Current Facts
 
@@ -28,7 +28,9 @@
 - F-010 plan: `docs/superpowers/plans/2026-05-19-owner-position-evidence-enrichment.md`.
 - B-027 is now closed as a tracking item because it has been promoted into F-010.
 - B-035 is complete.
-- B-036 is the next Evaluator task.
+- B-036 Evaluator verification accepted F-010.
+- B-036 report: `docs/test-reports/2026-05-19-f-010-owner-position-evidence-enrichment-evaluator.md`.
+- B-037 is the Planner PR-preparation tracker for opening the F-010 pull request.
 
 ## Current Design Decision
 
@@ -51,6 +53,15 @@ F-010 enriched the existing F-008/F-009 evidence contract without changing prici
 - Static safety scan found no live collection, credential, cookie, CAPTCHA, storage, browser automation, recommended-price, or automatic-pricing terms in the F-010 touched pricing/data paths.
 - Generator notes: `docs/test-reports/2026-05-19-f-010-generator-notes.md`.
 
+## Evaluator Evidence
+
+- Independent B-036 evidence role test: 1 file / 3 tests passed.
+- Targeted F-010 regression: 4 files / 27 tests passed.
+- Full app verification: build passed, Vitest 12 files / 62 tests passed, Playwright 13 tests passed.
+- Triad checks, JSON checks, and prototype regression passed.
+- Static safety scan found no matches in `app/src/data/domainDrivenDataset.ts` and `app/src/domain/pricing`.
+- PR hygiene passed on `feature/f-010-owner-position-evidence-planning`: branch was ahead of `origin/main` by 4 F-010 commits before the Evaluator report/status updates.
+
 ## Boundaries
 
 - Data remains fixture/manual demo data only.
@@ -59,4 +70,4 @@ F-010 enriched the existing F-008/F-009 evidence contract without changing prici
 
 ## Next Step
 
-Evaluator should verify B-036 from `docs/superpowers/plans/2026-05-19-owner-position-evidence-enrichment.md`, including owner/competitor evidence roles, customer-safe UI evidence labels, human-review-only behavior, safety scans, app/domain/prototype regression, and PR readiness.
+Run fresh PR-preparation verification, commit the F-010 acceptance/status/report records, push `feature/f-010-owner-position-evidence-planning`, then open the F-010 PR. Do not push directly to `main` or `master`.
