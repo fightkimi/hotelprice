@@ -181,14 +181,35 @@
       "title": "Track owner-position evidence enrichment after F-008",
       "status": "new",
       "feature_id": "F-008-domain-core-rate-boundaries",
-      "notes": "Non-blocking follow-up from B-024/B-026 P2: consider including the owner snapshot in owner-position alert evidence or documenting top-level owner alert fields as the owner-side evidence source."
+      "notes": "Non-blocking follow-up from B-024/B-026 P2: consider including the owner snapshot in owner-position alert evidence or documenting top-level owner alert fields as the owner-side evidence source. It may be handled as an adapter-level note during F-009 or split into a separate small slice; it is not an F-009 blocker."
     },
     {
       "id": "B-028",
       "title": "Prepare F-008 PR after final acceptance",
       "status": "done",
       "feature_id": "F-008-domain-core-rate-boundaries",
-      "notes": "Completed. PR #2 `F-008 Domain core rate boundaries` was opened from feature/f-008-domain-core-planning to main: https://github.com/fightkimi/hotelprice/pull/2"
+      "notes": "Completed. PR #2 `F-008 Domain core rate boundaries` was opened from feature/f-008-domain-core-planning to main and merged on 2026-05-19. Merge commit: a303c2f."
+    },
+    {
+      "id": "B-029",
+      "title": "Planner prepares F-009 domain-driven UI data flow",
+      "status": "done",
+      "feature_id": "F-009-domain-driven-ui-data-flow",
+      "notes": "Created F-009 spec and Generator-ready plan to connect the accepted F-008 domain core to the accepted F-007 formal app UI through fixture/manual seed data and a pure DemoDataset adapter."
+    },
+    {
+      "id": "B-030",
+      "title": "Generator implements F-009 domain-driven UI data flow",
+      "status": "done",
+      "feature_id": "F-009-domain-driven-ui-data-flow",
+      "notes": "Implemented with strict TDD. Added fixture/manual domain seed data, pure adapter from F-008 alert candidates and snapshots to F-007 DemoDataset, compatibility export for the existing UI import, safety scan coverage for the data layer, and Generator notes at docs/test-reports/2026-05-19-f-009-generator-notes.md."
+    },
+    {
+      "id": "B-031",
+      "title": "Evaluator verifies F-009 domain-driven UI data flow",
+      "status": "new",
+      "feature_id": "F-009-domain-driven-ui-data-flow",
+      "notes": "Verify that App UI data is derived from F-008 domain contracts, unavailable data remains null rather than zero, human-review-only boundaries remain visible, F-007 app gates pass, F-008 domain tests pass, and B-027 remains non-blocking unless separately closed."
     }
   ]
 }

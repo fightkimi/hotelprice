@@ -192,6 +192,27 @@
         "planner": "F-008 accepted after B-026 reverification. Prepare the F-008 PR from feature/f-008-domain-core-planning and track owner-position evidence enrichment as a non-blocking follow-up.",
         "evaluator": "Accepted: B-024 P1 intermittent availability regression is closed, domain tests and app verification pass, static no-live-collection scan passes, and PR diff is bounded to F-008 domain/planning artifacts."
       }
+    },
+    {
+      "id": "F-009-domain-driven-ui-data-flow",
+      "title": "Connect domain core to formal app UI data flow",
+      "status": "verifying",
+      "executor": "generator",
+      "artifacts": [
+        "docs/specs/2026-05-19-domain-driven-ui-data-flow.md",
+        "docs/superpowers/plans/2026-05-19-domain-driven-ui-data-flow.md",
+        "docs/test-reports/2026-05-19-f-009-generator-notes.md",
+        "app/src/data/domainSeed.ts",
+        "app/src/data/domainDrivenDataset.ts",
+        "app/src/data/demoDataset.ts",
+        "app/tests/data/domainDrivenDataset.test.ts",
+        "app/tests/contract/demoDataset.test.ts",
+        "app/tests/domain/complianceScan.test.ts"
+      ],
+      "handoff": {
+        "generator": "Implemented with strict TDD: fixture/manual domain seed data, pure adapter from F-008 alert candidates and snapshots to F-007 DemoDataset, compatibility export, safety scan extension, and verification notes.",
+        "evaluator": "Verify that the formal app UI is domain-driven, unavailable data remains null rather than zero, F-007 visual/copy gates and F-008 domain boundaries still pass, and B-027 remains non-blocking unless separately implemented."
+      }
     }
   ]
 }
