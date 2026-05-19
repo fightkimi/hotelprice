@@ -1,6 +1,6 @@
 {
   "project": "hotel-pricing-capture",
-  "status": "verifying",
+  "status": "reverifying",
   "batch_id": "domain-core-rate-boundaries",
   "current_sprint": "F-008-domain-core-rate-boundaries",
   "total_features": 9,

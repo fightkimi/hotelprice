@@ -158,9 +158,23 @@
     {
       "id": "B-024",
       "title": "Evaluator verifies F-008 domain core rate boundaries",
+      "status": "done",
+      "feature_id": "F-008-domain-core-rate-boundaries",
+      "notes": "Evaluator report written at docs/test-reports/2026-05-19-f-008-domain-core-rate-boundaries-evaluator.md. Verdict: not accepted; move F-008 to fixing due P1 intermittent unavailable capture suppressing a valid competitor movement alert."
+    },
+    {
+      "id": "B-025",
+      "title": "Generator fixes F-008 intermittent availability regression",
+      "status": "done",
+      "feature_id": "F-008-domain-core-rate-boundaries",
+      "notes": "Added regression coverage for available -> unavailable/no-rate/source-error -> available competitor movement and fixed competitor movement to compare latest available against previous available while suppressing unavailable latest captures."
+    },
+    {
+      "id": "B-026",
+      "title": "Evaluator reverifies F-008 after intermittent availability fix",
       "status": "new",
       "feature_id": "F-008-domain-core-rate-boundaries",
-      "notes": "Verify unavailable/stale suppression, hotelId + comparableRateKey isolation, duplicate capture ordering, three-core-competitor sample gates, owner-position math, human-review alert shape, no recommended price, static compliance scan, app/prototype regressions, and PR readiness."
+      "notes": "Reverify B-024 P1 fix, existing domain alert math, static compliance scan, app/prototype regressions, and PR readiness."
     }
   ]
 }
