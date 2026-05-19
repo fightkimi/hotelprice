@@ -89,8 +89,9 @@
     {
       "id": "B-014",
       "title": "Planner prepares future domain core plan with F-001 precheck carryover",
-      "status": "new",
-      "notes": "After F-007 app foundation planning, carry unavailable-source modeling and hotel_id + rate_key isolation into the formal domain core plan."
+      "status": "done",
+      "feature_id": "F-008-domain-core-rate-boundaries",
+      "notes": "Created F-008 domain core spec and Generator-ready plan. Carries F-001 precheck risks into TypeScript app foundation: unavailable/no-rate/source-error/stale modeling, hotelId + comparableRateKey movement isolation, deterministic snapshot ordering, and no-live-collection compliance gates."
     },
     {
       "id": "B-015",
@@ -143,9 +144,23 @@
     {
       "id": "B-022",
       "title": "Prepare F-007 PR after final acceptance",
-      "status": "new",
+      "status": "done",
       "feature_id": "F-007-formal-app-foundation",
-      "notes": "Stage the final reverification report and updated status files, commit on feature/f-007-formal-app-foundation, push the branch, and open a PR against main."
+      "notes": "Completed. PR #1 `F-007 Formal app foundation` was opened from feature/f-007-formal-app-foundation to main, then merged on 2026-05-19. Merge commit: dd43b3beda70323314db20740cba92bc416429e7."
+    },
+    {
+      "id": "B-023",
+      "title": "Generator implements F-008 domain core rate boundaries",
+      "status": "done",
+      "feature_id": "F-008-domain-core-rate-boundaries",
+      "notes": "Implemented with strict TDD: rate-key grouping, availability/stale suppression, deterministic snapshot ordering, alert candidate rules, evidence shape, static compliance scan, and Generator notes. Ready for B-024 Evaluator verification."
+    },
+    {
+      "id": "B-024",
+      "title": "Evaluator verifies F-008 domain core rate boundaries",
+      "status": "new",
+      "feature_id": "F-008-domain-core-rate-boundaries",
+      "notes": "Verify unavailable/stale suppression, hotelId + comparableRateKey isolation, duplicate capture ordering, three-core-competitor sample gates, owner-position math, human-review alert shape, no recommended price, static compliance scan, app/prototype regressions, and PR readiness."
     }
   ]
 }

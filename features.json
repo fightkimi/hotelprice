@@ -162,6 +162,33 @@
         "planner": "F-007 accepted after B-021 reverification. Use this formal app foundation as the UI baseline for later domain-core planning.",
         "evaluator": "Accepted: app verification passed, screenshot dimensions match the matrix, ContextRibbon contract is complete, token-layer gates pass, generated artifacts are ignored, and no live collection or automatic pricing was found."
       }
+    },
+    {
+      "id": "F-008-domain-core-rate-boundaries",
+      "title": "Domain core rate boundaries and alert math",
+      "status": "verifying",
+      "executor": "generator",
+      "artifacts": [
+        "docs/specs/2026-05-19-domain-core-rate-boundaries.md",
+        "docs/superpowers/plans/2026-05-19-domain-core-rate-boundaries.md",
+        "docs/test-reports/2026-05-19-f-008-generator-notes.md",
+        "app/src/domain/pricing/types.ts",
+        "app/src/domain/pricing/rateKey.ts",
+        "app/src/domain/pricing/availability.ts",
+        "app/src/domain/pricing/snapshotOrdering.ts",
+        "app/src/domain/pricing/reportEvidence.ts",
+        "app/src/domain/pricing/alertRules.ts",
+        "app/src/domain/pricing/index.ts",
+        "app/tests/domain/rateKey.test.ts",
+        "app/tests/domain/availability.test.ts",
+        "app/tests/domain/snapshotOrdering.test.ts",
+        "app/tests/domain/alertRules.test.ts",
+        "app/tests/domain/complianceScan.test.ts"
+      ],
+      "handoff": {
+        "generator": "Implemented the pure TypeScript domain core with strict TDD: comparable key serialization, availability/stale suppression, deterministic latest/previous ordering, alert candidate math, evidence generation, and static compliance scan. F-007 UI was left unchanged.",
+        "evaluator": "Verify availability suppression, stale handling, duplicate ordering, market sample gates, owner-position gates, human-review-only alert candidates, no recommended price, static compliance scan, app verification, prototype regression, and PR readiness."
+      }
     }
   ]
 }

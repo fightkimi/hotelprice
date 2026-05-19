@@ -4,33 +4,50 @@
 
 - Project: Hotel Pricing Capture
 - Workflow: Triad Workflow with Planner / Generator / Evaluator roles
+- Current role for this pass: Generator
 - Superpowers: mandatory sequence recorded in `.auto-memory/superpowers-workflow.md`
 - Branch rule: feature branch + PR only; no direct push to `main` / `master`
 
 ## Current Batch
 
-- Batch id: `formal-app-foundation`
-- Goal: enter formal product development with a tokenized, testable React app foundation based on the accepted F-006 production UI contract
-- Status: done after B-021 Evaluator reverification
+- Batch id: `domain-core-rate-boundaries`
+- Goal: carry the F-001 data-boundary precheck into the formal F-007 React/TypeScript app foundation as a tested domain core
+- Status: verifying
 
 ## Current Facts
 
-- `F-006-production-ui-contract` is accepted by Evaluator as the source of truth for F-007.
-- `F-007-formal-app-foundation` has a React + TypeScript formal app foundation implemented by Generator and accepted by Evaluator after fixes.
-- F-007 app verification passed: `/opt/homebrew/bin/npm run verify` from `app/` completed build, Vitest, and Playwright screenshot gates.
-- F-007 screenshot artifacts were generated under `docs/test-reports/f-007-app-foundation/`.
-- F-007 Evaluator report: `docs/test-reports/2026-05-19-f-007-formal-app-foundation-evaluator.md`.
-- F-007 reverification report: `docs/test-reports/2026-05-19-f-007-formal-app-foundation-reverification.md`.
-- F-007 is accepted. Status should remain `done` unless a new regression is found.
-- B-020 fixed P1 blockers: `.gitignore` added for generated artifacts, screenshot captures now assert exact viewport PNG dimensions, and `ContextRibbon` includes competitor group, demand context, and focusable read-only selector controls.
-- B-020 fixed P2 follow-ups: raw `rgba(...)` values were moved from `layout.css` into token variables, and Generator red/green evidence is recorded in `docs/test-reports/2026-05-19-f-007-fix-generator-notes.md`.
-- B-021 verified PR hygiene, exact screenshot dimensions, ContextRibbon contract/focus state, token-layer compliance, app verification, prototype regression checks, and no live collection or automatic pricing.
-- F-007 fix plan: `docs/superpowers/plans/2026-05-19-f-007-formal-app-foundation-fixes.md`.
-- Current workspace is a Git repository on `feature/f-007-formal-app-foundation`.
-- `origin` is set to `https://github.com/fightkimi/hotelprice.git`.
-- Remote `main` exists with initialization commit `616838c88806aa3b40d1b4e62ebd15e9578827f0`.
-- Local `feature/f-007-formal-app-foundation` starts from `origin/main`.
+- F-007 is accepted, merged through PR #1, and available on `origin/main`.
+- F-007 merge commit: `dd43b3beda70323314db20740cba92bc416429e7`.
+- Local work has been synced from `origin/main` and moved onto `feature/f-008-domain-core-planning`.
+- F-008 Generator implementation is complete and ready for Evaluator verification.
+- F-008 spec: `docs/specs/2026-05-19-domain-core-rate-boundaries.md`.
+- F-008 plan: `docs/superpowers/plans/2026-05-19-domain-core-rate-boundaries.md`.
+- F-008 adds pure TypeScript domain modules and Vitest domain tests only; F-007 UI, app screens, demo dataset, package config, migrations, persistence, and live collection remain unchanged.
+- F-001 precheck carryovers now made explicit for F-008:
+  - unavailable, no-rate, source-error, and stale snapshots are modeled and suppress pricing alerts;
+  - competitor movement is isolated by `hotelId + comparableRateKey`;
+  - latest/previous ordering is deterministic by `capturedAt` and `snapshotId`;
+  - market movement requires at least three active core competitor samples;
+  - owner-position alerts require exact comparable-rate-key matching;
+  - alerts are human-review-only and do not include recommended prices;
+  - domain code must pass a static no-live-collection scan.
+- B-014 is complete.
+- B-023 is complete with strict TDD evidence recorded in `docs/test-reports/2026-05-19-f-008-generator-notes.md`.
+- B-024 is the next Evaluator task.
+
+## Generator Implementation Facts
+
+- Added domain contracts and helpers under `app/src/domain/pricing/`.
+- Added Vitest domain tests under `app/tests/domain/`.
+- `ComparableRateKey` serialization includes channel, source, stay/checkout dates, currency, occupancy, room type, meal plan, cancellation policy, and tax/fee basis.
+- Competitor movement groups by `hotelId + comparableRateKey`.
+- Market math groups by `ownerPropertyId + competitorGroupId + comparableRateKey`.
+- Availability helpers suppress unavailable, no-rate, source-error, stale, and non-positive-price snapshots from pricing alerts.
+- Snapshot ordering is deterministic by `capturedAt`, then lexicographic `snapshotId`; duplicate same-capture snapshots keep the lexicographically last id.
+- Alert generation emits competitor movement, market movement, and owner-position risk candidates with evidence and `requiresHumanReview: true`.
+- Alert candidates do not include recommended price fields or automatic pricing actions.
+- Static compliance scan guards against live collection, credentials, browser/storage access, and automatic pricing code in the domain module.
 
 ## Next Step
 
-Prepare the final F-007 PR: stage the reverification report and updated status files, commit on `feature/f-007-formal-app-foundation`, push the branch, and open a PR against `main`.
+Evaluator should run `B-024` using `docs/test-reports/2026-05-19-f-008-generator-notes.md`, the F-008 spec/plan, and fresh verification of domain rules, app regression, prototype regression, compliance scan, and PR readiness.

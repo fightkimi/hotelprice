@@ -1,9 +1,9 @@
 {
   "project": "hotel-pricing-capture",
-  "status": "done",
-  "batch_id": "formal-app-foundation",
-  "current_sprint": "F-007-formal-app-foundation",
-  "total_features": 8,
+  "status": "verifying",
+  "batch_id": "domain-core-rate-boundaries",
+  "current_sprint": "F-008-domain-core-rate-boundaries",
+  "total_features": 9,
   "completed_features": 5,
   "features": [
     "F-000-workflow-bootstrap",
@@ -13,6 +13,7 @@
     "F-004-formal-design-philosophy-roadmap",
     "F-005-premium-product-experience-system",
     "F-006-production-ui-contract",
-    "F-007-formal-app-foundation"
+    "F-007-formal-app-foundation",
+    "F-008-domain-core-rate-boundaries"
   ]
 }
