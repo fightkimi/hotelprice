@@ -221,9 +221,16 @@
     {
       "id": "B-033",
       "title": "Evaluator reverifies F-009 after stale normalization fix",
+      "status": "done",
+      "feature_id": "F-009-domain-driven-ui-data-flow",
+      "notes": "Reverification report written at docs/test-reports/2026-05-19-f-009-domain-driven-ui-data-flow-reverification.md. Verdict: accepted; B-031 stale normalization is closed across trend, heatmap, and platform gaps, full verification passed, and B-027 remains non-blocking."
+    },
+    {
+      "id": "B-034",
+      "title": "Prepare F-009 PR after final acceptance",
       "status": "new",
       "feature_id": "F-009-domain-driven-ui-data-flow",
-      "notes": "Reverify the B-031 stale boundary scenario, F-009 targeted tests, full app verification, F-008 domain regression, Triad/JSON/prototype checks, static safety scan, and PR readiness. B-027 remains non-blocking."
+      "notes": "Push feature/f-009-domain-driven-ui-planning and open a PR to main once F-009 status/reverification artifacts are committed."
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "project": "hotel-pricing-capture",
-  "status": "reverifying",
+  "status": "done",
   "batch_id": "domain-driven-ui-data-flow",
   "current_sprint": "F-009-domain-driven-ui-data-flow",
   "total_features": 10,
-  "completed_features": 6,
+  "completed_features": 7,
   "features": [
     "F-000-workflow-bootstrap",
     "F-001-hotel-rate-watch-mvp",
