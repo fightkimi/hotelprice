@@ -89,8 +89,9 @@
     {
       "id": "B-014",
       "title": "Planner prepares future domain core plan with F-001 precheck carryover",
-      "status": "new",
-      "notes": "After F-007 app foundation planning, carry unavailable-source modeling and hotel_id + rate_key isolation into the formal domain core plan."
+      "status": "done",
+      "feature_id": "F-008-domain-core-rate-boundaries",
+      "notes": "Created F-008 domain core spec and Generator-ready plan. Carries F-001 precheck risks into TypeScript app foundation: unavailable/no-rate/source-error/stale modeling, hotelId + comparableRateKey movement isolation, deterministic snapshot ordering, and no-live-collection compliance gates."
     },
     {
       "id": "B-015",
@@ -143,9 +144,51 @@
     {
       "id": "B-022",
       "title": "Prepare F-007 PR after final acceptance",
-      "status": "new",
+      "status": "done",
       "feature_id": "F-007-formal-app-foundation",
-      "notes": "Stage the final reverification report and updated status files, commit on feature/f-007-formal-app-foundation, push the branch, and open a PR against main."
+      "notes": "Completed. PR #1 `F-007 Formal app foundation` was opened from feature/f-007-formal-app-foundation to main, then merged on 2026-05-19. Merge commit: dd43b3beda70323314db20740cba92bc416429e7."
+    },
+    {
+      "id": "B-023",
+      "title": "Generator implements F-008 domain core rate boundaries",
+      "status": "done",
+      "feature_id": "F-008-domain-core-rate-boundaries",
+      "notes": "Implemented with strict TDD: rate-key grouping, availability/stale suppression, deterministic snapshot ordering, alert candidate rules, evidence shape, static compliance scan, and Generator notes. Ready for B-024 Evaluator verification."
+    },
+    {
+      "id": "B-024",
+      "title": "Evaluator verifies F-008 domain core rate boundaries",
+      "status": "done",
+      "feature_id": "F-008-domain-core-rate-boundaries",
+      "notes": "Evaluator report written at docs/test-reports/2026-05-19-f-008-domain-core-rate-boundaries-evaluator.md. Verdict: not accepted; move F-008 to fixing due P1 intermittent unavailable capture suppressing a valid competitor movement alert."
+    },
+    {
+      "id": "B-025",
+      "title": "Generator fixes F-008 intermittent availability regression",
+      "status": "done",
+      "feature_id": "F-008-domain-core-rate-boundaries",
+      "notes": "Added regression coverage for available -> unavailable/no-rate/source-error -> available competitor movement and fixed competitor movement to compare latest available against previous available while suppressing unavailable latest captures."
+    },
+    {
+      "id": "B-026",
+      "title": "Evaluator reverifies F-008 after intermittent availability fix",
+      "status": "done",
+      "feature_id": "F-008-domain-core-rate-boundaries",
+      "notes": "Reverification report written at docs/test-reports/2026-05-19-f-008-domain-core-rate-boundaries-reverification.md. Verdict: accepted; B-024 P1 intermittent unavailable/no-rate/source-error regression is closed, app/domain/prototype verification passed, static safety scan passed, and PR diff is bounded."
+    },
+    {
+      "id": "B-027",
+      "title": "Track owner-position evidence enrichment after F-008",
+      "status": "new",
+      "feature_id": "F-008-domain-core-rate-boundaries",
+      "notes": "Non-blocking follow-up from B-024/B-026 P2: consider including the owner snapshot in owner-position alert evidence or documenting top-level owner alert fields as the owner-side evidence source."
+    },
+    {
+      "id": "B-028",
+      "title": "Prepare F-008 PR after final acceptance",
+      "status": "done",
+      "feature_id": "F-008-domain-core-rate-boundaries",
+      "notes": "Completed. PR #2 `F-008 Domain core rate boundaries` was opened from feature/f-008-domain-core-planning to main: https://github.com/fightkimi/hotelprice/pull/2"
     }
   ]
 }

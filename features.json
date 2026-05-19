@@ -162,6 +162,36 @@
         "planner": "F-007 accepted after B-021 reverification. Use this formal app foundation as the UI baseline for later domain-core planning.",
         "evaluator": "Accepted: app verification passed, screenshot dimensions match the matrix, ContextRibbon contract is complete, token-layer gates pass, generated artifacts are ignored, and no live collection or automatic pricing was found."
       }
+    },
+    {
+      "id": "F-008-domain-core-rate-boundaries",
+      "title": "Domain core rate boundaries and alert math",
+      "status": "done",
+      "executor": "evaluator",
+      "artifacts": [
+        "docs/specs/2026-05-19-domain-core-rate-boundaries.md",
+        "docs/superpowers/plans/2026-05-19-domain-core-rate-boundaries.md",
+        "docs/test-reports/2026-05-19-f-008-generator-notes.md",
+        "docs/test-reports/2026-05-19-f-008-domain-core-rate-boundaries-evaluator.md",
+        "docs/test-reports/2026-05-19-f-008-domain-core-rate-boundaries-reverification.md",
+        "docs/test-reports/2026-05-19-f-008-fix-generator-notes.md",
+        "app/src/domain/pricing/types.ts",
+        "app/src/domain/pricing/rateKey.ts",
+        "app/src/domain/pricing/availability.ts",
+        "app/src/domain/pricing/snapshotOrdering.ts",
+        "app/src/domain/pricing/reportEvidence.ts",
+        "app/src/domain/pricing/alertRules.ts",
+        "app/src/domain/pricing/index.ts",
+        "app/tests/domain/rateKey.test.ts",
+        "app/tests/domain/availability.test.ts",
+        "app/tests/domain/snapshotOrdering.test.ts",
+        "app/tests/domain/alertRules.test.ts",
+        "app/tests/domain/complianceScan.test.ts"
+      ],
+      "handoff": {
+        "planner": "F-008 accepted after B-026 reverification. Prepare the F-008 PR from feature/f-008-domain-core-planning and track owner-position evidence enrichment as a non-blocking follow-up.",
+        "evaluator": "Accepted: B-024 P1 intermittent availability regression is closed, domain tests and app verification pass, static no-live-collection scan passes, and PR diff is bounded to F-008 domain/planning artifacts."
+      }
     }
   ]
 }
