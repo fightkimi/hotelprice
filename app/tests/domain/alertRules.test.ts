@@ -97,6 +97,28 @@ describe('alert candidate rules', () => {
     expect(unavailableLatest).toHaveLength(0);
   });
 
+  it.each(['unavailable', 'no_rate', 'source_error'] as const)(
+    'compares latest and previous available snapshots across an intermittent %s capture',
+    (availabilityStatus) => {
+      const alerts = generate([
+        snap('a1', 'comp-a', '2026-05-19T08:00:00.000Z', 40000),
+        snap('a2', 'comp-a', '2026-05-19T10:00:00.000Z', null, key, availabilityStatus),
+        snap('a3', 'comp-a', '2026-05-19T12:00:00.000Z', 46000)
+      ]);
+
+      expect(alerts).toEqual([
+        expect.objectContaining({
+          alertType: 'competitor_increase',
+          hotelId: 'comp-a',
+          oldPriceCents: 40000,
+          newPriceCents: 46000,
+          changeRate: 0.15,
+          requiresHumanReview: true
+        })
+      ]);
+    }
+  );
+
   it('does not compare different hotels with the same comparable key', () => {
     const alerts = generate([
       snap('a1', 'comp-a', '2026-05-19T08:00:00.000Z', 40000),

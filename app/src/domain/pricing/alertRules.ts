@@ -1,6 +1,6 @@
 import { isAlertableSnapshot, markStaleSnapshots } from './availability';
 import { evidenceForSnapshot } from './reportEvidence';
-import { comparableRateKeyId, marketGroupKey } from './rateKey';
+import { comparableRateKeyId, marketGroupKey, movementGroupKey } from './rateKey';
 import { selectLatestPrevious } from './snapshotOrdering';
 import type { AlertableRateSnapshot, AlertCandidate, AlertType, GenerateAlertCandidatesInput, HotelProfile, RateSnapshot } from './types';
 
@@ -52,13 +52,46 @@ function activeHotelById(hotels: HotelProfile[]): Map<string, HotelProfile> {
   return new Map(hotels.filter((hotel) => hotel.active).map((hotel) => [hotel.hotelId, hotel]));
 }
 
+function compareSnapshots(a: RateSnapshot, b: RateSnapshot): number {
+  const byCapture = Date.parse(a.capturedAt) - Date.parse(b.capturedAt);
+  if (byCapture !== 0) {
+    return byCapture;
+  }
+  return a.snapshotId.localeCompare(b.snapshotId);
+}
+
+function selectCompetitorMovementPair(groupSnapshots: RateSnapshot[]): { latest: AlertableRateSnapshot; previous: AlertableRateSnapshot } | null {
+  const winnersByCapture = new Map<string, RateSnapshot>();
+  for (const snapshot of [...groupSnapshots].sort(compareSnapshots)) {
+    winnersByCapture.set(snapshot.capturedAt, snapshot);
+  }
+
+  const orderedWinners = [...winnersByCapture.values()].sort(compareSnapshots);
+  const latestOverall = orderedWinners[orderedWinners.length - 1];
+  if (!isAlertableSnapshot(latestOverall)) {
+    return null;
+  }
+
+  const previous = orderedWinners.slice(0, -1).reverse().find(isAlertableSnapshot);
+  return previous ? { latest: latestOverall, previous } : null;
+}
+
 function generateCompetitorMovementAlerts(snapshots: RateSnapshot[], hotels: Map<string, HotelProfile>): AlertCandidate[] {
   const alerts: AlertCandidate[] = [];
-  const groups = selectLatestPrevious(snapshots);
+  const groups = new Map<string, RateSnapshot[]>();
+  for (const snapshot of snapshots) {
+    const key = movementGroupKey(snapshot);
+    groups.set(key, [...(groups.get(key) ?? []), snapshot]);
+  }
 
-  for (const { latest, previous } of groups.values()) {
+  for (const groupSnapshots of groups.values()) {
+    const selected = selectCompetitorMovementPair(groupSnapshots);
+    if (!selected) {
+      continue;
+    }
+    const { latest, previous } = selected;
     const hotel = hotels.get(latest.hotelId);
-    if (!hotel || hotel.role !== 'competitor' || !previous || !isAlertableSnapshot(latest) || !isAlertableSnapshot(previous)) {
+    if (!hotel || hotel.role !== 'competitor') {
       continue;
     }
 
