@@ -1,7 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import { demoDataset } from '../../src/data/demoDataset';
+import { domainDrivenDemoDataset } from '../../src/data/domainDrivenDataset';
 
 describe('demo dataset boundaries', () => {
+  it('uses the domain-driven dataset as the UI source of truth', () => {
+    expect(demoDataset).toBe(domainDrivenDemoDataset);
+  });
+
   it('marks data as fixture/demo and not live collection', () => {
     expect(demoDataset.sourceKind).toBe('fixture-demo');
     expect(demoDataset.liveCollectionEnabled).toBe(false);
@@ -29,5 +34,18 @@ describe('demo dataset boundaries', () => {
       expect(signal.humanReviewRequired).toBe(true);
       expect(signal.evidenceMarkers.length).toBeGreaterThan(0);
     }
+  });
+
+  it('keeps generated copy safe for customer-facing demo surfaces', () => {
+    const visibleCopy = [
+      demoDataset.demoDisclosure,
+      demoDataset.context.property,
+      demoDataset.context.platform,
+      ...demoDataset.signals.flatMap((signal) => [signal.title, signal.summary])
+    ].join('\n');
+
+    expect(visibleCopy).not.toMatch(/自动调价|自动改价|爬虫|抓取|cookie|验证码|token/i);
+    expect(demoDataset.heatmap.days.some((day) => day.status === 'unavailable')).toBe(true);
+    expect(demoDataset.trend.series.some((series) => series.points.some((point) => point.value === null))).toBe(true);
   });
 });

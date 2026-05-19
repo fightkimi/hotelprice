@@ -10,60 +10,51 @@
 
 ## Current Batch
 
-- Batch id: `domain-core-rate-boundaries`
-- Goal: carry the F-001 data-boundary precheck into the formal F-007 React/TypeScript app foundation as a tested domain core
-- Status: done; PR #2 open
+- Batch id: `domain-driven-ui-data-flow`
+- Goal: connect the accepted F-008 domain core to the accepted F-007 formal React/TypeScript UI through fixture/manual seed data and a pure view-model adapter
+- Status: done; PR #3 open
 
 ## Current Facts
 
 - F-007 is accepted, merged through PR #1, and available on `origin/main`.
 - F-007 merge commit: `dd43b3beda70323314db20740cba92bc416429e7`.
-- Local work is on `feature/f-008-domain-core-planning`, based on `origin/main`.
-- F-008 spec: `docs/specs/2026-05-19-domain-core-rate-boundaries.md`.
-- F-008 plan: `docs/superpowers/plans/2026-05-19-domain-core-rate-boundaries.md`.
-- F-008 adds pure TypeScript domain modules and Vitest domain tests only; F-007 UI, app screens, demo dataset, package config, migrations, persistence, and live collection remain unchanged.
-- F-001 precheck carryovers now made explicit for F-008:
-  - unavailable, no-rate, source-error, and stale snapshots are modeled and suppress pricing alerts;
-  - competitor movement is isolated by `hotelId + comparableRateKey`;
-  - latest/previous ordering is deterministic by `capturedAt` and `snapshotId`;
-  - market movement requires at least three active core competitor samples;
-  - owner-position alerts require exact comparable-rate-key matching;
-  - alerts are human-review-only and do not include recommended prices;
-  - domain code passes a static no-live-collection scan.
-- B-014 is complete.
-- B-023 is complete with strict TDD evidence recorded in `docs/test-reports/2026-05-19-f-008-generator-notes.md`.
-- B-024 Evaluator review found a P1 intermittent availability regression and moved F-008 to fixing.
-- B-025 Generator fix is complete with strict TDD evidence recorded in `docs/test-reports/2026-05-19-f-008-fix-generator-notes.md`.
-- B-026 Evaluator reverification accepted F-008 after the B-025 fix.
-- B-026 report: `docs/test-reports/2026-05-19-f-008-domain-core-rate-boundaries-reverification.md`.
-- F-008 status is now `done`.
-- B-027 tracks the non-blocking owner-position evidence enrichment follow-up.
-- B-028 is complete.
-- F-008 PR: https://github.com/fightkimi/hotelprice/pull/2.
+- F-008 is accepted, merged through PR #2, and available on `origin/main`.
+- F-008 merge commit: `a303c2f`.
+- Local work is on `feature/f-009-domain-driven-ui-planning`.
+- F-009 spec: `docs/specs/2026-05-19-domain-driven-ui-data-flow.md`.
+- F-009 plan: `docs/superpowers/plans/2026-05-19-domain-driven-ui-data-flow.md`.
+- B-030 completed the initial F-009 implementation.
+- B-031 Evaluator verification rejected F-009 due P1 stale snapshot UI normalization.
+- B-031 report: `docs/test-reports/2026-05-19-f-009-domain-driven-ui-data-flow-evaluator.md`.
+- B-032 Generator fix is complete with strict TDD evidence recorded in `docs/test-reports/2026-05-19-f-009-fix-generator-notes.md`.
+- B-033 Evaluator reverification accepted F-009.
+- B-033 report: `docs/test-reports/2026-05-19-f-009-domain-driven-ui-data-flow-reverification.md`.
+- B-027 owner-position evidence enrichment remains non-blocking and can be handled as a separate small slice if needed.
+- B-034 is complete.
+- F-009 PR: https://github.com/fightkimi/hotelprice/pull/3.
 
-## Generator Implementation Facts
+## B-031 Finding And B-032 Fix
 
-- Added domain contracts and helpers under `app/src/domain/pricing/`.
-- Added Vitest domain tests under `app/tests/domain/`.
-- `ComparableRateKey` serialization includes channel, source, stay/checkout dates, currency, occupancy, room type, meal plan, cancellation policy, and tax/fee basis.
-- Competitor movement groups by `hotelId + comparableRateKey`.
-- Market math groups by `ownerPropertyId + competitorGroupId + comparableRateKey`.
-- Availability helpers suppress unavailable, no-rate, source-error, stale, and non-positive-price snapshots from pricing alerts.
-- Snapshot ordering is deterministic by `capturedAt`, then lexicographic `snapshotId`; duplicate same-capture snapshots keep the lexicographically last id.
-- Alert generation emits competitor movement, market movement, and owner-position risk candidates with evidence and `requiresHumanReview: true`.
-- Alert candidates do not include recommended price fields or automatic pricing actions.
-- Static compliance scan guards against live collection, credentials, browser/storage access, and automatic pricing code in the domain module.
+- Finding: `signals` flowed through `generateAlertCandidates`, but `trend`, `heatmap`, and `platformGaps` used raw seed snapshots directly.
+- Risk: an available-looking snapshot older than the F-008 36-hour freshness window could render as a usable UI price.
+- Regression: `app/tests/data/domainDrivenDataset.test.ts` now mutates owner snapshots older than 36 hours and verifies:
+  - owner trend point becomes `null`;
+  - heatmap day becomes `unavailable` with null price fields and sample size 0;
+  - stale platform owner row is excluded from platform gaps.
+- Fix: `buildDomainDrivenDemoDataset()` now calls `markStaleSnapshots(seed.snapshots, seed.now)` once and uses the normalized snapshot set for signals, trend, heatmap, platform gaps, and sample counts.
+- F-008 domain evidence semantics were not changed.
 
-## B-024 Findings And B-025 Fix
+## Verification Evidence
 
-- Evaluator report: `docs/test-reports/2026-05-19-f-008-domain-core-rate-boundaries-evaluator.md`.
-- B-024 P1: `available -> unavailable/no-rate/source-error -> available` for the same `hotelId + comparableRateKey` returned no competitor movement alert.
-- Root cause: competitor movement selected latest/previous across all snapshots, then suppressed if the selected previous snapshot was not alertable.
-- Fix: competitor movement now requires latest overall to be alertable and selects the prior alertable available capture as previous, skipping intermittent unavailable/no-rate/source-error observations.
-- Regression: `app/tests/domain/alertRules.test.ts` covers all three intermittent states.
-- B-026 reverification confirmed the P1 fix and accepted F-008.
-- F-007 UI, app screens, demo dataset, package config, E2E config, persistence, live collection, and automatic pricing remain unchanged.
+- `npm test -- tests/data/domainDrivenDataset.test.ts`: red before fix with `expected 528 to be null`; green after fix with 1 file / 8 tests passed.
+- `npm test -- tests/data/domainDrivenDataset.test.ts tests/contract/demoDataset.test.ts tests/domain`: 7 files passed, 39 tests passed.
+- `npm run verify`: build passed, Vitest 12 files / 59 tests passed, Playwright 13 tests passed.
+- B-033 independent stale boundary test: 1 file / 1 test passed.
+- B-033 targeted F-009/F-008 tests: 7 files / 39 tests passed.
+- B-033 full `npm run verify`: build passed, Vitest 12 files / 59 tests passed, Playwright 13 tests passed.
+- B-033 Triad/JSON/prototype checks: passed.
+- B-033 static safety scan: no matches in `app/src/data/*` and `app/src/domain/pricing`.
 
 ## Next Step
 
-Review PR #2, then merge it through the normal PR-only workflow if review and CI are acceptable. After merge, sync local `main` from `origin/main` before planning the next feature slice.
+Review PR #3, then merge it through the normal PR-only workflow if review and CI are acceptable. After merge, sync local `main` from `origin/main` before planning the next feature slice. Keep B-027 owner-position evidence enrichment as a non-blocking follow-up unless it is split into a separate accepted slice.
