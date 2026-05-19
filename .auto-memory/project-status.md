@@ -12,7 +12,7 @@
 
 - Batch id: `domain-driven-ui-data-flow`
 - Goal: connect the accepted F-008 domain core to the accepted F-007 formal React/TypeScript UI through fixture/manual seed data and a pure view-model adapter
-- Status: done; PR preparation in progress
+- Status: done; PR #3 open
 
 ## Current Facts
 
@@ -30,7 +30,8 @@
 - B-033 Evaluator reverification accepted F-009.
 - B-033 report: `docs/test-reports/2026-05-19-f-009-domain-driven-ui-data-flow-reverification.md`.
 - B-027 owner-position evidence enrichment remains non-blocking and can be handled as a separate small slice if needed.
-- B-034 tracks F-009 PR preparation.
+- B-034 is complete.
+- F-009 PR: https://github.com/fightkimi/hotelprice/pull/3.
 
 ## B-031 Finding And B-032 Fix
 
@@ -56,4 +57,4 @@
 
 ## Next Step
 
-Prepare the F-009 PR from `feature/f-009-domain-driven-ui-planning`, then mark B-034 done with the PR number once created. Do not push directly to `main` or `master`. Keep B-027 owner-position evidence enrichment as a non-blocking follow-up unless it is split into a separate accepted slice.
+Review PR #3, then merge it through the normal PR-only workflow if review and CI are acceptable. After merge, sync local `main` from `origin/main` before planning the next feature slice. Keep B-027 owner-position evidence enrichment as a non-blocking follow-up unless it is split into a separate accepted slice.
