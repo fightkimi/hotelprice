@@ -252,6 +252,34 @@
       "status": "done",
       "feature_id": "F-010-owner-position-evidence-enrichment",
       "notes": "Completed. PR #4 `F-010 Owner-position evidence enrichment` was opened from feature/f-010-owner-position-evidence-planning to main: https://github.com/fightkimi/hotelprice/pull/4"
+    },
+    {
+      "id": "B-038",
+      "title": "Planner prepares F-011 data scope and capture entry",
+      "status": "done",
+      "feature_id": "F-011-data-scope-capture-entry",
+      "notes": "Created F-011 spec and Generator-ready plan for typed dataScope/captureEntry contracts and a customer-safe Setup/Data Scope capture-entry preview. Planning branch is based on accepted F-010 while PR #4 remains open."
+    },
+    {
+      "id": "B-039",
+      "title": "Generator implements F-011 data scope and capture entry",
+      "status": "new",
+      "feature_id": "F-011-data-scope-capture-entry",
+      "notes": "Use docs/superpowers/plans/2026-05-19-data-scope-capture-entry.md with strict TDD. Add dataScope and captureEntry contracts, pure derivation from domainSeed, Setup screen rendering, safety scan coverage, screenshots, and Generator notes without live collection or automatic pricing."
+    },
+    {
+      "id": "B-040",
+      "title": "Evaluator verifies F-011 data scope and capture entry",
+      "status": "new",
+      "feature_id": "F-011-data-scope-capture-entry",
+      "notes": "Verify typed scope boundaries, capture entry statuses, production connection disabled state, human-review-only behavior, customer-safe copy, responsive setup screenshots, safety scans, app/domain/prototype regressions, and PR hygiene."
+    },
+    {
+      "id": "B-041",
+      "title": "Prepare F-011 PR after final acceptance",
+      "status": "new",
+      "feature_id": "F-011-data-scope-capture-entry",
+      "notes": "After Evaluator acceptance, push the F-011 feature branch and open a PR to main. If PR #4 is still open, rebase or wait so F-011 does not duplicate F-010 changes in its PR."
     }
   ]
 }

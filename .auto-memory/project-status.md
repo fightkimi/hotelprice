@@ -10,9 +10,9 @@
 
 ## Current Batch
 
-- Batch id: `owner-position-evidence-enrichment`
-- Goal: close the F-008/F-009 owner-position evidence follow-up by adding explicit owner-side evidence and customer-safe evidence labels
-- Status: pr-open
+- Batch id: `data-scope-capture-entry`
+- Goal: define the F-011 data-scope contract and compliant capture-entry preview before any live source or persistence work
+- Status: planning
 
 ## Current Facts
 
@@ -23,7 +23,7 @@
 - F-009 is accepted, merged through PR #3, and available on `origin/main`.
 - F-009 merge commit: `48ab7bb`.
 - Local `main` has been fast-forwarded to `origin/main`.
-- Current branch: `feature/f-010-owner-position-evidence-planning`.
+- Current branch: `feature/f-011-data-scope-capture-entry-planning`.
 - F-010 spec: `docs/specs/2026-05-19-owner-position-evidence-enrichment.md`.
 - F-010 plan: `docs/superpowers/plans/2026-05-19-owner-position-evidence-enrichment.md`.
 - B-027 is now closed as a tracking item because it has been promoted into F-010.
@@ -32,17 +32,23 @@
 - B-036 report: `docs/test-reports/2026-05-19-f-010-owner-position-evidence-enrichment-evaluator.md`.
 - B-037 is complete.
 - F-010 PR: #4 `F-010 Owner-position evidence enrichment` at https://github.com/fightkimi/hotelprice/pull/4.
+- `origin/main` still points at the F-009 merge commit `48ab7bb`; PR #4 is not reflected in `origin/main` in this local checkout.
+- F-011 spec: `docs/specs/2026-05-19-data-scope-capture-entry.md`.
+- F-011 plan: `docs/superpowers/plans/2026-05-19-data-scope-capture-entry.md`.
+- B-038 is complete.
+- B-039 is the next Generator task.
+- B-040 is the following Evaluator task.
+- B-041 is the PR-preparation task after F-011 acceptance.
 
 ## Current Design Decision
 
-F-010 enriched the existing F-008/F-009 evidence contract without changing pricing thresholds or UI layout:
+F-011 will enrich the Setup/Data Scope surface and dataset contract rather than adding real collection:
 
-- added explicit domain evidence roles;
-- added `priceCents` to alert evidence;
-- included one `owner_observation` record in owner low/high risk alerts;
-- included `competitor_sample` records for active core competitor samples;
-- labeled owner and competitor evidence separately in F-009 evidence markers;
-- preserved human-review-only behavior and avoided recommended prices or automatic pricing actions.
+- add typed `dataScope` and `captureEntry` objects to `DemoDataset`;
+- derive scope from `domainSeed` so property, competitor, channel, stay-date, room-type, occupancy, currency, tax/fee, meal-plan, cancellation, freshness, and capture-time boundaries stay explicit;
+- render a customer-safe capture-entry preview for fixture demo, manual import preview, and approved API preview;
+- keep `productionConnectionEnabled` false;
+- preserve human-review-only behavior and avoid recommended prices or automatic pricing actions.
 
 ## Generator Evidence
 
@@ -67,8 +73,9 @@ F-010 enriched the existing F-008/F-009 evidence contract without changing prici
 
 - Data remains fixture/manual demo data only.
 - No live OTA collection, browser automation, storage, credentials, cookies, CAPTCHA handling, network connector, persistence, API routes, or automatic pricing.
-- F-008 alert thresholds and F-009 screen layout remain unchanged unless a failing test proves a narrow contract issue.
+- No file upload is included in F-011.
+- F-008 alert thresholds, F-009 data flow, and F-010 evidence semantics remain unchanged unless a failing test proves a narrow contract issue.
 
 ## Next Step
 
-Wait for PR #4 review/merge. After merge, sync local `main`, record PR #4 merged / F-010 done, then plan the next feature slice. Do not push directly to `main` or `master`.
+Generator should execute B-039 from `docs/superpowers/plans/2026-05-19-data-scope-capture-entry.md` using strict TDD, then hand off to Evaluator for B-040. Before opening an F-011 PR, resolve the PR #4 dependency by rebasing after F-010 is merged or waiting until main includes F-010. Do not push directly to `main` or `master`.

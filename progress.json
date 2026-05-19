@@ -1,9 +1,9 @@
 {
   "project": "hotel-pricing-capture",
-  "status": "done",
-  "batch_id": "owner-position-evidence-enrichment",
-  "current_sprint": "F-010-owner-position-evidence-enrichment",
-  "total_features": 11,
+  "status": "planning",
+  "batch_id": "data-scope-capture-entry",
+  "current_sprint": "F-011-data-scope-capture-entry",
+  "total_features": 12,
   "completed_features": 8,
   "features": [
     "F-000-workflow-bootstrap",
@@ -16,6 +16,7 @@
     "F-007-formal-app-foundation",
     "F-008-domain-core-rate-boundaries",
     "F-009-domain-driven-ui-data-flow",
-    "F-010-owner-position-evidence-enrichment"
+    "F-010-owner-position-evidence-enrichment",
+    "F-011-data-scope-capture-entry"
   ]
 }

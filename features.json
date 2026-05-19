@@ -239,6 +239,20 @@
                 "planner": "F-010 accepted after B-036 verification. PR #4 is open from feature/f-010-owner-position-evidence-planning: https://github.com/fightkimi/hotelprice/pull/4",
                 "evaluator": "Accepted: owner-position evidence now includes owner_observation plus competitor_sample records, UI evidence labels distinguish owner and competitor observations, human-review-only behavior is preserved, and app/domain/prototype/PR hygiene checks passed."
             }
+        },
+        {
+            "id": "F-011-data-scope-capture-entry",
+            "title": "Data scope and capture entry preview",
+            "status": "planning",
+            "executor": "planner",
+            "artifacts": [
+                "docs/specs/2026-05-19-data-scope-capture-entry.md",
+                "docs/superpowers/plans/2026-05-19-data-scope-capture-entry.md"
+            ],
+            "handoff": {
+                "generator": "Implement typed dataScope and captureEntry dataset contracts, derive them from domainSeed, and render a customer-safe Setup/Data Scope capture-entry preview with strict TDD. Keep all behavior local fixture/manual only and do not add live collection, persistence, credentials, file upload, browser automation, or automatic pricing.",
+                "evaluator": "Verify scope boundaries, capture-entry copy, productionConnectionEnabled false, human-review-only behavior, setup responsive screenshots, safety scans, app/domain/prototype regressions, and branch hygiene with PR #4 dependency handled explicitly."
+            }
         }
   ]
 }
