@@ -36,8 +36,8 @@ export function SetupDataScopeScreen({ dataset }: SetupDataScopeScreenProps) {
   ] as const;
 
   return (
-    <section className="screen-grid screen-grid--two">
-      <div className="panel">
+    <section className="screen-grid screen-grid--two setup-observatory" data-visual-system="revenue-observatory">
+      <div className="panel observatory-glass-panel">
         <div className="panel__header">
           <div>
             <h2 className="panel__title">数据范围</h2>
@@ -45,30 +45,32 @@ export function SetupDataScopeScreen({ dataset }: SetupDataScopeScreenProps) {
           </div>
           <span className="demo-badge">演示数据</span>
         </div>
-        <div className="scope-grid">
-          {scopeItems.map(([label, value]) => (
-            <div className="setup-item" key={label}>
-              <span className="meta-label">{label}</span>
-              <strong>{value}</strong>
-            </div>
-          ))}
-        </div>
-        <div className="divider" />
-        <div className="platform-scope-list">
-          {dataScope.platforms.map((platform) => (
-            <div className="platform-scope-row" key={platform.sourceId}>
-              <div className="platform-scope-row__top">
-                <strong>{platform.label}</strong>
-                <span className="status-chip">{platform.enabled ? '已纳入范围' : '未启用'}</span>
+        <div className="scope-observatory-map" aria-label="数据范围观测图">
+          <div className="scope-grid">
+            {scopeItems.map(([label, value]) => (
+              <div className="setup-item scope-metric-cell" key={label}>
+                <span className="meta-label">{label}</span>
+                <strong>{value}</strong>
               </div>
-              <p className="panel__meta">
-                {sourceKindLabel[platform.sourceKind]} · {platform.channel} · {platform.sourceId}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
+          <div className="scope-signal-axis" aria-hidden="true" />
+          <div className="platform-scope-list">
+            {dataScope.platforms.map((platform) => (
+              <div className="platform-scope-row scope-orbit-node" key={platform.sourceId}>
+                <div className="platform-scope-row__top">
+                  <strong>{platform.label}</strong>
+                  <span className="status-chip">{platform.enabled ? '已纳入范围' : '未启用'}</span>
+                </div>
+                <p className="panel__meta">
+                  {sourceKindLabel[platform.sourceKind]} · {platform.channel} · {platform.sourceId}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-      <aside className="panel">
+      <aside className="panel observatory-glass-panel">
         <div className="panel__header">
           <div>
             <h2 className="panel__title">采集入口</h2>
@@ -81,7 +83,7 @@ export function SetupDataScopeScreen({ dataset }: SetupDataScopeScreenProps) {
             <span className="meta-label">生产连接</span>
             <strong>{captureEntry.productionConnectionEnabled ? '已开启' : '当前关闭'}</strong>
           </div>
-          <div className="capture-entry-list">
+          <div className="capture-entry-list capture-signal-rail">
             {captureEntry.options.map((option) => (
               <div className="capture-entry-row" key={option.id}>
                 <div className="capture-entry-row__top">

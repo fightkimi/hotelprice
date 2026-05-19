@@ -21,4 +21,14 @@ describe('SetupDataScopeScreen', () => {
     const visibleText = document.body.textContent ?? '';
     expect(visibleText).not.toMatch(/自动调价|自动改价|cookie|token|crawler|scraper|captcha|recommendedPrice/i);
   });
+
+  it('exposes the Revenue Observatory visual structure for data scope review', () => {
+    const { container } = render(<SetupDataScopeScreen dataset={demoDataset} />);
+
+    expect(container.querySelector('[data-visual-system="revenue-observatory"]')).not.toBeNull();
+    expect(container.querySelector('.scope-observatory-map')).not.toBeNull();
+    expect(container.querySelector('.capture-signal-rail')).not.toBeNull();
+    expect(container.querySelectorAll('.observatory-glass-panel').length).toBeGreaterThanOrEqual(2);
+    expect(container.querySelectorAll('.scope-orbit-node').length).toBeGreaterThanOrEqual(4);
+  });
 });
