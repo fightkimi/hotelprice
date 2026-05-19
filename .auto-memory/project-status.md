@@ -12,7 +12,7 @@
 
 - Batch id: `owner-position-evidence-enrichment`
 - Goal: close the F-008/F-009 owner-position evidence follow-up by adding explicit owner-side evidence and customer-safe evidence labels
-- Status: preparing-pr
+- Status: pr-open
 
 ## Current Facts
 
@@ -30,7 +30,8 @@
 - B-035 is complete.
 - B-036 Evaluator verification accepted F-010.
 - B-036 report: `docs/test-reports/2026-05-19-f-010-owner-position-evidence-enrichment-evaluator.md`.
-- B-037 is the Planner PR-preparation tracker for opening the F-010 pull request.
+- B-037 is complete.
+- F-010 PR: #4 `F-010 Owner-position evidence enrichment` at https://github.com/fightkimi/hotelprice/pull/4.
 
 ## Current Design Decision
 
@@ -70,4 +71,4 @@ F-010 enriched the existing F-008/F-009 evidence contract without changing prici
 
 ## Next Step
 
-Run fresh PR-preparation verification, commit the F-010 acceptance/status/report records, push `feature/f-010-owner-position-evidence-planning`, then open the F-010 PR. Do not push directly to `main` or `master`.
+Wait for PR #4 review/merge. After merge, sync local `main`, record PR #4 merged / F-010 done, then plan the next feature slice. Do not push directly to `main` or `master`.

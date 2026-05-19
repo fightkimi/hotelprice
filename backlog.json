@@ -249,9 +249,9 @@
     {
       "id": "B-037",
       "title": "Prepare F-010 PR after final acceptance",
-      "status": "new",
+      "status": "done",
       "feature_id": "F-010-owner-position-evidence-enrichment",
-      "notes": "Push feature/f-010-owner-position-evidence-planning after fresh verification and open the F-010 pull request against main."
+      "notes": "Completed. PR #4 `F-010 Owner-position evidence enrichment` was opened from feature/f-010-owner-position-evidence-planning to main: https://github.com/fightkimi/hotelprice/pull/4"
     }
   ]
 }

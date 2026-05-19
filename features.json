@@ -236,7 +236,7 @@
                 "docs/test-reports/f-007-app-foundation/overview-normal--1440x900.png"
             ],
             "handoff": {
-                "planner": "F-010 accepted after B-036 verification. Prepare the F-010 PR from feature/f-010-owner-position-evidence-planning.",
+                "planner": "F-010 accepted after B-036 verification. PR #4 is open from feature/f-010-owner-position-evidence-planning: https://github.com/fightkimi/hotelprice/pull/4",
                 "evaluator": "Accepted: owner-position evidence now includes owner_observation plus competitor_sample records, UI evidence labels distinguish owner and competitor observations, human-review-only behavior is preserved, and app/domain/prototype/PR hygiene checks passed."
             }
         }
