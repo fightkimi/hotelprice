@@ -179,9 +179,9 @@
     {
       "id": "B-027",
       "title": "Track owner-position evidence enrichment after F-008",
-      "status": "new",
+      "status": "done",
       "feature_id": "F-008-domain-core-rate-boundaries",
-      "notes": "Non-blocking follow-up from B-024/B-026 P2: consider including the owner snapshot in owner-position alert evidence or documenting top-level owner alert fields as the owner-side evidence source. It may be handled as an adapter-level note during F-009 or split into a separate small slice; it is not an F-009 blocker."
+      "notes": "Promoted into F-010-owner-position-evidence-enrichment. The follow-up will include explicit owner_observation evidence in owner-position alerts and customer-safe owner/competitor evidence marker labels."
     },
     {
       "id": "B-028",
@@ -231,6 +231,20 @@
       "status": "done",
       "feature_id": "F-009-domain-driven-ui-data-flow",
       "notes": "Completed. PR #3 `F-009 Domain-driven UI data flow` was opened from feature/f-009-domain-driven-ui-planning to main: https://github.com/fightkimi/hotelprice/pull/3"
+    },
+    {
+      "id": "B-035",
+      "title": "Generator implements F-010 owner-position evidence enrichment",
+      "status": "new",
+      "feature_id": "F-010-owner-position-evidence-enrichment",
+      "notes": "Use docs/superpowers/plans/2026-05-19-owner-position-evidence-enrichment.md with strict TDD. Add evidence roles, owner_observation evidence, UI evidence marker labels, and safety/regression checks without changing pricing thresholds or live data boundaries."
+    },
+    {
+      "id": "B-036",
+      "title": "Evaluator verifies F-010 owner-position evidence enrichment",
+      "status": "new",
+      "feature_id": "F-010-owner-position-evidence-enrichment",
+      "notes": "Verify owner-position evidence roles, owner and competitor sample evidence, UI evidence marker labels, human-review-only behavior, no recommended price, static safety scan, app/domain/prototype regressions, and PR readiness."
     }
   ]
 }

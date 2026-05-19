@@ -4,15 +4,15 @@
 
 - Project: Hotel Pricing Capture
 - Workflow: Triad Workflow with Planner / Generator / Evaluator roles
-- Current role for this pass: Planner / PR preparation
+- Current role for this pass: Planner
 - Superpowers: mandatory sequence recorded in `.auto-memory/superpowers-workflow.md`
 - Branch rule: feature branch + PR only; no direct push to `main` / `master`
 
 ## Current Batch
 
-- Batch id: `domain-driven-ui-data-flow`
-- Goal: connect the accepted F-008 domain core to the accepted F-007 formal React/TypeScript UI through fixture/manual seed data and a pure view-model adapter
-- Status: done; PR #3 open
+- Batch id: `owner-position-evidence-enrichment`
+- Goal: close the F-008/F-009 owner-position evidence follow-up by adding explicit owner-side evidence and customer-safe evidence labels
+- Status: planning
 
 ## Current Facts
 
@@ -20,41 +20,32 @@
 - F-007 merge commit: `dd43b3beda70323314db20740cba92bc416429e7`.
 - F-008 is accepted, merged through PR #2, and available on `origin/main`.
 - F-008 merge commit: `a303c2f`.
-- Local work is on `feature/f-009-domain-driven-ui-planning`.
-- F-009 spec: `docs/specs/2026-05-19-domain-driven-ui-data-flow.md`.
-- F-009 plan: `docs/superpowers/plans/2026-05-19-domain-driven-ui-data-flow.md`.
-- B-030 completed the initial F-009 implementation.
-- B-031 Evaluator verification rejected F-009 due P1 stale snapshot UI normalization.
-- B-031 report: `docs/test-reports/2026-05-19-f-009-domain-driven-ui-data-flow-evaluator.md`.
-- B-032 Generator fix is complete with strict TDD evidence recorded in `docs/test-reports/2026-05-19-f-009-fix-generator-notes.md`.
-- B-033 Evaluator reverification accepted F-009.
-- B-033 report: `docs/test-reports/2026-05-19-f-009-domain-driven-ui-data-flow-reverification.md`.
-- B-027 owner-position evidence enrichment remains non-blocking and can be handled as a separate small slice if needed.
-- B-034 is complete.
-- F-009 PR: https://github.com/fightkimi/hotelprice/pull/3.
+- F-009 is accepted, merged through PR #3, and available on `origin/main`.
+- F-009 merge commit: `48ab7bb`.
+- Local `main` has been fast-forwarded to `origin/main`.
+- Current branch: `feature/f-010-owner-position-evidence-planning`.
+- F-010 spec: `docs/specs/2026-05-19-owner-position-evidence-enrichment.md`.
+- F-010 plan: `docs/superpowers/plans/2026-05-19-owner-position-evidence-enrichment.md`.
+- B-027 is now closed as a tracking item because it has been promoted into F-010.
+- B-035 is the next Generator task.
+- B-036 is the following Evaluator task.
 
-## B-031 Finding And B-032 Fix
+## Current Design Decision
 
-- Finding: `signals` flowed through `generateAlertCandidates`, but `trend`, `heatmap`, and `platformGaps` used raw seed snapshots directly.
-- Risk: an available-looking snapshot older than the F-008 36-hour freshness window could render as a usable UI price.
-- Regression: `app/tests/data/domainDrivenDataset.test.ts` now mutates owner snapshots older than 36 hours and verifies:
-  - owner trend point becomes `null`;
-  - heatmap day becomes `unavailable` with null price fields and sample size 0;
-  - stale platform owner row is excluded from platform gaps.
-- Fix: `buildDomainDrivenDemoDataset()` now calls `markStaleSnapshots(seed.snapshots, seed.now)` once and uses the normalized snapshot set for signals, trend, heatmap, platform gaps, and sample counts.
-- F-008 domain evidence semantics were not changed.
+F-010 will enrich the existing F-008/F-009 evidence contract rather than changing pricing thresholds or UI layout:
 
-## Verification Evidence
+- add explicit domain evidence roles;
+- add `priceCents` to alert evidence;
+- include one `owner_observation` record in owner low/high risk alerts;
+- label owner and competitor evidence separately in F-009 evidence markers;
+- preserve human-review-only behavior and avoid recommended prices or automatic pricing actions.
 
-- `npm test -- tests/data/domainDrivenDataset.test.ts`: red before fix with `expected 528 to be null`; green after fix with 1 file / 8 tests passed.
-- `npm test -- tests/data/domainDrivenDataset.test.ts tests/contract/demoDataset.test.ts tests/domain`: 7 files passed, 39 tests passed.
-- `npm run verify`: build passed, Vitest 12 files / 59 tests passed, Playwright 13 tests passed.
-- B-033 independent stale boundary test: 1 file / 1 test passed.
-- B-033 targeted F-009/F-008 tests: 7 files / 39 tests passed.
-- B-033 full `npm run verify`: build passed, Vitest 12 files / 59 tests passed, Playwright 13 tests passed.
-- B-033 Triad/JSON/prototype checks: passed.
-- B-033 static safety scan: no matches in `app/src/data/*` and `app/src/domain/pricing`.
+## Boundaries
+
+- Data remains fixture/manual demo data only.
+- No live OTA collection, browser automation, storage, credentials, cookies, CAPTCHA handling, network connector, persistence, API routes, or automatic pricing.
+- F-008 alert thresholds and F-009 screen layout remain unchanged unless a failing test proves a narrow contract issue.
 
 ## Next Step
 
-Review PR #3, then merge it through the normal PR-only workflow if review and CI are acceptable. After merge, sync local `main` from `origin/main` before planning the next feature slice. Keep B-027 owner-position evidence enrichment as a non-blocking follow-up unless it is split into a separate accepted slice.
+Generator should implement B-035 from `docs/superpowers/plans/2026-05-19-owner-position-evidence-enrichment.md` using strict TDD, then hand off to Evaluator for B-036.
