@@ -47,6 +47,7 @@ F-011 enriched the Setup/Data Scope surface and dataset contract rather than add
 - added typed `dataScope` and `captureEntry` objects to `DemoDataset`;
 - derived scope from `domainSeed` so property, competitor, channel, stay-date, room-type, occupancy, currency, tax/fee, meal-plan, cancellation, freshness, and capture-time boundaries stay explicit;
 - rendered a customer-safe capture-entry preview for fixture demo, manual import preview, and approved API preview;
+- migrated the H5 `Revenue Observatory` visual language into the formal Setup/Data Scope surface with token-layer glass panels, precision grid, scope map, and capture signal rail;
 - kept `productionConnectionEnabled` false;
 - preserved human-review-only behavior and avoided recommended prices or automatic pricing actions.
 
@@ -54,9 +55,10 @@ F-011 enriched the Setup/Data Scope surface and dataset contract rather than add
 
 - Dataset contract and adapter TDD red/green completed.
 - Setup screen component TDD red/green completed.
-- Targeted regression passed: `4 files / 19 tests`.
-- Full app verification passed after sandbox escalation for the Playwright local server: build, Vitest `13 files / 66 tests`, Playwright `13 tests`.
-- Triad checks, JSON checks, and prototype regression passed before handoff state updates.
+- Revenue Observatory visual contract TDD red/green completed from the H5 visual philosophy reference, without staging or committing H5 prototype files.
+- Targeted regression passed after visual migration: `5 files / 24 tests`.
+- Full app verification passed after sandbox escalation for the Playwright local server: build, Vitest `13 files / 68 tests`, Playwright `13 tests`.
+- Triad checks, JSON checks, and prototype regression passed after the Revenue Observatory visual migration and handoff state refresh; current H5 prototype regression reports `15 checks`.
 - Static safety scan found no live collection, credential, cookie, CAPTCHA, storage, browser automation, recommended-price, or automatic-pricing terms in the F-011 touched paths.
 - Updated setup screenshots: `setup-data-scope--1280x800.png` and `setup-data-scope--768x1024.png`.
 - Generator notes: `docs/test-reports/2026-05-19-f-011-generator-notes.md`.
@@ -89,4 +91,4 @@ F-011 enriched the Setup/Data Scope surface and dataset contract rather than add
 
 ## Next Step
 
-Evaluator should verify B-040 from `docs/superpowers/plans/2026-05-19-data-scope-capture-entry.md`, including typed scope boundaries, capture entry statuses, production connection disabled state, human-review-only behavior, customer-safe copy, responsive setup screenshots, safety scans, app/domain/prototype regression, and PR hygiene. Before opening an F-011 PR, resolve the PR #4 dependency by rebasing after F-010 is merged or waiting until main includes F-010. Do not push directly to `main` or `master`.
+Evaluator should verify B-040 from `docs/superpowers/plans/2026-05-19-data-scope-capture-entry.md`, including typed scope boundaries, capture entry statuses, production connection disabled state, human-review-only behavior, customer-safe copy, Revenue Observatory formal Setup/Data Scope visual migration, responsive setup screenshots, safety scans, app/domain/prototype regression, and PR hygiene. Before opening an F-011 PR, resolve the PR #4 dependency by rebasing after F-010 is merged or waiting until main includes F-010. Do not push directly to `main` or `master`.

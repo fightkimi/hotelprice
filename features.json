@@ -254,7 +254,9 @@
                 "app/src/data/domainDrivenDataset.ts",
                 "app/src/components/charts/TrendChart.tsx",
                 "app/src/screens/SetupDataScopeScreen.tsx",
+                "app/src/styles/tokens.css",
                 "app/src/styles/layout.css",
+                "app/tests/contract/tokens.test.ts",
                 "app/tests/contract/demoDataset.test.ts",
                 "app/tests/data/domainDrivenDataset.test.ts",
                 "app/tests/components/setupDataScopeScreen.test.tsx",
@@ -263,8 +265,8 @@
                 "docs/test-reports/f-007-app-foundation/setup-data-scope--768x1024.png"
             ],
             "handoff": {
-                "generator": "Implemented typed dataScope and captureEntry dataset contracts, pure domainSeed derivation, customer-safe Setup/Data Scope capture-entry preview, safety scan coverage, and refreshed setup screenshot artifacts with strict TDD. Kept all behavior local fixture/manual only and did not add live collection, persistence, credentials, file upload, browser automation, or automatic pricing.",
-                "evaluator": "Verify scope boundaries, capture-entry copy, productionConnectionEnabled false, human-review-only behavior, setup responsive screenshots, safety scans, app/domain/prototype regressions, and branch hygiene with PR #4 dependency handled explicitly."
+                "generator": "Implemented typed dataScope and captureEntry dataset contracts, pure domainSeed derivation, customer-safe Setup/Data Scope capture-entry preview, Revenue Observatory visual migration for the formal setup surface, safety scan coverage, and refreshed setup screenshot artifacts with strict TDD. Kept all behavior local fixture/manual only and did not add live collection, persistence, credentials, file upload, browser automation, or automatic pricing.",
+                "evaluator": "Verify scope boundaries, capture-entry copy, productionConnectionEnabled false, human-review-only behavior, Revenue Observatory visual contract, setup responsive screenshots, safety scans, app/domain/prototype regressions, and branch hygiene with PR #4 dependency handled explicitly."
             }
         }
   ]

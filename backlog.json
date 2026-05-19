@@ -265,14 +265,14 @@
             "title": "Generator implements F-011 data scope and capture entry",
             "status": "done",
             "feature_id": "F-011-data-scope-capture-entry",
-            "notes": "Implemented with strict TDD. Added dataScope and captureEntry contracts, pure derivation from domainSeed, Setup screen rendering, compliance scan coverage, refreshed setup screenshots, and Generator notes at docs/test-reports/2026-05-19-f-011-generator-notes.md without live collection or automatic pricing."
+            "notes": "Implemented with strict TDD. Added dataScope and captureEntry contracts, pure derivation from domainSeed, Setup screen rendering, Revenue Observatory visual migration for the formal setup surface, compliance scan coverage, refreshed setup screenshots, and Generator notes at docs/test-reports/2026-05-19-f-011-generator-notes.md without live collection or automatic pricing."
         },
     {
       "id": "B-040",
       "title": "Evaluator verifies F-011 data scope and capture entry",
       "status": "new",
       "feature_id": "F-011-data-scope-capture-entry",
-      "notes": "Verify typed scope boundaries, capture entry statuses, production connection disabled state, human-review-only behavior, customer-safe copy, responsive setup screenshots, safety scans, app/domain/prototype regressions, and PR hygiene."
+      "notes": "Verify typed scope boundaries, capture entry statuses, production connection disabled state, human-review-only behavior, customer-safe copy, Revenue Observatory visual contract, responsive setup screenshots, safety scans, app/domain/prototype regressions, and PR hygiene."
     },
     {
       "id": "B-041",
