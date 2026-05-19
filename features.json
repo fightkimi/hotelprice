@@ -217,19 +217,27 @@
         "evaluator": "Accepted: B-031 P1 stale normalization is closed across trend, heatmap, and platform gaps; full app verification, F-008 domain regression, safety scan, and PR hygiene passed."
       }
     },
-    {
-      "id": "F-010-owner-position-evidence-enrichment",
-      "title": "Owner-position alert evidence enrichment",
-      "status": "planning",
-      "executor": "planner",
-      "artifacts": [
-        "docs/specs/2026-05-19-owner-position-evidence-enrichment.md",
-        "docs/superpowers/plans/2026-05-19-owner-position-evidence-enrichment.md"
-      ],
-      "handoff": {
-        "generator": "Implement explicit alert evidence roles and owner-side owner-position evidence with strict TDD. Preserve F-008 alert thresholds, F-009 UI layout, human-review-only behavior, fixture/manual data boundaries, and no-live-collection constraints.",
-        "evaluator": "Verify owner-position evidence includes owner_observation plus competitor_sample records, UI evidence markers distinguish owner and competitor observations, no recommended price or automatic pricing appears, and all app/domain/prototype/PR hygiene checks pass."
-      }
-    }
+        {
+            "id": "F-010-owner-position-evidence-enrichment",
+            "title": "Owner-position alert evidence enrichment",
+            "status": "verifying",
+            "executor": "generator",
+            "artifacts": [
+                "docs/specs/2026-05-19-owner-position-evidence-enrichment.md",
+                "docs/superpowers/plans/2026-05-19-owner-position-evidence-enrichment.md",
+                "docs/test-reports/2026-05-19-f-010-generator-notes.md",
+                "app/src/domain/pricing/types.ts",
+                "app/src/domain/pricing/reportEvidence.ts",
+                "app/src/domain/pricing/alertRules.ts",
+                "app/src/data/domainDrivenDataset.ts",
+                "app/tests/domain/alertRules.test.ts",
+                "app/tests/data/domainDrivenDataset.test.ts",
+                "docs/test-reports/f-007-app-foundation/overview-normal--1440x900.png"
+            ],
+            "handoff": {
+                "generator": "Implemented explicit alert evidence roles, owner-side owner-position evidence, and UI evidence marker labels with strict TDD. Preserved F-008 thresholds, F-009 layout, human-review-only behavior, fixture/manual data boundaries, and no-live-collection constraints.",
+                "evaluator": "Verify owner-position evidence includes owner_observation plus competitor_sample records, UI evidence markers distinguish owner and competitor observations, no recommended price or automatic pricing appears, and all app/domain/prototype/PR hygiene checks pass."
+            }
+        }
   ]
 }
