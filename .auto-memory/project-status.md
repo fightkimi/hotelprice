@@ -12,7 +12,7 @@
 
 - Batch id: `domain-core-rate-boundaries`
 - Goal: carry the F-001 data-boundary precheck into the formal F-007 React/TypeScript app foundation as a tested domain core
-- Status: done; PR preparation in progress
+- Status: done; PR #2 open
 
 ## Current Facts
 
@@ -38,7 +38,8 @@
 - B-026 report: `docs/test-reports/2026-05-19-f-008-domain-core-rate-boundaries-reverification.md`.
 - F-008 status is now `done`.
 - B-027 tracks the non-blocking owner-position evidence enrichment follow-up.
-- B-028 tracks F-008 PR preparation.
+- B-028 is complete.
+- F-008 PR: https://github.com/fightkimi/hotelprice/pull/2.
 
 ## Generator Implementation Facts
 
@@ -65,4 +66,4 @@
 
 ## Next Step
 
-Prepare the F-008 pull request from `feature/f-008-domain-core-planning` to `main`, then mark B-028 done with the PR number once created.
+Review PR #2, then merge it through the normal PR-only workflow if review and CI are acceptable. After merge, sync local `main` from `origin/main` before planning the next feature slice.

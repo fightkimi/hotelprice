@@ -186,9 +186,9 @@
     {
       "id": "B-028",
       "title": "Prepare F-008 PR after final acceptance",
-      "status": "new",
+      "status": "done",
       "feature_id": "F-008-domain-core-rate-boundaries",
-      "notes": "Push feature/f-008-domain-core-planning and open a PR to main once F-008 status/reverification artifacts are committed."
+      "notes": "Completed. PR #2 `F-008 Domain core rate boundaries` was opened from feature/f-008-domain-core-planning to main: https://github.com/fightkimi/hotelprice/pull/2"
     }
   ]
 }
