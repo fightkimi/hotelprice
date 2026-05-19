@@ -105,7 +105,7 @@ function generateCompetitorMovementAlerts(snapshots: RateSnapshot[], hotels: Map
         newPriceCents: latest.priceCents,
         changeRateValue: delta,
         sampleSize: 1,
-        evidence: [evidenceForSnapshot(latest, 1), evidenceForSnapshot(previous, 1)]
+        evidence: [evidenceForSnapshot(latest, 1, 'latest_observation'), evidenceForSnapshot(previous, 1, 'previous_observation')]
       }));
     }
     if (delta <= -0.1) {
@@ -117,7 +117,7 @@ function generateCompetitorMovementAlerts(snapshots: RateSnapshot[], hotels: Map
         newPriceCents: latest.priceCents,
         changeRateValue: delta,
         sampleSize: 1,
-        evidence: [evidenceForSnapshot(latest, 1), evidenceForSnapshot(previous, 1)]
+        evidence: [evidenceForSnapshot(latest, 1, 'latest_observation'), evidenceForSnapshot(previous, 1, 'previous_observation')]
       }));
     }
   }
@@ -148,7 +148,7 @@ function captureAverage(
   return {
     sampleSize: samples.length,
     averageCents: average(samples.map((snapshot) => snapshot.priceCents)),
-    evidence: samples.map((snapshot) => evidenceForSnapshot(snapshot, samples.length)),
+    evidence: samples.map((snapshot) => evidenceForSnapshot(snapshot, samples.length, 'market_sample')),
     anchor: samples[0]
   };
 }
@@ -233,7 +233,10 @@ function generateOwnerPositionAlerts(snapshots: RateSnapshot[], hotels: Map<stri
 
     const competitorAverage = average(competitorSamples.map((snapshot) => snapshot.priceCents));
     const gap = changeRate(competitorAverage, ownerSnapshot.priceCents);
-    const evidence = competitorSamples.map((snapshot) => evidenceForSnapshot(snapshot, competitorSamples.length));
+    const evidence = [
+      evidenceForSnapshot(ownerSnapshot, competitorSamples.length, 'owner_observation'),
+      ...competitorSamples.map((snapshot) => evidenceForSnapshot(snapshot, competitorSamples.length, 'competitor_sample'))
+    ];
 
     if (gap <= -0.2) {
       alerts.push(makeAlert({
