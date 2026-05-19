@@ -93,9 +93,6 @@ export function SetupDataScopeScreen({ dataset }: SetupDataScopeScreenProps) {
                 </p>
                 <div className="cluster">
                   {option.humanReviewRequired ? <span className="status-chip status-chip--review">人工复核</span> : null}
-                  <span className="secondary-button" aria-disabled="true">
-                    进入人工复核预览
-                  </span>
                 </div>
               </div>
             ))}
