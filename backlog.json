@@ -172,9 +172,23 @@
     {
       "id": "B-026",
       "title": "Evaluator reverifies F-008 after intermittent availability fix",
+      "status": "done",
+      "feature_id": "F-008-domain-core-rate-boundaries",
+      "notes": "Reverification report written at docs/test-reports/2026-05-19-f-008-domain-core-rate-boundaries-reverification.md. Verdict: accepted; B-024 P1 intermittent unavailable/no-rate/source-error regression is closed, app/domain/prototype verification passed, static safety scan passed, and PR diff is bounded."
+    },
+    {
+      "id": "B-027",
+      "title": "Track owner-position evidence enrichment after F-008",
       "status": "new",
       "feature_id": "F-008-domain-core-rate-boundaries",
-      "notes": "Reverify B-024 P1 fix, existing domain alert math, static compliance scan, app/prototype regressions, and PR readiness."
+      "notes": "Non-blocking follow-up from B-024/B-026 P2: consider including the owner snapshot in owner-position alert evidence or documenting top-level owner alert fields as the owner-side evidence source."
+    },
+    {
+      "id": "B-028",
+      "title": "Prepare F-008 PR after final acceptance",
+      "status": "new",
+      "feature_id": "F-008-domain-core-rate-boundaries",
+      "notes": "Push feature/f-008-domain-core-planning and open a PR to main once F-008 status/reverification artifacts are committed."
     }
   ]
 }

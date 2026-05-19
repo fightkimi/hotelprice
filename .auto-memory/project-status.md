@@ -4,7 +4,7 @@
 
 - Project: Hotel Pricing Capture
 - Workflow: Triad Workflow with Planner / Generator / Evaluator roles
-- Current role for this pass: Generator
+- Current role for this pass: Planner / PR preparation
 - Superpowers: mandatory sequence recorded in `.auto-memory/superpowers-workflow.md`
 - Branch rule: feature branch + PR only; no direct push to `main` / `master`
 
@@ -12,14 +12,13 @@
 
 - Batch id: `domain-core-rate-boundaries`
 - Goal: carry the F-001 data-boundary precheck into the formal F-007 React/TypeScript app foundation as a tested domain core
-- Status: reverifying
+- Status: done; PR preparation in progress
 
 ## Current Facts
 
 - F-007 is accepted, merged through PR #1, and available on `origin/main`.
 - F-007 merge commit: `dd43b3beda70323314db20740cba92bc416429e7`.
-- Local work has been synced from `origin/main` and moved onto `feature/f-008-domain-core-planning`.
-- F-008 Generator implementation received B-024 Evaluator review, then a P1 fix was implemented and is ready for reverification.
+- Local work is on `feature/f-008-domain-core-planning`, based on `origin/main`.
 - F-008 spec: `docs/specs/2026-05-19-domain-core-rate-boundaries.md`.
 - F-008 plan: `docs/superpowers/plans/2026-05-19-domain-core-rate-boundaries.md`.
 - F-008 adds pure TypeScript domain modules and Vitest domain tests only; F-007 UI, app screens, demo dataset, package config, migrations, persistence, and live collection remain unchanged.
@@ -30,12 +29,16 @@
   - market movement requires at least three active core competitor samples;
   - owner-position alerts require exact comparable-rate-key matching;
   - alerts are human-review-only and do not include recommended prices;
-  - domain code must pass a static no-live-collection scan.
+  - domain code passes a static no-live-collection scan.
 - B-014 is complete.
 - B-023 is complete with strict TDD evidence recorded in `docs/test-reports/2026-05-19-f-008-generator-notes.md`.
-- B-024 Evaluator review is complete and not accepted due to a P1 intermittent availability regression.
+- B-024 Evaluator review found a P1 intermittent availability regression and moved F-008 to fixing.
 - B-025 Generator fix is complete with strict TDD evidence recorded in `docs/test-reports/2026-05-19-f-008-fix-generator-notes.md`.
-- B-026 is the next Evaluator reverification task.
+- B-026 Evaluator reverification accepted F-008 after the B-025 fix.
+- B-026 report: `docs/test-reports/2026-05-19-f-008-domain-core-rate-boundaries-reverification.md`.
+- F-008 status is now `done`.
+- B-027 tracks the non-blocking owner-position evidence enrichment follow-up.
+- B-028 tracks F-008 PR preparation.
 
 ## Generator Implementation Facts
 
@@ -57,8 +60,9 @@
 - Root cause: competitor movement selected latest/previous across all snapshots, then suppressed if the selected previous snapshot was not alertable.
 - Fix: competitor movement now requires latest overall to be alertable and selects the prior alertable available capture as previous, skipping intermittent unavailable/no-rate/source-error observations.
 - Regression: `app/tests/domain/alertRules.test.ts` covers all three intermittent states.
+- B-026 reverification confirmed the P1 fix and accepted F-008.
 - F-007 UI, app screens, demo dataset, package config, E2E config, persistence, live collection, and automatic pricing remain unchanged.
 
 ## Next Step
 
-Evaluator should run `B-026` using the B-024 Evaluator report, `docs/test-reports/2026-05-19-f-008-fix-generator-notes.md`, the F-008 spec/plan, and fresh verification of the intermittent availability regression, domain rules, app regression, prototype regression, compliance scan, and PR readiness.
+Prepare the F-008 pull request from `feature/f-008-domain-core-planning` to `main`, then mark B-028 done with the PR number once created.

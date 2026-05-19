@@ -1,10 +1,10 @@
 {
   "project": "hotel-pricing-capture",
-  "status": "reverifying",
+  "status": "done",
   "batch_id": "domain-core-rate-boundaries",
   "current_sprint": "F-008-domain-core-rate-boundaries",
   "total_features": 9,
-  "completed_features": 5,
+  "completed_features": 6,
   "features": [
     "F-000-workflow-bootstrap",
     "F-001-hotel-rate-watch-mvp",

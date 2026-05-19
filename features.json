@@ -166,13 +166,14 @@
     {
       "id": "F-008-domain-core-rate-boundaries",
       "title": "Domain core rate boundaries and alert math",
-      "status": "reverifying",
-      "executor": "generator",
+      "status": "done",
+      "executor": "evaluator",
       "artifacts": [
         "docs/specs/2026-05-19-domain-core-rate-boundaries.md",
         "docs/superpowers/plans/2026-05-19-domain-core-rate-boundaries.md",
         "docs/test-reports/2026-05-19-f-008-generator-notes.md",
         "docs/test-reports/2026-05-19-f-008-domain-core-rate-boundaries-evaluator.md",
+        "docs/test-reports/2026-05-19-f-008-domain-core-rate-boundaries-reverification.md",
         "docs/test-reports/2026-05-19-f-008-fix-generator-notes.md",
         "app/src/domain/pricing/types.ts",
         "app/src/domain/pricing/rateKey.ts",
@@ -188,8 +189,8 @@
         "app/tests/domain/complianceScan.test.ts"
       ],
       "handoff": {
-        "generator": "B-024 P1 fixed with strict TDD: competitor movement now compares the latest available capture against the prior available capture when intermittent unavailable/no-rate/source-error captures occur, while still suppressing unavailable latest snapshots. F-007 UI was left unchanged.",
-        "evaluator": "Reverify the B-024 supplemental intermittent availability scenario, unavailable-latest suppression, existing domain gates, app verification, prototype regression, compliance scan, and PR readiness."
+        "planner": "F-008 accepted after B-026 reverification. Prepare the F-008 PR from feature/f-008-domain-core-planning and track owner-position evidence enrichment as a non-blocking follow-up.",
+        "evaluator": "Accepted: B-024 P1 intermittent availability regression is closed, domain tests and app verification pass, static no-live-collection scan passes, and PR diff is bounded to F-008 domain/planning artifacts."
       }
     }
   ]
