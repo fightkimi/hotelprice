@@ -205,9 +205,20 @@ function primaryMetric(alert: AlertCandidate): number {
   return Math.round(alert.changeRate * 100);
 }
 
+function evidenceRoleLabel(role: AlertCandidate['evidence'][number]['role']): string {
+  const labels: Record<AlertCandidate['evidence'][number]['role'], string> = {
+    latest_observation: '最新观测',
+    previous_observation: '上一观测',
+    market_sample: '市场样本',
+    owner_observation: '本酒店观测',
+    competitor_sample: '核心竞品样本'
+  };
+  return labels[role];
+}
+
 function mapEvidence(seed: DomainDemoSeed, alert: AlertCandidate): EvidenceMarker[] {
   return alert.evidence.map((evidence) => ({
-    label: `${alert.rateKey.roomTypeKey} · ${alert.rateKey.stayDate}`,
+    label: `${evidenceRoleLabel(evidence.role)} · ${alert.rateKey.roomTypeKey} · ${alert.rateKey.stayDate}`,
     source: platformLabel(seed, alert.rateKey.sourceId),
     captureTime: evidence.capturedAt,
     sampleSize: evidence.sampleSize,
