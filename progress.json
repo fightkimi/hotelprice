@@ -1,6 +1,6 @@
 {
   "project": "hotel-pricing-capture",
-  "status": "verifying",
+  "status": "reverifying",
   "batch_id": "domain-driven-ui-data-flow",
   "current_sprint": "F-009-domain-driven-ui-data-flow",
   "total_features": 10,

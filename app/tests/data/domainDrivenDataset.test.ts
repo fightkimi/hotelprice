@@ -104,4 +104,30 @@ describe('domain-driven demo dataset charts', () => {
     const allPointValues = dataset.trend.series.flatMap((series) => series.points.map((point) => point.value));
     expect(allPointValues).not.toContain(0);
   });
+
+  it('applies freshness stale rules before building trend, heatmap, and platform gap UI data', () => {
+    const staleSeed = {
+      ...domainSeed,
+      snapshots: domainSeed.snapshots.map((snapshot) =>
+        snapshot.snapshotId === 'owner-0524-ctrip-latest' || snapshot.snapshotId === 'owner-0531-ctrip-latest'
+          ? { ...snapshot, capturedAt: '2026-05-17T20:00:00.000Z' }
+          : snapshot
+      )
+    };
+    const dataset = buildDomainDrivenDemoDataset(staleSeed);
+    const ownerSeries = dataset.trend.series.find((series) => series.id === 'owner-rate');
+    const staleTrendPoint = ownerSeries?.points.find((point) => point.date === '2026-05-24');
+    const staleHeatmapDay = dataset.heatmap.days.find((day) => day.date === '2026-05-24');
+    const stalePlatformRow = dataset.platformGaps.rows.find((row) => row.platform === '携程演示源');
+
+    expect(staleTrendPoint?.value).toBeNull();
+    expect(staleHeatmapDay).toMatchObject({
+      status: 'unavailable',
+      intensity: null,
+      ownerRate: null,
+      coreAverage: null,
+      sampleSize: 0
+    });
+    expect(stalePlatformRow).toBeUndefined();
+  });
 });

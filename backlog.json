@@ -207,9 +207,23 @@
     {
       "id": "B-031",
       "title": "Evaluator verifies F-009 domain-driven UI data flow",
+      "status": "done",
+      "feature_id": "F-009-domain-driven-ui-data-flow",
+      "notes": "Evaluator report written at docs/test-reports/2026-05-19-f-009-domain-driven-ui-data-flow-evaluator.md. Verdict: not accepted; move F-009 to fixing due P1 stale available-looking snapshots rendering as usable trend/heatmap UI prices."
+    },
+    {
+      "id": "B-032",
+      "title": "Generator fixes F-009 stale snapshot UI normalization",
+      "status": "done",
+      "feature_id": "F-009-domain-driven-ui-data-flow",
+      "notes": "Fixed with strict TDD. Added stale snapshot UI regression coverage and normalized F-009 adapter snapshots with F-008 markStaleSnapshots before generating signals, trend, heatmap, platform gaps, and sample counts. Generator notes at docs/test-reports/2026-05-19-f-009-fix-generator-notes.md."
+    },
+    {
+      "id": "B-033",
+      "title": "Evaluator reverifies F-009 after stale normalization fix",
       "status": "new",
       "feature_id": "F-009-domain-driven-ui-data-flow",
-      "notes": "Verify that App UI data is derived from F-008 domain contracts, unavailable data remains null rather than zero, human-review-only boundaries remain visible, F-007 app gates pass, F-008 domain tests pass, and B-027 remains non-blocking unless separately closed."
+      "notes": "Reverify the B-031 stale boundary scenario, F-009 targeted tests, full app verification, F-008 domain regression, Triad/JSON/prototype checks, static safety scan, and PR readiness. B-027 remains non-blocking."
     }
   ]
 }

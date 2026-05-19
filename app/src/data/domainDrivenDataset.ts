@@ -1,4 +1,4 @@
-import { generateAlertCandidates, isAlertableSnapshot } from '../domain/pricing';
+import { generateAlertCandidates, isAlertableSnapshot, markStaleSnapshots } from '../domain/pricing';
 import type { AlertCandidate, AlertableRateSnapshot, HotelProfile, RateSnapshot } from '../domain/pricing';
 import type {
   ContextSelection,
@@ -376,21 +376,25 @@ function alertPriority(alert: AlertCandidate): number {
 }
 
 export function buildDomainDrivenDemoDataset(seed: DomainDemoSeed = domainSeed): DemoDataset {
+  const normalizedSeed: DomainDemoSeed = {
+    ...seed,
+    snapshots: markStaleSnapshots(seed.snapshots, seed.now)
+  };
   const alerts = generateAlertCandidates({
-    hotels: seed.hotels,
-    snapshots: seed.snapshots,
-    now: seed.now
+    hotels: normalizedSeed.hotels,
+    snapshots: normalizedSeed.snapshots,
+    now: normalizedSeed.now
   }).sort((a, b) => alertPriority(a) - alertPriority(b) || b.sampleSize - a.sampleSize || a.alertId.localeCompare(b.alertId));
 
   return {
     sourceKind: 'fixture-demo',
     liveCollectionEnabled: false,
     demoDisclosure: '演示数据：本页仅使用静态样例，不连接真实平台或客户系统。',
-    context: buildContext(seed),
-    trend: buildTrend(seed),
-    heatmap: buildHeatmap(seed),
-    platformGaps: buildPlatformGaps(seed),
-    signals: alerts.map((alert) => mapAlertToSignal(seed, alert))
+    context: buildContext(normalizedSeed),
+    trend: buildTrend(normalizedSeed),
+    heatmap: buildHeatmap(normalizedSeed),
+    platformGaps: buildPlatformGaps(normalizedSeed),
+    signals: alerts.map((alert) => mapAlertToSignal(normalizedSeed, alert))
   };
 }
 
