@@ -43,3 +43,41 @@ export type AlertableRateSnapshot = RateSnapshot & {
   availabilityStatus: 'available';
   priceCents: number;
 };
+
+export type AlertType =
+  | 'competitor_increase'
+  | 'competitor_decrease'
+  | 'market_increase'
+  | 'market_decrease'
+  | 'owner_low_risk'
+  | 'owner_high_risk';
+
+export interface AlertEvidence {
+  sourceKind: SourceKind;
+  capturedAt: string;
+  hotelId: string;
+  rateKeyId: string;
+  sampleSize: number;
+}
+
+export interface AlertCandidate {
+  alertId: string;
+  alertType: AlertType;
+  severity: 'info' | 'warning' | 'risk';
+  ownerPropertyId: string;
+  hotelId: string;
+  competitorGroupId: string;
+  rateKey: ComparableRateKey;
+  oldPriceCents: number | null;
+  newPriceCents: number | null;
+  changeRate: number;
+  sampleSize: number;
+  evidence: AlertEvidence[];
+  requiresHumanReview: true;
+}
+
+export interface GenerateAlertCandidatesInput {
+  hotels: HotelProfile[];
+  snapshots: RateSnapshot[];
+  now: string;
+}
