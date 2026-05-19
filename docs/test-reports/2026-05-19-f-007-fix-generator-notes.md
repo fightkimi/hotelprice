@@ -23,6 +23,7 @@ Fix source: `docs/test-reports/2026-05-19-f-007-formal-app-foundation-evaluator.
 - `python3 -m json.tool features.json`: passed; F-007 status is `reverifying`.
 - `python3 -m json.tool backlog.json`: passed; B-020 is `done`, B-021 is `new`.
 - `node tests/client_demo_prototype.test.js`: passed with 14 OK checks.
-- `git status --short`: before staging, only intended project source/docs/status directories appeared as untracked; generated artifacts were ignored by `.gitignore`.
+- `git status --short`: clean after commit `fe1384d`.
 - `git status --short --ignored`: showed `.DS_Store`, `app/dist/`, `app/node_modules/`, `app/test-results/`, and TypeScript build info as ignored.
-- `git diff --stat origin/main...HEAD`: pending until commit.
+- `git diff --stat origin/main...HEAD`: 109 files changed, 13886 insertions; no dependency/build/cache artifacts were tracked.
+- Commit recorded for F-007 implementation and B-020 fixes: `fe1384d`.
