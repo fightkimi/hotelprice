@@ -243,12 +243,13 @@
         {
             "id": "F-011-data-scope-capture-entry",
             "title": "Data scope and capture entry preview",
-            "status": "verifying",
-            "executor": "generator",
+            "status": "done",
+            "executor": "evaluator",
             "artifacts": [
                 "docs/specs/2026-05-19-data-scope-capture-entry.md",
                 "docs/superpowers/plans/2026-05-19-data-scope-capture-entry.md",
                 "docs/test-reports/2026-05-19-f-011-generator-notes.md",
+                "docs/test-reports/2026-05-19-f-011-data-scope-capture-entry-evaluator.md",
                 "app/src/types/contracts.ts",
                 "app/src/data/dataScope.ts",
                 "app/src/data/domainDrivenDataset.ts",
@@ -266,7 +267,7 @@
             ],
             "handoff": {
                 "generator": "Implemented typed dataScope and captureEntry dataset contracts, pure domainSeed derivation, customer-safe Setup/Data Scope capture-entry preview, Revenue Observatory visual migration for the formal setup surface, safety scan coverage, and refreshed setup screenshot artifacts with strict TDD. Kept all behavior local fixture/manual only and did not add live collection, persistence, credentials, file upload, browser automation, or automatic pricing.",
-                "evaluator": "Verify scope boundaries, capture-entry copy, productionConnectionEnabled false, human-review-only behavior, Revenue Observatory visual contract, setup responsive screenshots, safety scans, app/domain/prototype regressions, and branch hygiene with PR #4 dependency handled explicitly."
+                "evaluator": "Accepted for product behavior and data-boundary coverage. Independent reverify passed typed scope derivation, capture-entry statuses, productionConnectionEnabled false, human-review-only behavior, customer-safe copy, Revenue Observatory setup visual contract, screenshots, safety scans, app/domain/prototype regressions, and generated-artifact hygiene. PR prep must first resolve the F-010 PR #4 dependency and clean or separately isolate local H5 reference-file dirt."
             }
         }
   ]

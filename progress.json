@@ -1,10 +1,10 @@
 {
   "project": "hotel-pricing-capture",
-  "status": "verifying",
+  "status": "done",
   "batch_id": "data-scope-capture-entry",
   "current_sprint": "F-011-data-scope-capture-entry",
   "total_features": 12,
-  "completed_features": 8,
+  "completed_features": 9,
   "features": [
     "F-000-workflow-bootstrap",
     "F-001-hotel-rate-watch-mvp",

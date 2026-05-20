@@ -4,7 +4,7 @@
 
 - Project: Hotel Pricing Capture
 - Workflow: Triad Workflow with Planner / Generator / Evaluator roles
-- Current role for this pass: Generator
+- Current role for this pass: Evaluator
 - Superpowers: mandatory sequence recorded in `.auto-memory/superpowers-workflow.md`
 - Branch rule: feature branch + PR only; no direct push to `main` / `master`
 
@@ -12,7 +12,7 @@
 
 - Batch id: `data-scope-capture-entry`
 - Goal: define the F-011 data-scope contract and compliant capture-entry preview before any live source or persistence work
-- Status: verifying
+- Status: done
 
 ## Current Facts
 
@@ -37,7 +37,8 @@
 - F-011 plan: `docs/superpowers/plans/2026-05-19-data-scope-capture-entry.md`.
 - B-038 is complete.
 - B-039 is complete.
-- B-040 is the next Evaluator task.
+- B-040 Evaluator verification accepted F-011 for product behavior and data-boundary coverage.
+- B-040 report: `docs/test-reports/2026-05-19-f-011-data-scope-capture-entry-evaluator.md`.
 - B-041 is the PR-preparation task after F-011 acceptance.
 
 ## Current Design Decision
@@ -75,6 +76,16 @@ F-011 enriched the Setup/Data Scope surface and dataset contract rather than add
 
 ## Evaluator Evidence
 
+- Independent B-040 data-scope/capture-entry reverify test: 1 file / 3 tests passed.
+- Targeted F-011 regression passed: 5 files / 24 tests.
+- Full app verification passed after sandbox escalation for the Playwright local server: build passed, Vitest 13 files / 68 tests passed, Playwright 13 tests passed.
+- Triad checks, JSON checks, and prototype regression passed; current H5 prototype regression reports 15 checks because local H5 visual-reference files are present.
+- Static safety scan found no live collection, credential, cookie, CAPTCHA, storage, browser automation, recommended-price, or automatic-pricing terms in the F-011 touched paths.
+- Screenshot evidence dimensions remain correct for setup captures: 1280x800 and 768x1024; F-007 matrix captures remain dimension-matched.
+- PR hygiene: current branch is ahead of `origin/main` by 13 commits because it contains accepted F-010 work plus F-011. Before opening F-011 PR, resolve the F-010 PR #4 dependency and clean or separately isolate unstaged H5 reference files.
+
+## Previous Evaluator Evidence
+
 - Independent B-036 evidence role test: 1 file / 3 tests passed.
 - Targeted F-010 regression: 4 files / 27 tests passed.
 - Full app verification: build passed, Vitest 12 files / 62 tests passed, Playwright 13 tests passed.
@@ -91,4 +102,4 @@ F-011 enriched the Setup/Data Scope surface and dataset contract rather than add
 
 ## Next Step
 
-Evaluator should verify B-040 from `docs/superpowers/plans/2026-05-19-data-scope-capture-entry.md`, including typed scope boundaries, capture entry statuses, production connection disabled state, human-review-only behavior, customer-safe copy, Revenue Observatory formal Setup/Data Scope visual migration, responsive setup screenshots, safety scans, app/domain/prototype regression, and PR hygiene. Before opening an F-011 PR, resolve the PR #4 dependency by rebasing after F-010 is merged or waiting until main includes F-010. Do not push directly to `main` or `master`.
+B-041 should prepare the F-011 PR. Before opening it, resolve the F-010 PR #4 dependency by rebasing after F-010 is merged or otherwise ensuring F-011 does not duplicate F-010 changes, and clean/stash/commit separately the local H5 visual reference files. Do not push directly to `main` or `master`.
