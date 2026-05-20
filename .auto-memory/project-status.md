@@ -10,82 +10,115 @@
 
 ## Current Batch
 
-- Batch id: `production-revenue-observatory-visual-upgrade`
-- Goal: implement the F-012 global Revenue Observatory visual-system upgrade for the formal React app without changing accepted business semantics
-- Status: done
+- Batch id: `interactive-price-calendar-detail-workflow`
+- Feature: `F-014-interactive-price-calendar-detail-workflow`
+- Goal: keep F-014 PR #9 bounded while it targets the accepted F-013 documentation base
+- Status: PR #9 open
+- Current branch: `feature/f-014-interactive-price-calendar-detail-workflow-planning`
 
 ## Current Facts
 
-- F-007 is accepted, merged through PR #1, and available on `origin/main`.
-- F-007 merge commit: `dd43b3beda70323314db20740cba92bc416429e7`.
-- F-008 is accepted, merged through PR #2, and available on `origin/main`.
-- F-008 merge commit: `a303c2f`.
-- F-009 is accepted, merged through PR #3, and available on `origin/main`.
-- F-009 merge commit: `48ab7bb`.
-- F-010 owner-position evidence enrichment is accepted and recorded as PR #4.
-- F-011 data scope and capture entry is accepted for product behavior and data-boundary coverage.
-- Current branch: `feature/f-012-production-revenue-observatory-visual-upgrade-planning`.
-- F-012 selected route: Option A, global Revenue Observatory visual system upgrade.
-- F-012 spec: `docs/specs/2026-05-20-production-revenue-observatory-visual-upgrade.md`.
-- F-012 plan: `docs/superpowers/plans/2026-05-20-production-revenue-observatory-visual-upgrade.md`.
-- F-012 Generator notes: `docs/test-reports/2026-05-20-f-012-generator-notes.md`.
-- B-042 is complete.
-- B-043 is complete.
-- B-044 Evaluator verification accepted F-012.
-- B-044 report: `docs/test-reports/2026-05-20-f-012-production-revenue-observatory-visual-upgrade-evaluator.md`.
-- B-045 is the PR-preparation task after F-012 acceptance.
+- `origin/main` is available and current local `main` contains the merged F-012 baseline.
+- F-007 is accepted, merged through PR #1, and available on `main`.
+- F-008 is accepted, merged through PR #2, and available on `main`.
+- F-009 is accepted, merged through PR #3, and available on `main`.
+- F-010 owner-position evidence enrichment is accepted and merged through PR #4.
+- F-011 data scope and capture entry is accepted and merged through PR #7.
+- F-012 production Revenue Observatory visual upgrade is accepted and merged through PR #8.
+- Latest known main merge commit after PR #8: `455f0a3`.
+- Project-level PRD: `docs/specs/PROJECT_PRD.md`.
+- Project-level development plan: `docs/specs/PROJECT_DEVELOPMENT_PLAN.md`.
+- F-013 spec: `docs/specs/2026-05-20-project-prd-and-development-plan-maintenance.md`.
+- F-013 plan: `docs/superpowers/plans/2026-05-20-project-prd-and-development-plan-maintenance.md`.
+- B-047 Evaluator verification accepted F-013.
+- B-047 report: `docs/test-reports/2026-05-20-f-013-project-prd-and-development-plan-maintenance-evaluator.md`.
+- Weekly project-document maintenance automation is active for this workspace and runs as Planner governance work.
+- F-014 selected route: date-detail data contract plus UI interaction workflow.
+- F-014 spec: `docs/specs/2026-05-20-interactive-price-calendar-detail-workflow.md`.
+- F-014 plan: `docs/superpowers/plans/2026-05-20-interactive-price-calendar-detail-workflow.md`.
+- B-050 Generator implementation is complete.
+- B-051 Evaluator verification accepted F-014.
+- B-052 prepared the bounded F-014 PR: https://github.com/fightkimi/hotelprice/pull/9.
+- F-014 Generator notes: `docs/test-reports/2026-05-20-f-014-generator-notes.md`.
+- F-014 Evaluator report: `docs/test-reports/2026-05-20-f-014-interactive-price-calendar-detail-workflow-evaluator.md`.
 
-## F-012 Implementation Summary
+## Product Baseline
 
-F-012 upgraded the formal app into a cohesive Revenue Observatory visual system:
+The formal product baseline is the React Revenue Observatory app:
 
-- added global shell, page, instrument, chart-frame, insight, and signal-rail tokens;
-- marked the formal app shell with `data-visual-system="revenue-observatory"`;
-- widened the observatory shell target to `2000px`;
-- applied observatory panel, instrument header, metric lattice, insight rail, and chart frame primitives across Overview, Calendar, Market Comparison, Alert Review, and Setup/Data Scope;
-- upgraded trend, heatmap, platform gap, and event timeline chart frames while preserving existing chart schemas and semantic markers;
-- added five `2048x1352` screenshot artifacts and exact-dimension gates;
-- scoped the F-011 setup-only grid pseudo-element so the global shell no longer causes horizontal overflow.
+- F-007 formal app foundation created the production app shell, chart primitives, formal screens, screenshot gates, and safe visible-copy checks.
+- F-008 added domain core rate boundaries for comparable rate keys, availability/stale modeling, deterministic snapshot ordering, alert rules, evidence, and compliance scans.
+- F-009 connected the domain core to UI data through fixture/manual seed data and a pure adapter.
+- F-010 enriched owner-position alert evidence with owner and competitor evidence roles.
+- F-011 added typed data scope and capture-entry preview while keeping production connection disabled.
+- F-012 upgraded the app to the global Revenue Observatory visual system across Overview, Calendar, Market Comparison, Alert Review, and Setup/Data Scope.
+- F-014 adds an accepted interactive calendar date-detail workflow on top of the Revenue Observatory calendar; PR #9 is open against `feature/f-013-project-prd-roadmap-maintenance` to keep the diff bounded.
 
-## F-012 Generator Evidence
+## F-013 Scope
 
-- RED visual contract: missing observatory tokens, app-shell marker, screen wrappers, and chart frames failed as expected.
-- GREEN token/shell test: `1 file / 4 tests`.
-- RED chart-frame test: missing chart-frame class failed as expected.
-- GREEN chart tests: `1 file / 4 tests`, preserving trend segments, unavailable heatmap copy, and `CNY 0`.
-- GREEN five-screen tests: `2 files / 4 tests`.
-- Targeted visual regression: `4 files / 12 tests`.
-- Domain/data regression: `7 files / 45 tests`.
-- Full `/opt/homebrew/bin/npm run verify`: build passed, Vitest `14 files / 71 tests`, Playwright `18 tests`.
-- Project checks passed: `triad_doctor.py`, `test_triad_doctor.py`, JSON parsing for progress/features/backlog, and H5 prototype regression with 14 checks.
-- Static safety scan over app source paths produced no matches after renaming a harmless chart helper parameter from `token` to `cssVariable`.
-- New screenshot artifacts confirmed by `sips` at exact `2048x1352` dimensions:
-  - `docs/test-reports/f-007-app-foundation/overview-observatory--2048x1352.png`
-  - `docs/test-reports/f-007-app-foundation/calendar-observatory--2048x1352.png`
-  - `docs/test-reports/f-007-app-foundation/market-observatory--2048x1352.png`
-  - `docs/test-reports/f-007-app-foundation/alert-review-observatory--2048x1352.png`
-  - `docs/test-reports/f-007-app-foundation/setup-observatory--2048x1352.png`
+F-013 is a Planner-only documentation and state slice.
 
-## F-012 Evaluator Evidence
+It adds:
 
-- Independent temporary Evaluator Playwright check passed: 7 tests. It verified five-screen observatory markers, no mobile overflow at 390x844, unsafe visible-copy absence, 2000px wide-shell behavior at 2048x1352, chart semantic markers, alert human-review markers, and setup production-connection disabled copy.
-- Targeted visual regression passed: 4 files / 12 tests.
-- Domain/data regression passed: 7 files / 45 tests.
-- Full app verification passed: build passed, Vitest 14 files / 71 tests passed, Playwright 18 tests passed.
-- Triad checks, JSON checks, and H5 prototype regression passed; prototype regression reports 14 checks.
-- Static safety scan found no live collection, credential, cookie, CAPTCHA, storage, browser automation, recommended-price, or automatic-pricing terms in app source paths.
-- `layout.css` has no raw `rgba(...)` or hex color functions.
-- Screenshot evidence dimensions remain exact for five 2048x1352 observatory captures, mobile 390x844 captures, and setup tablet 768x1024.
-- PR hygiene: working tree was clean before report/status updates. Relative to F-011 head, diff is bounded to F-012 visual-system files, screenshots, tests, docs, and status files. Relative to `origin/main`, branch is ahead by 19 commits because F-010 and F-011 are dependency commits and must be reflected in base before F-012 PR.
+- a complete project PRD;
+- a complete project development plan;
+- a maintenance protocol for keeping project-level documentation fresh;
+- state updates so future Planner, Generator, and Evaluator sessions begin from current facts.
+
+It does not modify:
+
+- product source code;
+- product tests;
+- migrations;
+- build, package, deployment, or runtime configuration;
+- production data collection behavior.
+
+## F-013 Evaluator Evidence
+
+- PROJECT_PRD and PROJECT_DEVELOPMENT_PLAN match the F-012 / PR #8 main baseline and identify F-014 interactive price calendar and date detail workflow as the next recommended product slice.
+- Project docs cover product positioning, target users, user problems, non-goals, domain concepts, formal app baseline, feature requirements, data/compliance boundaries, quality gates, maintenance cadence, and open risks.
+- Development plan covers completed baseline, phased roadmap, standard Planner/Generator/Evaluator deliverables, documentation maintenance cadence, and current next step.
+- Diff is documentation/state-only relative to `main`; no product code, product tests, scripts, package/build/runtime config, backend, migration, or prototype files changed.
+- Placeholder scan passed with no planned-pattern matches.
+- `git diff --check` passed.
+- Triad doctor, Triad doctor smoke test, JSON parsing, and H5 prototype regression passed; prototype regression reports 14 checks.
+- Weekly local automation `酒店定价捕捉项目级文档周更` is ACTIVE for this workspace and reinforces B-048 recurring maintenance.
+
+## F-014 Generator Scope
+
+F-014 was implemented as a product slice by Generator:
+
+- added `CalendarDayDetail` and `calendarDetails.byDate` to the local `DemoDataset` contract;
+- derived date details from existing fixture/manual domain seed data after stale normalization;
+- added `CalendarHeatmap` date selection callback and accessible selected state;
+- updated `CalendarScreen` to use local selected-date state and render platform gaps, evidence sources, capture time, sample count, rate basis, event impact, missing sample state, and human-review markers;
+- added Testing Library and Playwright coverage for date click behavior and mobile no-overflow;
+- refreshed calendar screenshots affected by the new detail rail.
+
+F-014 must not:
+
+- change F-008 domain alert math;
+- add live OTA collection;
+- add backend, persistence, credentials, cookies, sessions, CAPTCHA handling, storage, file upload, recommended price, or automatic pricing.
+
+## F-014 Evaluator Evidence
+
+- B-051 accepted F-014 for product behavior, data-boundary coverage, unavailable-date safety, responsive interaction, and human-review-only pricing workflow.
+- Independent temporary Evaluator Vitest probe passed `1 file / 3 tests`; it verified every heatmap date has a detail, `2026-05-27` remains a missing-sample state without pseudo prices, and date clicks update the detail panel. The temporary probe was removed after the run.
+- Targeted F-014 app regression passed: `3 files / 20 tests`.
+- Full app verification passed: production build, Vitest `15 files / 76 tests`, and Playwright `19 tests`.
+- Triad doctor, Triad doctor smoke test, JSON parsing, prototype regression, screenshot dimensions, `git diff --check`, generated-artifact check, and product safety scans passed.
+- F-014 PR #9 is bounded relative to `feature/f-013-project-prd-roadmap-maintenance`; direct diff to `main` still includes F-013 documentation commits because `main` is at the F-012 / PR #8 baseline.
+- Project PRD and development plan were refreshed after acceptance to show F-014 accepted and F-015 as the next recommended planning slice.
 
 ## Boundaries
 
-- F-012 is a visual-system and responsive-layout slice only.
-- No domain alert math changes.
-- No `DemoDataset` semantic changes.
-- No real OTA collection, browser automation, file upload, backend route, persistence, migration, credentials, cookies, CAPTCHA handling, storage, recommended price, or automatic pricing.
-- Existing F-008/F-009/F-010/F-011 boundaries must continue to pass.
+- No live OTA collection.
+- No credential, cookie, session, CAPTCHA, browser automation, storage, backend route, migration, file upload, recommended-price, or automatic-pricing work was introduced by F-014.
+- Future real-data work must first pass a source compliance specification.
+- Future product work must read `docs/specs/PROJECT_PRD.md` and `docs/specs/PROJECT_DEVELOPMENT_PLAN.md` before planning or implementation.
+- Project-level PRD and development plan must be checked weekly, even when no feature has been accepted that week.
 
 ## Next Step
 
-B-045 should prepare the F-012 PR only after F-010 and F-011 dependencies are reflected in the PR base or the F-012 branch is cleanly rebased so the PR contains only visual-system changes. Do not push directly to `main` or `master`.
+F-014 PR #9 is open with base `feature/f-013-project-prd-roadmap-maintenance` and head `feature/f-014-interactive-price-calendar-detail-workflow-planning`. Next, merge or otherwise land the F-013 documentation base, then retarget/merge F-014 as appropriate. After the PR path is settled, Planner can prepare F-015 alert review workflow depth. B-048 remains the standing weekly project-documentation maintenance item.
