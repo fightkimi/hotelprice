@@ -282,7 +282,7 @@ function alertReviewRateKey(seed: DomainDemoSeed, alert: AlertCandidate): RateKe
 
 function buildAlertReviewWorkflow(seed: DomainDemoSeed, alerts: AlertCandidate[], signals: Signal[]): AlertReviewWorkflow {
   const signalById = new Map(signals.map((signal) => [signal.id, signal]));
-  const items = alerts.map((alert) => {
+  const items = alerts.map((alert): AlertReviewItem => {
     const signal = signalById.get(alert.alertId);
     if (!signal) {
       throw new Error(`Missing UI signal for alert ${alert.alertId}`);
