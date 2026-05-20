@@ -3,7 +3,7 @@
 版本: 2026-05-20
 状态: 项目级需求真源, 随每个已验收 feature 更新
 维护角色: Planner
-当前正式产品基线: `main` includes F-013 and F-014 through PR #10, merge commit `a91102f`; F-015 Alert Review Workflow Depth 已通过 Evaluator 验收, 待 B-056 PR 收口
+当前正式产品基线: `main` includes F-015 through PR #11, merge commit `185e883`
 当前规划切片: F-016 Market Comparison Drilldown
 
 ## 1. 产品定位
@@ -70,10 +70,7 @@
 - F-012: Revenue Observatory visual upgrade, 覆盖 overview、calendar、market comparison、alert review 和 setup/data scope 五个屏, 提供宽屏观测舱、图表框架和移动端无溢出门禁。
 - F-013: project PRD and development plan maintenance, 建立项目级 PRD、项目级开发计划和每周维护机制。
 - F-014: interactive price calendar detail workflow, 增加 `CalendarDayDetail` / `calendarDetails.byDate`, 日期点击详情、平台价差、证据来源、采集时间、样本数、可比口径、missing sample state 和人工复核标记。
-
-已验收、待 PR 或文档基线包括:
-
-- F-015: alert review workflow depth, 增加可选择提醒、选中详情、本地复核状态、本地备注、备注模板、owner/competitor 证据角色和边界可见性。
+- F-015: alert review workflow depth, 增加可选择提醒、选中详情、本地复核状态、本地备注、备注模板、owner/competitor 证据角色和边界可见性, 已通过 PR #11 进入 `main`。
 
 历史 H5 prototype 仍可作为演示灵感和回归测试对象, 但正式产品的实现真源是 React app 和已验收 feature 文档。
 

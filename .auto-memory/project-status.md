@@ -4,21 +4,21 @@
 
 - Project: Hotel Pricing Capture
 - Workflow: Triad Workflow with Planner / Generator / Evaluator roles
-- Current role for this pass: Evaluator
+- Current role for this pass: Planner
 - Superpowers: mandatory sequence recorded in `.auto-memory/superpowers-workflow.md`
 - Branch rule: feature branch + PR only; no direct push to `main` / `master`
 
 ## Current Batch
 
-- Batch id: `alert-review-workflow-depth`
+- Batch id: `f-015-post-merge-status`
 - Feature: `F-015-alert-review-workflow-depth`
-- Goal: complete B-055 Evaluator verification for the Alert Review workflow
-- Status: ready for B-056 PR preparation
-- Current branch: `feature/f-015-alert-review-workflow-depth-planning`
+- Goal: record PR #11 as merged, synchronize `main`, and prepare the project state for F-016 planning
+- Status: PR #11 merged; F-015 is on `main`
+- Current branch: `feature/f-016-market-comparison-drilldown-planning`
 
 ## Current Facts
 
-- `origin/main` is available and local `main` is synchronized to merge commit `a91102f`.
+- `origin/main` is available and local `main` is synchronized to PR #11 merge commit `185e883`.
 - F-007 is accepted, merged through PR #1, and available on `main`.
 - F-008 is accepted, merged through PR #2, and available on `main`.
 - F-009 is accepted, merged through PR #3, and available on `main`.
@@ -27,7 +27,8 @@
 - F-012 production Revenue Observatory visual upgrade is accepted, merged through PR #8, and available on `main`.
 - F-013 project PRD and development plan maintenance is accepted and landed on `main` through PR #10.
 - F-014 interactive price calendar detail workflow is accepted, merged into the F-013 stacked branch through PR #9, and landed on `main` through PR #10.
-- Latest known main merge commit after PR #10: `a91102f`.
+- F-015 alert review workflow depth is accepted, merged through PR #11, and available on `main`.
+- Latest known main merge commit after PR #11: `185e883`.
 - Project-level PRD: `docs/specs/PROJECT_PRD.md`.
 - Project-level development plan: `docs/specs/PROJECT_DEVELOPMENT_PLAN.md`.
 - Weekly project-document maintenance automation is active for this workspace and runs as Planner governance work.
@@ -44,11 +45,11 @@ The formal product baseline is the React Revenue Observatory app on `main`:
 - F-012 upgraded the app to the global Revenue Observatory visual system across Overview, Calendar, Market Comparison, Alert Review, and Setup/Data Scope.
 - F-013 established project-level PRD, project-level development plan, and weekly maintenance protocol.
 - F-014 added an accepted interactive calendar date-detail workflow with platform gaps, evidence, capture time, rate basis, missing-sample state, and human-review markers.
-- F-015 adds an accepted local Alert Review workflow with selectable alerts, selected detail, local review status, local notes, owner/competitor evidence roles, and explicit rate boundaries. It is pending B-056 PR preparation.
+- F-015 added an accepted local Alert Review workflow with selectable alerts, selected detail, local review status, local notes, owner/competitor evidence roles, and explicit rate boundaries.
 
 ## F-015 Generator Result
 
-F-015 was implemented as a Generator slice for the Alert Review screen and accepted by B-055 Evaluator verification.
+F-015 was implemented as a Generator slice for the Alert Review screen, accepted by B-055 Evaluator verification, and merged into `main` through PR #11.
 
 The implementation adds:
 
@@ -94,17 +95,18 @@ F-015 must not:
 - Targeted F-015 app regression passed: `4 files / 20 tests`.
 - Full app verification passed: production build, Vitest `16 files / 80 tests`, and Playwright `20 tests`.
 - Triad doctor, Triad doctor smoke test, JSON parsing, prototype regression, screenshot dimensions, `git diff --check`, generated-artifact check, and product safety scans passed.
-- F-015 diff is bounded against `main` at PR #10 merge commit `a91102f`; no F-008 domain pricing or domain tests changed.
+- F-015 diff was bounded against `main` at PR #10 merge commit `a91102f`; no F-008 domain pricing or domain tests changed.
+- PR #11 merged F-015 into `main` at merge commit `185e883`.
 - Project PRD and development plan were refreshed after acceptance to show F-015 accepted and F-016 as the next recommended planning slice.
 
 ## Boundaries
 
 - No live OTA collection.
-- No credential, cookie, session, CAPTCHA, browser automation, storage, backend route, migration, file upload, recommended-price, or automatic-pricing work is allowed in F-015.
+- No credential, cookie, session, CAPTCHA, browser automation, storage, backend route, migration, file upload, recommended-price, or automatic-pricing work is allowed in current or next planned slices unless a future source-compliance spec explicitly approves it.
 - Future real-data work must first pass a source compliance specification.
 - Future product work must read `docs/specs/PROJECT_PRD.md` and `docs/specs/PROJECT_DEVELOPMENT_PLAN.md` before planning or implementation.
 - Project-level PRD and development plan must be checked weekly, even when no feature has been accepted that week.
 
 ## Next Step
 
-B-056 should prepare a bounded F-015 PR from `feature/f-015-alert-review-workflow-depth-planning` to `main`. After the PR path is settled, Planner can prepare F-016 market comparison drilldown. B-048 remains the standing weekly project-documentation maintenance item.
+B-056 is complete through PR #11. Next, Planner should prepare F-016 market comparison drilldown from latest `main`. B-048 remains the standing weekly project-documentation maintenance item.

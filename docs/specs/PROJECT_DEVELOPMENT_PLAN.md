@@ -2,7 +2,7 @@
 
 版本: 2026-05-20
 状态: 项目级 roadmap 真源, 随每个已验收 feature 更新
-当前主线: `main` includes F-013 and F-014 through PR #10, merge commit `a91102f`; F-015 已通过 Evaluator 验收, 待 B-056 PR 收口
+当前主线: `main` includes F-015 through PR #11, merge commit `185e883`
 当前规划切片: F-016 market comparison drilldown
 
 ## 1. 开发原则
@@ -25,9 +25,6 @@
 - F-012 production Revenue Observatory visual upgrade: 全局高级视觉系统、宽屏观测舱、五屏一致性和图表框架。
 - F-013 project PRD and development plan maintenance: 项目级 PRD、项目级开发计划、F-013 验收和每周文档维护机制。
 - F-014 interactive price calendar and date detail workflow: 日期点击详情、平台价差、证据来源、采集时间、样本数、可比口径、missing sample state 和人工复核标记。
-
-### 已验收、待 PR 或文档基线
-
 - F-015 alert review workflow depth: 可选择提醒、选中详情、本地复核状态、本地备注、备注模板、owner/competitor 证据角色和边界可见性。
 
 ### 历史与参考基线
@@ -59,7 +56,7 @@
 
 ### Phase 2: 业务工作流深度
 
-状态: 进行中。F-013 和 F-014 已通过 PR #10 进入 `main`, F-015 已验收并等待 B-056 PR 收口。
+状态: 进行中。F-013 和 F-014 已通过 PR #10 进入 `main`, F-015 已通过 PR #11 进入 `main`, 下一步进入 F-016 planning。
 
 目标: 让用户不仅看到指标, 还能沿日期、房型、平台和事件追溯到可解释详情。
 
@@ -76,7 +73,7 @@
 3. F-015 alert review workflow depth
    - 增强提醒复核列表、证据抽屉、人工状态和复核备注的前端工作流。
    - 只做本地状态或 fixture 状态, 不引入持久化。
-   - 已通过 B-055 Evaluator 验收, 待 B-056 PR 收口。
+   - 已通过 B-055 Evaluator 验收, 并通过 PR #11 落地到 `main`。
 4. F-016 market comparison drilldown
    - 平台价差从汇总条扩展到竞品、房型和日期组合。
    - 增加缺失数据、过期样本和不可用样本的解释。
@@ -186,11 +183,11 @@ Evaluator 必须交付:
 - 数据来源合规风险: Phase 3 前必须先完成 source strategy specification。
 - 价格可比性风险: F-015 到 F-016 必须继续保留房型、税费、取消政策和入住人数边界。
 - 视觉一致性风险: 新 UI 必须复用 F-012 Revenue Observatory primitives。
-- PR 堆叠风险: 开发可以连续推进, 但每个 feature branch 应尽量从最新 `main` 创建, 合并后及时同步本地。
+- PR 堆叠风险: F-015 已从最新 `main` 落地。F-016 应继续从 PR #11 后的 `main` 创建, 合并后及时同步本地。
 - 文档漂移风险: F-013 建立项目级文档真源、维护门禁和每周固定周更 automation。
 
 ## 8. 当前下一步
 
-1. 执行 B-056, 准备一个 bounded F-015 PR 到 `main`。
-2. PR 合并后同步 `main`、project status、PRD、开发计划和 backlog。
+1. B-056 已完成: PR #11 merged, F-015 已在 `main`。
+2. 完成本次 post-merge 文档和状态收口。
 3. Planner 准备 F-016 market comparison drilldown 规格和 Generator-ready plan。

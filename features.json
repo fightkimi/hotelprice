@@ -381,7 +381,21 @@
             ],
             "handoff": {
                 "generator": "Implemented the F-015 alert review workflow from the approved plan using strict TDD. Added typed alertReview workflow data, selectable alert rows, selected alert detail, local-only review status and note state, note presets, evidence role rows, boundary visibility, responsive Playwright coverage, and safety scans without changing F-008 alert math or adding persistence/live collection/automatic pricing.",
-                "evaluator": "Accepted after B-055 verification. Alert selection, selected detail rendering, local-only status and notes, owner/competitor evidence role visibility, rate-boundary visibility, missing-sample safety, mobile no-overflow behavior, full app verification, safety scans, project-doc freshness, and PR hygiene passed. Prepare bounded F-015 PR through B-056."
+                "evaluator": "Accepted after B-055 verification and merged through PR #11. Alert selection, selected detail rendering, local-only status and notes, owner/competitor evidence role visibility, rate-boundary visibility, missing-sample safety, mobile no-overflow behavior, full app verification, safety scans, project-doc freshness, and PR hygiene passed."
+            }
+        },
+        {
+            "id": "F-016-market-comparison-drilldown",
+            "title": "Market comparison drilldown",
+            "status": "planning",
+            "executor": "planner",
+            "artifacts": [
+                "docs/specs/PROJECT_PRD.md",
+                "docs/specs/PROJECT_DEVELOPMENT_PLAN.md"
+            ],
+            "handoff": {
+                "generator": "Blocked until Planner writes the F-016 spec and Generator-ready plan. Expected scope is Market Comparison drilldown by competitor, room type, platform, and stay-date combination while preserving comparable-rate boundaries and fixture/manual data only.",
+                "evaluator": "After Generator implementation, verify platform/competitor/room/date drilldown correctness, missing/stale/unavailable sample explanations, rate-boundary visibility, F-012 visual consistency, mobile no-overflow behavior, no live collection, no persistence, no recommended price, and no automatic pricing."
             }
         }
   ]
