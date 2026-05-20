@@ -374,16 +374,16 @@
     {
       "id": "B-055",
       "title": "Evaluator verifies F-015 alert review workflow depth",
-      "status": "new",
+      "status": "done",
       "feature_id": "F-015-alert-review-workflow-depth",
-      "notes": "Verify alert row selection, selected detail rendering, local-only review status and notes, evidence role visibility, rate-boundary visibility, mobile no-overflow behavior, full app verification, safety scans, project-doc freshness, and PR hygiene."
+      "notes": "Evaluator report written at docs/test-reports/2026-05-20-f-015-alert-review-workflow-depth-evaluator.md. Verdict: accepted. Evidence covered alert row selection, selected detail rendering, local-only review status and notes, evidence role visibility, rate-boundary visibility, mobile no-overflow behavior, full app verification, safety scans, project-doc freshness, and PR hygiene."
     },
     {
       "id": "B-056",
       "title": "Prepare F-015 PR after final acceptance",
       "status": "new",
       "feature_id": "F-015-alert-review-workflow-depth",
-      "notes": "After Evaluator acceptance, prepare a bounded F-015 PR from the F-015 feature branch. Do not push directly to main or master."
+      "notes": "Prepare a bounded F-015 PR from feature/f-015-alert-review-workflow-depth-planning to main. Branch is ahead of main by 7 commits and diff is bounded to F-015 app, test, screenshot, spec/plan, report, and status files. Do not push directly to main or master."
     }
   ]
 }

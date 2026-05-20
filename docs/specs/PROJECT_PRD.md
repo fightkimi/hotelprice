@@ -3,8 +3,8 @@
 版本: 2026-05-20
 状态: 项目级需求真源, 随每个已验收 feature 更新
 维护角色: Planner
-当前正式产品基线: `main` includes F-013 and F-014 through PR #10, merge commit `a91102f`
-当前规划切片: F-015 Alert Review Workflow Depth
+当前正式产品基线: `main` includes F-013 and F-014 through PR #10, merge commit `a91102f`; F-015 Alert Review Workflow Depth 已通过 Evaluator 验收, 待 B-056 PR 收口
+当前规划切片: F-016 Market Comparison Drilldown
 
 ## 1. 产品定位
 
@@ -71,6 +71,10 @@
 - F-013: project PRD and development plan maintenance, 建立项目级 PRD、项目级开发计划和每周维护机制。
 - F-014: interactive price calendar detail workflow, 增加 `CalendarDayDetail` / `calendarDetails.byDate`, 日期点击详情、平台价差、证据来源、采集时间、样本数、可比口径、missing sample state 和人工复核标记。
 
+已验收、待 PR 或文档基线包括:
+
+- F-015: alert review workflow depth, 增加可选择提醒、选中详情、本地复核状态、本地备注、备注模板、owner/competitor 证据角色和边界可见性。
+
 历史 H5 prototype 仍可作为演示灵感和回归测试对象, 但正式产品的实现真源是 React app 和已验收 feature 文档。
 
 ## 8. 核心功能需求
@@ -99,8 +103,8 @@
 - 只展示需要人工关注的信号, 不自动执行价格动作。
 - 证据需要区分 owner observation 和 competitor sample。
 - 复核流应支持用户理解触发原因、样本状态、影响日期和后续人工动作。
-- 当前规划切片是 F-015: 增强提醒复核列表、证据抽屉、人工状态和复核备注的前端工作流, 仍只使用本地或 fixture 状态。
-- F-015 的复核状态与备注必须是本地 UI 状态或 fixture 展示状态, 不能暗示已保存到生产系统。
+- F-015 已支持提醒选择、选中详情、证据抽屉、人工状态和复核备注的前端工作流, 仍只使用本地或 fixture 状态。
+- F-015 的复核状态与备注是本地 UI 状态或 fixture 展示状态, 不能暗示已保存到生产系统。
 
 ### 8.5 数据范围与采集入口
 

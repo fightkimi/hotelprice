@@ -4,7 +4,7 @@
 
 - Project: Hotel Pricing Capture
 - Workflow: Triad Workflow with Planner / Generator / Evaluator roles
-- Current role for this pass: Generator
+- Current role for this pass: Evaluator
 - Superpowers: mandatory sequence recorded in `.auto-memory/superpowers-workflow.md`
 - Branch rule: feature branch + PR only; no direct push to `main` / `master`
 
@@ -12,8 +12,8 @@
 
 - Batch id: `alert-review-workflow-depth`
 - Feature: `F-015-alert-review-workflow-depth`
-- Goal: implement the Alert Review workflow for selection, evidence detail, local review status, and local review notes
-- Status: ready for Evaluator verification
+- Goal: complete B-055 Evaluator verification for the Alert Review workflow
+- Status: ready for B-056 PR preparation
 - Current branch: `feature/f-015-alert-review-workflow-depth-planning`
 
 ## Current Facts
@@ -44,10 +44,11 @@ The formal product baseline is the React Revenue Observatory app on `main`:
 - F-012 upgraded the app to the global Revenue Observatory visual system across Overview, Calendar, Market Comparison, Alert Review, and Setup/Data Scope.
 - F-013 established project-level PRD, project-level development plan, and weekly maintenance protocol.
 - F-014 added an accepted interactive calendar date-detail workflow with platform gaps, evidence, capture time, rate basis, missing-sample state, and human-review markers.
+- F-015 adds an accepted local Alert Review workflow with selectable alerts, selected detail, local review status, local notes, owner/competitor evidence roles, and explicit rate boundaries. It is pending B-056 PR preparation.
 
 ## F-015 Generator Result
 
-F-015 is now implemented as a Generator slice for the Alert Review screen.
+F-015 was implemented as a Generator slice for the Alert Review screen and accepted by B-055 Evaluator verification.
 
 The implementation adds:
 
@@ -86,6 +87,16 @@ F-015 must not:
 - Full screenshot matrix passed with 20 Playwright tests.
 - Triad doctor, triad doctor smoke test, JSON validation, prototype regression, `git diff --check`, and static `app/src` safety scans passed.
 
+## F-015 Evaluator Evidence
+
+- B-055 accepted F-015 for alert-review workflow behavior, data-boundary coverage, local-only review state, evidence-role visibility, responsive behavior, and PR readiness.
+- Independent temporary Evaluator Vitest probe passed `1 file / 2 tests`; it verified alertReview-to-signal mapping, rate boundaries, owner/competitor evidence roles, alert selection, page-local status/notes, no storage/network writes, and no `CNY null` / `CNY 0` pseudo prices. The temporary probe was removed after the run.
+- Targeted F-015 app regression passed: `4 files / 20 tests`.
+- Full app verification passed: production build, Vitest `16 files / 80 tests`, and Playwright `20 tests`.
+- Triad doctor, Triad doctor smoke test, JSON parsing, prototype regression, screenshot dimensions, `git diff --check`, generated-artifact check, and product safety scans passed.
+- F-015 diff is bounded against `main` at PR #10 merge commit `a91102f`; no F-008 domain pricing or domain tests changed.
+- Project PRD and development plan were refreshed after acceptance to show F-015 accepted and F-016 as the next recommended planning slice.
+
 ## Boundaries
 
 - No live OTA collection.
@@ -96,4 +107,4 @@ F-015 must not:
 
 ## Next Step
 
-Evaluator should independently verify `F-015-alert-review-workflow-depth` through `B-055`, including alert selection, local-only review status/notes, evidence role visibility, rate-boundary visibility, safety scans, mobile no-overflow behavior, full app verification, and project-doc freshness. B-048 remains the standing weekly project-documentation maintenance item.
+B-056 should prepare a bounded F-015 PR from `feature/f-015-alert-review-workflow-depth-planning` to `main`. After the PR path is settled, Planner can prepare F-016 market comparison drilldown. B-048 remains the standing weekly project-documentation maintenance item.
