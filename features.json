@@ -273,14 +273,37 @@
         {
             "id": "F-012-production-revenue-observatory-visual-upgrade",
             "title": "Production Revenue Observatory visual upgrade",
-            "status": "planning",
-            "executor": "planner",
+            "status": "verifying",
+            "executor": "generator",
             "artifacts": [
                 "docs/specs/2026-05-20-production-revenue-observatory-visual-upgrade.md",
-                "docs/superpowers/plans/2026-05-20-production-revenue-observatory-visual-upgrade.md"
+                "docs/superpowers/plans/2026-05-20-production-revenue-observatory-visual-upgrade.md",
+                "docs/test-reports/2026-05-20-f-012-generator-notes.md",
+                "app/src/components/layout/AppShell.tsx",
+                "app/src/components/primitives/SignalPanel.tsx",
+                "app/src/components/charts/TrendChart.tsx",
+                "app/src/components/charts/CalendarHeatmap.tsx",
+                "app/src/components/charts/PlatformGapBars.tsx",
+                "app/src/components/charts/EventTimeline.tsx",
+                "app/src/screens/OverviewScreen.tsx",
+                "app/src/screens/CalendarScreen.tsx",
+                "app/src/screens/MarketComparisonScreen.tsx",
+                "app/src/screens/AlertReviewScreen.tsx",
+                "app/src/screens/SetupDataScopeScreen.tsx",
+                "app/src/styles/tokens.css",
+                "app/src/styles/layout.css",
+                "app/tests/contract/tokens.test.ts",
+                "app/tests/components/charts.test.tsx",
+                "app/tests/components/revenueObservatoryScreens.test.tsx",
+                "app/tests/e2e/app-foundation.spec.ts",
+                "docs/test-reports/f-007-app-foundation/overview-observatory--2048x1352.png",
+                "docs/test-reports/f-007-app-foundation/calendar-observatory--2048x1352.png",
+                "docs/test-reports/f-007-app-foundation/market-observatory--2048x1352.png",
+                "docs/test-reports/f-007-app-foundation/alert-review-observatory--2048x1352.png",
+                "docs/test-reports/f-007-app-foundation/setup-observatory--2048x1352.png"
             ],
             "handoff": {
-                "generator": "Implement the global Revenue Observatory visual system upgrade from the F-012 plan with strict TDD. Cover tokens, app shell, observatory primitives, five screens, chart frames, 2048x1352/1440x900/390x844 screenshot gates, and safety scans without changing business semantics.",
+                "generator": "Implemented the global Revenue Observatory visual system upgrade with strict TDD. Added shell tokens, global app-shell marker, five-screen observatory primitives, chart frames, 2048x1352 screenshot gates, and Generator notes without changing business semantics.",
                 "evaluator": "Verify visual coverage, exact screenshot dimensions, no mobile overflow, chart semantic preservation, customer-safe copy, no live collection or automatic pricing, and PR diff bounded to F-012 after F-010/F-011 dependency cleanup."
             }
         }

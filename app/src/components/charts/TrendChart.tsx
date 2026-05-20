@@ -13,8 +13,8 @@ const width = 720;
 const height = 260;
 const padding = { top: 24, right: 24, bottom: 44, left: 56 };
 
-function colorValue(token: string) {
-  return `var(${token})`;
+function colorValue(cssVariable: string) {
+  return `var(${cssVariable})`;
 }
 
 export function TrendChart({ data }: TrendChartProps) {
