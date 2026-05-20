@@ -155,8 +155,8 @@ export function AlertReviewScreen({ dataset, drawerOpen }: AlertReviewScreenProp
           </dl>
 
           <div className="alert-evidence-list">
-            {selectedItem.evidenceRows.map((row) => (
-              <div className="calendar-evidence-row" key={`${row.role}-${row.captureTime}-${row.label}`}>
+            {selectedItem.evidenceRows.map((row, index) => (
+              <div className="calendar-evidence-row" key={`${row.role}-${row.captureTime}-${row.label}-${index}`}>
                 <strong>{row.label}</strong>
                 <span className="panel__meta">
                   {row.source} · {row.captureTime} · 样本 {row.sampleSize} · {evidenceStatusLabel[row.status]} · {formatPrice(row.price)}

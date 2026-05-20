@@ -94,3 +94,33 @@ test('calendar date click updates mobile detail workflow without overflow', asyn
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   expect(overflow).toBeLessThanOrEqual(8);
 });
+
+test('alert review selection keeps status and notes local on mobile', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/?screen=alerts&state=drawer-open');
+
+  const detail = page.getByTestId('alert-review-detail');
+  await expect(detail).toContainText('需人工复核');
+  await expect(detail).toContainText('本地复核备注');
+
+  const secondAlert = page.locator('.alert-row--button').nth(1);
+  const secondTitle = await secondAlert.locator('strong').innerText();
+  await secondAlert.click();
+  await expect(detail).toContainText(secondTitle);
+
+  await page.getByRole('button', { name: '复核中' }).click();
+  await expect(detail).toContainText('当前状态：复核中');
+
+  const note = page.getByLabel('本地复核备注');
+  await note.fill('移动端本地备注：核对样本后再判断');
+  await expect(note).toHaveValue('移动端本地备注：核对样本后再判断');
+
+  const storageWrites = await page.evaluate(() => ({
+    localStorage: window.localStorage.length,
+    sessionStorage: window.sessionStorage.length
+  }));
+  expect(storageWrites).toEqual({ localStorage: 0, sessionStorage: 0 });
+
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+  expect(overflow).toBeLessThanOrEqual(8);
+});
