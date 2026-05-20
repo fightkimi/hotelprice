@@ -1,6 +1,9 @@
 import { generateAlertCandidates, isAlertableSnapshot, markStaleSnapshots } from '../domain/pricing';
 import type { AlertCandidate, AlertableRateSnapshot, HotelProfile, RateSnapshot } from '../domain/pricing';
 import type {
+  AlertReviewEvidenceRow,
+  AlertReviewItem,
+  AlertReviewWorkflow,
   CalendarDayDetail,
   CalendarEventImpact,
   CalendarPlatformGapRow,
@@ -241,6 +244,87 @@ function mapAlertToSignal(seed: DomainDemoSeed, alert: AlertCandidate): Signal {
     severity: signalSeverity(alert),
     humanReviewRequired: alert.requiresHumanReview,
     evidenceMarkers: mapEvidence(seed, alert)
+  };
+}
+
+function reviewPriority(alert: AlertCandidate): AlertReviewItem['reviewPriority'] {
+  if (alert.alertType === 'owner_low_risk' || alert.alertType === 'owner_high_risk') {
+    return 'high';
+  }
+  if (alert.alertType === 'market_increase' || alert.alertType === 'market_decrease') {
+    return 'medium';
+  }
+  return 'watch';
+}
+
+function alertReviewEvidenceRows(seed: DomainDemoSeed, alert: AlertCandidate): AlertReviewEvidenceRow[] {
+  return alert.evidence.map((evidence) => ({
+    role: evidence.role,
+    label: `${evidenceRoleLabel(evidence.role)} · ${alert.rateKey.roomTypeKey} · ${alert.rateKey.stayDate}`,
+    source: platformLabel(seed, alert.rateKey.sourceId),
+    captureTime: evidence.capturedAt,
+    sampleSize: evidence.sampleSize,
+    confidence: evidence.sampleSize >= 3 ? 'sample' : evidence.sampleSize > 0 ? 'partial' : 'unavailable',
+    price: evidence.priceCents === null ? null : yuan(evidence.priceCents),
+    status: evidence.priceCents === null ? 'missing-sample' : 'available'
+  }));
+}
+
+function alertReviewRateKey(seed: DomainDemoSeed, alert: AlertCandidate): RateKey {
+  const snapshot = representativeSnapshot(seed, alert.rateKey.stayDate, alert.rateKey.sourceId);
+  return uiRateKey(seed, {
+    ...snapshot,
+    hotelId: alert.hotelId,
+    competitorGroupId: alert.competitorGroupId,
+    rateKey: alert.rateKey
+  });
+}
+
+function buildAlertReviewWorkflow(seed: DomainDemoSeed, alerts: AlertCandidate[], signals: Signal[]): AlertReviewWorkflow {
+  const signalById = new Map(signals.map((signal) => [signal.id, signal]));
+  const items = alerts.map((alert): AlertReviewItem => {
+    const signal = signalById.get(alert.alertId);
+    if (!signal) {
+      throw new Error(`Missing UI signal for alert ${alert.alertId}`);
+    }
+    const evidenceRows = alertReviewEvidenceRows(seed, alert);
+    const captureTime = evidenceRows[0]?.captureTime ?? seed.now;
+
+    return {
+      id: `review-${alert.alertId}`,
+      signalId: signal.id,
+      alertType: alert.alertType,
+      title: signal.title,
+      summary: signal.summary,
+      severity: signal.severity,
+      primaryMetric: signal.primaryMetric,
+      metricUnit: signal.metricUnit,
+      affectedStayDate: alert.rateKey.stayDate,
+      reviewPriority: reviewPriority(alert),
+      defaultStatus: 'needs_review',
+      defaultNote: '本地复核备注：等待收益经理核对房态、库存和竞品样本。',
+      rateKey: alertReviewRateKey(seed, alert),
+      evidenceRows,
+      sampleSize: alert.sampleSize,
+      captureTime,
+      humanReviewRequired: true
+    };
+  });
+
+  return {
+    items,
+    selectedItemId: items[0]?.id ?? '',
+    statusOptions: [
+      { id: 'needs_review', label: '待复核', description: '进入人工复核队列，尚未记录判断。' },
+      { id: 'reviewing', label: '复核中', description: '收益经理正在核对样本与房态。' },
+      { id: 'noted', label: '已记录', description: '仅在本页记录人工关注点，不保存到生产系统。' }
+    ],
+    notePresets: [
+      { id: 'check-inventory', label: '核对房态', text: '需要核对本酒店库存、房态和取消政策后再判断。' },
+      { id: 'check-samples', label: '核对样本', text: '需要确认核心竞品样本是否仍然可用且口径一致。' },
+      { id: 'owner-watch', label: '人工关注', text: '已记录为人工关注项，不触发任何自动价格动作。' }
+    ],
+    guardrails: ['本页仅使用 fixture/manual 演示数据。', '复核状态和备注仅保存在当前页面本地状态。', '所有价格动作必须人工复核并确认。']
   };
 }
 
@@ -538,6 +622,7 @@ export function buildDomainDrivenDemoDataset(seed: DomainDemoSeed = domainSeed):
     snapshots: normalizedSeed.snapshots,
     now: normalizedSeed.now
   }).sort((a, b) => alertPriority(a) - alertPriority(b) || b.sampleSize - a.sampleSize || a.alertId.localeCompare(b.alertId));
+  const signals = alerts.map((alert) => mapAlertToSignal(normalizedSeed, alert));
 
   return {
     sourceKind: 'fixture-demo',
@@ -550,7 +635,8 @@ export function buildDomainDrivenDemoDataset(seed: DomainDemoSeed = domainSeed):
     heatmap,
     calendarDetails: buildCalendarDetails(normalizedSeed, heatmap),
     platformGaps: buildPlatformGaps(normalizedSeed),
-    signals: alerts.map((alert) => mapAlertToSignal(normalizedSeed, alert))
+    signals,
+    alertReview: buildAlertReviewWorkflow(normalizedSeed, alerts, signals)
   };
 }
 

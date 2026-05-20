@@ -10,41 +10,31 @@
 
 ## Current Batch
 
-- Batch id: `interactive-price-calendar-detail-workflow`
-- Feature: `F-014-interactive-price-calendar-detail-workflow`
-- Goal: keep F-014 PR #9 bounded while it targets the accepted F-013 documentation base
-- Status: PR #9 open
-- Current branch: `feature/f-014-interactive-price-calendar-detail-workflow-planning`
+- Batch id: `alert-review-workflow-depth`
+- Feature: `F-015-alert-review-workflow-depth`
+- Goal: complete B-055 Evaluator verification for the Alert Review workflow
+- Status: ready for B-056 PR preparation
+- Current branch: `feature/f-015-alert-review-workflow-depth-planning`
 
 ## Current Facts
 
-- `origin/main` is available and current local `main` contains the merged F-012 baseline.
+- `origin/main` is available and local `main` is synchronized to merge commit `a91102f`.
 - F-007 is accepted, merged through PR #1, and available on `main`.
 - F-008 is accepted, merged through PR #2, and available on `main`.
 - F-009 is accepted, merged through PR #3, and available on `main`.
-- F-010 owner-position evidence enrichment is accepted and merged through PR #4.
-- F-011 data scope and capture entry is accepted and merged through PR #7.
-- F-012 production Revenue Observatory visual upgrade is accepted and merged through PR #8.
-- Latest known main merge commit after PR #8: `455f0a3`.
+- F-010 owner-position evidence enrichment is accepted, merged through PR #4, and available on `main`.
+- F-011 data scope and capture entry is accepted, merged through PR #7, and available on `main`.
+- F-012 production Revenue Observatory visual upgrade is accepted, merged through PR #8, and available on `main`.
+- F-013 project PRD and development plan maintenance is accepted and landed on `main` through PR #10.
+- F-014 interactive price calendar detail workflow is accepted, merged into the F-013 stacked branch through PR #9, and landed on `main` through PR #10.
+- Latest known main merge commit after PR #10: `a91102f`.
 - Project-level PRD: `docs/specs/PROJECT_PRD.md`.
 - Project-level development plan: `docs/specs/PROJECT_DEVELOPMENT_PLAN.md`.
-- F-013 spec: `docs/specs/2026-05-20-project-prd-and-development-plan-maintenance.md`.
-- F-013 plan: `docs/superpowers/plans/2026-05-20-project-prd-and-development-plan-maintenance.md`.
-- B-047 Evaluator verification accepted F-013.
-- B-047 report: `docs/test-reports/2026-05-20-f-013-project-prd-and-development-plan-maintenance-evaluator.md`.
 - Weekly project-document maintenance automation is active for this workspace and runs as Planner governance work.
-- F-014 selected route: date-detail data contract plus UI interaction workflow.
-- F-014 spec: `docs/specs/2026-05-20-interactive-price-calendar-detail-workflow.md`.
-- F-014 plan: `docs/superpowers/plans/2026-05-20-interactive-price-calendar-detail-workflow.md`.
-- B-050 Generator implementation is complete.
-- B-051 Evaluator verification accepted F-014.
-- B-052 prepared the bounded F-014 PR: https://github.com/fightkimi/hotelprice/pull/9.
-- F-014 Generator notes: `docs/test-reports/2026-05-20-f-014-generator-notes.md`.
-- F-014 Evaluator report: `docs/test-reports/2026-05-20-f-014-interactive-price-calendar-detail-workflow-evaluator.md`.
 
 ## Product Baseline
 
-The formal product baseline is the React Revenue Observatory app:
+The formal product baseline is the React Revenue Observatory app on `main`:
 
 - F-007 formal app foundation created the production app shell, chart primitives, formal screens, screenshot gates, and safe visible-copy checks.
 - F-008 added domain core rate boundaries for comparable rate keys, availability/stale modeling, deterministic snapshot ordering, alert rules, evidence, and compliance scans.
@@ -52,73 +42,69 @@ The formal product baseline is the React Revenue Observatory app:
 - F-010 enriched owner-position alert evidence with owner and competitor evidence roles.
 - F-011 added typed data scope and capture-entry preview while keeping production connection disabled.
 - F-012 upgraded the app to the global Revenue Observatory visual system across Overview, Calendar, Market Comparison, Alert Review, and Setup/Data Scope.
-- F-014 adds an accepted interactive calendar date-detail workflow on top of the Revenue Observatory calendar; PR #9 is open against `feature/f-013-project-prd-roadmap-maintenance` to keep the diff bounded.
+- F-013 established project-level PRD, project-level development plan, and weekly maintenance protocol.
+- F-014 added an accepted interactive calendar date-detail workflow with platform gaps, evidence, capture time, rate basis, missing-sample state, and human-review markers.
+- F-015 adds an accepted local Alert Review workflow with selectable alerts, selected detail, local review status, local notes, owner/competitor evidence roles, and explicit rate boundaries. It is pending B-056 PR preparation.
 
-## F-013 Scope
+## F-015 Generator Result
 
-F-013 is a Planner-only documentation and state slice.
+F-015 was implemented as a Generator slice for the Alert Review screen and accepted by B-055 Evaluator verification.
 
-It adds:
+The implementation adds:
 
-- a complete project PRD;
-- a complete project development plan;
-- a maintenance protocol for keeping project-level documentation fresh;
-- state updates so future Planner, Generator, and Evaluator sessions begin from current facts.
+- typed alert review workflow data derived from existing fixture/manual alert candidates;
+- selectable alert rows;
+- a selected alert detail panel or drawer;
+- local review status controls;
+- local review note/preset text state;
+- evidence rows with owner observation and competitor sample roles;
+- visible rate boundaries including platform, room type, occupancy, tax/fee basis, meal plan, cancellation policy, stay date, capture time, and sample state;
+- mobile no-overflow behavior and updated screenshot/interaction gates.
 
-It does not modify:
+F-015 must not:
 
-- product source code;
-- product tests;
-- migrations;
-- build, package, deployment, or runtime configuration;
-- production data collection behavior.
-
-## F-013 Evaluator Evidence
-
-- PROJECT_PRD and PROJECT_DEVELOPMENT_PLAN match the F-012 / PR #8 main baseline and identify F-014 interactive price calendar and date detail workflow as the next recommended product slice.
-- Project docs cover product positioning, target users, user problems, non-goals, domain concepts, formal app baseline, feature requirements, data/compliance boundaries, quality gates, maintenance cadence, and open risks.
-- Development plan covers completed baseline, phased roadmap, standard Planner/Generator/Evaluator deliverables, documentation maintenance cadence, and current next step.
-- Diff is documentation/state-only relative to `main`; no product code, product tests, scripts, package/build/runtime config, backend, migration, or prototype files changed.
-- Placeholder scan passed with no planned-pattern matches.
-- `git diff --check` passed.
-- Triad doctor, Triad doctor smoke test, JSON parsing, and H5 prototype regression passed; prototype regression reports 14 checks.
-- Weekly local automation `酒店定价捕捉项目级文档周更` is ACTIVE for this workspace and reinforces B-048 recurring maintenance.
-
-## F-014 Generator Scope
-
-F-014 was implemented as a product slice by Generator:
-
-- added `CalendarDayDetail` and `calendarDetails.byDate` to the local `DemoDataset` contract;
-- derived date details from existing fixture/manual domain seed data after stale normalization;
-- added `CalendarHeatmap` date selection callback and accessible selected state;
-- updated `CalendarScreen` to use local selected-date state and render platform gaps, evidence sources, capture time, sample count, rate basis, event impact, missing sample state, and human-review markers;
-- added Testing Library and Playwright coverage for date click behavior and mobile no-overflow;
-- refreshed calendar screenshots affected by the new detail rail.
-
-F-014 must not:
-
-- change F-008 domain alert math;
+- change F-008 alert math;
 - add live OTA collection;
-- add backend, persistence, credentials, cookies, sessions, CAPTCHA handling, storage, file upload, recommended price, or automatic pricing.
+- add backend, persistence, credentials, cookies, sessions, CAPTCHA handling, storage, file upload, recommended price, or automatic pricing;
+- present review status or notes as saved server data.
 
-## F-014 Evaluator Evidence
+## F-015 Planner Artifacts
 
-- B-051 accepted F-014 for product behavior, data-boundary coverage, unavailable-date safety, responsive interaction, and human-review-only pricing workflow.
-- Independent temporary Evaluator Vitest probe passed `1 file / 3 tests`; it verified every heatmap date has a detail, `2026-05-27` remains a missing-sample state without pseudo prices, and date clicks update the detail panel. The temporary probe was removed after the run.
-- Targeted F-014 app regression passed: `3 files / 20 tests`.
-- Full app verification passed: production build, Vitest `15 files / 76 tests`, and Playwright `19 tests`.
+- F-015 spec: `docs/specs/2026-05-20-alert-review-workflow-depth.md`
+- F-015 plan: `docs/superpowers/plans/2026-05-20-alert-review-workflow-depth.md`
+
+## F-015 Generator Artifacts
+
+- Generator notes: `docs/test-reports/2026-05-20-f-015-generator-notes.md`
+- Product code: `app/src/types/contracts.ts`, `app/src/data/domainDrivenDataset.ts`, `app/src/screens/AlertReviewScreen.tsx`, `app/src/styles/layout.css`
+- Tests: `app/tests/data/domainDrivenDataset.test.ts`, `app/tests/components/alertReviewScreen.test.tsx`, `app/tests/e2e/app-foundation.spec.ts`
+- Screenshots: `docs/test-reports/f-007-app-foundation/alert-review-drawer-open--1440x900.png`, `docs/test-reports/f-007-app-foundation/alert-review-drawer-open--390x844.png`, `docs/test-reports/f-007-app-foundation/alert-review-observatory--2048x1352.png`
+
+## F-015 Generator Verification
+
+- Targeted app tests passed with 4 files / 20 tests.
+- Full app verification passed: build, Vitest 16 files / 80 tests, and Playwright 20 tests.
+- Full screenshot matrix passed with 20 Playwright tests.
+- Triad doctor, triad doctor smoke test, JSON validation, prototype regression, `git diff --check`, and static `app/src` safety scans passed.
+
+## F-015 Evaluator Evidence
+
+- B-055 accepted F-015 for alert-review workflow behavior, data-boundary coverage, local-only review state, evidence-role visibility, responsive behavior, and PR readiness.
+- Independent temporary Evaluator Vitest probe passed `1 file / 2 tests`; it verified alertReview-to-signal mapping, rate boundaries, owner/competitor evidence roles, alert selection, page-local status/notes, no storage/network writes, and no `CNY null` / `CNY 0` pseudo prices. The temporary probe was removed after the run.
+- Targeted F-015 app regression passed: `4 files / 20 tests`.
+- Full app verification passed: production build, Vitest `16 files / 80 tests`, and Playwright `20 tests`.
 - Triad doctor, Triad doctor smoke test, JSON parsing, prototype regression, screenshot dimensions, `git diff --check`, generated-artifact check, and product safety scans passed.
-- F-014 PR #9 is bounded relative to `feature/f-013-project-prd-roadmap-maintenance`; direct diff to `main` still includes F-013 documentation commits because `main` is at the F-012 / PR #8 baseline.
-- Project PRD and development plan were refreshed after acceptance to show F-014 accepted and F-015 as the next recommended planning slice.
+- F-015 diff is bounded against `main` at PR #10 merge commit `a91102f`; no F-008 domain pricing or domain tests changed.
+- Project PRD and development plan were refreshed after acceptance to show F-015 accepted and F-016 as the next recommended planning slice.
 
 ## Boundaries
 
 - No live OTA collection.
-- No credential, cookie, session, CAPTCHA, browser automation, storage, backend route, migration, file upload, recommended-price, or automatic-pricing work was introduced by F-014.
+- No credential, cookie, session, CAPTCHA, browser automation, storage, backend route, migration, file upload, recommended-price, or automatic-pricing work is allowed in F-015.
 - Future real-data work must first pass a source compliance specification.
 - Future product work must read `docs/specs/PROJECT_PRD.md` and `docs/specs/PROJECT_DEVELOPMENT_PLAN.md` before planning or implementation.
 - Project-level PRD and development plan must be checked weekly, even when no feature has been accepted that week.
 
 ## Next Step
 
-F-014 PR #9 is open with base `feature/f-013-project-prd-roadmap-maintenance` and head `feature/f-014-interactive-price-calendar-detail-workflow-planning`. Next, merge or otherwise land the F-013 documentation base, then retarget/merge F-014 as appropriate. After the PR path is settled, Planner can prepare F-015 alert review workflow depth. B-048 remains the standing weekly project-documentation maintenance item.
+B-056 should prepare a bounded F-015 PR from `feature/f-015-alert-review-workflow-depth-planning` to `main`. After the PR path is settled, Planner can prepare F-016 market comparison drilldown. B-048 remains the standing weekly project-documentation maintenance item.

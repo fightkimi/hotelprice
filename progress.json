@@ -1,10 +1,10 @@
 {
   "project": "hotel-pricing-capture",
-  "status": "pr-open",
-  "batch_id": "interactive-price-calendar-detail-workflow",
-  "current_sprint": "F-014-interactive-price-calendar-detail-workflow",
-  "total_features": 15,
-  "completed_features": 12,
+  "status": "ready-for-pr",
+  "batch_id": "alert-review-workflow-depth",
+  "current_sprint": "F-015-alert-review-workflow-depth",
+  "total_features": 16,
+  "completed_features": 13,
   "features": [
     "F-000-workflow-bootstrap",
     "F-001-hotel-rate-watch-mvp",
@@ -20,6 +20,7 @@
     "F-011-data-scope-capture-entry",
     "F-012-production-revenue-observatory-visual-upgrade",
     "F-013-project-prd-and-development-plan-maintenance",
-    "F-014-interactive-price-calendar-detail-workflow"
+    "F-014-interactive-price-calendar-detail-workflow",
+    "F-015-alert-review-workflow-depth"
   ]
 }

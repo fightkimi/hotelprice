@@ -2,8 +2,8 @@
 
 版本: 2026-05-20
 状态: 项目级 roadmap 真源, 随每个已验收 feature 更新
-当前主线: `main` includes F-012 through PR #8; F-014 已通过 Evaluator 验收并打开 PR #9, base 为 F-013 文档分支
-当前规划切片: F-015 alert review workflow depth
+当前主线: `main` includes F-013 and F-014 through PR #10, merge commit `a91102f`; F-015 已通过 Evaluator 验收, 待 B-056 PR 收口
+当前规划切片: F-016 market comparison drilldown
 
 ## 1. 开发原则
 
@@ -23,11 +23,12 @@
 - F-010 owner-position evidence enrichment: 本店与竞品证据角色、人工复核语义。
 - F-011 data scope and capture entry preview: 数据范围、采集入口预览、production connection disabled。
 - F-012 production Revenue Observatory visual upgrade: 全局高级视觉系统、宽屏观测舱、五屏一致性和图表框架。
+- F-013 project PRD and development plan maintenance: 项目级 PRD、项目级开发计划、F-013 验收和每周文档维护机制。
+- F-014 interactive price calendar and date detail workflow: 日期点击详情、平台价差、证据来源、采集时间、样本数、可比口径、missing sample state 和人工复核标记。
 
 ### 已验收、待 PR 或文档基线
 
-- F-013 project PRD and development plan maintenance: 项目级 PRD、项目级开发计划、F-013 验收和每周文档维护机制。
-- F-014 interactive price calendar and date detail workflow: 日期点击详情、平台价差、证据来源、采集时间、样本数、可比口径、missing sample state 和人工复核标记。PR #9 已打开, base 为 `feature/f-013-project-prd-roadmap-maintenance`。
+- F-015 alert review workflow depth: 可选择提醒、选中详情、本地复核状态、本地备注、备注模板、owner/competitor 证据角色和边界可见性。
 
 ### 历史与参考基线
 
@@ -58,7 +59,7 @@
 
 ### Phase 2: 业务工作流深度
 
-状态: 进行中。F-014 已验收并打开 PR #9, 下一步先处理 F-013 base 的落地/retarget, 然后进入 F-015。
+状态: 进行中。F-013 和 F-014 已通过 PR #10 进入 `main`, F-015 已验收并等待 B-056 PR 收口。
 
 目标: 让用户不仅看到指标, 还能沿日期、房型、平台和事件追溯到可解释详情。
 
@@ -71,10 +72,11 @@
    - 支持点击日期查看详情。
    - 日期详情展示本店价格、核心竞品均价、平台价差、事件上下文、可用性、证据来源、采集时间、样本数和可比口径。
    - 保持 fixture/manual seed, 不接真实采集。
-   - 已通过 B-051 Evaluator 验收, B-052 已打开 PR #9。
+   - 已通过 B-051 Evaluator 验收, 并通过 PR #10 落地到 `main`。
 3. F-015 alert review workflow depth
    - 增强提醒复核列表、证据抽屉、人工状态和复核备注的前端工作流。
    - 只做本地状态或 fixture 状态, 不引入持久化。
+   - 已通过 B-055 Evaluator 验收, 待 B-056 PR 收口。
 4. F-016 market comparison drilldown
    - 平台价差从汇总条扩展到竞品、房型和日期组合。
    - 增加缺失数据、过期样本和不可用样本的解释。
@@ -117,22 +119,21 @@
 - Deployment readiness: 环境变量、安全扫描、日志边界和部署文档。
 - Source compliance gate: 对每个生产来源建立条款、授权、rate limit 和审计证据。
 
-## 4. F-015 建议规格方向
+## 4. F-016 建议规格方向
 
-F-015 应作为下一个产品开发切片, 因为 F-014 已经让用户能从日历日期进入可解释详情, 下一步应让用户从异常提醒进入更完整的人工复核工作流。
+F-016 应作为下一个产品开发切片, 因为 F-014 已经补强日期详情, F-015 已补强提醒复核, 下一步应把 Market Comparison 从平台汇总扩展到竞品、房型和日期组合的可解释 drilldown。
 
 建议目标:
 
-- 在 Alert Review screen 支持选中提醒、查看详情和切换人工复核状态。
-- 复核详情展示:
-  - 触发原因和影响日期。
-  - owner observation 与 competitor sample 证据角色。
-  - 平台、房型、税费、取消政策、入住人数和样本状态。
-  - 与 F-014 日期详情一致的证据来源、采集时间和 human-review-only 语义。
-  - 本地或 fixture 复核备注, 不引入持久化。
-- 移动端保持无横向溢出, 抽屉或详情区不得遮挡关键证据。
+- 在 Market Comparison screen 支持按竞品、房型、平台和日期组合查看价差详情。
+- Drilldown 详情展示:
+  - 本酒店价格、核心竞品价格区间和各竞品样本状态。
+  - 平台、房型、入住日期、入住人数、餐食、税费和取消政策。
+  - 可用、缺失、过期、不可用和来源错误样本的客户安全解释。
+  - 与 F-014/F-015 一致的证据来源、采集时间和 human-review-only 语义。
+- 移动端保持无横向溢出, 详情区不得遮挡关键证据。
 
-F-015 非目标:
+F-016 非目标:
 
 - 不新增真实采集。
 - 不新增后端、数据库或持久化。
@@ -190,6 +191,6 @@ Evaluator 必须交付:
 
 ## 8. 当前下一步
 
-1. 处理 F-014 PR #9 的 base 路径: 先让 F-013 文档分支进入目标 base, 或在 F-013 落地后把 PR #9 retarget 到 `main`。
-2. PR #9 合并后同步 `main`、project status、PRD、开发计划和 backlog。
-3. Planner 准备 F-015 alert review workflow depth 规格和 Generator-ready plan。
+1. 执行 B-056, 准备一个 bounded F-015 PR 到 `main`。
+2. PR 合并后同步 `main`、project status、PRD、开发计划和 backlog。
+3. Planner 准备 F-016 market comparison drilldown 规格和 Generator-ready plan。

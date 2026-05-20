@@ -75,6 +75,40 @@ describe('domain-driven demo dataset signals', () => {
   });
 });
 
+describe('domain-driven alert review workflow', () => {
+  it('builds one local review item for every pricing-sensitive signal', () => {
+    const dataset = buildDomainDrivenDemoDataset(domainSeed);
+
+    expect(dataset.alertReview.items).toHaveLength(dataset.signals.length);
+    expect(dataset.alertReview.selectedItemId).toBe(dataset.alertReview.items[0].id);
+    expect(dataset.alertReview.statusOptions.map((option) => option.id)).toEqual(['needs_review', 'reviewing', 'noted']);
+    expect(dataset.alertReview.guardrails.join(' ')).toContain('本地');
+    expect(dataset.alertReview.guardrails.join(' ')).toContain('人工复核');
+
+    for (const item of dataset.alertReview.items) {
+      expect(item.humanReviewRequired).toBe(true);
+      expect(item.defaultStatus).toBe('needs_review');
+      expect(item.affectedStayDate).toMatch(/^2026-/);
+      expect(item.rateKey.roomType).toBe(dataset.context.roomType);
+      expect(item.rateKey.taxFeeBasis).toBeTruthy();
+      expect(item.rateKey.cancellationPolicy).toBeTruthy();
+      expect(item.evidenceRows.length).toBeGreaterThan(0);
+      expect(item.captureTime).toMatch(/^2026-/);
+      expect(item.sampleSize).toBeGreaterThan(0);
+    }
+  });
+
+  it('keeps owner-position evidence roles structured for review', () => {
+    const dataset = buildDomainDrivenDemoDataset(domainSeed);
+    const ownerItem = dataset.alertReview.items.find((item) => item.alertType === 'owner_low_risk' || item.alertType === 'owner_high_risk');
+
+    expect(ownerItem).toBeDefined();
+    expect(ownerItem?.evidenceRows.some((row) => row.role === 'owner_observation' && row.label.startsWith('本酒店观测'))).toBe(true);
+    expect(ownerItem?.evidenceRows.some((row) => row.role === 'competitor_sample' && row.label.startsWith('核心竞品样本'))).toBe(true);
+    expect(ownerItem?.reviewPriority).toBe('high');
+  });
+});
+
 describe('domain-driven demo dataset charts', () => {
   it('builds trend series and platform gaps from comparable domain snapshots', () => {
     const dataset = buildDomainDrivenDemoDataset(domainSeed);

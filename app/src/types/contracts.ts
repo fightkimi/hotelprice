@@ -55,6 +55,61 @@ export interface Signal {
   evidenceMarkers: EvidenceMarker[];
 }
 
+export type AlertReviewStatus = 'needs_review' | 'reviewing' | 'noted';
+export type AlertReviewPriority = 'high' | 'medium' | 'watch';
+
+export interface AlertReviewStatusOption {
+  id: AlertReviewStatus;
+  label: string;
+  description: string;
+}
+
+export interface AlertReviewNotePreset {
+  id: string;
+  label: string;
+  text: string;
+}
+
+export interface AlertReviewEvidenceRow extends EvidenceMarker {
+  role: 'latest_observation' | 'previous_observation' | 'market_sample' | 'owner_observation' | 'competitor_sample';
+  price: number | null;
+  status: 'available' | 'missing-sample';
+}
+
+export interface AlertReviewItem {
+  id: string;
+  signalId: string;
+  alertType:
+    | 'competitor_increase'
+    | 'competitor_decrease'
+    | 'market_increase'
+    | 'market_decrease'
+    | 'owner_low_risk'
+    | 'owner_high_risk';
+  title: string;
+  summary: string;
+  severity: Severity;
+  primaryMetric: number;
+  metricUnit: string;
+  affectedStayDate: string;
+  reviewPriority: AlertReviewPriority;
+  defaultStatus: AlertReviewStatus;
+  defaultNote: string;
+  rateKey: RateKey;
+  evidenceRows: AlertReviewEvidenceRow[];
+  sampleSize: number;
+  captureTime: string;
+  humanReviewRequired: true;
+}
+
+export interface AlertReviewWorkflow {
+  items: AlertReviewItem[];
+  selectedItemId: string;
+  statusOptions: AlertReviewStatusOption[];
+  notePresets: AlertReviewNotePreset[];
+  guardrails: string[];
+}
+
 export interface TrendSeries {
   id: string;
   label: string;
@@ -210,4 +265,5 @@ export interface DemoDataset {
   calendarDetails: { byDate: Record<string, CalendarDayDetail> };
   platformGaps: { rows: PlatformGapRow[]; maxGap: number; unit: 'CNY' };
   signals: Signal[];
+  alertReview: AlertReviewWorkflow;
 }

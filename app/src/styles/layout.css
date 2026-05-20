@@ -800,9 +800,48 @@
   background: var(--color-surface-raised);
 }
 
+.alert-row--button {
+  width: 100%;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.alert-row--button[data-selected="true"] {
+  border-color: var(--color-teal);
+  box-shadow: 0 0 0 3px var(--color-active-surface), var(--shadow-soft);
+}
+
 .alert-row__metric {
   min-width: 86px;
   text-align: right;
+}
+
+.alert-review-detail,
+.review-note-block,
+.review-note-presets,
+.alert-evidence-list {
+  display: grid;
+  gap: var(--space-12);
+}
+
+.review-status-control,
+.review-note-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+
+.review-note {
+  min-height: 96px;
+  padding: var(--space-12);
+  resize: vertical;
+  border: var(--border-width) solid var(--color-line);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface-raised);
+  color: var(--color-ink);
+  font: inherit;
 }
 
 .setup-list {

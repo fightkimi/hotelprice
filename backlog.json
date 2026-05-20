@@ -356,6 +356,34 @@
       "status": "done",
       "feature_id": "F-014-interactive-price-calendar-detail-workflow",
       "notes": "Completed. PR #9 `F-014 Interactive price calendar detail workflow` was opened from feature/f-014-interactive-price-calendar-detail-workflow-planning to feature/f-013-project-prd-roadmap-maintenance so the diff stays bounded to F-014. PR URL: https://github.com/fightkimi/hotelprice/pull/9. Retarget to main only after F-013 is reflected in the target base."
+    },
+    {
+      "id": "B-053",
+      "title": "Planner prepares F-015 alert review workflow depth",
+      "status": "done",
+      "feature_id": "F-015-alert-review-workflow-depth",
+      "notes": "Created the F-015 spec and Generator-ready plan for typed alertReview workflow data, selectable alert rows, selected alert detail, local-only review status, local-only review notes, evidence role visibility, rate-boundary visibility, responsive no-overflow gates, and safety checks. Also updated PRD/development plan/project-status after PR #10 landed F-013 and F-014 on main."
+    },
+    {
+      "id": "B-054",
+      "title": "Generator implements F-015 alert review workflow depth",
+      "status": "done",
+      "feature_id": "F-015-alert-review-workflow-depth",
+      "notes": "Generator implemented the approved F-015 plan with strict TDD. Added typed alertReview workflow data, selectable alert rows, selected detail, local-only review status and notes, note presets, evidence roles, rate-boundary visibility, Playwright interaction coverage, refreshed Alert Review screenshots, and Generator notes at docs/test-reports/2026-05-20-f-015-generator-notes.md. No F-008 alert math, live collection, persistence, credentials, storage, recommended price, or automatic pricing was added."
+    },
+    {
+      "id": "B-055",
+      "title": "Evaluator verifies F-015 alert review workflow depth",
+      "status": "done",
+      "feature_id": "F-015-alert-review-workflow-depth",
+      "notes": "Evaluator report written at docs/test-reports/2026-05-20-f-015-alert-review-workflow-depth-evaluator.md. Verdict: accepted. Evidence covered alert row selection, selected detail rendering, local-only review status and notes, evidence role visibility, rate-boundary visibility, mobile no-overflow behavior, full app verification, safety scans, project-doc freshness, and PR hygiene."
+    },
+    {
+      "id": "B-056",
+      "title": "Prepare F-015 PR after final acceptance",
+      "status": "new",
+      "feature_id": "F-015-alert-review-workflow-depth",
+      "notes": "Prepare a bounded F-015 PR from feature/f-015-alert-review-workflow-depth-planning to main. Branch is ahead of main by 7 commits and diff is bounded to F-015 app, test, screenshot, spec/plan, report, and status files. Do not push directly to main or master."
     }
   ]
 }
