@@ -12,9 +12,9 @@ export function AlertReviewScreen({ dataset, drawerOpen }: AlertReviewScreenProp
   const evidence = selectedSignal.evidenceMarkers[0];
 
   return (
-    <section className="screen-grid screen-grid--two">
-      <div className="panel">
-        <div className="panel__header">
+    <section className="screen-grid screen-grid--two observatory-screen">
+      <div className="panel observatory-panel">
+        <div className="panel__header instrument-header">
           <div>
             <h2 className="panel__title">异常提醒中心</h2>
             <p className="panel__meta">所有价格敏感提醒先进入人工复核。</p>

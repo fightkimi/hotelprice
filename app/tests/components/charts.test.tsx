@@ -27,4 +27,20 @@ describe('chart primitives', () => {
     expect(screen.getByText(/覆盖率/)).toBeVisible();
     expect(screen.getByText(/CNY 0/)).toBeVisible();
   });
+
+  it('applies Revenue Observatory chart frames without removing semantic markers', () => {
+    const { container: trend } = render(<TrendChart data={demoDataset.trend} />);
+    expect(trend.querySelector('.chart-frame')).not.toBeNull();
+    expect(trend.querySelectorAll('[data-testid="trend-segment"]').length).toBeGreaterThan(0);
+
+    const { container: heatmap } = render(<CalendarHeatmap days={demoDataset.heatmap.days} selectedDate="2026-05-31" />);
+    expect(heatmap.querySelector('.chart-frame')).not.toBeNull();
+    expect(screen.getByText(/暂无可比样本/)).toBeVisible();
+
+    const { container: platformBars } = render(
+      <PlatformGapBars rows={demoDataset.platformGaps.rows} maxGap={demoDataset.platformGaps.maxGap} unit="CNY" />
+    );
+    expect(platformBars.querySelector('.chart-frame')).not.toBeNull();
+    expect(screen.getByText(/CNY 0/)).toBeVisible();
+  });
 });

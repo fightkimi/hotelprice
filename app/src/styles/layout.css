@@ -97,8 +97,15 @@
 }
 
 .chart-frame {
+  overflow: hidden;
+  border-color: var(--observatory-inset-line);
   background-image: var(--observatory-chart-grid), var(--observatory-chart-frame);
   background-size: 32px 32px, 32px 32px, auto;
+}
+
+.chart-frame .chart-panel__header {
+  padding-bottom: var(--space-12);
+  border-bottom: var(--border-width) solid var(--observatory-inset-line);
 }
 
 .app-title {
@@ -473,13 +480,13 @@
 }
 
 .chart-grid-line {
-  stroke: var(--color-line);
+  stroke: var(--observatory-inset-line);
   stroke-width: 1;
 }
 
 .event-marker-line {
   stroke: var(--color-amber);
-  stroke-dasharray: 4 5;
+  stroke-dasharray: 4 4;
   stroke-width: 1.5;
 }
 
@@ -487,6 +494,20 @@
 .chart-axis-label {
   fill: var(--color-muted);
   font-size: 12px;
+}
+
+.chart-annotation {
+  fill: var(--color-amber);
+  font-size: var(--font-meta-size);
+  font-weight: 700;
+}
+
+.trend-chart__svg,
+.heatmap-grid,
+.platform-bars__list,
+.event-timeline__list {
+  position: relative;
+  z-index: 1;
 }
 
 .chart-gap-dot {

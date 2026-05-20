@@ -11,13 +11,13 @@ interface OverviewScreenProps {
 export function OverviewScreen({ dataset, state }: OverviewScreenProps) {
   if (state === 'loading') {
     return (
-      <section className="screen-grid" data-state="loading">
-        <div className="screen-grid screen-grid--three">
+      <section className="screen-grid observatory-screen" data-state="loading">
+        <div className="metric-lattice">
           <SignalPanel state="loading" />
           <SignalPanel state="loading" />
           <SignalPanel state="loading" />
         </div>
-        <div className="panel">
+        <div className="panel observatory-panel">
           <div className="loading-block loading-block--wide" />
           <div className="chart-placeholder" />
         </div>
@@ -27,8 +27,8 @@ export function OverviewScreen({ dataset, state }: OverviewScreenProps) {
 
   if (state === 'empty') {
     return (
-      <section className="screen-grid">
-        <div className="empty-state">
+      <section className="screen-grid observatory-screen">
+        <div className="empty-state observatory-panel">
           <div className="stack">
             <span className="demo-badge">演示数据</span>
             <h2 className="panel__title">当前筛选范围暂无可比样本</h2>
@@ -43,8 +43,8 @@ export function OverviewScreen({ dataset, state }: OverviewScreenProps) {
   const [primary, secondary, tertiary] = dataset.signals as [Signal, Signal, Signal];
 
   return (
-    <section className="screen-grid">
-      <div className="screen-grid screen-grid--three">
+    <section className="screen-grid observatory-screen">
+      <div className="metric-lattice">
         <SignalPanel signal={primary} />
         <SignalPanel signal={secondary} />
         <SignalPanel signal={tertiary} />

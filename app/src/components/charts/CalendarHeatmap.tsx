@@ -13,7 +13,7 @@ function clampIntensity(value: number | null) {
 
 export function CalendarHeatmap({ days, selectedDate }: CalendarHeatmapProps) {
   return (
-    <section className="chart-panel calendar-heatmap">
+    <section className="chart-panel calendar-heatmap chart-frame observatory-panel">
       <div className="chart-panel__header">
         <div>
           <h2 className="panel__title">未来价格热力日历</h2>
