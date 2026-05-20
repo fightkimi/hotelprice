@@ -1,9 +1,9 @@
 {
   "project": "hotel-pricing-capture",
-  "status": "done",
-  "batch_id": "production-revenue-observatory-visual-upgrade",
-  "current_sprint": "F-012-production-revenue-observatory-visual-upgrade",
-  "total_features": 13,
+  "status": "verifying",
+  "batch_id": "project-prd-and-development-plan-maintenance",
+  "current_sprint": "F-013-project-prd-and-development-plan-maintenance",
+  "total_features": 14,
   "completed_features": 10,
   "features": [
     "F-000-workflow-bootstrap",
@@ -18,6 +18,7 @@
     "F-009-domain-driven-ui-data-flow",
     "F-010-owner-position-evidence-enrichment",
     "F-011-data-scope-capture-entry",
-    "F-012-production-revenue-observatory-visual-upgrade"
+    "F-012-production-revenue-observatory-visual-upgrade",
+    "F-013-project-prd-and-development-plan-maintenance"
   ]
 }

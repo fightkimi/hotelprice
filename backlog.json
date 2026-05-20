@@ -230,7 +230,7 @@
       "title": "Prepare F-009 PR after final acceptance",
       "status": "done",
       "feature_id": "F-009-domain-driven-ui-data-flow",
-      "notes": "Completed. PR #3 `F-009 Domain-driven UI data flow` was opened from feature/f-009-domain-driven-ui-planning to main: https://github.com/fightkimi/hotelprice/pull/3"
+      "notes": "Completed. PR #3 `F-009 Domain-driven UI data flow` was opened from feature/f-009-domain-driven-ui-planning to main and merged on 2026-05-19."
     },
         {
             "id": "B-035",
@@ -251,14 +251,14 @@
       "title": "Prepare F-010 PR after final acceptance",
       "status": "done",
       "feature_id": "F-010-owner-position-evidence-enrichment",
-      "notes": "Completed. PR #4 `F-010 Owner-position evidence enrichment` was opened from feature/f-010-owner-position-evidence-planning to main: https://github.com/fightkimi/hotelprice/pull/4"
+      "notes": "Completed. PR #4 `F-010 Owner-position evidence enrichment` was opened from feature/f-010-owner-position-evidence-planning to main and merged on 2026-05-19."
     },
     {
       "id": "B-038",
       "title": "Planner prepares F-011 data scope and capture entry",
       "status": "done",
       "feature_id": "F-011-data-scope-capture-entry",
-      "notes": "Created F-011 spec and Generator-ready plan for typed dataScope/captureEntry contracts and a customer-safe Setup/Data Scope capture-entry preview. Planning branch is based on accepted F-010 while PR #4 remains open."
+      "notes": "Created F-011 spec and Generator-ready plan for typed dataScope/captureEntry contracts and a customer-safe Setup/Data Scope capture-entry preview. F-011 later landed through PR #7 after F-010 was reflected in main."
     },
         {
             "id": "B-039",
@@ -272,14 +272,14 @@
       "title": "Evaluator verifies F-011 data scope and capture entry",
       "status": "done",
       "feature_id": "F-011-data-scope-capture-entry",
-      "notes": "Evaluator report written at docs/test-reports/2026-05-19-f-011-data-scope-capture-entry-evaluator.md. Verdict: accepted for product behavior and data-boundary coverage. Evidence covered typed scope boundaries, capture entry statuses, production connection disabled state, human-review-only behavior, customer-safe copy, Revenue Observatory visual contract, responsive setup screenshots, safety scans, app/domain/prototype regressions, and PR hygiene. PR prep still needs F-010 PR #4 dependency resolution and local H5 reference-file dirt isolation."
+      "notes": "Evaluator report written at docs/test-reports/2026-05-19-f-011-data-scope-capture-entry-evaluator.md. Verdict: accepted for product behavior and data-boundary coverage. Evidence covered typed scope boundaries, capture entry statuses, production connection disabled state, human-review-only behavior, customer-safe copy, Revenue Observatory visual contract, responsive setup screenshots, safety scans, app/domain/prototype regressions, and PR hygiene. F-011 later landed through PR #7."
     },
     {
       "id": "B-041",
       "title": "Prepare F-011 PR after final acceptance",
-      "status": "new",
+      "status": "done",
       "feature_id": "F-011-data-scope-capture-entry",
-      "notes": "After Evaluator acceptance, push the F-011 feature branch and open a PR to main. First resolve the F-010 PR #4 dependency by rebasing after F-010 is merged or otherwise ensuring F-011 does not duplicate F-010 changes, and clean/stash/commit separately the local H5 visual reference files before PR creation."
+      "notes": "Completed through landing PR #7 after F-010 was reflected in main. F-011 is now part of the current main baseline."
     },
     {
       "id": "B-042",
@@ -300,14 +300,34 @@
       "title": "Evaluator verifies F-012 production Revenue Observatory visual upgrade",
       "status": "done",
       "feature_id": "F-012-production-revenue-observatory-visual-upgrade",
-      "notes": "Evaluator report written at docs/test-reports/2026-05-20-f-012-production-revenue-observatory-visual-upgrade-evaluator.md. Verdict: accepted. Evidence covered global visual-system coverage, exact screenshot dimensions including the new 2048x1352 artifacts, wide-shell behavior, mobile no-overflow behavior, chart semantic preservation, customer-safe copy, no live collection or automatic pricing, full app/domain/prototype verification, and PR hygiene. PR prep still needs F-010/F-011 dependency cleanup before opening F-012 PR."
+      "notes": "Evaluator report written at docs/test-reports/2026-05-20-f-012-production-revenue-observatory-visual-upgrade-evaluator.md. Verdict: accepted. Evidence covered global visual-system coverage, exact screenshot dimensions including the new 2048x1352 artifacts, wide-shell behavior, mobile no-overflow behavior, chart semantic preservation, customer-safe copy, no live collection or automatic pricing, full app/domain/prototype verification, and PR hygiene. F-012 later landed through PR #8."
     },
     {
       "id": "B-045",
       "title": "Prepare F-012 PR after final acceptance",
-      "status": "new",
+      "status": "done",
       "feature_id": "F-012-production-revenue-observatory-visual-upgrade",
-      "notes": "After Evaluator acceptance, prepare the F-012 PR only after F-010 and F-011 dependencies are reflected in the base branch or the F-012 branch is cleanly rebased so the PR contains only visual-system changes. Current branch is ahead of origin/main by 19 commits because it includes F-010, F-011, and F-012."
+      "notes": "Completed through clean landing PR #8. F-012 is merged into main and current main points at merge commit 455f0a3."
+    },
+    {
+      "id": "B-046",
+      "title": "Planner creates project PRD and development plan maintenance baseline",
+      "status": "done",
+      "feature_id": "F-013-project-prd-and-development-plan-maintenance",
+      "notes": "Created project-level PRD, project-level development plan, F-013 spec, and F-013 Planner handoff plan. Scope is documentation/state only."
+    },
+    {
+      "id": "B-047",
+      "title": "Evaluator verifies F-013 project documentation baseline",
+      "status": "new",
+      "feature_id": "F-013-project-prd-and-development-plan-maintenance",
+      "notes": "Verify PRD/development plan freshness, status consistency, no product-code changes, and maintenance protocol coverage before marking F-013 accepted."
+    },
+    {
+      "id": "B-048",
+      "title": "Run recurring project documentation refresh after each accepted feature",
+      "status": "new",
+      "notes": "Standing maintenance item: after each accepted feature or merged PR, update PROJECT_PRD, PROJECT_DEVELOPMENT_PLAN, project-status, progress, features, and backlog when facts or roadmap change."
     }
   ]
 }
