@@ -41,4 +41,14 @@ describe('F-006 token contract', () => {
   it('does not define raw color functions outside the token layer', () => {
     expect(layoutCss).not.toMatch(/rgba?\(/);
   });
+
+  it('defines Revenue Observatory surfaces through token-layer variables', () => {
+    expect(css).toContain('--observatory-glass-surface:');
+    expect(css).toContain('--observatory-grid-line:');
+    expect(css).toContain('--observatory-cyan-signal:');
+    expect(css).toContain('--observatory-copper-accent:');
+    expect(layoutCss).toContain('data-visual-system="revenue-observatory"');
+    expect(layoutCss).toContain('scope-observatory-map');
+    expect(layoutCss).toContain('capture-signal-rail');
+  });
 });

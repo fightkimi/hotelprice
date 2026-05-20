@@ -12,6 +12,7 @@ import type {
   Signal,
   TrendSeries
 } from '../types/contracts';
+import { buildCaptureEntryPreview, buildDataScopeSummary } from './dataScope';
 import { domainSeed, type DemoEventAnnotation, type DomainDemoSeed } from './domainSeed';
 
 function yuan(priceCents: number): number {
@@ -284,9 +285,9 @@ function buildTrend(seed: DomainDemoSeed): DemoDataset['trend'] {
   });
 
   const series: TrendSeries[] = [
-    { id: 'owner-rate', label: '本酒店价', colorToken: '--color-teal', points: ownerPoints },
-    { id: 'core-average', label: '核心竞品均价', colorToken: '--color-violet', points: corePoints },
-    { id: 'event-lift', label: '事件影响指数', colorToken: '--color-amber', points: eventPoints }
+    { id: 'owner-rate', label: '本酒店价', colorVar: '--color-teal', points: ownerPoints },
+    { id: 'core-average', label: '核心竞品均价', colorVar: '--color-violet', points: corePoints },
+    { id: 'event-lift', label: '事件影响指数', colorVar: '--color-amber', points: eventPoints }
   ];
 
   return {
@@ -402,6 +403,8 @@ export function buildDomainDrivenDemoDataset(seed: DomainDemoSeed = domainSeed):
     liveCollectionEnabled: false,
     demoDisclosure: '演示数据：本页仅使用静态样例，不连接真实平台或客户系统。',
     context: buildContext(normalizedSeed),
+    dataScope: buildDataScopeSummary(normalizedSeed),
+    captureEntry: buildCaptureEntryPreview(),
     trend: buildTrend(normalizedSeed),
     heatmap: buildHeatmap(normalizedSeed),
     platformGaps: buildPlatformGaps(normalizedSeed),

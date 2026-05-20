@@ -59,7 +59,7 @@ export function TrendChart({ data }: TrendChartProps) {
                 x2={xFor(point.date)}
                 y1={yFor(previous.value)}
                 y2={yFor(point.value)}
-                stroke={colorValue(series.colorToken)}
+                stroke={colorValue(series.colorVar)}
                 strokeWidth="3"
                 strokeLinecap="round"
               />
@@ -81,7 +81,7 @@ export function TrendChart({ data }: TrendChartProps) {
                     cy={yFor(point.value)}
                     r="4"
                     fill="var(--color-surface)"
-                    stroke={colorValue(series.colorToken)}
+                    stroke={colorValue(series.colorVar)}
                     strokeWidth="2"
                   />
                 )
@@ -108,7 +108,7 @@ export function TrendChart({ data }: TrendChartProps) {
       <div className="chart-legend">
         {data.series.map((series) => (
           <span key={series.id} className="chart-legend__item">
-            <span className="chart-legend__swatch" style={{ background: colorValue(series.colorToken) }} />
+            <span className="chart-legend__swatch" style={{ background: colorValue(series.colorVar) }} />
             {series.label}
           </span>
         ))}
