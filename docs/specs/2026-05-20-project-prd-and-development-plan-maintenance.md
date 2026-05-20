@@ -74,7 +74,8 @@
 
 - 项目级 PRD 存在, 并能作为完整需求真源使用。
 - 项目级开发计划存在, 并能指导下一个 feature queue。
-- 文档明确写入维护节奏和更新触发条件。
+- 文档明确写入每周固定维护节奏和更新触发条件。
+- 项目级文档周更 automation 已启用, 且任务范围遵守 Planner 边界。
 - `features.json` 记录 F-013。
 - `progress.json` 指向 F-013。
 - `backlog.json` 记录 Planner 完成项和后续文档维护项。

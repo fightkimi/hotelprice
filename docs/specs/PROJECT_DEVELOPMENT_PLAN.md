@@ -168,10 +168,11 @@ Evaluator 必须交付:
 - 用户提出新的演示目标、投资人叙事、真实数据来源或合规限制时。
 - 发现当前 PRD 与实现事实不一致时。
 
-建议节奏:
+固定节奏:
 
 - 每个 Planner session 开始时读取项目级 PRD 和开发计划。
-- 每 3 个 feature 或每 1 周做一次项目级文档巡检。
+- 每周一上午由项目级文档周更 automation 执行一次 PRD、开发计划、status、features、progress、backlog 和近期 test reports 巡检。
+- 每 3 个 feature 额外做一次人工 Planner 巡检, 用于调整路线和拆分后续 feature queue。
 - Evaluator 在验收报告里增加一项: project docs freshness。
 - 若项目级文档滞后, backlog 新增文档修复项, 并在下一次产品实现前处理。
 
@@ -181,7 +182,7 @@ Evaluator 必须交付:
 - 价格可比性风险: F-014 到 F-016 必须继续保留房型、税费、取消政策和入住人数边界。
 - 视觉一致性风险: 新 UI 必须复用 F-012 Revenue Observatory primitives。
 - PR 堆叠风险: 开发可以连续推进, 但每个 feature branch 应尽量从最新 `main` 创建, 合并后及时同步本地。
-- 文档漂移风险: F-013 建立项目级文档真源和维护门禁。
+- 文档漂移风险: F-013 建立项目级文档真源、维护门禁和每周固定周更 automation。
 
 ## 8. 当前下一步
 

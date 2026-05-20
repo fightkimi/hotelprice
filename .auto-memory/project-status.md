@@ -30,6 +30,7 @@
 - Project-level development plan: `docs/specs/PROJECT_DEVELOPMENT_PLAN.md`.
 - F-013 spec: `docs/specs/2026-05-20-project-prd-and-development-plan-maintenance.md`.
 - F-013 plan: `docs/superpowers/plans/2026-05-20-project-prd-and-development-plan-maintenance.md`.
+- Weekly project-document maintenance automation is active for this workspace and runs as Planner governance work.
 
 ## Product Baseline
 
@@ -67,6 +68,7 @@ It does not modify:
 - No credential, cookie, session, CAPTCHA, browser automation, storage, backend route, migration, file upload, recommended-price, or automatic-pricing work is introduced by F-013.
 - Future real-data work must first pass a source compliance specification.
 - Future product work must read `docs/specs/PROJECT_PRD.md` and `docs/specs/PROJECT_DEVELOPMENT_PLAN.md` before planning or implementation.
+- Project-level PRD and development plan must be checked weekly, even when no feature has been accepted that week.
 
 ## Next Step
 

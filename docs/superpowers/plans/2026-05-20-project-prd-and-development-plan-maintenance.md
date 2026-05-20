@@ -178,16 +178,16 @@ Append:
 
 ```json
 {
-  "id": "B-048",
-  "title": "Run recurring project documentation refresh after each accepted feature",
-  "status": "new",
-  "notes": "Standing maintenance item: after each accepted feature or merged PR, update PROJECT_PRD, PROJECT_DEVELOPMENT_PLAN, project-status, progress, features, and backlog when facts or roadmap change."
+    "id": "B-048",
+    "title": "Run recurring project documentation refresh after each accepted feature",
+    "status": "new",
+    "notes": "Standing maintenance item: every week, and after each accepted feature or merged PR, update PROJECT_PRD, PROJECT_DEVELOPMENT_PLAN, project-status, progress, features, and backlog when facts or roadmap change."
 }
 ```
 
 - [ ] **Step 4: Update `.auto-memory/project-status.md`**
 
-Record that PR #8 is merged, current role is Planner, current batch is F-013, and next step is B-047 Evaluator verification followed by F-014 planning.
+Record that PR #8 is merged, current role is Planner, current batch is F-013, weekly project-document maintenance is active, and next step is B-047 Evaluator verification followed by F-014 planning.
 
 ### Task 5: Verify And Commit
 

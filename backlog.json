@@ -327,7 +327,7 @@
       "id": "B-048",
       "title": "Run recurring project documentation refresh after each accepted feature",
       "status": "new",
-      "notes": "Standing maintenance item: after each accepted feature or merged PR, update PROJECT_PRD, PROJECT_DEVELOPMENT_PLAN, project-status, progress, features, and backlog when facts or roadmap change."
+      "notes": "Standing maintenance item: every week, and after each accepted feature or merged PR, update PROJECT_PRD, PROJECT_DEVELOPMENT_PLAN, project-status, progress, features, and backlog when facts or roadmap change. A weekly local automation is active for the Hotel Pricing Capture workspace."
     }
   ]
 }
