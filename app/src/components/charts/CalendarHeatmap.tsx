@@ -4,6 +4,7 @@ import type { CSSProperties } from 'react';
 interface CalendarHeatmapProps {
   days: HeatmapDay[];
   selectedDate?: string;
+  onSelectDate?: (date: string) => void;
 }
 
 function clampIntensity(value: number | null) {
@@ -11,7 +12,14 @@ function clampIntensity(value: number | null) {
   return Math.min(1, Math.max(0, value));
 }
 
-export function CalendarHeatmap({ days, selectedDate }: CalendarHeatmapProps) {
+function cellLabel(day: HeatmapDay): string {
+  if (day.status === 'unavailable') {
+    return `${day.label} 暂无可比样本 ${day.eventLabel ?? '普通工作日'}`;
+  }
+  return `${day.label} 本酒店价 CNY ${day.ownerRate} ${day.eventLabel ?? '普通工作日'}`;
+}
+
+export function CalendarHeatmap({ days, selectedDate, onSelectDate }: CalendarHeatmapProps) {
   return (
     <section className="chart-panel calendar-heatmap chart-frame observatory-panel">
       <div className="chart-panel__header">
@@ -33,6 +41,9 @@ export function CalendarHeatmap({ days, selectedDate }: CalendarHeatmapProps) {
               key={day.date}
               data-status={day.status}
               data-selected={selected ? 'true' : 'false'}
+              aria-label={cellLabel(day)}
+              aria-pressed={selected}
+              onClick={() => onSelectDate?.(day.date)}
               style={
                 intensity === null
                   ? undefined
