@@ -3,7 +3,7 @@
 版本: 2026-05-20
 状态: 项目级 roadmap 真源, 随每个已验收 feature 更新
 当前主线: `main` includes F-012 through PR #8
-下一建议切片: F-014 interactive price calendar and date detail workflow
+当前规划切片: F-014 interactive price calendar and date detail workflow
 
 ## 1. 开发原则
 
@@ -23,6 +23,7 @@
 - F-010 owner-position evidence enrichment: 本店与竞品证据角色、人工复核语义。
 - F-011 data scope and capture entry preview: 数据范围、采集入口预览、production connection disabled。
 - F-012 production Revenue Observatory visual upgrade: 全局高级视觉系统、宽屏观测舱、五屏一致性和图表框架。
+- F-013 project PRD and development plan maintenance: 项目级 PRD、项目级开发计划、F-013 验收和每周文档维护机制。
 
 ### 历史与参考基线
 
@@ -64,7 +65,7 @@
    - 不改产品代码。
 2. F-014 interactive price calendar and date detail workflow
    - 支持点击日期查看详情。
-   - 日期详情展示本店价格、竞品样本、平台分布、事件上下文、可用性和证据。
+   - 日期详情展示本店价格、核心竞品均价、平台价差、事件上下文、可用性、证据来源、采集时间、样本数和可比口径。
    - 保持 fixture/manual seed, 不接真实采集。
 3. F-015 alert review workflow depth
    - 增强提醒复核列表、证据抽屉、人工状态和复核备注的前端工作流。
@@ -186,7 +187,7 @@ Evaluator 必须交付:
 
 ## 8. 当前下一步
 
-1. 完成 F-013 Planner 文档维护切片。
-2. 交给 Evaluator 检查 PRD、开发计划、status、features、progress 和 backlog 是否一致。
-3. 从最新 `main` 开启 F-014 Planner 规格: interactive price calendar and date detail workflow。
-4. F-014 Generator 只在规格和计划明确后开始, 并严格使用 TDD。
+1. F-014 Planner 规格和 Generator-ready plan 完成后, 交给 Generator 执行 B-050。
+2. F-014 Generator 按 TDD 实现 `CalendarDayDetail` / `calendarDetails.byDate`、`CalendarHeatmap` 点击回调和 `CalendarScreen` 日期详情联动。
+3. F-014 Evaluator 执行 B-051, 独立验证数据契约、交互、移动端、合规和完整 app verification。
+4. F-014 accepted 后再准备 B-052 PR 收口。

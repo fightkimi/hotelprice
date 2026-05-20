@@ -328,6 +328,34 @@
       "title": "Run recurring project documentation refresh after each accepted feature",
       "status": "new",
       "notes": "Standing maintenance item: every week, and after each accepted feature or merged PR, update PROJECT_PRD, PROJECT_DEVELOPMENT_PLAN, project-status, progress, features, and backlog when facts or roadmap change. A weekly local automation is active for the Hotel Pricing Capture workspace."
+    },
+    {
+      "id": "B-049",
+      "title": "Planner prepares F-014 interactive price calendar detail workflow",
+      "status": "done",
+      "feature_id": "F-014-interactive-price-calendar-detail-workflow",
+      "notes": "Created the F-014 spec and Generator-ready plan for CalendarDayDetail/calendarDetails.byDate, CalendarHeatmap date selection, CalendarScreen selected-date detail rendering, platform gap rows, evidence source visibility, missing-sample safety, and Playwright click-flow coverage."
+    },
+    {
+      "id": "B-050",
+      "title": "Generator implements F-014 interactive price calendar detail workflow",
+      "status": "new",
+      "feature_id": "F-014-interactive-price-calendar-detail-workflow",
+      "notes": "Use docs/superpowers/plans/2026-05-20-interactive-price-calendar-detail-workflow.md with strict TDD. Keep the work local fixture/manual only; do not change F-008 alert math, add backend/persistence, or introduce automatic pricing."
+    },
+    {
+      "id": "B-051",
+      "title": "Evaluator verifies F-014 interactive price calendar detail workflow",
+      "status": "new",
+      "feature_id": "F-014-interactive-price-calendar-detail-workflow",
+      "notes": "Verify calendarDetails coverage, date-click interaction, platform gaps, evidence markers, capture time, rate basis, human-review-only behavior, unavailable-date missing state, mobile no-overflow, safety scan, full app verification, and project-doc freshness."
+    },
+    {
+      "id": "B-052",
+      "title": "Prepare F-014 PR after final acceptance",
+      "status": "new",
+      "feature_id": "F-014-interactive-price-calendar-detail-workflow",
+      "notes": "After Evaluator acceptance, prepare a bounded F-014 PR from the F-014 feature branch. Do not push directly to main or master."
     }
   ]
 }

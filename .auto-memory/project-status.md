@@ -4,17 +4,17 @@
 
 - Project: Hotel Pricing Capture
 - Workflow: Triad Workflow with Planner / Generator / Evaluator roles
-- Current role for this pass: Evaluator
+- Current role for this pass: Planner
 - Superpowers: mandatory sequence recorded in `.auto-memory/superpowers-workflow.md`
 - Branch rule: feature branch + PR only; no direct push to `main` / `master`
 
 ## Current Batch
 
-- Batch id: `project-prd-and-development-plan-maintenance`
-- Feature: `F-013-project-prd-and-development-plan-maintenance`
-- Goal: establish and maintain project-level PRD and project-level development plan as the source of truth for future product work
-- Status: done
-- Current branch: `feature/f-013-project-prd-roadmap-maintenance`
+- Batch id: `interactive-price-calendar-detail-workflow`
+- Feature: `F-014-interactive-price-calendar-detail-workflow`
+- Goal: plan the date-detail data contract and Calendar UI interaction workflow for Generator implementation
+- Status: planning
+- Current branch: `feature/f-014-interactive-price-calendar-detail-workflow-planning`
 
 ## Current Facts
 
@@ -33,6 +33,9 @@
 - B-047 Evaluator verification accepted F-013.
 - B-047 report: `docs/test-reports/2026-05-20-f-013-project-prd-and-development-plan-maintenance-evaluator.md`.
 - Weekly project-document maintenance automation is active for this workspace and runs as Planner governance work.
+- F-014 selected route: date-detail data contract plus UI interaction workflow.
+- F-014 spec: `docs/specs/2026-05-20-interactive-price-calendar-detail-workflow.md`.
+- F-014 plan: `docs/superpowers/plans/2026-05-20-interactive-price-calendar-detail-workflow.md`.
 
 ## Product Baseline
 
@@ -75,14 +78,30 @@ It does not modify:
 - Triad doctor, Triad doctor smoke test, JSON parsing, and H5 prototype regression passed; prototype regression reports 14 checks.
 - Weekly local automation `酒店定价捕捉项目级文档周更` is ACTIVE for this workspace and reinforces B-048 recurring maintenance.
 
+## F-014 Scope
+
+F-014 is planned as a product implementation slice for Generator:
+
+- add `CalendarDayDetail` and `calendarDetails.byDate` to the local `DemoDataset` contract;
+- derive date details from existing fixture/manual domain seed data;
+- add `CalendarHeatmap` date selection callback and accessible selected state;
+- update `CalendarScreen` to use local selected-date state and render platform gaps, evidence sources, capture time, sample count, rate basis, event impact, missing sample state, and human-review markers;
+- add Testing Library and Playwright coverage for date click behavior and mobile no-overflow.
+
+F-014 must not:
+
+- change F-008 domain alert math;
+- add live OTA collection;
+- add backend, persistence, credentials, cookies, sessions, CAPTCHA handling, storage, file upload, recommended price, or automatic pricing.
+
 ## Boundaries
 
 - No live OTA collection.
-- No credential, cookie, session, CAPTCHA, browser automation, storage, backend route, migration, file upload, recommended-price, or automatic-pricing work is introduced by F-013.
+- No credential, cookie, session, CAPTCHA, browser automation, storage, backend route, migration, file upload, recommended-price, or automatic-pricing work is introduced by F-014.
 - Future real-data work must first pass a source compliance specification.
 - Future product work must read `docs/specs/PROJECT_PRD.md` and `docs/specs/PROJECT_DEVELOPMENT_PLAN.md` before planning or implementation.
 - Project-level PRD and development plan must be checked weekly, even when no feature has been accepted that week.
 
 ## Next Step
 
-B-048 remains the standing project-documentation maintenance item. The recommended next product slice is F-014 interactive price calendar and date detail workflow from the latest `main`.
+B-050 should have Generator implement F-014 from `docs/superpowers/plans/2026-05-20-interactive-price-calendar-detail-workflow.md` using strict TDD. B-048 remains the standing weekly project-documentation maintenance item.

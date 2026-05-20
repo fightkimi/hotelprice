@@ -4,6 +4,7 @@
 状态: 项目级需求真源, 随每个已验收 feature 更新
 维护角色: Planner
 当前正式产品基线: F-012 Production Revenue Observatory Visual Upgrade, 已合并至 `main` through PR #8
+当前规划切片: F-014 Interactive Price Calendar Detail Workflow
 
 ## 1. 产品定位
 
@@ -67,6 +68,7 @@
 - F-010: owner-position evidence enrichment, 区分本店观测和竞品证据。
 - F-011: data scope and capture entry preview, 展示数据范围、采集入口和 production connection disabled 状态。
 - F-012: Revenue Observatory visual upgrade, 覆盖 overview、calendar、market comparison、alert review 和 setup/data scope 五个屏, 提供宽屏观测舱、图表框架和移动端无溢出门禁。
+- F-013: project PRD and development plan maintenance, 建立项目级 PRD、项目级开发计划和每周维护机制。
 
 历史 H5 prototype 仍可作为演示灵感和回归测试对象, 但正式产品的实现真源是 React app 和已验收 feature 文档。
 
@@ -82,7 +84,7 @@
 
 - 按入住日期展示价格、可用性、事件影响和异常信号。
 - 不可用、无价格、来源错误和过期样本必须有明确状态, 不能伪装成有效价格。
-- 下一步重点是 F-014: 支持日期点击、日期详情、房型和平台切换后的局部解释。
+- 当前规划重点是 F-014: 支持日期点击、日期详情、平台价差、证据来源、采集时间、可比口径和 missing sample state。
 
 ### 8.3 竞品监控与平台价差
 
