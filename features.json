@@ -239,6 +239,36 @@
                 "planner": "F-010 accepted after B-036 verification. PR #4 is open from feature/f-010-owner-position-evidence-planning: https://github.com/fightkimi/hotelprice/pull/4",
                 "evaluator": "Accepted: owner-position evidence now includes owner_observation plus competitor_sample records, UI evidence labels distinguish owner and competitor observations, human-review-only behavior is preserved, and app/domain/prototype/PR hygiene checks passed."
             }
+        },
+        {
+            "id": "F-011-data-scope-capture-entry",
+            "title": "Data scope and capture entry preview",
+            "status": "done",
+            "executor": "evaluator",
+            "artifacts": [
+                "docs/specs/2026-05-19-data-scope-capture-entry.md",
+                "docs/superpowers/plans/2026-05-19-data-scope-capture-entry.md",
+                "docs/test-reports/2026-05-19-f-011-generator-notes.md",
+                "docs/test-reports/2026-05-19-f-011-data-scope-capture-entry-evaluator.md",
+                "app/src/types/contracts.ts",
+                "app/src/data/dataScope.ts",
+                "app/src/data/domainDrivenDataset.ts",
+                "app/src/components/charts/TrendChart.tsx",
+                "app/src/screens/SetupDataScopeScreen.tsx",
+                "app/src/styles/tokens.css",
+                "app/src/styles/layout.css",
+                "app/tests/contract/tokens.test.ts",
+                "app/tests/contract/demoDataset.test.ts",
+                "app/tests/data/domainDrivenDataset.test.ts",
+                "app/tests/components/setupDataScopeScreen.test.tsx",
+                "app/tests/domain/complianceScan.test.ts",
+                "docs/test-reports/f-007-app-foundation/setup-data-scope--1280x800.png",
+                "docs/test-reports/f-007-app-foundation/setup-data-scope--768x1024.png"
+            ],
+            "handoff": {
+                "generator": "Implemented typed dataScope and captureEntry dataset contracts, pure domainSeed derivation, customer-safe Setup/Data Scope capture-entry preview, Revenue Observatory visual migration for the formal setup surface, safety scan coverage, and refreshed setup screenshot artifacts with strict TDD. Kept all behavior local fixture/manual only and did not add live collection, persistence, credentials, file upload, browser automation, or automatic pricing.",
+                "evaluator": "Accepted for product behavior and data-boundary coverage. Independent reverify passed typed scope derivation, capture-entry statuses, productionConnectionEnabled false, human-review-only behavior, customer-safe copy, Revenue Observatory setup visual contract, screenshots, safety scans, app/domain/prototype regressions, and generated-artifact hygiene. PR prep must first resolve the F-010 PR #4 dependency and clean or separately isolate local H5 reference-file dirt."
+            }
         }
   ]
 }

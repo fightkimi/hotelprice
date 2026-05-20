@@ -628,6 +628,125 @@
   gap: var(--space-12);
 }
 
+.scope-grid,
+.capture-entry-list,
+.platform-scope-list {
+  display: grid;
+  gap: var(--space-12);
+}
+
+.scope-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+[data-visual-system="revenue-observatory"] {
+  position: relative;
+}
+
+[data-visual-system="revenue-observatory"]::before {
+  position: absolute;
+  inset: -10px;
+  z-index: -1;
+  border-radius: var(--radius-panel);
+  background-image:
+    linear-gradient(var(--observatory-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--observatory-grid-line) 1px, transparent 1px),
+    var(--observatory-track-surface);
+  background-size: 40px 40px, 40px 40px, auto;
+  content: "";
+}
+
+.observatory-glass-panel {
+  border-color: var(--observatory-glass-border);
+  background: var(--observatory-glass-surface);
+  box-shadow: var(--observatory-shadow);
+  backdrop-filter: blur(18px);
+}
+
+.scope-observatory-map {
+  display: grid;
+  gap: var(--space-12);
+}
+
+.scope-metric-cell {
+  background: var(--observatory-node-surface);
+  box-shadow: inset 0 0 0 1px var(--observatory-inset-line);
+}
+
+.scope-signal-axis {
+  height: 2px;
+  border-radius: var(--radius-pill);
+  background: var(--observatory-track-surface);
+}
+
+.capture-entry-row,
+.platform-scope-row {
+  display: grid;
+  gap: var(--space-8);
+  min-width: 0;
+  padding: var(--space-12);
+  border: var(--border-width) solid var(--color-line);
+  border-radius: var(--radius-panel);
+  background: var(--observatory-node-surface);
+}
+
+.scope-orbit-node {
+  position: relative;
+  border-color: var(--observatory-inset-line);
+}
+
+.scope-orbit-node::before {
+  position: absolute;
+  top: var(--space-12);
+  left: -5px;
+  width: 9px;
+  height: 9px;
+  border: var(--border-width) solid var(--observatory-copper-accent);
+  border-radius: var(--radius-pill);
+  background: var(--observatory-cyan-signal);
+  content: "";
+}
+
+.capture-signal-rail {
+  position: relative;
+}
+
+.capture-signal-rail::before {
+  position: absolute;
+  top: var(--space-8);
+  bottom: var(--space-8);
+  left: -6px;
+  width: 2px;
+  border-radius: var(--radius-pill);
+  background: var(--observatory-track-surface);
+  content: "";
+}
+
+.capture-entry-row {
+  position: relative;
+  border-color: var(--observatory-inset-line);
+}
+
+.capture-entry-row::before {
+  position: absolute;
+  top: var(--space-16);
+  left: -10px;
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-pill);
+  background: var(--observatory-blue-signal);
+  box-shadow: 0 0 0 3px var(--observatory-cyan-signal);
+  content: "";
+}
+
+.capture-entry-row__top,
+.platform-scope-row__top {
+  display: flex;
+  gap: var(--space-8);
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
 @media (max-width: 900px) {
   .app-shell__inner {
     padding: var(--space-16);
@@ -696,6 +815,10 @@
   }
 
   .setup-list {
+    grid-template-columns: 1fr;
+  }
+
+  .scope-grid {
     grid-template-columns: 1fr;
   }
 }
