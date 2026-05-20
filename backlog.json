@@ -319,9 +319,9 @@
     {
       "id": "B-047",
       "title": "Evaluator verifies F-013 project documentation baseline",
-      "status": "new",
+      "status": "done",
       "feature_id": "F-013-project-prd-and-development-plan-maintenance",
-      "notes": "Verify PRD/development plan freshness, status consistency, no product-code changes, and maintenance protocol coverage before marking F-013 accepted."
+      "notes": "Evaluator report written at docs/test-reports/2026-05-20-f-013-project-prd-and-development-plan-maintenance-evaluator.md. Verdict: accepted. PROJECT_PRD and PROJECT_DEVELOPMENT_PLAN match the F-012 / PR #8 main baseline, include F-014 next-slice direction, preserve compliance boundaries, and define maintenance protocol. Diff is documentation/state-only; JSON/Triad/prototype/diff checks passed."
     },
     {
       "id": "B-048",

@@ -1,10 +1,10 @@
 {
   "project": "hotel-pricing-capture",
-  "status": "verifying",
+  "status": "done",
   "batch_id": "project-prd-and-development-plan-maintenance",
   "current_sprint": "F-013-project-prd-and-development-plan-maintenance",
   "total_features": 14,
-  "completed_features": 10,
+  "completed_features": 11,
   "features": [
     "F-000-workflow-bootstrap",
     "F-001-hotel-rate-watch-mvp",

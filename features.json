@@ -311,17 +311,18 @@
         {
             "id": "F-013-project-prd-and-development-plan-maintenance",
             "title": "Project PRD and development plan maintenance",
-            "status": "verifying",
-            "executor": "planner",
+            "status": "done",
+            "executor": "evaluator",
             "artifacts": [
                 "docs/specs/PROJECT_PRD.md",
                 "docs/specs/PROJECT_DEVELOPMENT_PLAN.md",
                 "docs/specs/2026-05-20-project-prd-and-development-plan-maintenance.md",
-                "docs/superpowers/plans/2026-05-20-project-prd-and-development-plan-maintenance.md"
+                "docs/superpowers/plans/2026-05-20-project-prd-and-development-plan-maintenance.md",
+                "docs/test-reports/2026-05-20-f-013-project-prd-and-development-plan-maintenance-evaluator.md"
             ],
             "handoff": {
                 "generator": "No product-code Generator work is required for F-013. Future Generators must read the project PRD and development plan before starting a feature slice.",
-                "evaluator": "Verify that project-level docs match the current main branch facts, state files are consistent, and no product code, tests, or build config changed."
+                "evaluator": "Accepted: PROJECT_PRD and PROJECT_DEVELOPMENT_PLAN match the F-012 / PR #8 main baseline, define F-014 as the next recommended product slice, preserve compliance and human-review boundaries, establish maintenance protocol, keep F-013 documentation/state-only, and pass JSON/Triad/prototype/diff checks."
             }
         }
   ]
