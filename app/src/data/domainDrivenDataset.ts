@@ -1,6 +1,10 @@
 import { generateAlertCandidates, isAlertableSnapshot, markStaleSnapshots } from '../domain/pricing';
 import type { AlertCandidate, AlertableRateSnapshot, HotelProfile, RateSnapshot } from '../domain/pricing';
 import type {
+  CalendarDayDetail,
+  CalendarEventImpact,
+  CalendarPlatformGapRow,
+  CalendarRateBasis,
   ContextSelection,
   DemoDataset,
   EventMarker,
@@ -377,6 +381,142 @@ function buildPlatformGaps(seed: DomainDemoSeed): DemoDataset['platformGaps'] {
   };
 }
 
+function eventImpactForDate(seed: DomainDemoSeed, date: string): CalendarEventImpact {
+  const event = eventForDate(seed, date);
+  return {
+    label: event?.label ?? '普通工作日',
+    type: event?.type ?? 'normal',
+    lift: event?.lift ?? 0,
+    confidence: event?.confidence ?? 'partial'
+  };
+}
+
+function rateBasisForDate(seed: DomainDemoSeed, date: string): CalendarRateBasis {
+  const sourceId = primarySourceId(seed);
+  const snapshot = representativeSnapshot(seed, date, sourceId);
+  const rateKey = uiRateKey(seed, snapshot);
+  return {
+    roomType: rateKey.roomType,
+    occupancy: rateKey.occupancy,
+    mealPlan: rateKey.mealPlan,
+    taxFeeBasis: rateKey.taxFeeBasis,
+    cancellationPolicy: rateKey.cancellationPolicy
+  };
+}
+
+function latestCaptureTime(snapshots: RateSnapshot[]): string | null {
+  return latestSnapshot(snapshots)?.capturedAt ?? null;
+}
+
+function calendarPlatformGapRows(seed: DomainDemoSeed, stayDate: string): CalendarPlatformGapRow[] {
+  const owner = ownerHotel(seed);
+  const coreCount = coreCompetitors(seed).length;
+
+  return seed.platforms.map((platform) => {
+    const ownerSample = latestAvailableForHotelDateSource(seed, owner.hotelId, stayDate, platform.sourceId);
+    const samples = coreSamples(seed, stayDate, platform.sourceId);
+    const average = averageCents(samples);
+    const captureTime = latestCaptureTime([...(ownerSample ? [ownerSample] : []), ...samples]);
+
+    if (!ownerSample || average === null) {
+      return {
+        platform: platform.label,
+        ownerRate: null,
+        coreAverage: null,
+        gap: null,
+        coverage: samples.length / Math.max(coreCount, 1),
+        sampleSize: ownerSample ? samples.length + 1 : samples.length,
+        captureTime,
+        status: 'missing-sample'
+      };
+    }
+
+    const ownerRate = yuan(ownerSample.priceCents);
+    const coreAverage = yuan(average);
+    return {
+      platform: platform.label,
+      ownerRate,
+      coreAverage,
+      gap: ownerRate - coreAverage,
+      coverage: samples.length / Math.max(coreCount, 1),
+      sampleSize: samples.length + 1,
+      captureTime,
+      status: 'available'
+    };
+  });
+}
+
+function calendarEvidenceMarkers(seed: DomainDemoSeed, day: HeatmapDay, rows: CalendarPlatformGapRow[]): EvidenceMarker[] {
+  const availableRows = rows.filter((row) => row.status === 'available');
+  if (day.status === 'unavailable' || availableRows.length === 0) {
+    return [
+      {
+        label: `暂无可比样本 · ${day.date}`,
+        source: 'fixture 演示源',
+        captureTime: day.date,
+        sampleSize: 0,
+        confidence: 'unavailable'
+      }
+    ];
+  }
+
+  const primaryRow = availableRows[0];
+  const source = primaryRow.platform;
+  const captureTime = primaryRow.captureTime ?? seed.now;
+  return [
+    {
+      label: `本酒店观测 · ${seed.context.roomTypeKey} · ${day.date}`,
+      source,
+      captureTime,
+      sampleSize: 1,
+      confidence: 'partial'
+    },
+    {
+      label: `核心竞品样本 · ${seed.context.roomTypeKey} · ${day.date}`,
+      source,
+      captureTime,
+      sampleSize: Math.max(primaryRow.sampleSize - 1, 0),
+      confidence: primaryRow.sampleSize >= 4 ? 'sample' : 'partial'
+    }
+  ];
+}
+
+function buildCalendarDetails(seed: DomainDemoSeed, heatmap: DemoDataset['heatmap']): DemoDataset['calendarDetails'] {
+  const byDate = Object.fromEntries(
+    heatmap.days.map((day): [string, CalendarDayDetail] => {
+      const platformGaps = calendarPlatformGapRows(seed, day.date);
+      const availableRows = platformGaps.filter((row) => row.status === 'available');
+      const primaryAvailable = availableRows[0];
+      const captureTime =
+        primaryAvailable?.captureTime ??
+        latestCaptureTime(seed.snapshots.filter((snapshot) => snapshot.rateKey.stayDate === day.date && sourceIds(seed).has(snapshot.rateKey.sourceId)));
+
+      return [
+        day.date,
+        {
+          stayDate: day.date,
+          label: day.label,
+          status: day.status,
+          currency: 'CNY',
+          ownerRate: day.ownerRate,
+          coreAverage: day.coreAverage,
+          gap: day.ownerRate !== null && day.coreAverage !== null ? day.ownerRate - day.coreAverage : null,
+          sampleSize: day.sampleSize,
+          eventImpact: eventImpactForDate(seed, day.date),
+          platformGaps,
+          evidenceMarkers: calendarEvidenceMarkers(seed, day, platformGaps),
+          captureTime,
+          rateBasis: rateBasisForDate(seed, day.date),
+          missingSampleReason: day.status === 'unavailable' ? '暂无可比样本，需要等待人工导入或获授权来源补充。' : undefined,
+          humanReviewRequired: true
+        }
+      ];
+    })
+  );
+
+  return { byDate };
+}
+
 function alertPriority(alert: AlertCandidate): number {
   if (alert.alertType.startsWith('owner')) {
     return 0;
@@ -392,6 +532,7 @@ export function buildDomainDrivenDemoDataset(seed: DomainDemoSeed = domainSeed):
     ...seed,
     snapshots: markStaleSnapshots(seed.snapshots, seed.now)
   };
+  const heatmap = buildHeatmap(normalizedSeed);
   const alerts = generateAlertCandidates({
     hotels: normalizedSeed.hotels,
     snapshots: normalizedSeed.snapshots,
@@ -406,7 +547,8 @@ export function buildDomainDrivenDemoDataset(seed: DomainDemoSeed = domainSeed):
     dataScope: buildDataScopeSummary(normalizedSeed),
     captureEntry: buildCaptureEntryPreview(),
     trend: buildTrend(normalizedSeed),
-    heatmap: buildHeatmap(normalizedSeed),
+    heatmap,
+    calendarDetails: buildCalendarDetails(normalizedSeed, heatmap),
     platformGaps: buildPlatformGaps(normalizedSeed),
     signals: alerts.map((alert) => mapAlertToSignal(normalizedSeed, alert))
   };
