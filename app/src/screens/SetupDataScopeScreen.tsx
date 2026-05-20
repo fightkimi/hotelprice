@@ -36,9 +36,9 @@ export function SetupDataScopeScreen({ dataset }: SetupDataScopeScreenProps) {
   ] as const;
 
   return (
-    <section className="screen-grid screen-grid--two setup-observatory" data-visual-system="revenue-observatory">
-      <div className="panel observatory-glass-panel">
-        <div className="panel__header">
+    <section className="screen-grid screen-grid--two setup-observatory observatory-screen" data-visual-system="revenue-observatory">
+      <div className="panel observatory-glass-panel observatory-panel">
+        <div className="panel__header instrument-header">
           <div>
             <h2 className="panel__title">数据范围</h2>
             <p className="panel__meta">按酒店、竞品、平台、日期和价格口径限定分析边界。</p>
@@ -70,8 +70,8 @@ export function SetupDataScopeScreen({ dataset }: SetupDataScopeScreenProps) {
           </div>
         </div>
       </div>
-      <aside className="panel observatory-glass-panel">
-        <div className="panel__header">
+      <aside className="panel observatory-glass-panel observatory-panel">
+        <div className="panel__header instrument-header">
           <div>
             <h2 className="panel__title">采集入口</h2>
             <p className="panel__meta">当前只展示入口状态，生产连接保持关闭。</p>

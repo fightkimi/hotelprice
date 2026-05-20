@@ -11,10 +11,10 @@ export function CalendarScreen({ dataset, detailOpen }: CalendarScreenProps) {
   const selected = dataset.heatmap.days.find((day) => day.date === selectedDate) ?? dataset.heatmap.days[0];
 
   return (
-    <section className="screen-grid screen-grid--two">
+    <section className="screen-grid screen-grid--two observatory-screen">
       <CalendarHeatmap days={dataset.heatmap.days} selectedDate={selected.date} />
-      <aside className="panel detail-panel" data-state={detailOpen ? 'open' : 'closed'}>
-        <div className="panel__header">
+      <aside className="panel detail-panel observatory-panel insight-rail" data-state={detailOpen ? 'open' : 'closed'}>
+        <div className="panel__header instrument-header">
           <div>
             <h2 className="panel__title">日期详情</h2>
             <p className="panel__meta">{selected.date}</p>

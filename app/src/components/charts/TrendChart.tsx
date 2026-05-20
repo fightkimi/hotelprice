@@ -13,8 +13,8 @@ const width = 720;
 const height = 260;
 const padding = { top: 24, right: 24, bottom: 44, left: 56 };
 
-function colorValue(token: string) {
-  return `var(${token})`;
+function colorValue(cssVariable: string) {
+  return `var(${cssVariable})`;
 }
 
 export function TrendChart({ data }: TrendChartProps) {
@@ -34,7 +34,7 @@ export function TrendChart({ data }: TrendChartProps) {
   const yFor = (value: number) => padding.top + (1 - (value - min) / Math.max(max - min, 1)) * innerHeight;
 
   return (
-    <section className="chart-panel trend-chart">
+    <section className="chart-panel trend-chart chart-frame observatory-panel">
       <div className="chart-panel__header">
         <div>
           <h2 className="panel__title">价格趋势</h2>

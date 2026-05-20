@@ -12,7 +12,7 @@ const typeLabel: Record<EventMarker['type'], string> = {
 
 export function EventTimeline({ events }: EventTimelineProps) {
   return (
-    <section className="chart-panel event-timeline">
+    <section className="chart-panel event-timeline chart-frame observatory-panel">
       <div className="chart-panel__header">
         <div>
           <h2 className="panel__title">事件时间线</h2>
