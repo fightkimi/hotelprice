@@ -168,6 +168,42 @@ describe('alert candidate rules', () => {
     expect(highRisk.some((alert) => alert.alertType === 'owner_high_risk' && alert.sampleSize === 3)).toBe(true);
   });
 
+  it('adds owner observation and competitor sample evidence to owner-position alerts', () => {
+    const alerts = generate([
+      snap('owner-1', 'owner', '2026-05-19T12:00:00.000Z', 30000),
+      snap('a2', 'comp-a', '2026-05-19T12:00:00.000Z', 50000),
+      snap('b2', 'comp-b', '2026-05-19T12:00:00.000Z', 50000),
+      snap('c2', 'comp-c', '2026-05-19T12:00:00.000Z', 50000)
+    ]);
+
+    const ownerAlert = alerts.find((alert) => alert.alertType === 'owner_low_risk');
+
+    expect(ownerAlert?.evidence).toEqual([
+      expect.objectContaining({
+        role: 'owner_observation',
+        hotelId: 'owner',
+        capturedAt: '2026-05-19T12:00:00.000Z',
+        priceCents: 30000,
+        sampleSize: 3
+      }),
+      expect.objectContaining({ role: 'competitor_sample', hotelId: 'comp-a', priceCents: 50000, sampleSize: 3 }),
+      expect.objectContaining({ role: 'competitor_sample', hotelId: 'comp-b', priceCents: 50000, sampleSize: 3 }),
+      expect.objectContaining({ role: 'competitor_sample', hotelId: 'comp-c', priceCents: 50000, sampleSize: 3 })
+    ]);
+  });
+
+  it('labels competitor movement evidence as latest and previous observations', () => {
+    const [alert] = generate([
+      snap('a1', 'comp-a', '2026-05-19T08:00:00.000Z', 40000),
+      snap('a2', 'comp-a', '2026-05-19T12:00:00.000Z', 44000)
+    ]);
+
+    expect(alert.evidence).toEqual([
+      expect.objectContaining({ role: 'latest_observation', hotelId: 'comp-a', priceCents: 44000 }),
+      expect.objectContaining({ role: 'previous_observation', hotelId: 'comp-a', priceCents: 40000 })
+    ]);
+  });
+
   it('includes human-review evidence and never emits a recommended new price', () => {
     const [alert] = generate([
       snap('a1', 'comp-a', '2026-05-19T08:00:00.000Z', 40000),

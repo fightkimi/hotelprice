@@ -63,6 +63,16 @@ describe('domain-driven demo dataset signals', () => {
       }
     }
   });
+
+  it('surfaces owner-position owner evidence separately from competitor samples', () => {
+    const dataset = buildDomainDrivenDemoDataset(domainSeed);
+    const ownerSignal = dataset.signals.find((signal) => signal.id.includes('owner_low_risk') || signal.id.includes('owner_high_risk'));
+
+    expect(ownerSignal).toBeDefined();
+    expect(ownerSignal?.humanReviewRequired).toBe(true);
+    expect(ownerSignal?.evidenceMarkers.some((marker) => marker.label.startsWith('本酒店观测'))).toBe(true);
+    expect(ownerSignal?.evidenceMarkers.filter((marker) => marker.label.startsWith('核心竞品样本')).length).toBeGreaterThanOrEqual(3);
+  });
 });
 
 describe('domain-driven demo dataset charts', () => {

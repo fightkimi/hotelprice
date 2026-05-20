@@ -1,10 +1,10 @@
 {
   "project": "hotel-pricing-capture",
   "status": "done",
-  "batch_id": "domain-driven-ui-data-flow",
-  "current_sprint": "F-009-domain-driven-ui-data-flow",
-  "total_features": 10,
-  "completed_features": 7,
+  "batch_id": "owner-position-evidence-enrichment",
+  "current_sprint": "F-010-owner-position-evidence-enrichment",
+  "total_features": 11,
+  "completed_features": 8,
   "features": [
     "F-000-workflow-bootstrap",
     "F-001-hotel-rate-watch-mvp",
@@ -15,6 +15,7 @@
     "F-006-production-ui-contract",
     "F-007-formal-app-foundation",
     "F-008-domain-core-rate-boundaries",
-    "F-009-domain-driven-ui-data-flow"
+    "F-009-domain-driven-ui-data-flow",
+    "F-010-owner-position-evidence-enrichment"
   ]
 }

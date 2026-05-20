@@ -179,9 +179,9 @@
     {
       "id": "B-027",
       "title": "Track owner-position evidence enrichment after F-008",
-      "status": "new",
+      "status": "done",
       "feature_id": "F-008-domain-core-rate-boundaries",
-      "notes": "Non-blocking follow-up from B-024/B-026 P2: consider including the owner snapshot in owner-position alert evidence or documenting top-level owner alert fields as the owner-side evidence source. It may be handled as an adapter-level note during F-009 or split into a separate small slice; it is not an F-009 blocker."
+      "notes": "Promoted into F-010-owner-position-evidence-enrichment. The follow-up will include explicit owner_observation evidence in owner-position alerts and customer-safe owner/competitor evidence marker labels."
     },
     {
       "id": "B-028",
@@ -231,6 +231,27 @@
       "status": "done",
       "feature_id": "F-009-domain-driven-ui-data-flow",
       "notes": "Completed. PR #3 `F-009 Domain-driven UI data flow` was opened from feature/f-009-domain-driven-ui-planning to main: https://github.com/fightkimi/hotelprice/pull/3"
+    },
+        {
+            "id": "B-035",
+            "title": "Generator implements F-010 owner-position evidence enrichment",
+            "status": "done",
+            "feature_id": "F-010-owner-position-evidence-enrichment",
+            "notes": "Implemented with strict TDD. Added evidence roles, priceCents, owner_observation and competitor_sample evidence for owner-position alerts, customer-safe UI evidence labels, safety/regression checks, and Generator notes at docs/test-reports/2026-05-19-f-010-generator-notes.md."
+        },
+    {
+      "id": "B-036",
+      "title": "Evaluator verifies F-010 owner-position evidence enrichment",
+      "status": "done",
+      "feature_id": "F-010-owner-position-evidence-enrichment",
+      "notes": "Evaluator report written at docs/test-reports/2026-05-19-f-010-owner-position-evidence-enrichment-evaluator.md. Verdict: accepted; owner/competitor evidence roles, UI evidence marker labels, human-review-only behavior, safety scan, app/domain/prototype regressions, and PR hygiene passed."
+    },
+    {
+      "id": "B-037",
+      "title": "Prepare F-010 PR after final acceptance",
+      "status": "done",
+      "feature_id": "F-010-owner-position-evidence-enrichment",
+      "notes": "Completed. PR #4 `F-010 Owner-position evidence enrichment` was opened from feature/f-010-owner-position-evidence-planning to main: https://github.com/fightkimi/hotelprice/pull/4"
     }
   ]
 }

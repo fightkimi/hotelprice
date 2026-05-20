@@ -52,12 +52,21 @@ export type AlertType =
   | 'owner_low_risk'
   | 'owner_high_risk';
 
+export type AlertEvidenceRole =
+  | 'latest_observation'
+  | 'previous_observation'
+  | 'market_sample'
+  | 'owner_observation'
+  | 'competitor_sample';
+
 export interface AlertEvidence {
+  role: AlertEvidenceRole;
   sourceKind: SourceKind;
   capturedAt: string;
   hotelId: string;
   rateKeyId: string;
   sampleSize: number;
+  priceCents: number | null;
 }
 
 export interface AlertCandidate {
