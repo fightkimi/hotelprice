@@ -1,10 +1,10 @@
 {
   "project": "hotel-pricing-capture",
-  "status": "verifying",
+  "status": "done",
   "batch_id": "production-revenue-observatory-visual-upgrade",
   "current_sprint": "F-012-production-revenue-observatory-visual-upgrade",
   "total_features": 13,
-  "completed_features": 9,
+  "completed_features": 10,
   "features": [
     "F-000-workflow-bootstrap",
     "F-001-hotel-rate-watch-mvp",

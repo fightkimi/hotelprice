@@ -298,16 +298,16 @@
     {
       "id": "B-044",
       "title": "Evaluator verifies F-012 production Revenue Observatory visual upgrade",
-      "status": "new",
+      "status": "done",
       "feature_id": "F-012-production-revenue-observatory-visual-upgrade",
-      "notes": "Verify global visual-system coverage, exact screenshot dimensions including the new 2048x1352 artifacts, wide-shell behavior, mobile no-overflow behavior, chart semantic preservation, customer-safe copy, no live collection or automatic pricing, and PR diff bounded to F-012 after dependency cleanup."
+      "notes": "Evaluator report written at docs/test-reports/2026-05-20-f-012-production-revenue-observatory-visual-upgrade-evaluator.md. Verdict: accepted. Evidence covered global visual-system coverage, exact screenshot dimensions including the new 2048x1352 artifacts, wide-shell behavior, mobile no-overflow behavior, chart semantic preservation, customer-safe copy, no live collection or automatic pricing, full app/domain/prototype verification, and PR hygiene. PR prep still needs F-010/F-011 dependency cleanup before opening F-012 PR."
     },
     {
       "id": "B-045",
       "title": "Prepare F-012 PR after final acceptance",
       "status": "new",
       "feature_id": "F-012-production-revenue-observatory-visual-upgrade",
-      "notes": "After Evaluator acceptance, prepare the F-012 PR only after F-010 and F-011 dependencies are reflected in the base branch or the F-012 branch is cleanly rebased so the PR contains only visual-system changes."
+      "notes": "After Evaluator acceptance, prepare the F-012 PR only after F-010 and F-011 dependencies are reflected in the base branch or the F-012 branch is cleanly rebased so the PR contains only visual-system changes. Current branch is ahead of origin/main by 19 commits because it includes F-010, F-011, and F-012."
     }
   ]
 }
