@@ -24,6 +24,8 @@
 - F-009 merge commit: `48ab7bb`.
 - F-010 owner-position evidence enrichment is accepted and recorded as PR #4.
 - F-011 data scope and capture entry is accepted for product behavior and data-boundary coverage.
+- F-011 PR: #5 `F-011 Data scope and capture entry`, stacked on `feature/f-010-owner-position-evidence-planning`, https://github.com/fightkimi/hotelprice/pull/5.
+- F-012 PR: #6 `F-012 Production Revenue Observatory visual upgrade`, stacked on `feature/f-011-data-scope-capture-entry-planning`, https://github.com/fightkimi/hotelprice/pull/6.
 - Current branch: `feature/f-012-production-revenue-observatory-visual-upgrade-planning`.
 - F-012 selected route: Option A, global Revenue Observatory visual system upgrade.
 - F-012 spec: `docs/specs/2026-05-20-production-revenue-observatory-visual-upgrade.md`.
@@ -33,7 +35,7 @@
 - B-043 is complete.
 - B-044 Evaluator verification accepted F-012.
 - B-044 report: `docs/test-reports/2026-05-20-f-012-production-revenue-observatory-visual-upgrade-evaluator.md`.
-- B-045 is the PR-preparation task after F-012 acceptance.
+- B-041 and B-045 are complete through stacked PRs.
 
 ## F-012 Implementation Summary
 
@@ -88,4 +90,10 @@ F-012 upgraded the formal app into a cohesive Revenue Observatory visual system:
 
 ## Next Step
 
-B-045 should prepare the F-012 PR only after F-010 and F-011 dependencies are reflected in the PR base or the F-012 branch is cleanly rebased so the PR contains only visual-system changes. Do not push directly to `main` or `master`.
+Review and merge the stacked PR chain in order:
+
+1. PR #4: F-010 into `main`.
+2. PR #5: F-011 into the F-010 branch, or retarget to `main` after PR #4 is merged.
+3. PR #6: F-012 into the F-011 branch, or retarget to `main` after PR #5 is merged.
+
+Do not push directly to `main` or `master`.

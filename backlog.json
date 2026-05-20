@@ -277,9 +277,9 @@
     {
       "id": "B-041",
       "title": "Prepare F-011 PR after final acceptance",
-      "status": "new",
+      "status": "done",
       "feature_id": "F-011-data-scope-capture-entry",
-      "notes": "After Evaluator acceptance, push the F-011 feature branch and open a PR to main. First resolve the F-010 PR #4 dependency by rebasing after F-010 is merged or otherwise ensuring F-011 does not duplicate F-010 changes, and clean/stash/commit separately the local H5 visual reference files before PR creation."
+      "notes": "Completed as a stacked PR to keep the diff clean while PR #4 remains open. Pushed feature/f-011-data-scope-capture-entry-planning and opened PR #5 against feature/f-010-owner-position-evidence-planning: https://github.com/fightkimi/hotelprice/pull/5. GitHub reports the PR is open and mergeable."
     },
     {
       "id": "B-042",
@@ -305,9 +305,9 @@
     {
       "id": "B-045",
       "title": "Prepare F-012 PR after final acceptance",
-      "status": "new",
+      "status": "done",
       "feature_id": "F-012-production-revenue-observatory-visual-upgrade",
-      "notes": "After Evaluator acceptance, prepare the F-012 PR only after F-010 and F-011 dependencies are reflected in the base branch or the F-012 branch is cleanly rebased so the PR contains only visual-system changes. Current branch is ahead of origin/main by 19 commits because it includes F-010, F-011, and F-012."
+      "notes": "Completed as a stacked PR to keep the diff clean while PR #5 remains open. Pushed feature/f-012-production-revenue-observatory-visual-upgrade-planning and opened PR #6 against feature/f-011-data-scope-capture-entry-planning: https://github.com/fightkimi/hotelprice/pull/6. GitHub reports the PR is open and mergeable."
     }
   ]
 }

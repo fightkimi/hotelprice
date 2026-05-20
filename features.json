@@ -267,7 +267,7 @@
             ],
             "handoff": {
                 "generator": "Implemented typed dataScope and captureEntry dataset contracts, pure domainSeed derivation, customer-safe Setup/Data Scope capture-entry preview, Revenue Observatory visual migration for the formal setup surface, safety scan coverage, and refreshed setup screenshot artifacts with strict TDD. Kept all behavior local fixture/manual only and did not add live collection, persistence, credentials, file upload, browser automation, or automatic pricing.",
-                "evaluator": "Accepted for product behavior and data-boundary coverage. Independent reverify passed typed scope derivation, capture-entry statuses, productionConnectionEnabled false, human-review-only behavior, customer-safe copy, Revenue Observatory setup visual contract, screenshots, safety scans, app/domain/prototype regressions, and generated-artifact hygiene. PR prep must first resolve the F-010 PR #4 dependency and clean or separately isolate local H5 reference-file dirt."
+                "evaluator": "Accepted for product behavior and data-boundary coverage. Independent reverify passed typed scope derivation, capture-entry statuses, productionConnectionEnabled false, human-review-only behavior, customer-safe copy, Revenue Observatory setup visual contract, screenshots, safety scans, app/domain/prototype regressions, and generated-artifact hygiene. PR #5 is open as a stacked PR based on feature/f-010-owner-position-evidence-planning: https://github.com/fightkimi/hotelprice/pull/5"
             }
         },
         {
@@ -305,7 +305,7 @@
             ],
             "handoff": {
                 "generator": "Implemented the global Revenue Observatory visual system upgrade with strict TDD. Added shell tokens, global app-shell marker, five-screen observatory primitives, chart frames, 2048x1352 screenshot gates, and Generator notes without changing business semantics.",
-                "evaluator": "Accepted: global Revenue Observatory visual coverage, exact screenshot dimensions, 2048px shell target, mobile no-overflow behavior, chart semantic preservation, customer-safe copy, no-live-collection/no-automatic-pricing safety scan, app/domain/prototype verification, and generated-artifact hygiene passed. PR prep must rebase or wait until F-010 and F-011 are reflected in the base branch so the F-012 PR is bounded to visual-system changes."
+                "evaluator": "Accepted: global Revenue Observatory visual coverage, exact screenshot dimensions, 2048px shell target, mobile no-overflow behavior, chart semantic preservation, customer-safe copy, no-live-collection/no-automatic-pricing safety scan, app/domain/prototype verification, and generated-artifact hygiene passed. PR #6 is open as a stacked PR based on feature/f-011-data-scope-capture-entry-planning: https://github.com/fightkimi/hotelprice/pull/6"
             }
         }
   ]
