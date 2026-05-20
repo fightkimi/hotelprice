@@ -328,16 +328,29 @@
         {
             "id": "F-014-interactive-price-calendar-detail-workflow",
             "title": "Interactive price calendar detail workflow",
-            "status": "planning",
-            "executor": "planner",
+            "status": "verifying",
+            "executor": "generator",
             "artifacts": [
                 "docs/specs/2026-05-20-interactive-price-calendar-detail-workflow.md",
                 "docs/superpowers/plans/2026-05-20-interactive-price-calendar-detail-workflow.md",
                 "docs/specs/PROJECT_PRD.md",
-                "docs/specs/PROJECT_DEVELOPMENT_PLAN.md"
+                "docs/specs/PROJECT_DEVELOPMENT_PLAN.md",
+                "docs/test-reports/2026-05-20-f-014-generator-notes.md",
+                "app/src/types/contracts.ts",
+                "app/src/data/domainDrivenDataset.ts",
+                "app/src/components/charts/CalendarHeatmap.tsx",
+                "app/src/screens/CalendarScreen.tsx",
+                "app/src/styles/layout.css",
+                "app/tests/data/domainDrivenDataset.test.ts",
+                "app/tests/components/charts.test.tsx",
+                "app/tests/components/calendarScreen.test.tsx",
+                "app/tests/e2e/app-foundation.spec.ts",
+                "docs/test-reports/f-007-app-foundation/calendar-detail-open--1440x900.png",
+                "docs/test-reports/f-007-app-foundation/calendar-detail-open--390x844.png",
+                "docs/test-reports/f-007-app-foundation/calendar-observatory--2048x1352.png"
             ],
             "handoff": {
-                "generator": "Implement the date-detail data contract plus CalendarHeatmap/CalendarScreen interaction from the F-014 plan using strict TDD. Do not change F-008 alert math, add live collection, add persistence, or introduce automatic pricing.",
+                "generator": "Implemented the date-detail data contract plus CalendarHeatmap/CalendarScreen interaction from the F-014 plan using strict TDD. Date details are fixture/manual derived, selected-date UI state drives platform gaps/evidence/capture-time/rate-basis/missing-sample display, and Playwright covers mobile date clicks. No F-008 alert math, live collection, persistence, or automatic pricing was added.",
                 "evaluator": "Verify date-detail contract coverage, date-click UI behavior, platform gap/evidence/capture-time/rate-basis visibility, unavailable-date safety, mobile no-overflow behavior, app verification, and no live collection or automatic pricing."
             }
         }

@@ -4,7 +4,7 @@
 
 - Project: Hotel Pricing Capture
 - Workflow: Triad Workflow with Planner / Generator / Evaluator roles
-- Current role for this pass: Planner
+- Current role for this pass: Generator
 - Superpowers: mandatory sequence recorded in `.auto-memory/superpowers-workflow.md`
 - Branch rule: feature branch + PR only; no direct push to `main` / `master`
 
@@ -12,8 +12,8 @@
 
 - Batch id: `interactive-price-calendar-detail-workflow`
 - Feature: `F-014-interactive-price-calendar-detail-workflow`
-- Goal: plan the date-detail data contract and Calendar UI interaction workflow for Generator implementation
-- Status: planning
+- Goal: implement the date-detail data contract and Calendar UI interaction workflow for Evaluator verification
+- Status: verifying
 - Current branch: `feature/f-014-interactive-price-calendar-detail-workflow-planning`
 
 ## Current Facts
@@ -36,6 +36,8 @@
 - F-014 selected route: date-detail data contract plus UI interaction workflow.
 - F-014 spec: `docs/specs/2026-05-20-interactive-price-calendar-detail-workflow.md`.
 - F-014 plan: `docs/superpowers/plans/2026-05-20-interactive-price-calendar-detail-workflow.md`.
+- B-050 Generator implementation is complete and ready for B-051 Evaluator verification.
+- F-014 Generator notes: `docs/test-reports/2026-05-20-f-014-generator-notes.md`.
 
 ## Product Baseline
 
@@ -78,15 +80,16 @@ It does not modify:
 - Triad doctor, Triad doctor smoke test, JSON parsing, and H5 prototype regression passed; prototype regression reports 14 checks.
 - Weekly local automation `酒店定价捕捉项目级文档周更` is ACTIVE for this workspace and reinforces B-048 recurring maintenance.
 
-## F-014 Scope
+## F-014 Generator Scope
 
-F-014 is planned as a product implementation slice for Generator:
+F-014 was implemented as a product slice by Generator:
 
-- add `CalendarDayDetail` and `calendarDetails.byDate` to the local `DemoDataset` contract;
-- derive date details from existing fixture/manual domain seed data;
-- add `CalendarHeatmap` date selection callback and accessible selected state;
-- update `CalendarScreen` to use local selected-date state and render platform gaps, evidence sources, capture time, sample count, rate basis, event impact, missing sample state, and human-review markers;
-- add Testing Library and Playwright coverage for date click behavior and mobile no-overflow.
+- added `CalendarDayDetail` and `calendarDetails.byDate` to the local `DemoDataset` contract;
+- derived date details from existing fixture/manual domain seed data after stale normalization;
+- added `CalendarHeatmap` date selection callback and accessible selected state;
+- updated `CalendarScreen` to use local selected-date state and render platform gaps, evidence sources, capture time, sample count, rate basis, event impact, missing sample state, and human-review markers;
+- added Testing Library and Playwright coverage for date click behavior and mobile no-overflow;
+- refreshed calendar screenshots affected by the new detail rail.
 
 F-014 must not:
 
@@ -97,11 +100,11 @@ F-014 must not:
 ## Boundaries
 
 - No live OTA collection.
-- No credential, cookie, session, CAPTCHA, browser automation, storage, backend route, migration, file upload, recommended-price, or automatic-pricing work is introduced by F-014.
+- No credential, cookie, session, CAPTCHA, browser automation, storage, backend route, migration, file upload, recommended-price, or automatic-pricing work was introduced by F-014.
 - Future real-data work must first pass a source compliance specification.
 - Future product work must read `docs/specs/PROJECT_PRD.md` and `docs/specs/PROJECT_DEVELOPMENT_PLAN.md` before planning or implementation.
 - Project-level PRD and development plan must be checked weekly, even when no feature has been accepted that week.
 
 ## Next Step
 
-B-050 should have Generator implement F-014 from `docs/superpowers/plans/2026-05-20-interactive-price-calendar-detail-workflow.md` using strict TDD. B-048 remains the standing weekly project-documentation maintenance item.
+B-051 should have Evaluator verify F-014 from `docs/test-reports/2026-05-20-f-014-generator-notes.md`, the F-014 spec, and the F-014 plan. B-048 remains the standing weekly project-documentation maintenance item.
