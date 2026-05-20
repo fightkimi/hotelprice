@@ -8,7 +8,7 @@ interface PlatformGapBarsProps {
 
 export function PlatformGapBars({ rows, maxGap, unit }: PlatformGapBarsProps) {
   return (
-    <section className="chart-panel platform-bars">
+    <section className="chart-panel platform-bars chart-frame observatory-panel">
       <div className="chart-panel__header">
         <div>
           <h2 className="panel__title">跨平台价差</h2>
