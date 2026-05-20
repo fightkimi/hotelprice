@@ -12,8 +12,8 @@
 
 - Batch id: `interactive-price-calendar-detail-workflow`
 - Feature: `F-014-interactive-price-calendar-detail-workflow`
-- Goal: complete B-051 Evaluator verification for the date-detail data contract and Calendar UI interaction workflow
-- Status: ready for B-052 PR preparation
+- Goal: keep F-014 PR #9 bounded while it targets the accepted F-013 documentation base
+- Status: PR #9 open
 - Current branch: `feature/f-014-interactive-price-calendar-detail-workflow-planning`
 
 ## Current Facts
@@ -38,6 +38,7 @@
 - F-014 plan: `docs/superpowers/plans/2026-05-20-interactive-price-calendar-detail-workflow.md`.
 - B-050 Generator implementation is complete.
 - B-051 Evaluator verification accepted F-014.
+- B-052 prepared the bounded F-014 PR: https://github.com/fightkimi/hotelprice/pull/9.
 - F-014 Generator notes: `docs/test-reports/2026-05-20-f-014-generator-notes.md`.
 - F-014 Evaluator report: `docs/test-reports/2026-05-20-f-014-interactive-price-calendar-detail-workflow-evaluator.md`.
 
@@ -51,7 +52,7 @@ The formal product baseline is the React Revenue Observatory app:
 - F-010 enriched owner-position alert evidence with owner and competitor evidence roles.
 - F-011 added typed data scope and capture-entry preview while keeping production connection disabled.
 - F-012 upgraded the app to the global Revenue Observatory visual system across Overview, Calendar, Market Comparison, Alert Review, and Setup/Data Scope.
-- F-014 adds an accepted interactive calendar date-detail workflow on top of the Revenue Observatory calendar; it is pending B-052 PR preparation.
+- F-014 adds an accepted interactive calendar date-detail workflow on top of the Revenue Observatory calendar; PR #9 is open against `feature/f-013-project-prd-roadmap-maintenance` to keep the diff bounded.
 
 ## F-013 Scope
 
@@ -107,7 +108,7 @@ F-014 must not:
 - Targeted F-014 app regression passed: `3 files / 20 tests`.
 - Full app verification passed: production build, Vitest `15 files / 76 tests`, and Playwright `19 tests`.
 - Triad doctor, Triad doctor smoke test, JSON parsing, prototype regression, screenshot dimensions, `git diff --check`, generated-artifact check, and product safety scans passed.
-- F-014 diff is bounded relative to `feature/f-013-project-prd-roadmap-maintenance`; direct diff to `main` still includes F-013 documentation commits because `main` is at the F-012 / PR #8 baseline.
+- F-014 PR #9 is bounded relative to `feature/f-013-project-prd-roadmap-maintenance`; direct diff to `main` still includes F-013 documentation commits because `main` is at the F-012 / PR #8 baseline.
 - Project PRD and development plan were refreshed after acceptance to show F-014 accepted and F-015 as the next recommended planning slice.
 
 ## Boundaries
@@ -120,4 +121,4 @@ F-014 must not:
 
 ## Next Step
 
-B-052 should prepare a bounded F-014 PR. If targeting `main`, first account for the accepted F-013 documentation commits or wait until F-013 is reflected in the target base. After the PR path is settled, Planner can prepare F-015 alert review workflow depth. B-048 remains the standing weekly project-documentation maintenance item.
+F-014 PR #9 is open with base `feature/f-013-project-prd-roadmap-maintenance` and head `feature/f-014-interactive-price-calendar-detail-workflow-planning`. Next, merge or otherwise land the F-013 documentation base, then retarget/merge F-014 as appropriate. After the PR path is settled, Planner can prepare F-015 alert review workflow depth. B-048 remains the standing weekly project-documentation maintenance item.

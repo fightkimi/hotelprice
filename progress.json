@@ -1,6 +1,6 @@
 {
   "project": "hotel-pricing-capture",
-  "status": "ready-for-pr",
+  "status": "pr-open",
   "batch_id": "interactive-price-calendar-detail-workflow",
   "current_sprint": "F-014-interactive-price-calendar-detail-workflow",
   "total_features": 15,

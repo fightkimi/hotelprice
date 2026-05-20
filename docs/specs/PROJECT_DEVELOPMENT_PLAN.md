@@ -2,7 +2,7 @@
 
 版本: 2026-05-20
 状态: 项目级 roadmap 真源, 随每个已验收 feature 更新
-当前主线: `main` includes F-012 through PR #8; F-014 已通过 Evaluator 验收, 待 B-052 PR 收口
+当前主线: `main` includes F-012 through PR #8; F-014 已通过 Evaluator 验收并打开 PR #9, base 为 F-013 文档分支
 当前规划切片: F-015 alert review workflow depth
 
 ## 1. 开发原则
@@ -27,7 +27,7 @@
 ### 已验收、待 PR 或文档基线
 
 - F-013 project PRD and development plan maintenance: 项目级 PRD、项目级开发计划、F-013 验收和每周文档维护机制。
-- F-014 interactive price calendar and date detail workflow: 日期点击详情、平台价差、证据来源、采集时间、样本数、可比口径、missing sample state 和人工复核标记。
+- F-014 interactive price calendar and date detail workflow: 日期点击详情、平台价差、证据来源、采集时间、样本数、可比口径、missing sample state 和人工复核标记。PR #9 已打开, base 为 `feature/f-013-project-prd-roadmap-maintenance`。
 
 ### 历史与参考基线
 
@@ -58,7 +58,7 @@
 
 ### Phase 2: 业务工作流深度
 
-状态: 进行中。F-014 已验收, 下一步先完成 B-052 PR 收口, 然后进入 F-015。
+状态: 进行中。F-014 已验收并打开 PR #9, 下一步先处理 F-013 base 的落地/retarget, 然后进入 F-015。
 
 目标: 让用户不仅看到指标, 还能沿日期、房型、平台和事件追溯到可解释详情。
 
@@ -71,7 +71,7 @@
    - 支持点击日期查看详情。
    - 日期详情展示本店价格、核心竞品均价、平台价差、事件上下文、可用性、证据来源、采集时间、样本数和可比口径。
    - 保持 fixture/manual seed, 不接真实采集。
-   - 已通过 B-051 Evaluator 验收, 待 B-052 PR 收口。
+   - 已通过 B-051 Evaluator 验收, B-052 已打开 PR #9。
 3. F-015 alert review workflow depth
    - 增强提醒复核列表、证据抽屉、人工状态和复核备注的前端工作流。
    - 只做本地状态或 fixture 状态, 不引入持久化。
@@ -190,6 +190,6 @@ Evaluator 必须交付:
 
 ## 8. 当前下一步
 
-1. 执行 B-052, 准备一个 bounded F-014 PR。若直接以 `main` 为 base 会带入 F-013 文档提交, 需先让 F-013 进入目标 base 或以 F-013 为 PR base。
-2. PR 合并后同步 `main`、project status、PRD、开发计划和 backlog。
+1. 处理 F-014 PR #9 的 base 路径: 先让 F-013 文档分支进入目标 base, 或在 F-013 落地后把 PR #9 retarget 到 `main`。
+2. PR #9 合并后同步 `main`、project status、PRD、开发计划和 backlog。
 3. Planner 准备 F-015 alert review workflow depth 规格和 Generator-ready plan。

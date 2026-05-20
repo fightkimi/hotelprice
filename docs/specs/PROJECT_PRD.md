@@ -3,7 +3,7 @@
 版本: 2026-05-20
 状态: 项目级需求真源, 随每个已验收 feature 更新
 维护角色: Planner
-当前正式产品基线: `main` includes F-012 through PR #8; F-014 Interactive Price Calendar Detail Workflow 已通过 Evaluator 验收, 待 B-052 PR 收口
+当前正式产品基线: `main` includes F-012 through PR #8; F-014 Interactive Price Calendar Detail Workflow 已通过 Evaluator 验收并打开 PR #9, base 为 F-013 文档分支
 当前规划切片: F-015 Alert Review Workflow Depth
 
 ## 1. 产品定位
@@ -72,7 +72,7 @@
 已验收、待 PR 或文档基线包括:
 
 - F-013: project PRD and development plan maintenance, 建立项目级 PRD、项目级开发计划和每周维护机制。
-- F-014: interactive price calendar detail workflow, 增加 `CalendarDayDetail` / `calendarDetails.byDate`, 日期点击详情、平台价差、证据来源、采集时间、样本数、可比口径、missing sample state 和人工复核标记。
+- F-014: interactive price calendar detail workflow, 增加 `CalendarDayDetail` / `calendarDetails.byDate`, 日期点击详情、平台价差、证据来源、采集时间、样本数、可比口径、missing sample state 和人工复核标记。F-014 PR #9 已打开, 为避免混入 F-013 文档提交, 当前 base 是 `feature/f-013-project-prd-roadmap-maintenance`。
 
 历史 H5 prototype 仍可作为演示灵感和回归测试对象, 但正式产品的实现真源是 React app 和已验收 feature 文档。
 

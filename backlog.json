@@ -353,9 +353,9 @@
     {
       "id": "B-052",
       "title": "Prepare F-014 PR after final acceptance",
-      "status": "new",
+      "status": "done",
       "feature_id": "F-014-interactive-price-calendar-detail-workflow",
-      "notes": "Prepare a bounded F-014 PR from the F-014 feature branch. Because main is still at F-012 / PR #8 locally, either target/base on the accepted F-013 branch or wait until F-013 is reflected in the target base so the PR contains only F-014 changes. Do not push directly to main or master."
+      "notes": "Completed. PR #9 `F-014 Interactive price calendar detail workflow` was opened from feature/f-014-interactive-price-calendar-detail-workflow-planning to feature/f-013-project-prd-roadmap-maintenance so the diff stays bounded to F-014. PR URL: https://github.com/fightkimi/hotelprice/pull/9. Retarget to main only after F-013 is reflected in the target base."
     }
   ]
 }
