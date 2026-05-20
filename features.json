@@ -269,6 +269,20 @@
                 "generator": "Implemented typed dataScope and captureEntry dataset contracts, pure domainSeed derivation, customer-safe Setup/Data Scope capture-entry preview, Revenue Observatory visual migration for the formal setup surface, safety scan coverage, and refreshed setup screenshot artifacts with strict TDD. Kept all behavior local fixture/manual only and did not add live collection, persistence, credentials, file upload, browser automation, or automatic pricing.",
                 "evaluator": "Accepted for product behavior and data-boundary coverage. Independent reverify passed typed scope derivation, capture-entry statuses, productionConnectionEnabled false, human-review-only behavior, customer-safe copy, Revenue Observatory setup visual contract, screenshots, safety scans, app/domain/prototype regressions, and generated-artifact hygiene. PR prep must first resolve the F-010 PR #4 dependency and clean or separately isolate local H5 reference-file dirt."
             }
+        },
+        {
+            "id": "F-012-production-revenue-observatory-visual-upgrade",
+            "title": "Production Revenue Observatory visual upgrade",
+            "status": "planning",
+            "executor": "planner",
+            "artifacts": [
+                "docs/specs/2026-05-20-production-revenue-observatory-visual-upgrade.md",
+                "docs/superpowers/plans/2026-05-20-production-revenue-observatory-visual-upgrade.md"
+            ],
+            "handoff": {
+                "generator": "Implement the global Revenue Observatory visual system upgrade from the F-012 plan with strict TDD. Cover tokens, app shell, observatory primitives, five screens, chart frames, 2048x1352/1440x900/390x844 screenshot gates, and safety scans without changing business semantics.",
+                "evaluator": "Verify visual coverage, exact screenshot dimensions, no mobile overflow, chart semantic preservation, customer-safe copy, no live collection or automatic pricing, and PR diff bounded to F-012 after F-010/F-011 dependency cleanup."
+            }
         }
   ]
 }
