@@ -3,7 +3,8 @@
 版本: 2026-05-20
 状态: 项目级需求真源, 随每个已验收 feature 更新
 维护角色: Planner
-当前正式产品基线: F-012 Production Revenue Observatory Visual Upgrade, 已合并至 `main` through PR #8
+当前正式产品基线: `main` includes F-012 through PR #8; F-014 Interactive Price Calendar Detail Workflow 已通过 Evaluator 验收并打开 PR #9, base 为 F-013 文档分支
+当前规划切片: F-015 Alert Review Workflow Depth
 
 ## 1. 产品定位
 
@@ -68,6 +69,11 @@
 - F-011: data scope and capture entry preview, 展示数据范围、采集入口和 production connection disabled 状态。
 - F-012: Revenue Observatory visual upgrade, 覆盖 overview、calendar、market comparison、alert review 和 setup/data scope 五个屏, 提供宽屏观测舱、图表框架和移动端无溢出门禁。
 
+已验收、待 PR 或文档基线包括:
+
+- F-013: project PRD and development plan maintenance, 建立项目级 PRD、项目级开发计划和每周维护机制。
+- F-014: interactive price calendar detail workflow, 增加 `CalendarDayDetail` / `calendarDetails.byDate`, 日期点击详情、平台价差、证据来源、采集时间、样本数、可比口径、missing sample state 和人工复核标记。F-014 PR #9 已打开, 为避免混入 F-013 文档提交, 当前 base 是 `feature/f-013-project-prd-roadmap-maintenance`。
+
 历史 H5 prototype 仍可作为演示灵感和回归测试对象, 但正式产品的实现真源是 React app 和已验收 feature 文档。
 
 ## 8. 核心功能需求
@@ -82,7 +88,8 @@
 
 - 按入住日期展示价格、可用性、事件影响和异常信号。
 - 不可用、无价格、来源错误和过期样本必须有明确状态, 不能伪装成有效价格。
-- 下一步重点是 F-014: 支持日期点击、日期详情、房型和平台切换后的局部解释。
+- F-014 已支持日期点击、日期详情、平台价差、证据来源、采集时间、样本数、可比口径和 missing sample state。
+- 后续增强可以把 Overview、Market Comparison 或 Alert Review 中的日期/提醒跳转到同一日期详情上下文。
 
 ### 8.3 竞品监控与平台价差
 
@@ -95,6 +102,7 @@
 - 只展示需要人工关注的信号, 不自动执行价格动作。
 - 证据需要区分 owner observation 和 competitor sample。
 - 复核流应支持用户理解触发原因、样本状态、影响日期和后续人工动作。
+- 下一轮建议切片是 F-015: 增强提醒复核列表、证据抽屉、人工状态和复核备注的前端工作流, 仍只使用本地或 fixture 状态。
 
 ### 8.5 数据范围与采集入口
 

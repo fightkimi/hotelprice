@@ -67,3 +67,30 @@ test('analytical screens expose evidence and human review markers', async ({ pag
   await expect(page.getByText(/样本/).first()).toBeVisible();
   await expect(page.getByText(/采集时间/).first()).toBeVisible();
 });
+
+test('calendar date click updates mobile detail workflow without overflow', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/?screen=calendar&state=detail-open');
+
+  const detail = page.getByTestId('calendar-detail-panel');
+  await expect(detail).toContainText('2026-05-31');
+  await expect(detail).toContainText('演唱会演示日');
+
+  await page.getByRole('gridcell', { name: /05\/30/ }).click();
+  await expect(detail).toContainText('2026-05-30');
+  await expect(detail).toContainText('端午演示假期');
+  await expect(detail).toContainText('平台价差');
+  await expect(detail).toContainText('证据来源');
+  await expect(detail).toContainText('采集时间');
+  await expect(detail).toContainText('需人工复核');
+
+  await page.getByRole('gridcell', { name: /05\/27/ }).click();
+  await expect(detail).toContainText('2026-05-27');
+  await expect(detail).toContainText('暂无可比样本，需要等待人工导入或获授权来源补充。');
+  await expect(detail).toContainText('缺少可比样本');
+  await expect(detail).not.toContainText('CNY null');
+  await expect(detail).not.toContainText('CNY 0');
+
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+  expect(overflow).toBeLessThanOrEqual(8);
+});

@@ -1,10 +1,10 @@
 {
   "project": "hotel-pricing-capture",
-  "status": "done",
-  "batch_id": "project-prd-and-development-plan-maintenance",
-  "current_sprint": "F-013-project-prd-and-development-plan-maintenance",
-  "total_features": 14,
-  "completed_features": 11,
+  "status": "pr-open",
+  "batch_id": "interactive-price-calendar-detail-workflow",
+  "current_sprint": "F-014-interactive-price-calendar-detail-workflow",
+  "total_features": 15,
+  "completed_features": 12,
   "features": [
     "F-000-workflow-bootstrap",
     "F-001-hotel-rate-watch-mvp",
@@ -19,6 +19,7 @@
     "F-010-owner-position-evidence-enrichment",
     "F-011-data-scope-capture-entry",
     "F-012-production-revenue-observatory-visual-upgrade",
-    "F-013-project-prd-and-development-plan-maintenance"
+    "F-013-project-prd-and-development-plan-maintenance",
+    "F-014-interactive-price-calendar-detail-workflow"
   ]
 }

@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import userEvent from '@testing-library/user-event';
+import { describe, expect, it, vi } from 'vitest';
 import { CalendarHeatmap } from '../../src/components/charts/CalendarHeatmap';
 import { PlatformGapBars } from '../../src/components/charts/PlatformGapBars';
 import { TrendChart } from '../../src/components/charts/TrendChart';
@@ -19,6 +20,22 @@ describe('chart primitives', () => {
 
     expect(screen.getByText(/暂无可比样本/)).toBeVisible();
     expect(screen.getByRole('grid')).toBeVisible();
+  });
+
+  it('exposes selected state and calls back when a date cell is clicked', async () => {
+    const user = userEvent.setup();
+    const handleSelectDate = vi.fn();
+    render(<CalendarHeatmap days={demoDataset.heatmap.days} selectedDate="2026-05-31" onSelectDate={handleSelectDate} />);
+
+    const selectedDate = screen.getByRole('gridcell', { name: /05\/31/ });
+    const targetDate = screen.getByRole('gridcell', { name: /05\/30/ });
+
+    expect(selectedDate).toHaveAttribute('aria-pressed', 'true');
+    expect(targetDate).toHaveAttribute('aria-pressed', 'false');
+
+    await user.click(targetDate);
+
+    expect(handleSelectDate).toHaveBeenCalledWith('2026-05-30');
   });
 
   it('renders platform gap rows with coverage and zero-gap marker', () => {

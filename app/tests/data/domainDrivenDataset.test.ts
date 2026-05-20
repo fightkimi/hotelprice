@@ -142,6 +142,63 @@ describe('domain-driven demo dataset charts', () => {
   });
 });
 
+describe('domain-driven calendar details', () => {
+  it('builds one calendar detail for every heatmap day with review evidence', () => {
+    const dataset = buildDomainDrivenDemoDataset(domainSeed);
+    const detailDates = Object.keys(dataset.calendarDetails.byDate).sort();
+
+    expect(detailDates).toEqual(dataset.heatmap.days.map((day) => day.date).sort());
+
+    const concertDetail = dataset.calendarDetails.byDate['2026-05-31'];
+    expect(concertDetail).toMatchObject({
+      stayDate: '2026-05-31',
+      label: '05/31',
+      status: 'event-lift',
+      currency: 'CNY',
+      humanReviewRequired: true,
+      eventImpact: expect.objectContaining({
+        label: '演唱会演示日',
+        type: 'concert',
+        confidence: 'partial'
+      }),
+      rateBasis: expect.objectContaining({
+        roomType: dataset.context.roomType,
+        occupancy: 2,
+        mealPlan: '双早',
+        taxFeeBasis: '含税含服务费',
+        cancellationPolicy: '入住前24小时可取消'
+      })
+    });
+    expect(concertDetail.ownerRate).toBeGreaterThan(0);
+    expect(concertDetail.coreAverage).toBeGreaterThan(0);
+    expect(concertDetail.gap).toBe(concertDetail.ownerRate! - concertDetail.coreAverage!);
+    expect(concertDetail.platformGaps).toHaveLength(4);
+    expect(concertDetail.platformGaps.some((row) => row.platform === '携程演示源' && row.status === 'available')).toBe(true);
+    expect(concertDetail.evidenceMarkers.length).toBeGreaterThanOrEqual(2);
+    expect(concertDetail.evidenceMarkers.some((marker) => marker.label.startsWith('本酒店观测'))).toBe(true);
+    expect(concertDetail.evidenceMarkers.some((marker) => marker.label.startsWith('核心竞品样本'))).toBe(true);
+  });
+
+  it('keeps unavailable calendar details as missing samples rather than zero prices', () => {
+    const dataset = buildDomainDrivenDemoDataset(domainSeed);
+    const unavailableDetail = dataset.calendarDetails.byDate['2026-05-27'];
+
+    expect(unavailableDetail).toMatchObject({
+      stayDate: '2026-05-27',
+      status: 'unavailable',
+      ownerRate: null,
+      coreAverage: null,
+      gap: null,
+      sampleSize: 0,
+      missingSampleReason: '暂无可比样本，需要等待人工导入或获授权来源补充。',
+      humanReviewRequired: true
+    });
+    expect(unavailableDetail.platformGaps.every((row) => row.status === 'missing-sample')).toBe(true);
+    expect(unavailableDetail.platformGaps.every((row) => row.ownerRate === null && row.coreAverage === null && row.gap === null)).toBe(true);
+    expect(unavailableDetail.evidenceMarkers.every((marker) => marker.confidence === 'unavailable')).toBe(true);
+  });
+});
+
 describe('domain-driven data scope and capture entry', () => {
   it('derives scope boundaries from domain seed hotels and snapshots', () => {
     const dataset = buildDomainDrivenDemoDataset(domainSeed);

@@ -328,6 +328,34 @@
       "title": "Run recurring project documentation refresh after each accepted feature",
       "status": "new",
       "notes": "Standing maintenance item: every week, and after each accepted feature or merged PR, update PROJECT_PRD, PROJECT_DEVELOPMENT_PLAN, project-status, progress, features, and backlog when facts or roadmap change. A weekly local automation is active for the Hotel Pricing Capture workspace."
+    },
+    {
+      "id": "B-049",
+      "title": "Planner prepares F-014 interactive price calendar detail workflow",
+      "status": "done",
+      "feature_id": "F-014-interactive-price-calendar-detail-workflow",
+      "notes": "Created the F-014 spec and Generator-ready plan for CalendarDayDetail/calendarDetails.byDate, CalendarHeatmap date selection, CalendarScreen selected-date detail rendering, platform gap rows, evidence source visibility, missing-sample safety, and Playwright click-flow coverage."
+    },
+        {
+            "id": "B-050",
+            "title": "Generator implements F-014 interactive price calendar detail workflow",
+            "status": "done",
+            "feature_id": "F-014-interactive-price-calendar-detail-workflow",
+            "notes": "Implemented with strict TDD. Added calendarDetails.byDate and CalendarDayDetail contract, derived fixture/manual date details, selectable CalendarHeatmap cells, CalendarScreen selected-date detail workflow with platform gaps/evidence/capture time/rate basis/missing-sample state, Playwright mobile click coverage, refreshed calendar screenshots, and Generator notes at docs/test-reports/2026-05-20-f-014-generator-notes.md. No F-008 alert math, live collection, backend/persistence, or automatic pricing was added."
+        },
+    {
+      "id": "B-051",
+      "title": "Evaluator verifies F-014 interactive price calendar detail workflow",
+      "status": "done",
+      "feature_id": "F-014-interactive-price-calendar-detail-workflow",
+      "notes": "Evaluator report written at docs/test-reports/2026-05-20-f-014-interactive-price-calendar-detail-workflow-evaluator.md. Verdict: accepted. Evidence covered calendarDetails coverage, date-click interaction, platform gaps, evidence markers, capture time, rate basis, human-review-only behavior, unavailable-date missing state, mobile no-overflow, safety scans, full app verification, project-doc freshness, and PR hygiene. Direct PR to main must account for F-013 documentation commits still in this branch."
+    },
+    {
+      "id": "B-052",
+      "title": "Prepare F-014 PR after final acceptance",
+      "status": "done",
+      "feature_id": "F-014-interactive-price-calendar-detail-workflow",
+      "notes": "Completed. PR #9 `F-014 Interactive price calendar detail workflow` was opened from feature/f-014-interactive-price-calendar-detail-workflow-planning to feature/f-013-project-prd-roadmap-maintenance so the diff stays bounded to F-014. PR URL: https://github.com/fightkimi/hotelprice/pull/9. Retarget to main only after F-013 is reflected in the target base."
     }
   ]
 }

@@ -89,6 +89,50 @@ export interface PlatformGapRow {
   coverage: number;
 }
 
+export interface CalendarPlatformGapRow {
+  platform: string;
+  ownerRate: number | null;
+  coreAverage: number | null;
+  gap: number | null;
+  coverage: number;
+  sampleSize: number;
+  captureTime: string | null;
+  status: 'available' | 'missing-sample';
+}
+
+export interface CalendarEventImpact {
+  label: string;
+  type: 'normal' | 'weekend' | 'holiday' | 'concert' | 'expo';
+  lift: number;
+  confidence: 'sample' | 'partial';
+}
+
+export interface CalendarRateBasis {
+  roomType: string;
+  occupancy: number;
+  mealPlan: string;
+  taxFeeBasis: string;
+  cancellationPolicy: string;
+}
+
+export interface CalendarDayDetail {
+  stayDate: string;
+  label: string;
+  status: HeatmapDay['status'];
+  currency: 'CNY';
+  ownerRate: number | null;
+  coreAverage: number | null;
+  gap: number | null;
+  sampleSize: number;
+  eventImpact: CalendarEventImpact;
+  platformGaps: CalendarPlatformGapRow[];
+  evidenceMarkers: EvidenceMarker[];
+  captureTime: string | null;
+  rateBasis: CalendarRateBasis;
+  missingSampleReason?: string;
+  humanReviewRequired: true;
+}
+
 export interface DataScopePlatform {
   label: string;
   channel: string;
@@ -163,6 +207,7 @@ export interface DemoDataset {
     sampleSize: number;
   };
   heatmap: { days: HeatmapDay[] };
+  calendarDetails: { byDate: Record<string, CalendarDayDetail> };
   platformGaps: { rows: PlatformGapRow[]; maxGap: number; unit: 'CNY' };
   signals: Signal[];
 }
