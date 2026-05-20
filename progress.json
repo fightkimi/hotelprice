@@ -1,10 +1,10 @@
 {
   "project": "hotel-pricing-capture",
   "status": "done",
-  "batch_id": "data-scope-capture-entry",
-  "current_sprint": "F-011-data-scope-capture-entry",
-  "total_features": 12,
-  "completed_features": 9,
+  "batch_id": "production-revenue-observatory-visual-upgrade",
+  "current_sprint": "F-012-production-revenue-observatory-visual-upgrade",
+  "total_features": 13,
+  "completed_features": 10,
   "features": [
     "F-000-workflow-bootstrap",
     "F-001-hotel-rate-watch-mvp",
@@ -17,6 +17,7 @@
     "F-008-domain-core-rate-boundaries",
     "F-009-domain-driven-ui-data-flow",
     "F-010-owner-position-evidence-enrichment",
-    "F-011-data-scope-capture-entry"
+    "F-011-data-scope-capture-entry",
+    "F-012-production-revenue-observatory-visual-upgrade"
   ]
 }

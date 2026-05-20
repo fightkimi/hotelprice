@@ -277,9 +277,37 @@
     {
       "id": "B-041",
       "title": "Prepare F-011 PR after final acceptance",
-      "status": "new",
+      "status": "done",
       "feature_id": "F-011-data-scope-capture-entry",
-      "notes": "After Evaluator acceptance, push the F-011 feature branch and open a PR to main. First resolve the F-010 PR #4 dependency by rebasing after F-010 is merged or otherwise ensuring F-011 does not duplicate F-010 changes, and clean/stash/commit separately the local H5 visual reference files before PR creation."
+      "notes": "Completed as a stacked PR to keep the diff clean while PR #4 remains open. Pushed feature/f-011-data-scope-capture-entry-planning and opened PR #5 against feature/f-010-owner-position-evidence-planning: https://github.com/fightkimi/hotelprice/pull/5. GitHub reports the PR is open and mergeable."
+    },
+    {
+      "id": "B-042",
+      "title": "Planner prepares F-012 production Revenue Observatory visual upgrade",
+      "status": "done",
+      "feature_id": "F-012-production-revenue-observatory-visual-upgrade",
+      "notes": "Created the F-012 spec and Generator-ready plan for global Revenue Observatory tokens, wide app shell, shared visual primitives, five-screen coverage, chart frame upgrades, 2048x1352/1440x900/390x844 screenshot gates, and safety checks. Scope explicitly preserves accepted F-008/F-009/F-010/F-011 business semantics."
+    },
+    {
+      "id": "B-043",
+      "title": "Generator implements F-012 production Revenue Observatory visual upgrade",
+      "status": "done",
+      "feature_id": "F-012-production-revenue-observatory-visual-upgrade",
+      "notes": "Implemented with strict TDD. Added failing then green token/shell, five-screen, chart-frame, and screenshot-gate coverage; implemented global Revenue Observatory tokens, wide app shell, observatory primitives, chart frames, 2048x1352 screenshots, no-overflow fix, safety scan cleanup, and Generator notes without touching domain/data semantics."
+    },
+    {
+      "id": "B-044",
+      "title": "Evaluator verifies F-012 production Revenue Observatory visual upgrade",
+      "status": "done",
+      "feature_id": "F-012-production-revenue-observatory-visual-upgrade",
+      "notes": "Evaluator report written at docs/test-reports/2026-05-20-f-012-production-revenue-observatory-visual-upgrade-evaluator.md. Verdict: accepted. Evidence covered global visual-system coverage, exact screenshot dimensions including the new 2048x1352 artifacts, wide-shell behavior, mobile no-overflow behavior, chart semantic preservation, customer-safe copy, no live collection or automatic pricing, full app/domain/prototype verification, and PR hygiene. PR prep still needs F-010/F-011 dependency cleanup before opening F-012 PR."
+    },
+    {
+      "id": "B-045",
+      "title": "Prepare F-012 PR after final acceptance",
+      "status": "done",
+      "feature_id": "F-012-production-revenue-observatory-visual-upgrade",
+      "notes": "Completed as a stacked PR to keep the diff clean while PR #5 remains open. Pushed feature/f-012-production-revenue-observatory-visual-upgrade-planning and opened PR #6 against feature/f-011-data-scope-capture-entry-planning: https://github.com/fightkimi/hotelprice/pull/6. GitHub reports the PR is open and mergeable."
     }
   ]
 }

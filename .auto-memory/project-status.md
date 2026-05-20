@@ -10,8 +10,8 @@
 
 ## Current Batch
 
-- Batch id: `data-scope-capture-entry`
-- Goal: define the F-011 data-scope contract and compliant capture-entry preview before any live source or persistence work
+- Batch id: `production-revenue-observatory-visual-upgrade`
+- Goal: implement the F-012 global Revenue Observatory visual-system upgrade for the formal React app without changing accepted business semantics
 - Status: done
 
 ## Current Facts
@@ -22,84 +22,78 @@
 - F-008 merge commit: `a303c2f`.
 - F-009 is accepted, merged through PR #3, and available on `origin/main`.
 - F-009 merge commit: `48ab7bb`.
-- Local `main` has been fast-forwarded to `origin/main`.
-- Current branch: `feature/f-011-data-scope-capture-entry-planning`.
-- F-010 spec: `docs/specs/2026-05-19-owner-position-evidence-enrichment.md`.
-- F-010 plan: `docs/superpowers/plans/2026-05-19-owner-position-evidence-enrichment.md`.
-- B-027 is now closed as a tracking item because it has been promoted into F-010.
-- B-035 is complete.
-- B-036 Evaluator verification accepted F-010.
-- B-036 report: `docs/test-reports/2026-05-19-f-010-owner-position-evidence-enrichment-evaluator.md`.
-- B-037 is complete.
-- F-010 PR: #4 `F-010 Owner-position evidence enrichment` at https://github.com/fightkimi/hotelprice/pull/4.
-- `origin/main` still points at the F-009 merge commit `48ab7bb`; PR #4 is not reflected in `origin/main` in this local checkout.
-- F-011 spec: `docs/specs/2026-05-19-data-scope-capture-entry.md`.
-- F-011 plan: `docs/superpowers/plans/2026-05-19-data-scope-capture-entry.md`.
-- B-038 is complete.
-- B-039 is complete.
-- B-040 Evaluator verification accepted F-011 for product behavior and data-boundary coverage.
-- B-040 report: `docs/test-reports/2026-05-19-f-011-data-scope-capture-entry-evaluator.md`.
-- B-041 is the PR-preparation task after F-011 acceptance.
+- F-010 owner-position evidence enrichment is accepted and recorded as PR #4.
+- F-011 data scope and capture entry is accepted for product behavior and data-boundary coverage.
+- F-011 PR: #5 `F-011 Data scope and capture entry`, stacked on `feature/f-010-owner-position-evidence-planning`, https://github.com/fightkimi/hotelprice/pull/5.
+- F-012 PR: #6 `F-012 Production Revenue Observatory visual upgrade`, stacked on `feature/f-011-data-scope-capture-entry-planning`, https://github.com/fightkimi/hotelprice/pull/6.
+- Current branch: `feature/f-012-production-revenue-observatory-visual-upgrade-planning`.
+- F-012 selected route: Option A, global Revenue Observatory visual system upgrade.
+- F-012 spec: `docs/specs/2026-05-20-production-revenue-observatory-visual-upgrade.md`.
+- F-012 plan: `docs/superpowers/plans/2026-05-20-production-revenue-observatory-visual-upgrade.md`.
+- F-012 Generator notes: `docs/test-reports/2026-05-20-f-012-generator-notes.md`.
+- B-042 is complete.
+- B-043 is complete.
+- B-044 Evaluator verification accepted F-012.
+- B-044 report: `docs/test-reports/2026-05-20-f-012-production-revenue-observatory-visual-upgrade-evaluator.md`.
+- B-041 and B-045 are complete through stacked PRs.
 
-## Current Design Decision
+## F-012 Implementation Summary
 
-F-011 enriched the Setup/Data Scope surface and dataset contract rather than adding real collection:
+F-012 upgraded the formal app into a cohesive Revenue Observatory visual system:
 
-- added typed `dataScope` and `captureEntry` objects to `DemoDataset`;
-- derived scope from `domainSeed` so property, competitor, channel, stay-date, room-type, occupancy, currency, tax/fee, meal-plan, cancellation, freshness, and capture-time boundaries stay explicit;
-- rendered a customer-safe capture-entry preview for fixture demo, manual import preview, and approved API preview;
-- migrated the H5 `Revenue Observatory` visual language into the formal Setup/Data Scope surface with token-layer glass panels, precision grid, scope map, and capture signal rail;
-- kept `productionConnectionEnabled` false;
-- preserved human-review-only behavior and avoided recommended prices or automatic pricing actions.
+- added global shell, page, instrument, chart-frame, insight, and signal-rail tokens;
+- marked the formal app shell with `data-visual-system="revenue-observatory"`;
+- widened the observatory shell target to `2000px`;
+- applied observatory panel, instrument header, metric lattice, insight rail, and chart frame primitives across Overview, Calendar, Market Comparison, Alert Review, and Setup/Data Scope;
+- upgraded trend, heatmap, platform gap, and event timeline chart frames while preserving existing chart schemas and semantic markers;
+- added five `2048x1352` screenshot artifacts and exact-dimension gates;
+- scoped the F-011 setup-only grid pseudo-element so the global shell no longer causes horizontal overflow.
 
-## F-011 Generator Evidence
+## F-012 Generator Evidence
 
-- Dataset contract and adapter TDD red/green completed.
-- Setup screen component TDD red/green completed.
-- Revenue Observatory visual contract TDD red/green completed from the H5 visual philosophy reference, without staging or committing H5 prototype files.
-- Targeted regression passed after visual migration: `5 files / 24 tests`.
-- Full app verification passed after sandbox escalation for the Playwright local server: build, Vitest `13 files / 68 tests`, Playwright `13 tests`.
-- Triad checks, JSON checks, and prototype regression passed after the Revenue Observatory visual migration and handoff state refresh; current H5 prototype regression reports `15 checks`.
-- Static safety scan found no live collection, credential, cookie, CAPTCHA, storage, browser automation, recommended-price, or automatic-pricing terms in the F-011 touched paths.
-- Updated setup screenshots: `setup-data-scope--1280x800.png` and `setup-data-scope--768x1024.png`.
-- Generator notes: `docs/test-reports/2026-05-19-f-011-generator-notes.md`.
+- RED visual contract: missing observatory tokens, app-shell marker, screen wrappers, and chart frames failed as expected.
+- GREEN token/shell test: `1 file / 4 tests`.
+- RED chart-frame test: missing chart-frame class failed as expected.
+- GREEN chart tests: `1 file / 4 tests`, preserving trend segments, unavailable heatmap copy, and `CNY 0`.
+- GREEN five-screen tests: `2 files / 4 tests`.
+- Targeted visual regression: `4 files / 12 tests`.
+- Domain/data regression: `7 files / 45 tests`.
+- Full `/opt/homebrew/bin/npm run verify`: build passed, Vitest `14 files / 71 tests`, Playwright `18 tests`.
+- Project checks passed: `triad_doctor.py`, `test_triad_doctor.py`, JSON parsing for progress/features/backlog, and H5 prototype regression with 14 checks.
+- Static safety scan over app source paths produced no matches after renaming a harmless chart helper parameter from `token` to `cssVariable`.
+- New screenshot artifacts confirmed by `sips` at exact `2048x1352` dimensions:
+  - `docs/test-reports/f-007-app-foundation/overview-observatory--2048x1352.png`
+  - `docs/test-reports/f-007-app-foundation/calendar-observatory--2048x1352.png`
+  - `docs/test-reports/f-007-app-foundation/market-observatory--2048x1352.png`
+  - `docs/test-reports/f-007-app-foundation/alert-review-observatory--2048x1352.png`
+  - `docs/test-reports/f-007-app-foundation/setup-observatory--2048x1352.png`
 
-## Generator Evidence
+## F-012 Evaluator Evidence
 
-- Domain evidence role TDD red/green completed.
-- UI evidence marker TDD red/green completed.
-- Targeted regression passed: `4 files / 27 tests`.
-- Full app verification passed: build, Vitest `12 files / 62 tests`, Playwright `13 tests`.
-- Triad checks, JSON checks, and prototype regression passed.
-- Static safety scan found no live collection, credential, cookie, CAPTCHA, storage, browser automation, recommended-price, or automatic-pricing terms in the F-010 touched pricing/data paths.
-- Generator notes: `docs/test-reports/2026-05-19-f-010-generator-notes.md`.
-
-## Evaluator Evidence
-
-- Independent B-040 data-scope/capture-entry reverify test: 1 file / 3 tests passed.
-- Targeted F-011 regression passed: 5 files / 24 tests.
-- Full app verification passed after sandbox escalation for the Playwright local server: build passed, Vitest 13 files / 68 tests passed, Playwright 13 tests passed.
-- Triad checks, JSON checks, and prototype regression passed; current H5 prototype regression reports 15 checks because local H5 visual-reference files are present.
-- Static safety scan found no live collection, credential, cookie, CAPTCHA, storage, browser automation, recommended-price, or automatic-pricing terms in the F-011 touched paths.
-- Screenshot evidence dimensions remain correct for setup captures: 1280x800 and 768x1024; F-007 matrix captures remain dimension-matched.
-- PR hygiene: current branch is ahead of `origin/main` by 13 commits because it contains accepted F-010 work plus F-011. Before opening F-011 PR, resolve the F-010 PR #4 dependency and clean or separately isolate unstaged H5 reference files.
-
-## Previous Evaluator Evidence
-
-- Independent B-036 evidence role test: 1 file / 3 tests passed.
-- Targeted F-010 regression: 4 files / 27 tests passed.
-- Full app verification: build passed, Vitest 12 files / 62 tests passed, Playwright 13 tests passed.
-- Triad checks, JSON checks, and prototype regression passed.
-- Static safety scan found no matches in `app/src/data/domainDrivenDataset.ts` and `app/src/domain/pricing`.
-- PR hygiene passed on `feature/f-010-owner-position-evidence-planning`: branch was ahead of `origin/main` by 4 F-010 commits before the Evaluator report/status updates.
+- Independent temporary Evaluator Playwright check passed: 7 tests. It verified five-screen observatory markers, no mobile overflow at 390x844, unsafe visible-copy absence, 2000px wide-shell behavior at 2048x1352, chart semantic markers, alert human-review markers, and setup production-connection disabled copy.
+- Targeted visual regression passed: 4 files / 12 tests.
+- Domain/data regression passed: 7 files / 45 tests.
+- Full app verification passed: build passed, Vitest 14 files / 71 tests passed, Playwright 18 tests passed.
+- Triad checks, JSON checks, and H5 prototype regression passed; prototype regression reports 14 checks.
+- Static safety scan found no live collection, credential, cookie, CAPTCHA, storage, browser automation, recommended-price, or automatic-pricing terms in app source paths.
+- `layout.css` has no raw `rgba(...)` or hex color functions.
+- Screenshot evidence dimensions remain exact for five 2048x1352 observatory captures, mobile 390x844 captures, and setup tablet 768x1024.
+- PR hygiene: working tree was clean before report/status updates. Relative to F-011 head, diff is bounded to F-012 visual-system files, screenshots, tests, docs, and status files. Relative to `origin/main`, branch is ahead by 19 commits because F-010 and F-011 are dependency commits and must be reflected in base before F-012 PR.
 
 ## Boundaries
 
-- Data remains fixture/manual demo data only.
-- No live OTA collection, browser automation, storage, credentials, cookies, CAPTCHA handling, network connector, persistence, API routes, or automatic pricing.
-- No file upload is included in F-011.
-- F-008 alert thresholds, F-009 data flow, and F-010 evidence semantics remain unchanged unless a failing test proves a narrow contract issue.
+- F-012 is a visual-system and responsive-layout slice only.
+- No domain alert math changes.
+- No `DemoDataset` semantic changes.
+- No real OTA collection, browser automation, file upload, backend route, persistence, migration, credentials, cookies, CAPTCHA handling, storage, recommended price, or automatic pricing.
+- Existing F-008/F-009/F-010/F-011 boundaries must continue to pass.
 
 ## Next Step
 
-B-041 should prepare the F-011 PR. Before opening it, resolve the F-010 PR #4 dependency by rebasing after F-010 is merged or otherwise ensuring F-011 does not duplicate F-010 changes, and clean/stash/commit separately the local H5 visual reference files. Do not push directly to `main` or `master`.
+Review and merge the stacked PR chain in order:
+
+1. PR #4: F-010 into `main`.
+2. PR #5: F-011 into the F-010 branch, or retarget to `main` after PR #4 is merged.
+3. PR #6: F-012 into the F-011 branch, or retarget to `main` after PR #5 is merged.
+
+Do not push directly to `main` or `master`.

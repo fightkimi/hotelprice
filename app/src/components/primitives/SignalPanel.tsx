@@ -16,7 +16,7 @@ const severityMeta = {
 export function SignalPanel({ signal, state = 'normal' }: SignalPanelProps) {
   if (state === 'loading') {
     return (
-      <article className="panel signal-panel" data-state="loading" aria-busy="true">
+      <article className="panel signal-panel observatory-panel" data-state="loading" aria-busy="true">
         <div className="loading-block" />
         <div className="loading-block loading-block--wide" />
         <div className="loading-block loading-block--short" />
@@ -26,7 +26,7 @@ export function SignalPanel({ signal, state = 'normal' }: SignalPanelProps) {
 
   if (state === 'no-comparable-sample' || !signal) {
     return (
-      <article className="panel signal-panel" data-state="no-comparable-sample">
+      <article className="panel signal-panel observatory-panel" data-state="no-comparable-sample">
         <div className="cluster">
           <span className="status-chip">暂无可比样本</span>
         </div>
@@ -40,8 +40,8 @@ export function SignalPanel({ signal, state = 'normal' }: SignalPanelProps) {
   const marker = signal.evidenceMarkers[0];
 
   return (
-    <article className="panel signal-panel" data-state={signal.severity}>
-      <div className="signal-panel__top">
+    <article className="panel signal-panel observatory-panel" data-state={signal.severity}>
+      <div className="signal-panel__top instrument-header">
         <span className={`status-chip ${meta.className}`}>
           <Icon aria-hidden="true" size={14} />
           {meta.label}

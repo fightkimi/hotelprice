@@ -7,10 +7,10 @@ interface MarketComparisonScreenProps {
 
 export function MarketComparisonScreen({ dataset }: MarketComparisonScreenProps) {
   return (
-    <section className="screen-grid screen-grid--two">
+    <section className="screen-grid screen-grid--two observatory-screen">
       <PlatformGapBars rows={dataset.platformGaps.rows} maxGap={dataset.platformGaps.maxGap} unit={dataset.platformGaps.unit} />
-      <aside className="panel">
-        <div className="panel__header">
+      <aside className="panel observatory-panel insight-rail">
+        <div className="panel__header instrument-header">
           <div>
             <h2 className="panel__title">竞品与平台上下文</h2>
             <p className="panel__meta">{dataset.context.competitorGroup}</p>
