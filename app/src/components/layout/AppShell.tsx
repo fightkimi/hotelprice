@@ -23,12 +23,18 @@ const navItems = [
 
 export function AppShell({ context, sourceKind, currentScreen, state, children }: AppShellProps) {
   return (
-    <div className="app-shell" data-state={state}>
+    <div className="app-shell" data-state={state} data-visual-system="revenue-observatory">
       <div className="app-shell__inner">
         <header className="app-header">
-          <div>
+          <div className="app-header__identity">
+            <span className="app-header__eyebrow">Revenue Observatory</span>
             <h1 className="app-title">酒店价格情报工作台</h1>
             <p className="app-subtitle">以房型、平台、事件和样本质量为边界的演示数据分析视图。</p>
+          </div>
+          <div className="app-header__signal-rail" aria-hidden="true">
+            <span />
+            <span />
+            <span />
           </div>
           <nav className="app-nav" aria-label="产品视图">
             {navItems.map(({ id, label, icon: Icon }) => (
