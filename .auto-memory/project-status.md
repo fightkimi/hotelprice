@@ -4,7 +4,7 @@
 
 - Project: Hotel Pricing Capture
 - Workflow: Triad Workflow with Planner / Generator / Evaluator roles
-- Current role for this pass: Planner
+- Current role for this pass: Generator
 - Superpowers: mandatory sequence recorded in `.auto-memory/superpowers-workflow.md`
 - Branch rule: feature branch + PR only; no direct push to `main` / `master`
 
@@ -12,8 +12,8 @@
 
 - Batch id: `alert-review-workflow-depth`
 - Feature: `F-015-alert-review-workflow-depth`
-- Goal: plan the next business-workflow slice for Alert Review selection, evidence detail, local review status, and review notes
-- Status: Generator-ready planning
+- Goal: implement the Alert Review workflow for selection, evidence detail, local review status, and local review notes
+- Status: ready for Evaluator verification
 - Current branch: `feature/f-015-alert-review-workflow-depth-planning`
 
 ## Current Facts
@@ -45,11 +45,11 @@ The formal product baseline is the React Revenue Observatory app on `main`:
 - F-013 established project-level PRD, project-level development plan, and weekly maintenance protocol.
 - F-014 added an accepted interactive calendar date-detail workflow with platform gaps, evidence, capture time, rate basis, missing-sample state, and human-review markers.
 
-## F-015 Scope
+## F-015 Generator Result
 
-F-015 is a Planner-defined product slice for the Alert Review screen.
+F-015 is now implemented as a Generator slice for the Alert Review screen.
 
-It should add a Generator-ready plan for:
+The implementation adds:
 
 - typed alert review workflow data derived from existing fixture/manual alert candidates;
 - selectable alert rows;
@@ -72,6 +72,20 @@ F-015 must not:
 - F-015 spec: `docs/specs/2026-05-20-alert-review-workflow-depth.md`
 - F-015 plan: `docs/superpowers/plans/2026-05-20-alert-review-workflow-depth.md`
 
+## F-015 Generator Artifacts
+
+- Generator notes: `docs/test-reports/2026-05-20-f-015-generator-notes.md`
+- Product code: `app/src/types/contracts.ts`, `app/src/data/domainDrivenDataset.ts`, `app/src/screens/AlertReviewScreen.tsx`, `app/src/styles/layout.css`
+- Tests: `app/tests/data/domainDrivenDataset.test.ts`, `app/tests/components/alertReviewScreen.test.tsx`, `app/tests/e2e/app-foundation.spec.ts`
+- Screenshots: `docs/test-reports/f-007-app-foundation/alert-review-drawer-open--1440x900.png`, `docs/test-reports/f-007-app-foundation/alert-review-drawer-open--390x844.png`, `docs/test-reports/f-007-app-foundation/alert-review-observatory--2048x1352.png`
+
+## F-015 Generator Verification
+
+- Targeted app tests passed with 4 files / 20 tests.
+- Full app verification passed: build, Vitest 16 files / 80 tests, and Playwright 20 tests.
+- Full screenshot matrix passed with 20 Playwright tests.
+- Triad doctor, triad doctor smoke test, JSON validation, prototype regression, `git diff --check`, and static `app/src` safety scans passed.
+
 ## Boundaries
 
 - No live OTA collection.
@@ -82,4 +96,4 @@ F-015 must not:
 
 ## Next Step
 
-Generator should implement `F-015-alert-review-workflow-depth` from the approved plan using strict TDD. Evaluator should independently verify alert selection, local-only review status/notes, evidence role visibility, rate-boundary visibility, safety scans, mobile no-overflow behavior, full app verification, and project-doc freshness. B-048 remains the standing weekly project-documentation maintenance item.
+Evaluator should independently verify `F-015-alert-review-workflow-depth` through `B-055`, including alert selection, local-only review status/notes, evidence role visibility, rate-boundary visibility, safety scans, mobile no-overflow behavior, full app verification, and project-doc freshness. B-048 remains the standing weekly project-documentation maintenance item.

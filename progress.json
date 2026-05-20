@@ -1,6 +1,6 @@
 {
   "project": "hotel-pricing-capture",
-  "status": "ready-for-generator",
+  "status": "verifying",
   "batch_id": "alert-review-workflow-depth",
   "current_sprint": "F-015-alert-review-workflow-depth",
   "total_features": 16,
