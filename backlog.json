@@ -346,16 +346,16 @@
     {
       "id": "B-051",
       "title": "Evaluator verifies F-014 interactive price calendar detail workflow",
-      "status": "new",
+      "status": "done",
       "feature_id": "F-014-interactive-price-calendar-detail-workflow",
-      "notes": "Verify calendarDetails coverage, date-click interaction, platform gaps, evidence markers, capture time, rate basis, human-review-only behavior, unavailable-date missing state, mobile no-overflow, safety scan, full app verification, and project-doc freshness."
+      "notes": "Evaluator report written at docs/test-reports/2026-05-20-f-014-interactive-price-calendar-detail-workflow-evaluator.md. Verdict: accepted. Evidence covered calendarDetails coverage, date-click interaction, platform gaps, evidence markers, capture time, rate basis, human-review-only behavior, unavailable-date missing state, mobile no-overflow, safety scans, full app verification, project-doc freshness, and PR hygiene. Direct PR to main must account for F-013 documentation commits still in this branch."
     },
     {
       "id": "B-052",
       "title": "Prepare F-014 PR after final acceptance",
       "status": "new",
       "feature_id": "F-014-interactive-price-calendar-detail-workflow",
-      "notes": "After Evaluator acceptance, prepare a bounded F-014 PR from the F-014 feature branch. Do not push directly to main or master."
+      "notes": "Prepare a bounded F-014 PR from the F-014 feature branch. Because main is still at F-012 / PR #8 locally, either target/base on the accepted F-013 branch or wait until F-013 is reflected in the target base so the PR contains only F-014 changes. Do not push directly to main or master."
     }
   ]
 }

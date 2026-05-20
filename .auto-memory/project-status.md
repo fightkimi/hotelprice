@@ -4,7 +4,7 @@
 
 - Project: Hotel Pricing Capture
 - Workflow: Triad Workflow with Planner / Generator / Evaluator roles
-- Current role for this pass: Generator
+- Current role for this pass: Evaluator
 - Superpowers: mandatory sequence recorded in `.auto-memory/superpowers-workflow.md`
 - Branch rule: feature branch + PR only; no direct push to `main` / `master`
 
@@ -12,8 +12,8 @@
 
 - Batch id: `interactive-price-calendar-detail-workflow`
 - Feature: `F-014-interactive-price-calendar-detail-workflow`
-- Goal: implement the date-detail data contract and Calendar UI interaction workflow for Evaluator verification
-- Status: verifying
+- Goal: complete B-051 Evaluator verification for the date-detail data contract and Calendar UI interaction workflow
+- Status: ready for B-052 PR preparation
 - Current branch: `feature/f-014-interactive-price-calendar-detail-workflow-planning`
 
 ## Current Facts
@@ -36,8 +36,10 @@
 - F-014 selected route: date-detail data contract plus UI interaction workflow.
 - F-014 spec: `docs/specs/2026-05-20-interactive-price-calendar-detail-workflow.md`.
 - F-014 plan: `docs/superpowers/plans/2026-05-20-interactive-price-calendar-detail-workflow.md`.
-- B-050 Generator implementation is complete and ready for B-051 Evaluator verification.
+- B-050 Generator implementation is complete.
+- B-051 Evaluator verification accepted F-014.
 - F-014 Generator notes: `docs/test-reports/2026-05-20-f-014-generator-notes.md`.
+- F-014 Evaluator report: `docs/test-reports/2026-05-20-f-014-interactive-price-calendar-detail-workflow-evaluator.md`.
 
 ## Product Baseline
 
@@ -49,6 +51,7 @@ The formal product baseline is the React Revenue Observatory app:
 - F-010 enriched owner-position alert evidence with owner and competitor evidence roles.
 - F-011 added typed data scope and capture-entry preview while keeping production connection disabled.
 - F-012 upgraded the app to the global Revenue Observatory visual system across Overview, Calendar, Market Comparison, Alert Review, and Setup/Data Scope.
+- F-014 adds an accepted interactive calendar date-detail workflow on top of the Revenue Observatory calendar; it is pending B-052 PR preparation.
 
 ## F-013 Scope
 
@@ -97,6 +100,16 @@ F-014 must not:
 - add live OTA collection;
 - add backend, persistence, credentials, cookies, sessions, CAPTCHA handling, storage, file upload, recommended price, or automatic pricing.
 
+## F-014 Evaluator Evidence
+
+- B-051 accepted F-014 for product behavior, data-boundary coverage, unavailable-date safety, responsive interaction, and human-review-only pricing workflow.
+- Independent temporary Evaluator Vitest probe passed `1 file / 3 tests`; it verified every heatmap date has a detail, `2026-05-27` remains a missing-sample state without pseudo prices, and date clicks update the detail panel. The temporary probe was removed after the run.
+- Targeted F-014 app regression passed: `3 files / 20 tests`.
+- Full app verification passed: production build, Vitest `15 files / 76 tests`, and Playwright `19 tests`.
+- Triad doctor, Triad doctor smoke test, JSON parsing, prototype regression, screenshot dimensions, `git diff --check`, generated-artifact check, and product safety scans passed.
+- F-014 diff is bounded relative to `feature/f-013-project-prd-roadmap-maintenance`; direct diff to `main` still includes F-013 documentation commits because `main` is at the F-012 / PR #8 baseline.
+- Project PRD and development plan were refreshed after acceptance to show F-014 accepted and F-015 as the next recommended planning slice.
+
 ## Boundaries
 
 - No live OTA collection.
@@ -107,4 +120,4 @@ F-014 must not:
 
 ## Next Step
 
-B-051 should have Evaluator verify F-014 from `docs/test-reports/2026-05-20-f-014-generator-notes.md`, the F-014 spec, and the F-014 plan. B-048 remains the standing weekly project-documentation maintenance item.
+B-052 should prepare a bounded F-014 PR. If targeting `main`, first account for the accepted F-013 documentation commits or wait until F-013 is reflected in the target base. After the PR path is settled, Planner can prepare F-015 alert review workflow depth. B-048 remains the standing weekly project-documentation maintenance item.

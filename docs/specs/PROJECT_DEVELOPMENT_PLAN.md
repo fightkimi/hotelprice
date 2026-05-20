@@ -2,8 +2,8 @@
 
 版本: 2026-05-20
 状态: 项目级 roadmap 真源, 随每个已验收 feature 更新
-当前主线: `main` includes F-012 through PR #8
-当前规划切片: F-014 interactive price calendar and date detail workflow
+当前主线: `main` includes F-012 through PR #8; F-014 已通过 Evaluator 验收, 待 B-052 PR 收口
+当前规划切片: F-015 alert review workflow depth
 
 ## 1. 开发原则
 
@@ -23,7 +23,11 @@
 - F-010 owner-position evidence enrichment: 本店与竞品证据角色、人工复核语义。
 - F-011 data scope and capture entry preview: 数据范围、采集入口预览、production connection disabled。
 - F-012 production Revenue Observatory visual upgrade: 全局高级视觉系统、宽屏观测舱、五屏一致性和图表框架。
+
+### 已验收、待 PR 或文档基线
+
 - F-013 project PRD and development plan maintenance: 项目级 PRD、项目级开发计划、F-013 验收和每周文档维护机制。
+- F-014 interactive price calendar and date detail workflow: 日期点击详情、平台价差、证据来源、采集时间、样本数、可比口径、missing sample state 和人工复核标记。
 
 ### 历史与参考基线
 
@@ -54,7 +58,7 @@
 
 ### Phase 2: 业务工作流深度
 
-状态: 下一阶段。
+状态: 进行中。F-014 已验收, 下一步先完成 B-052 PR 收口, 然后进入 F-015。
 
 目标: 让用户不仅看到指标, 还能沿日期、房型、平台和事件追溯到可解释详情。
 
@@ -67,6 +71,7 @@
    - 支持点击日期查看详情。
    - 日期详情展示本店价格、核心竞品均价、平台价差、事件上下文、可用性、证据来源、采集时间、样本数和可比口径。
    - 保持 fixture/manual seed, 不接真实采集。
+   - 已通过 B-051 Evaluator 验收, 待 B-052 PR 收口。
 3. F-015 alert review workflow depth
    - 增强提醒复核列表、证据抽屉、人工状态和复核备注的前端工作流。
    - 只做本地状态或 fixture 状态, 不引入持久化。
@@ -112,24 +117,22 @@
 - Deployment readiness: 环境变量、安全扫描、日志边界和部署文档。
 - Source compliance gate: 对每个生产来源建立条款、授权、rate limit 和审计证据。
 
-## 4. F-014 建议规格方向
+## 4. F-015 建议规格方向
 
-F-014 应作为下一个产品开发切片, 因为它能直接把现有图表和领域数据变成更完整的客户可演示工作流。
+F-015 应作为下一个产品开发切片, 因为 F-014 已经让用户能从日历日期进入可解释详情, 下一步应让用户从异常提醒进入更完整的人工复核工作流。
 
 建议目标:
 
-- 在 Calendar screen 支持日期选择。
-- 日期详情面板展示:
-  - 入住日期和事件上下文。
-  - 本店价格和竞品价格区间。
-  - 平台价差和样本覆盖。
-  - 房型筛选后的样本状态。
-  - availability/stale/no_rate/source_error 的客户安全解释。
-  - 可进入 EvidenceDrawer 的证据入口。
-- Overview 和 Market screen 可以跳转或同步选中日期。
-- 移动端使用 bottom sheet 或紧凑详情区, 不产生横向溢出。
+- 在 Alert Review screen 支持选中提醒、查看详情和切换人工复核状态。
+- 复核详情展示:
+  - 触发原因和影响日期。
+  - owner observation 与 competitor sample 证据角色。
+  - 平台、房型、税费、取消政策、入住人数和样本状态。
+  - 与 F-014 日期详情一致的证据来源、采集时间和 human-review-only 语义。
+  - 本地或 fixture 复核备注, 不引入持久化。
+- 移动端保持无横向溢出, 抽屉或详情区不得遮挡关键证据。
 
-F-014 非目标:
+F-015 非目标:
 
 - 不新增真实采集。
 - 不新增后端、数据库或持久化。
@@ -180,14 +183,13 @@ Evaluator 必须交付:
 ## 7. 当前风险与处置
 
 - 数据来源合规风险: Phase 3 前必须先完成 source strategy specification。
-- 价格可比性风险: F-014 到 F-016 必须继续保留房型、税费、取消政策和入住人数边界。
+- 价格可比性风险: F-015 到 F-016 必须继续保留房型、税费、取消政策和入住人数边界。
 - 视觉一致性风险: 新 UI 必须复用 F-012 Revenue Observatory primitives。
 - PR 堆叠风险: 开发可以连续推进, 但每个 feature branch 应尽量从最新 `main` 创建, 合并后及时同步本地。
 - 文档漂移风险: F-013 建立项目级文档真源、维护门禁和每周固定周更 automation。
 
 ## 8. 当前下一步
 
-1. F-014 Planner 规格和 Generator-ready plan 完成后, 交给 Generator 执行 B-050。
-2. F-014 Generator 按 TDD 实现 `CalendarDayDetail` / `calendarDetails.byDate`、`CalendarHeatmap` 点击回调和 `CalendarScreen` 日期详情联动。
-3. F-014 Evaluator 执行 B-051, 独立验证数据契约、交互、移动端、合规和完整 app verification。
-4. F-014 accepted 后再准备 B-052 PR 收口。
+1. 执行 B-052, 准备一个 bounded F-014 PR。若直接以 `main` 为 base 会带入 F-013 文档提交, 需先让 F-013 进入目标 base 或以 F-013 为 PR base。
+2. PR 合并后同步 `main`、project status、PRD、开发计划和 backlog。
+3. Planner 准备 F-015 alert review workflow depth 规格和 Generator-ready plan。

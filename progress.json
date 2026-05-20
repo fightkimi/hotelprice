@@ -1,10 +1,10 @@
 {
   "project": "hotel-pricing-capture",
-  "status": "verifying",
+  "status": "ready-for-pr",
   "batch_id": "interactive-price-calendar-detail-workflow",
   "current_sprint": "F-014-interactive-price-calendar-detail-workflow",
   "total_features": 15,
-  "completed_features": 11,
+  "completed_features": 12,
   "features": [
     "F-000-workflow-bootstrap",
     "F-001-hotel-rate-watch-mvp",
