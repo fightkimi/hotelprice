@@ -4,7 +4,7 @@
 
 - Project: Hotel Pricing Capture
 - Workflow: Triad Workflow with Planner / Generator / Evaluator roles
-- Current role for this pass: Planner
+- Current role for this pass: Generator
 - Superpowers: mandatory sequence recorded in `.auto-memory/superpowers-workflow.md`
 - Branch rule: feature branch + PR only; no direct push to `main` / `master`
 
@@ -12,8 +12,8 @@
 
 - Batch id: `market-comparison-drilldown`
 - Feature: `F-016-market-comparison-drilldown`
-- Goal: prepare Generator-ready planning for Market Comparison drilldown
-- Status: F-016 spec and implementation plan are ready for Generator handoff
+- Goal: implement Market Comparison drilldown
+- Status: ready for Evaluator verification
 - Current branch: `feature/f-016-market-comparison-drilldown-planning`
 
 ## Current Facts
@@ -49,11 +49,11 @@ The formal product baseline is the React Revenue Observatory app on `main`:
 - F-015 added an accepted local Alert Review workflow with selectable alerts, selected detail, local review status, local notes, owner/competitor evidence roles, and explicit rate boundaries.
 - F-016 is the current planned slice: Market Comparison drilldown by platform, stay date, room type and competitor sample, using fixture/manual data only.
 
-## F-016 Planner Result
+## F-016 Generator Result
 
-F-016 was prepared as a Planner slice for the Market Comparison screen.
+F-016 is now implemented as a Generator slice for the Market Comparison screen.
 
-The plan defines:
+The implementation adds:
 
 - `DemoDataset.marketDrilldown` with selectable platform/date/room-type options, selected detail, guardrails and detail lookup;
 - competitor sample rows with hotel identity, sample status, price, source, capture time and rate key boundaries;
@@ -73,6 +73,20 @@ F-016 must not:
 
 - F-016 spec: `docs/specs/2026-05-21-market-comparison-drilldown.md`
 - F-016 plan: `docs/superpowers/plans/2026-05-21-market-comparison-drilldown.md`
+
+## F-016 Generator Artifacts
+
+- Generator notes: `docs/test-reports/2026-05-21-f-016-generator-notes.md`
+- Product code: `app/src/types/contracts.ts`, `app/src/data/domainDrivenDataset.ts`, `app/src/screens/MarketComparisonScreen.tsx`, `app/src/App.tsx`, `app/src/styles/layout.css`
+- Tests: `app/tests/data/domainDrivenDataset.test.ts`, `app/tests/components/marketComparisonScreen.test.tsx`, `app/tests/e2e/app-foundation.spec.ts`
+- Screenshots: `docs/test-reports/f-007-app-foundation/market-comparison-platform-bars--1440x900.png`, `docs/test-reports/f-007-app-foundation/market-comparison-platform-bars--390x844.png`, `docs/test-reports/f-007-app-foundation/market-observatory--2048x1352.png`
+
+## F-016 Generator Verification
+
+- Targeted F-016 regression passed with 3 files / 22 tests.
+- Full app verification passed: production build, Vitest 17 files / 85 tests, and Playwright 21 tests.
+- Full screenshot matrix passed with 21 Playwright tests.
+- Triad doctor, Triad doctor smoke test, JSON validation, prototype regression, `git diff --check`, F-008 domain-diff check, generated-artifact check, and static `app/src` safety scans passed.
 
 ## F-015 Generator Result
 
@@ -136,4 +150,4 @@ F-015 must not:
 
 ## Next Step
 
-B-057 is complete. Next, Generator should execute B-058 from `docs/superpowers/plans/2026-05-21-market-comparison-drilldown.md` using strict TDD. B-048 remains the standing weekly project-documentation maintenance item.
+B-058 is complete. Next, Evaluator should execute B-059 and independently verify F-016 market comparison drilldown behavior, data boundaries, responsive screenshots, safety scans, and PR readiness. B-048 remains the standing weekly project-documentation maintenance item.

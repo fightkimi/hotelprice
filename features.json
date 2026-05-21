@@ -387,17 +387,29 @@
         {
             "id": "F-016-market-comparison-drilldown",
             "title": "Market comparison drilldown",
-            "status": "planned",
-            "executor": "planner",
+            "status": "verifying",
+            "executor": "generator",
             "artifacts": [
                 "docs/specs/2026-05-21-market-comparison-drilldown.md",
                 "docs/superpowers/plans/2026-05-21-market-comparison-drilldown.md",
                 "docs/specs/PROJECT_PRD.md",
                 "docs/specs/PROJECT_DEVELOPMENT_PLAN.md",
-                ".auto-memory/project-status.md"
+                ".auto-memory/project-status.md",
+                "docs/test-reports/2026-05-21-f-016-generator-notes.md",
+                "app/src/types/contracts.ts",
+                "app/src/data/domainDrivenDataset.ts",
+                "app/src/screens/MarketComparisonScreen.tsx",
+                "app/src/App.tsx",
+                "app/src/styles/layout.css",
+                "app/tests/data/domainDrivenDataset.test.ts",
+                "app/tests/components/marketComparisonScreen.test.tsx",
+                "app/tests/e2e/app-foundation.spec.ts",
+                "docs/test-reports/f-007-app-foundation/market-comparison-platform-bars--1440x900.png",
+                "docs/test-reports/f-007-app-foundation/market-comparison-platform-bars--390x844.png",
+                "docs/test-reports/f-007-app-foundation/market-observatory--2048x1352.png"
             ],
             "handoff": {
-                "generator": "Implement F-016 from docs/superpowers/plans/2026-05-21-market-comparison-drilldown.md using strict TDD. Scope is DemoDataset.marketDrilldown, selectable Market Comparison drilldown options, selected detail panel, competitor sample rows, missing/stale/unavailable/source-error explanations, responsive screenshots, and Generator notes. Do not change F-008 alert math, F-014 Calendar workflow, F-015 Alert Review workflow, or add live collection, persistence, recommended price, or automatic pricing.",
+                "generator": "Implemented F-016 from docs/superpowers/plans/2026-05-21-market-comparison-drilldown.md using strict TDD. Added DemoDataset.marketDrilldown, selectable Market Comparison drilldown options, selected detail panel, competitor sample rows, missing/stale/unavailable/source-error explanations, App detail-open state, responsive CSS, Playwright mobile drilldown coverage, refreshed market screenshots, and Generator notes. Did not change F-008 alert math, F-014 Calendar workflow, F-015 Alert Review workflow, or add live collection, persistence, recommended price, or automatic pricing.",
                 "evaluator": "After Generator implementation, verify marketDrilldown contract consistency, platform/competitor/room/date drilldown correctness, missing/stale/unavailable/source-error sample explanations, rate-boundary visibility, F-012 visual consistency, mobile no-overflow behavior, screenshot dimensions, no live collection, no persistence, no recommended price, no automatic pricing, and project docs freshness."
             }
         }
