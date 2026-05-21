@@ -423,8 +423,21 @@
         {
             "id": "B-062",
             "title": "Planner selects the first Phase 3 data-source slice",
+            "status": "done",
+            "notes": "Completed. Selected F-017-source-strategy-and-compliance-gate as the first Phase 3 slice and created the Planner spec/plan. This keeps data-source work documentation/state-only until Evaluator acceptance."
+        },
+        {
+            "id": "B-063",
+            "title": "Evaluator verifies F-017 source strategy and compliance gate",
             "status": "new",
-            "notes": "Choose and plan the next Phase 3 slice from latest main. Recommended order: source strategy specification before manual import preview or capture job model specification. Do not start live collection, browser automation, credential/session, CAPTCHA, persistence, or automatic pricing work before the source-compliance spec exists."
+            "feature_id": "F-017-source-strategy-and-compliance-gate",
+            "notes": "Verify documentation/state-only scope, allowed source classes, prohibited methods, decision matrix, next feature order, project docs freshness, JSON/Triad/prototype checks, and absence of product-code changes."
+        },
+        {
+            "id": "B-064",
+            "title": "Planner prepares F-018 manual import preview after F-017 acceptance",
+            "status": "new",
+            "notes": "Only start after F-017 is accepted. Recommended scope: local/manual CSV or pasted-row preview, field mapping, rate-boundary validation, no persistence, no live collection, no credentials, no automatic pricing."
         }
     ]
 }

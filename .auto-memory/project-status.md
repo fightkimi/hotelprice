@@ -10,15 +10,15 @@
 
 ## Current Batch
 
-- Batch id: `post-f-016-main-sync`
-- Feature: `F-016-market-comparison-drilldown`
-- Goal: record PR #12 merge, synchronize project status, and prepare next Phase 3 planning entry
-- Status: PR #12 merged; F-016 is on `main`
-- Current branch: `feature/f-016-post-merge-status`
+- Batch id: `source-strategy-compliance`
+- Feature: `F-017-source-strategy-and-compliance-gate`
+- Goal: define the Phase 3 data-source strategy and compliance gate before ingestion implementation
+- Status: Planner spec and plan ready for Evaluator review
+- Current branch: `feature/f-017-source-strategy-planning`
 
 ## Current Facts
 
-- `origin/main` is available and local `main` is synchronized to PR #12 merge commit `d5bcdcf`.
+- `origin/main` is available and local `main` is synchronized to PR #13 merge commit `5c4eef3`.
 - F-007 is accepted, merged through PR #1, and available on `main`.
 - F-008 is accepted, merged through PR #2, and available on `main`.
 - F-009 is accepted, merged through PR #3, and available on `main`.
@@ -29,7 +29,9 @@
 - F-014 interactive price calendar detail workflow is accepted, merged into the F-013 stacked branch through PR #9, and landed on `main` through PR #10.
 - F-015 alert review workflow depth is accepted, merged through PR #11, and available on `main`.
 - F-016 market comparison drilldown is accepted, merged through PR #12, and available on `main`.
-- Latest known main merge commit after PR #12: `d5bcdcf`.
+- PR #13 merged the F-016 post-merge status update into `main`.
+- Latest known main merge commit after PR #13: `5c4eef3`.
+- F-017 selects source strategy and compliance gate as the first Phase 3 slice.
 - Project-level PRD: `docs/specs/PROJECT_PRD.md`.
 - Project-level development plan: `docs/specs/PROJECT_DEVELOPMENT_PLAN.md`.
 - Weekly project-document maintenance automation is active for this workspace and runs as Planner governance work.
@@ -48,6 +50,28 @@ The formal product baseline is the React Revenue Observatory app on `main`:
 - F-014 added an accepted interactive calendar date-detail workflow with platform gaps, evidence, capture time, rate basis, missing-sample state, and human-review markers.
 - F-015 added an accepted local Alert Review workflow with selectable alerts, selected detail, local review status, local notes, owner/competitor evidence roles, and explicit rate boundaries.
 - F-016 added an accepted Market Comparison drilldown by platform, stay date, room type and competitor sample, using fixture/manual data only. It is merged through PR #12 and available on `main`.
+
+## F-017 Planner Result
+
+F-017 is a Planner-only governance slice for Phase 3 data-source work.
+
+The plan establishes:
+
+- allowed source classes: user manual import, official API, partner/licensed data feed, channel manager or PMS export, and public event context;
+- prohibited methods: unauthorized OTA scraping, browser automation, credential/cookie/session/CAPTCHA handling, bot-protection circumvention, disallowed terms, persistence without a future model, recommended pricing and automatic pricing;
+- source decision matrix fields for authorization evidence, terms status, data boundary coverage, refresh model, rate limits, secret handling, storage status, audit evidence and product permission;
+- next slice recommendation: F-018 manual import preview and field mapping, after F-017 Evaluator acceptance.
+
+F-017 must not:
+
+- modify product source, product tests, runtime scripts, package files, migrations or screenshot artifacts;
+- implement live collection, connectors, storage, credential handling or capture jobs;
+- change F-008 alert math, F-014 calendar workflow, F-015 alert review workflow or F-016 market drilldown behavior.
+
+## F-017 Planner Artifacts
+
+- F-017 spec: `docs/specs/2026-05-21-source-strategy-and-compliance-gate.md`
+- F-017 plan: `docs/superpowers/plans/2026-05-21-source-strategy-and-compliance-gate.md`
 
 ## F-016 Generator Result
 
@@ -105,7 +129,7 @@ F-016 must not:
 - PR #12 was merged from `feature/f-016-market-comparison-drilldown-planning` to `main`: https://github.com/fightkimi/hotelprice/pull/12.
 - Local `main` has been fast-forwarded to merge commit `d5bcdcf`.
 - The merged PR is bounded to F-016 planning, implementation, tests, screenshots, evaluator report, and status/documentation updates.
-- Next Planner work should choose the first Phase 3 slice: source strategy specification or manual import preview. Do not start live collection before a source-compliance spec exists.
+- F-017 has now selected source strategy and compliance gate as the first Phase 3 slice. Do not start live collection before this source-compliance spec is accepted.
 
 ## F-015 Generator Result
 
@@ -169,4 +193,4 @@ F-015 must not:
 
 ## Next Step
 
-B-061 is complete: PR #12 is merged and local `main` is synchronized to `d5bcdcf`. Next, choose the first Phase 3 slice, with source strategy specification preferred before manual import preview or capture-job modeling. B-048 remains the standing weekly project-documentation maintenance item.
+B-062 is complete. Next, Evaluator should review F-017 source strategy and compliance gate as B-063. After F-017 is accepted, Planner should prepare F-018 manual import preview and field mapping. B-048 remains the standing weekly project-documentation maintenance item.

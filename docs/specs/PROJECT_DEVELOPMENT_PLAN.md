@@ -2,8 +2,8 @@
 
 版本: 2026-05-21
 状态: 项目级 roadmap 真源, 随每个已验收 feature 更新
-当前主线: `main` includes F-016 through PR #12, merge commit `d5bcdcf`
-当前交付状态: F-016 market comparison drilldown 已进入 `main`; 下一步进入 Phase 3 数据来源与合规规划
+当前主线: `main` includes F-016 through PR #13 status sync, merge commit `5c4eef3`
+当前交付状态: F-017 source strategy and compliance gate 进入 Planner 验证; Phase 3 先建立来源策略和合规闸门
 
 ## 1. 开发原则
 
@@ -85,6 +85,16 @@
 状态: 下一阶段。应先由 Planner 拆分来源合规与数据输入规格, 再允许任何真实数据或采集相关实现。
 
 目标: 在不越过合规边界的情况下, 让产品能承接真实客户数据。
+
+推荐 feature queue:
+
+1. F-017 source strategy and compliance gate
+   - 定义允许来源类型、授权证据、禁止方法、source decision matrix 和后续 feature 顺序。
+   - 不改产品代码, 不接真实数据。
+2. F-018 manual import preview and field mapping
+   - 在 F-017 accepted 后规划。
+   - 只做本地/手动导入预览、字段映射和 rate-boundary validation。
+   - 不做持久化、live collection、credentials、browser automation 或自动调价。
 
 候选 feature:
 
@@ -205,6 +215,6 @@ Evaluator 必须交付:
 
 ## 8. 当前下一步
 
-1. B-061 已完成: PR #12 已合并, 本地 `main` 已同步到 `d5bcdcf`, 项目状态已记录 F-016 on main。
-2. 下一步进入 Phase 3 规划, 优先选择 source strategy specification, 其次才是 manual import preview 或 capture job model specification。
-3. 在 source compliance spec 之前, 不进入真实 OTA collection、browser automation、credential/session、CAPTCHA 或自动调价相关实现。
+1. B-062 已完成: F-017 source strategy and compliance gate 已被选为 Phase 3 第一个切片, 并已产出 Planner spec 与 plan。
+2. 下一步是 B-063: Evaluator 验证 F-017 是否足够阻止不合规数据来源实现, 并确认它是 documentation/state-only。
+3. F-017 accepted 后, Planner 再准备 F-018 manual import preview and field mapping；在此之前不进入真实 OTA collection、browser automation、credential/session、CAPTCHA、持久化或自动调价相关实现。

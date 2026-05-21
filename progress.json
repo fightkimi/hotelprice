@@ -1,9 +1,9 @@
 {
   "project": "hotel-pricing-capture",
-  "status": "ready-for-next-planning",
-  "batch_id": "post-f-016-main-sync",
-  "current_sprint": "F-016-market-comparison-drilldown",
-  "total_features": 17,
+  "status": "verifying",
+  "batch_id": "source-strategy-compliance",
+  "current_sprint": "F-017-source-strategy-and-compliance-gate",
+  "total_features": 18,
   "completed_features": 14,
   "features": [
     "F-000-workflow-bootstrap",
@@ -22,6 +22,7 @@
     "F-013-project-prd-and-development-plan-maintenance",
     "F-014-interactive-price-calendar-detail-workflow",
     "F-015-alert-review-workflow-depth",
-    "F-016-market-comparison-drilldown"
+    "F-016-market-comparison-drilldown",
+    "F-017-source-strategy-and-compliance-gate"
   ]
 }

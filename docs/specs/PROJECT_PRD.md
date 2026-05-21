@@ -3,8 +3,8 @@
 版本: 2026-05-21
 状态: 项目级需求真源, 随每个已验收 feature 更新
 维护角色: Planner
-当前正式产品基线: `main` includes F-016 through PR #12, merge commit `d5bcdcf`
-当前交付状态: F-016 Market Comparison Drilldown 已进入 `main`; 下一步进入 Phase 3 数据来源与合规规划
+当前正式产品基线: `main` includes F-016 through PR #13 status sync, merge commit `5c4eef3`
+当前交付状态: F-017 Source Strategy And Compliance Gate 进入 Planner 验证; Phase 3 先做来源策略和合规闸门
 
 ## 1. 产品定位
 
@@ -72,6 +72,7 @@
 - F-014: interactive price calendar detail workflow, 增加 `CalendarDayDetail` / `calendarDetails.byDate`, 日期点击详情、平台价差、证据来源、采集时间、样本数、可比口径、missing sample state 和人工复核标记。
 - F-015: alert review workflow depth, 增加可选择提醒、选中详情、本地复核状态、本地备注、备注模板、owner/competitor 证据角色和边界可见性, 已通过 PR #11 进入 `main`。
 - F-016: market comparison drilldown, 新增 `DemoDataset.marketDrilldown`、平台/日期/房型下钻组合、竞品样本行、缺失/过期/不可用/来源暂不可用解释、证据来源、采集时间和可比口径。F-016 已通过 PR #12 进入 `main`, 仍只使用 fixture/manual seed, 不接真实采集, 不保存状态, 不提供推荐价格或自动调价。
+- F-017: source strategy and compliance gate, 定义 Phase 3 可进入产品路线的来源类型、授权证据、禁止方法、source decision matrix 和 F-018 manual import preview 的前置条件。F-017 不实现真实采集、连接器、存储或自动调价。
 
 历史 H5 prototype 仍可作为演示灵感和回归测试对象, 但正式产品的实现真源是 React app 和已验收 feature 文档。
 
@@ -124,6 +125,7 @@
 - 价格展示必须保留币种、税费、入住人数、房型、取消政策和采集时间边界。
 - 未授权 live collection、browser automation、cookie/session、credential、CAPTCHA handling、storage 和 automatic pricing 都在当前禁止范围内。
 - 任何新的数据来源 feature 必须先经过 Planner 合规规格, 再由 Generator TDD 实现, 最后由 Evaluator 独立验收。
+- F-017 要求任何未来 source proposal 先完成 source decision matrix, 覆盖授权证据、terms status、property/competitor/channel/date/capture-time/currency/room/occupancy/tax-fee/cancellation-policy 边界、refresh model、rate limit、secret handling、storage status、audit evidence 和 product permission。
 
 ## 10. 成功指标
 
