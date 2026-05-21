@@ -3,8 +3,8 @@
 版本: 2026-05-21
 状态: 项目级需求真源, 随每个已验收 feature 更新
 维护角色: Planner
-当前正式产品基线: `main` includes F-015 through PR #11, merge commit `185e883`
-当前交付切片: F-016 Market Comparison Drilldown 已通过 B-059 Evaluator 验收, PR #12 已打开等待 review/merge
+当前正式产品基线: `main` includes F-016 through PR #12, merge commit `d5bcdcf`
+当前交付状态: F-016 Market Comparison Drilldown 已进入 `main`; 下一步进入 Phase 3 数据来源与合规规划
 
 ## 1. 产品定位
 
@@ -71,10 +71,7 @@
 - F-013: project PRD and development plan maintenance, 建立项目级 PRD、项目级开发计划和每周维护机制。
 - F-014: interactive price calendar detail workflow, 增加 `CalendarDayDetail` / `calendarDetails.byDate`, 日期点击详情、平台价差、证据来源、采集时间、样本数、可比口径、missing sample state 和人工复核标记。
 - F-015: alert review workflow depth, 增加可选择提醒、选中详情、本地复核状态、本地备注、备注模板、owner/competitor 证据角色和边界可见性, 已通过 PR #11 进入 `main`。
-
-已验收、待 PR 的当前切片:
-
-- F-016: market comparison drilldown, 新增 `DemoDataset.marketDrilldown`、平台/日期/房型下钻组合、竞品样本行、缺失/过期/不可用/来源暂不可用解释、证据来源、采集时间和可比口径。F-016 已通过 B-059 Evaluator 验收, 仍只使用 fixture/manual seed, 不接真实采集, 不保存状态, 不提供推荐价格或自动调价；PR #12 已打开, 等待 review/merge 后进入 `main`。
+- F-016: market comparison drilldown, 新增 `DemoDataset.marketDrilldown`、平台/日期/房型下钻组合、竞品样本行、缺失/过期/不可用/来源暂不可用解释、证据来源、采集时间和可比口径。F-016 已通过 PR #12 进入 `main`, 仍只使用 fixture/manual seed, 不接真实采集, 不保存状态, 不提供推荐价格或自动调价。
 
 历史 H5 prototype 仍可作为演示灵感和回归测试对象, 但正式产品的实现真源是 React app 和已验收 feature 文档。
 
@@ -98,7 +95,7 @@
 - 按平台展示本店与竞品的价差、覆盖率和样本质量。
 - 保留 platform-bound、competitor-bound、room-type-bound 和 date-bound 边界。
 - 图表 tooltip 和证据必须说明来源、时间和可比口径。
-- F-016 已将平台汇总扩展为 Market Comparison drilldown: 用户可以选择平台、入住日期和房型组合, 查看本酒店价格、核心竞品均价、竞品价格区间、每个核心竞品样本状态、缺失/过期/不可用解释、证据来源、采集时间和 human-review-only 边界。该能力已通过 B-059 验收, 并通过 B-060 打开 PR #12 等待 review/merge。
+- F-016 已将平台汇总扩展为 Market Comparison drilldown: 用户可以选择平台、入住日期和房型组合, 查看本酒店价格、核心竞品均价、竞品价格区间、每个核心竞品样本状态、缺失/过期/不可用解释、证据来源、采集时间和 human-review-only 边界。该能力已通过 PR #12 进入 `main`。
 
 ### 8.4 异常提醒与复核
 

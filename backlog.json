@@ -412,6 +412,19 @@
             "status": "done",
             "feature_id": "F-016-market-comparison-drilldown",
             "notes": "Completed. PR #12 `F-016 Market comparison drilldown` was opened from feature/f-016-market-comparison-drilldown-planning to main on 2026-05-21. PR URL: https://github.com/fightkimi/hotelprice/pull/12. Do not push directly to main or master."
+        },
+        {
+            "id": "B-061",
+            "title": "Record F-016 PR #12 merge and synchronize main",
+            "status": "done",
+            "feature_id": "F-016-market-comparison-drilldown",
+            "notes": "Completed. PR #12 was merged to main on 2026-05-21. Local main was fast-forwarded to merge commit d5bcdcf, and project-status, PRD, development plan, progress, features, and backlog were updated to record F-016 on main."
+        },
+        {
+            "id": "B-062",
+            "title": "Planner selects the first Phase 3 data-source slice",
+            "status": "new",
+            "notes": "Choose and plan the next Phase 3 slice from latest main. Recommended order: source strategy specification before manual import preview or capture job model specification. Do not start live collection, browser automation, credential/session, CAPTCHA, persistence, or automatic pricing work before the source-compliance spec exists."
         }
     ]
 }

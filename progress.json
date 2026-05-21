@@ -1,7 +1,7 @@
 {
   "project": "hotel-pricing-capture",
-  "status": "pr-open",
-  "batch_id": "market-comparison-drilldown",
+  "status": "ready-for-next-planning",
+  "batch_id": "post-f-016-main-sync",
   "current_sprint": "F-016-market-comparison-drilldown",
   "total_features": 17,
   "completed_features": 14,
