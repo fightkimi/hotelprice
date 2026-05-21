@@ -3,7 +3,7 @@
 版本: 2026-05-21
 状态: 项目级 roadmap 真源, 随每个已验收 feature 更新
 当前主线: `main` includes F-015 through PR #11, merge commit `185e883`
-当前规划切片: F-016 market comparison drilldown 已完成 Planner 规格与 Generator-ready plan
+当前交付切片: F-016 market comparison drilldown 已通过 B-059 Evaluator 验收, 待 B-060 PR 收口
 
 ## 1. 开发原则
 
@@ -56,7 +56,7 @@
 
 ### Phase 2: 业务工作流深度
 
-状态: 进行中。F-013 和 F-014 已通过 PR #10 进入 `main`, F-015 已通过 PR #11 进入 `main`, 下一步进入 F-016 planning。
+状态: 进行中。F-013 和 F-014 已通过 PR #10 进入 `main`, F-015 已通过 PR #11 进入 `main`, F-016 已通过 B-059 Evaluator 验收并等待 B-060 PR 收口。
 
 目标: 让用户不仅看到指标, 还能沿日期、房型、平台和事件追溯到可解释详情。
 
@@ -77,7 +77,7 @@
 4. F-016 market comparison drilldown
    - 平台价差从汇总条扩展到竞品、房型和日期组合。
    - 增加缺失数据、过期样本和不可用样本的解释。
-   - Planner 产物已完成: `docs/specs/2026-05-21-market-comparison-drilldown.md` 和 `docs/superpowers/plans/2026-05-21-market-comparison-drilldown.md`。
+   - 已通过 B-059 Evaluator 验收；待 B-060 从 `feature/f-016-market-comparison-drilldown-planning` 准备到 `main` 的 bounded PR。
 
 ### Phase 3: 数据输入和合规来源
 
@@ -117,11 +117,11 @@
 - Deployment readiness: 环境变量、安全扫描、日志边界和部署文档。
 - Source compliance gate: 对每个生产来源建立条款、授权、rate limit 和审计证据。
 
-## 4. F-016 已规划规格方向
+## 4. F-016 验收结果
 
-F-016 是当前 Generator-ready 产品切片, 因为 F-014 已经补强日期详情, F-015 已补强提醒复核, 下一步应把 Market Comparison 从平台汇总扩展到竞品、房型和日期组合的可解释 drilldown。
+F-016 是当前已验收、待 PR 的产品切片。它在 F-014 日期详情和 F-015 提醒复核的基础上, 把 Market Comparison 从平台汇总扩展到竞品、房型和日期组合的可解释 drilldown。
 
-建议目标:
+已验收目标:
 
 - 在 Market Comparison screen 支持按竞品、房型、平台和日期组合查看价差详情。
 - 新增 `DemoDataset.marketDrilldown` 契约, 用 fixture/manual seed 派生 option/detail/competitor sample/evidence/guardrails。
@@ -138,6 +138,14 @@ F-016 非目标:
 - 不新增后端、数据库或持久化。
 - 不改变 F-008 alert math。
 - 不引入自动调价。
+
+B-059 验收结果:
+
+- `DemoDataset.marketDrilldown`、option/detail/sample/evidence/guardrails 契约通过独立探针和项目测试验证。
+- 可用详情的 owner/core/gap/range/sample math 通过验证。
+- 缺失、过期、不可用和来源暂不可用样本有客户安全解释, 且不会渲染 `CNY null` 或 missing 状态下的伪 `CNY 0`。
+- Market Comparison UI 选择保持本地状态, 不写 storage, 不触发网络请求。
+- Full verify、截图尺寸、安全扫描、Triad/JSON、prototype regression 和 PR hygiene 均通过。
 
 ## 5. 每个 Feature 的标准交付
 
@@ -183,13 +191,13 @@ Evaluator 必须交付:
 ## 7. 当前风险与处置
 
 - 数据来源合规风险: Phase 3 前必须先完成 source strategy specification。
-- 价格可比性风险: F-015 到 F-016 必须继续保留房型、税费、取消政策和入住人数边界。
+- 价格可比性风险: F-016 已继续保留房型、税费、取消政策和入住人数边界；后续真实数据接入前仍需更严格的来源/归一化规格。
 - 视觉一致性风险: 新 UI 必须复用 F-012 Revenue Observatory primitives。
 - PR 堆叠风险: F-015 已从最新 `main` 落地。F-016 应继续从 PR #11 后的 `main` 创建, 合并后及时同步本地。
 - 文档漂移风险: F-013 建立项目级文档真源、维护门禁和每周固定周更 automation。
 
 ## 8. 当前下一步
 
-1. B-056 已完成: PR #11 merged, F-015 已在 `main`。
-2. 完成本次 post-merge 文档和状态收口。
-3. 交给 Generator 执行 B-058: 按 F-016 plan 用严格 TDD 实现 Market Comparison drilldown。
+1. B-059 已完成: F-016 通过 Evaluator 验收。
+2. 执行 B-060: 从 `feature/f-016-market-comparison-drilldown-planning` 准备 bounded PR 到 `main`。
+3. F-016 PR 合并后, Planner 再选择下一阶段切片；优先考虑 Phase 3 的 source strategy specification 或 manual import preview。

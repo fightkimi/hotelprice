@@ -1,10 +1,10 @@
 {
   "project": "hotel-pricing-capture",
-  "status": "verifying",
+  "status": "ready-for-pr",
   "batch_id": "market-comparison-drilldown",
   "current_sprint": "F-016-market-comparison-drilldown",
   "total_features": 17,
-  "completed_features": 13,
+  "completed_features": 14,
   "features": [
     "F-000-workflow-bootstrap",
     "F-001-hotel-rate-watch-mvp",

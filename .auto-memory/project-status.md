@@ -4,7 +4,7 @@
 
 - Project: Hotel Pricing Capture
 - Workflow: Triad Workflow with Planner / Generator / Evaluator roles
-- Current role for this pass: Generator
+- Current role for this pass: Evaluator
 - Superpowers: mandatory sequence recorded in `.auto-memory/superpowers-workflow.md`
 - Branch rule: feature branch + PR only; no direct push to `main` / `master`
 
@@ -12,8 +12,8 @@
 
 - Batch id: `market-comparison-drilldown`
 - Feature: `F-016-market-comparison-drilldown`
-- Goal: implement Market Comparison drilldown
-- Status: ready for Evaluator verification
+- Goal: verify Market Comparison drilldown and prepare final PR handoff
+- Status: accepted by Evaluator; ready for B-060 PR preparation
 - Current branch: `feature/f-016-market-comparison-drilldown-planning`
 
 ## Current Facts
@@ -29,7 +29,7 @@
 - F-014 interactive price calendar detail workflow is accepted, merged into the F-013 stacked branch through PR #9, and landed on `main` through PR #10.
 - F-015 alert review workflow depth is accepted, merged through PR #11, and available on `main`.
 - Latest known main merge commit after PR #11: `185e883`.
-- F-016 market comparison drilldown is planned on branch `feature/f-016-market-comparison-drilldown-planning`.
+- F-016 market comparison drilldown is accepted on branch `feature/f-016-market-comparison-drilldown-planning` and awaits B-060 PR preparation.
 - Project-level PRD: `docs/specs/PROJECT_PRD.md`.
 - Project-level development plan: `docs/specs/PROJECT_DEVELOPMENT_PLAN.md`.
 - Weekly project-document maintenance automation is active for this workspace and runs as Planner governance work.
@@ -47,7 +47,7 @@ The formal product baseline is the React Revenue Observatory app on `main`:
 - F-013 established project-level PRD, project-level development plan, and weekly maintenance protocol.
 - F-014 added an accepted interactive calendar date-detail workflow with platform gaps, evidence, capture time, rate basis, missing-sample state, and human-review markers.
 - F-015 added an accepted local Alert Review workflow with selectable alerts, selected detail, local review status, local notes, owner/competitor evidence roles, and explicit rate boundaries.
-- F-016 is the current planned slice: Market Comparison drilldown by platform, stay date, room type and competitor sample, using fixture/manual data only.
+- F-016 is accepted on the feature branch: Market Comparison drilldown by platform, stay date, room type and competitor sample, using fixture/manual data only. It is not yet merged to `main`.
 
 ## F-016 Generator Result
 
@@ -87,6 +87,17 @@ F-016 must not:
 - Full app verification passed: production build, Vitest 17 files / 85 tests, and Playwright 21 tests.
 - Full screenshot matrix passed with 21 Playwright tests.
 - Triad doctor, Triad doctor smoke test, JSON validation, prototype regression, `git diff --check`, F-008 domain-diff check, generated-artifact check, and static `app/src` safety scans passed.
+
+## F-016 Evaluator Evidence
+
+- B-059 accepted F-016 for Market Comparison drilldown behavior, data-boundary coverage, missing/unavailable sample safety, responsive behavior, and PR readiness.
+- Evaluator report: `docs/test-reports/2026-05-21-f-016-market-comparison-drilldown-evaluator.md`.
+- Independent temporary Evaluator Vitest probe passed `1 file / 3 tests`; it verified option/detail contract consistency, all focus-date platforms, available detail math, competitor range, sample rate keys, missing/source-error/unavailable states, local UI selection, no storage/network writes, and no `CNY null` / pseudo `CNY 0` missing prices. The temporary probe was removed after the run.
+- Targeted F-016 app regression passed: `3 files / 22 tests`.
+- Full app verification passed: production build, Vitest `17 files / 85 tests`, and Playwright `21 tests`.
+- Triad doctor, Triad doctor smoke test, JSON parsing, prototype regression, screenshot dimensions, `git diff --check`, generated-artifact check, and product safety scans passed.
+- F-016 diff is bounded against `main` at PR #11 merge commit `185e883`; no F-008 domain pricing or domain tests changed.
+- Project PRD and development plan were refreshed after acceptance to show F-016 accepted and B-060 as the next handoff.
 
 ## F-015 Generator Result
 
@@ -150,4 +161,4 @@ F-015 must not:
 
 ## Next Step
 
-B-058 is complete. Next, Evaluator should execute B-059 and independently verify F-016 market comparison drilldown behavior, data boundaries, responsive screenshots, safety scans, and PR readiness. B-048 remains the standing weekly project-documentation maintenance item.
+B-059 is complete. Next, execute B-060 and prepare a bounded F-016 PR from `feature/f-016-market-comparison-drilldown-planning` to `main`. B-048 remains the standing weekly project-documentation maintenance item.

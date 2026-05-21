@@ -402,16 +402,16 @@
         {
             "id": "B-059",
             "title": "Evaluator verifies F-016 market comparison drilldown",
-            "status": "new",
+            "status": "done",
             "feature_id": "F-016-market-comparison-drilldown",
-            "notes": "Verify marketDrilldown contract consistency, available detail math, competitor range, competitor sample statuses, missing/stale/unavailable/source-error explanations, no CNY null or pseudo zero prices, rate-boundary visibility, UI selection, mobile no-overflow, screenshots, full verify, safety scans, PR hygiene, and project docs freshness."
+            "notes": "Evaluator report written at docs/test-reports/2026-05-21-f-016-market-comparison-drilldown-evaluator.md. Verdict: accepted. Evidence covered marketDrilldown contract consistency, available detail math, competitor range, sample statuses and explanations, no CNY null or pseudo zero prices, rate-boundary visibility, local-only UI selection, mobile no-overflow, screenshots, full verify, safety scans, PR hygiene, and project docs freshness."
         },
         {
             "id": "B-060",
             "title": "Prepare F-016 PR after final acceptance",
             "status": "new",
             "feature_id": "F-016-market-comparison-drilldown",
-            "notes": "After B-059 acceptance, prepare a bounded F-016 PR from feature/f-016-market-comparison-drilldown-planning to main. Do not push directly to main or master."
+            "notes": "B-059 accepted F-016. Prepare a bounded F-016 PR from feature/f-016-market-comparison-drilldown-planning to main. Do not push directly to main or master."
         }
     ]
 }
