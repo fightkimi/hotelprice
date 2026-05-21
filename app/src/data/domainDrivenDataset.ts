@@ -13,6 +13,10 @@ import type {
   EventMarker,
   EvidenceMarker,
   HeatmapDay,
+  MarketCompetitorSample,
+  MarketDrilldownDetail,
+  MarketDrilldownOption,
+  MarketSampleStatus,
   PlatformGapRow,
   PricePoint,
   RateKey,
@@ -530,6 +534,119 @@ function calendarPlatformGapRows(seed: DomainDemoSeed, stayDate: string): Calend
   });
 }
 
+function marketOptionId(stayDate: string, sourceId: string): string {
+  return `market-${stayDate}-${sourceId}`;
+}
+
+function marketSampleStatus(snapshot: RateSnapshot | undefined): MarketSampleStatus {
+  if (!snapshot) {
+    return 'missing-sample';
+  }
+  if (snapshot.availabilityStatus === 'available' && snapshot.priceCents !== null) {
+    return 'available';
+  }
+  if (snapshot.availabilityStatus === 'stale') {
+    return 'stale';
+  }
+  if (snapshot.availabilityStatus === 'source_error') {
+    return 'source-error';
+  }
+  if (snapshot.availabilityStatus === 'no_rate') {
+    return 'missing-sample';
+  }
+  return 'unavailable';
+}
+
+function marketSampleStatusLabel(status: MarketSampleStatus): string {
+  const labels: Record<MarketSampleStatus, string> = {
+    available: '可比样本',
+    'missing-sample': '缺少可比样本',
+    stale: '样本过期',
+    unavailable: '暂不可售',
+    'source-error': '来源样本暂不可用'
+  };
+  return labels[status];
+}
+
+function marketSampleExplanation(status: MarketSampleStatus): string {
+  const explanations: Record<MarketSampleStatus, string> = {
+    available: '该样本满足当前平台、入住日期、房型和价格口径。',
+    'missing-sample': '暂无可比公开样本，需要等待人工导入或获授权来源补充。',
+    stale: '样本已超过新鲜度阈值，不能作为有效价差判断。',
+    unavailable: '该竞品当前样本暂不可售或不可比。',
+    'source-error': '演示来源样本暂不可用，需要人工复核后再判断。'
+  };
+  return explanations[status];
+}
+
+function marketCompetitorSamples(seed: DomainDemoSeed, stayDate: string, sourceId: string, ownerRate: number | null): MarketCompetitorSample[] {
+  return coreCompetitors(seed).map((hotel) => {
+    const snapshot = latestForHotelDateSource(seed, hotel.hotelId, stayDate, sourceId);
+    const status = marketSampleStatus(snapshot);
+    const price = status === 'available' && snapshot?.priceCents !== null && snapshot?.priceCents !== undefined ? yuan(snapshot.priceCents) : null;
+    const representative = snapshot ?? representativeSnapshot(seed, stayDate, sourceId);
+
+    return {
+      hotelId: hotel.hotelId,
+      hotelName: hotel.name,
+      competitorLevel: 'core',
+      price,
+      gapToOwner: ownerRate !== null && price !== null ? ownerRate - price : null,
+      status,
+      statusLabel: marketSampleStatusLabel(status),
+      explanation: marketSampleExplanation(status),
+      source: platformLabel(seed, sourceId),
+      captureTime: snapshot?.capturedAt ?? null,
+      rateKey: uiRateKey(seed, representative)
+    };
+  });
+}
+
+function marketCompetitorRange(samples: MarketCompetitorSample[]): MarketDrilldownDetail['competitorRange'] {
+  const prices = samples.flatMap((sample) => (sample.price === null ? [] : [sample.price]));
+  if (prices.length === 0) {
+    return null;
+  }
+  return {
+    min: Math.min(...prices),
+    max: Math.max(...prices)
+  };
+}
+
+function marketEvidenceMarkers(
+  seed: DomainDemoSeed,
+  detail: Pick<MarketDrilldownDetail, 'stayDate' | 'platform' | 'sampleSize' | 'captureTime' | 'status'>
+): EvidenceMarker[] {
+  if (detail.status === 'missing-sample') {
+    return [
+      {
+        label: `暂无可比样本 · ${detail.stayDate}`,
+        source: detail.platform,
+        captureTime: detail.captureTime ?? detail.stayDate,
+        sampleSize: 0,
+        confidence: 'unavailable'
+      }
+    ];
+  }
+
+  return [
+    {
+      label: `本酒店观测 · ${seed.context.roomTypeKey} · ${detail.stayDate}`,
+      source: detail.platform,
+      captureTime: detail.captureTime ?? seed.now,
+      sampleSize: 1,
+      confidence: 'partial'
+    },
+    {
+      label: `核心竞品样本 · ${seed.context.roomTypeKey} · ${detail.stayDate}`,
+      source: detail.platform,
+      captureTime: detail.captureTime ?? seed.now,
+      sampleSize: Math.max(detail.sampleSize - 1, 0),
+      confidence: detail.sampleSize >= 4 ? 'sample' : 'partial'
+    }
+  ];
+}
+
 function calendarEvidenceMarkers(seed: DomainDemoSeed, day: HeatmapDay, rows: CalendarPlatformGapRow[]): EvidenceMarker[] {
   const availableRows = rows.filter((row) => row.status === 'available');
   if (day.status === 'unavailable' || availableRows.length === 0) {
@@ -601,6 +718,81 @@ function buildCalendarDetails(seed: DomainDemoSeed, heatmap: DemoDataset['heatma
   return { byDate };
 }
 
+function buildMarketDrilldown(seed: DomainDemoSeed): DemoDataset['marketDrilldown'] {
+  const owner = ownerHotel(seed);
+  const coreCount = coreCompetitors(seed).length;
+  const byId: Record<string, MarketDrilldownDetail> = {};
+  const options: MarketDrilldownOption[] = [];
+
+  for (const stayDate of displayDates(seed)) {
+    const optionPlatforms = stayDate === seed.context.platformFocusDate ? seed.platforms : [seed.platforms[0]];
+    for (const platform of optionPlatforms) {
+      const ownerSample = latestAvailableForHotelDateSource(seed, owner.hotelId, stayDate, platform.sourceId);
+      const ownerRate = ownerSample ? yuan(ownerSample.priceCents) : null;
+      const competitorSamples = marketCompetitorSamples(seed, stayDate, platform.sourceId, ownerRate);
+      const availableCompetitors = competitorSamples.filter((sample) => sample.status === 'available' && sample.price !== null);
+      const coreAverage =
+        availableCompetitors.length === 0
+          ? null
+          : round(availableCompetitors.reduce((sum, sample) => sum + (sample.price ?? 0), 0) / availableCompetitors.length);
+      const sampleSize = (ownerRate === null ? 0 : 1) + availableCompetitors.length;
+      const status: MarketDrilldownDetail['status'] = ownerRate !== null && coreAverage !== null ? 'available' : 'missing-sample';
+      const captureTime = latestCaptureTime([
+        ...(ownerSample ? [ownerSample] : []),
+        ...seed.snapshots.filter((snapshot) => snapshot.rateKey.stayDate === stayDate && snapshot.rateKey.sourceId === platform.sourceId)
+      ]);
+
+      const id = marketOptionId(stayDate, platform.sourceId);
+      const detailBase = {
+        id,
+        platform: platform.label,
+        stayDate,
+        roomType: seed.context.roomTypeLabel,
+        status,
+        currency: 'CNY' as const,
+        ownerRate,
+        coreAverage,
+        gap: ownerRate !== null && coreAverage !== null ? ownerRate - coreAverage : null,
+        competitorRange: marketCompetitorRange(competitorSamples),
+        coverage: availableCompetitors.length / Math.max(coreCount, 1),
+        sampleSize,
+        captureTime,
+        eventImpact: eventImpactForDate(seed, stayDate),
+        rateBasis: rateBasisForDate(seed, stayDate),
+        competitorSamples,
+        missingSampleReason: status === 'missing-sample' ? '暂无可比样本，需要等待人工导入或获授权来源补充。' : undefined,
+        humanReviewRequired: true as const
+      };
+      const detail: MarketDrilldownDetail = {
+        ...detailBase,
+        evidenceMarkers: marketEvidenceMarkers(seed, detailBase)
+      };
+
+      byId[id] = detail;
+      options.push({
+        id,
+        label: `${platform.label} · ${stayDate.slice(5).replace('-', '/')}`,
+        platform: platform.label,
+        stayDate,
+        roomType: seed.context.roomTypeLabel,
+        eventLabel: detail.eventImpact.label,
+        status,
+        gap: detail.gap,
+        coverage: detail.coverage,
+        sampleSize: detail.sampleSize
+      });
+    }
+  }
+
+  const preferredId = marketOptionId(seed.context.platformFocusDate, primarySourceId(seed));
+  return {
+    options,
+    selectedOptionId: byId[preferredId] ? preferredId : (options[0]?.id ?? ''),
+    byId,
+    guardrails: ['本页仅使用 fixture/manual 演示数据。', '价差详情只作为人工复核线索。', '不保存状态，也不触发任何自动价格动作。']
+  };
+}
+
 function alertPriority(alert: AlertCandidate): number {
   if (alert.alertType.startsWith('owner')) {
     return 0;
@@ -635,6 +827,7 @@ export function buildDomainDrivenDemoDataset(seed: DomainDemoSeed = domainSeed):
     heatmap,
     calendarDetails: buildCalendarDetails(normalizedSeed, heatmap),
     platformGaps: buildPlatformGaps(normalizedSeed),
+    marketDrilldown: buildMarketDrilldown(normalizedSeed),
     signals,
     alertReview: buildAlertReviewWorkflow(normalizedSeed, alerts, signals)
   };

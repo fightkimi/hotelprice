@@ -176,6 +176,78 @@ describe('domain-driven demo dataset charts', () => {
   });
 });
 
+describe('domain-driven market comparison drilldown', () => {
+  it('builds selectable platform and date drilldown details with competitor samples', () => {
+    const dataset = buildDomainDrivenDemoDataset(domainSeed);
+    const selected = dataset.marketDrilldown.byId[dataset.marketDrilldown.selectedOptionId];
+
+    expect(dataset.marketDrilldown.options.length).toBeGreaterThanOrEqual(dataset.platformGaps.rows.length);
+    expect(selected).toBeDefined();
+    expect(selected.stayDate).toBe(domainSeed.context.platformFocusDate);
+    expect(selected.roomType).toBe(dataset.context.roomType);
+    expect(selected.platform).toMatch(/演示源/);
+    expect(selected.currency).toBe('CNY');
+    expect(selected.humanReviewRequired).toBe(true);
+    expect(selected.ownerRate).toBeGreaterThan(0);
+    expect(selected.coreAverage).toBeGreaterThan(0);
+    expect(selected.gap).toBe(selected.ownerRate! - selected.coreAverage!);
+    expect(selected.competitorSamples.length).toBeGreaterThanOrEqual(3);
+    expect(selected.competitorSamples.some((sample) => sample.status === 'available' && sample.price !== null)).toBe(true);
+    expect(selected.competitorRange?.min).toBeGreaterThan(0);
+    expect(selected.competitorRange?.max).toBeGreaterThanOrEqual(selected.competitorRange!.min);
+    expect(selected.evidenceMarkers.some((marker) => marker.label.startsWith('本酒店观测'))).toBe(true);
+    expect(selected.evidenceMarkers.some((marker) => marker.label.startsWith('核心竞品样本'))).toBe(true);
+    expect(selected.rateBasis).toMatchObject({
+      roomType: dataset.context.roomType,
+      occupancy: 2,
+      mealPlan: '双早',
+      taxFeeBasis: '含税含服务费',
+      cancellationPolicy: '入住前24小时可取消'
+    });
+  });
+
+  it('keeps missing market drilldown samples customer-safe without pseudo prices', () => {
+    const dataset = buildDomainDrivenDemoDataset(domainSeed);
+    const missingOption = dataset.marketDrilldown.options.find((option) => option.stayDate === '2026-05-27');
+
+    expect(missingOption).toBeDefined();
+
+    const detail = dataset.marketDrilldown.byId[missingOption!.id];
+    expect(detail).toMatchObject({
+      stayDate: '2026-05-27',
+      status: 'missing-sample',
+      ownerRate: null,
+      coreAverage: null,
+      gap: null,
+      competitorRange: null,
+      humanReviewRequired: true
+    });
+    expect(detail.missingSampleReason).toContain('暂无可比样本');
+    expect(detail.competitorSamples.length).toBeGreaterThanOrEqual(3);
+    expect(detail.competitorSamples.every((sample) => sample.price === null && sample.gapToOwner === null)).toBe(true);
+    expect(detail.competitorSamples.some((sample) => sample.status === 'missing-sample')).toBe(true);
+    expect(detail.competitorSamples.some((sample) => sample.status === 'source-error')).toBe(true);
+    expect(detail.competitorSamples.some((sample) => sample.status === 'unavailable')).toBe(true);
+  });
+
+  it('marks stale market drilldown samples as unavailable for comparison', () => {
+    const staleSeed = {
+      ...domainSeed,
+      snapshots: domainSeed.snapshots.map((snapshot) =>
+        snapshot.snapshotId === 'owner-0531-ctrip-latest' ? { ...snapshot, capturedAt: '2026-05-17T20:00:00.000Z' } : snapshot
+      )
+    };
+    const dataset = buildDomainDrivenDemoDataset(staleSeed);
+    const selected = dataset.marketDrilldown.byId[dataset.marketDrilldown.selectedOptionId];
+
+    expect(selected.ownerRate).toBeNull();
+    expect(selected.status).toBe('missing-sample');
+    expect(selected.competitorSamples.every((sample) => sample.rateKey.roomType === dataset.context.roomType)).toBe(true);
+    expect(selected.competitorSamples.every((sample) => sample.rateKey.taxFeeBasis)).toBe(true);
+    expect(selected.competitorSamples.every((sample) => sample.rateKey.cancellationPolicy)).toBe(true);
+  });
+});
+
 describe('domain-driven calendar details', () => {
   it('builds one calendar detail for every heatmap day with review evidence', () => {
     const dataset = buildDomainDrivenDemoDataset(domainSeed);

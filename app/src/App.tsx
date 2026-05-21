@@ -29,7 +29,7 @@ export function App() {
   const content = {
     overview: <OverviewScreen dataset={demoDataset} state={state === 'loading' || state === 'empty' ? state : 'normal'} />,
     calendar: <CalendarScreen dataset={demoDataset} detailOpen={state === 'detail-open'} />,
-    market: <MarketComparisonScreen dataset={demoDataset} />,
+    market: <MarketComparisonScreen dataset={demoDataset} detailOpen={state === 'detail-open'} />,
     alerts: <AlertReviewScreen dataset={demoDataset} drawerOpen={state === 'drawer-open'} />,
     setup: <SetupDataScopeScreen dataset={demoDataset} />
   } satisfies Record<ScreenId, ReactElement>;

@@ -381,7 +381,37 @@
             ],
             "handoff": {
                 "generator": "Implemented the F-015 alert review workflow from the approved plan using strict TDD. Added typed alertReview workflow data, selectable alert rows, selected alert detail, local-only review status and note state, note presets, evidence role rows, boundary visibility, responsive Playwright coverage, and safety scans without changing F-008 alert math or adding persistence/live collection/automatic pricing.",
-                "evaluator": "Accepted after B-055 verification. Alert selection, selected detail rendering, local-only status and notes, owner/competitor evidence role visibility, rate-boundary visibility, missing-sample safety, mobile no-overflow behavior, full app verification, safety scans, project-doc freshness, and PR hygiene passed. Prepare bounded F-015 PR through B-056."
+                "evaluator": "Accepted after B-055 verification and merged through PR #11. Alert selection, selected detail rendering, local-only status and notes, owner/competitor evidence role visibility, rate-boundary visibility, missing-sample safety, mobile no-overflow behavior, full app verification, safety scans, project-doc freshness, and PR hygiene passed."
+            }
+        },
+        {
+            "id": "F-016-market-comparison-drilldown",
+            "title": "Market comparison drilldown",
+            "status": "done",
+            "executor": "evaluator",
+            "artifacts": [
+                "docs/specs/2026-05-21-market-comparison-drilldown.md",
+                "docs/superpowers/plans/2026-05-21-market-comparison-drilldown.md",
+                "docs/specs/PROJECT_PRD.md",
+                "docs/specs/PROJECT_DEVELOPMENT_PLAN.md",
+                ".auto-memory/project-status.md",
+                "docs/test-reports/2026-05-21-f-016-generator-notes.md",
+                "docs/test-reports/2026-05-21-f-016-market-comparison-drilldown-evaluator.md",
+                "app/src/types/contracts.ts",
+                "app/src/data/domainDrivenDataset.ts",
+                "app/src/screens/MarketComparisonScreen.tsx",
+                "app/src/App.tsx",
+                "app/src/styles/layout.css",
+                "app/tests/data/domainDrivenDataset.test.ts",
+                "app/tests/components/marketComparisonScreen.test.tsx",
+                "app/tests/e2e/app-foundation.spec.ts",
+                "docs/test-reports/f-007-app-foundation/market-comparison-platform-bars--1440x900.png",
+                "docs/test-reports/f-007-app-foundation/market-comparison-platform-bars--390x844.png",
+                "docs/test-reports/f-007-app-foundation/market-observatory--2048x1352.png"
+            ],
+            "handoff": {
+                "generator": "Implemented F-016 from docs/superpowers/plans/2026-05-21-market-comparison-drilldown.md using strict TDD. Added DemoDataset.marketDrilldown, selectable Market Comparison drilldown options, selected detail panel, competitor sample rows, missing/stale/unavailable/source-error explanations, App detail-open state, responsive CSS, Playwright mobile drilldown coverage, refreshed market screenshots, and Generator notes. Did not change F-008 alert math, F-014 Calendar workflow, F-015 Alert Review workflow, or add live collection, persistence, recommended price, or automatic pricing.",
+                "evaluator": "Accepted after B-059 verification. marketDrilldown contract consistency, platform/date/room drilldown correctness, available detail math, competitor range, sample status explanations, rate-boundary visibility, local-only UI selection, mobile no-overflow behavior, screenshot dimensions, full app verification, safety scans, project-doc freshness, and PR hygiene passed. B-060 opened PR #12: https://github.com/fightkimi/hotelprice/pull/12."
             }
         }
   ]
