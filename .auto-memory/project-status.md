@@ -12,8 +12,8 @@
 
 - Batch id: `market-comparison-drilldown`
 - Feature: `F-016-market-comparison-drilldown`
-- Goal: verify Market Comparison drilldown and prepare final PR handoff
-- Status: accepted by Evaluator; ready for B-060 PR preparation
+- Goal: keep F-016 PR handoff and project status aligned after acceptance
+- Status: accepted by Evaluator; PR #12 is open for review/merge
 - Current branch: `feature/f-016-market-comparison-drilldown-planning`
 
 ## Current Facts
@@ -29,7 +29,7 @@
 - F-014 interactive price calendar detail workflow is accepted, merged into the F-013 stacked branch through PR #9, and landed on `main` through PR #10.
 - F-015 alert review workflow depth is accepted, merged through PR #11, and available on `main`.
 - Latest known main merge commit after PR #11: `185e883`.
-- F-016 market comparison drilldown is accepted on branch `feature/f-016-market-comparison-drilldown-planning` and awaits B-060 PR preparation.
+- F-016 market comparison drilldown is accepted on branch `feature/f-016-market-comparison-drilldown-planning`; B-060 opened PR #12 to `main`: https://github.com/fightkimi/hotelprice/pull/12.
 - Project-level PRD: `docs/specs/PROJECT_PRD.md`.
 - Project-level development plan: `docs/specs/PROJECT_DEVELOPMENT_PLAN.md`.
 - Weekly project-document maintenance automation is active for this workspace and runs as Planner governance work.
@@ -47,7 +47,7 @@ The formal product baseline is the React Revenue Observatory app on `main`:
 - F-013 established project-level PRD, project-level development plan, and weekly maintenance protocol.
 - F-014 added an accepted interactive calendar date-detail workflow with platform gaps, evidence, capture time, rate basis, missing-sample state, and human-review markers.
 - F-015 added an accepted local Alert Review workflow with selectable alerts, selected detail, local review status, local notes, owner/competitor evidence roles, and explicit rate boundaries.
-- F-016 is accepted on the feature branch: Market Comparison drilldown by platform, stay date, room type and competitor sample, using fixture/manual data only. It is not yet merged to `main`.
+- F-016 is accepted on the feature branch and is open as PR #12: Market Comparison drilldown by platform, stay date, room type and competitor sample, using fixture/manual data only. It is not yet merged to `main`.
 
 ## F-016 Generator Result
 
@@ -97,7 +97,14 @@ F-016 must not:
 - Full app verification passed: production build, Vitest `17 files / 85 tests`, and Playwright `21 tests`.
 - Triad doctor, Triad doctor smoke test, JSON parsing, prototype regression, screenshot dimensions, `git diff --check`, generated-artifact check, and product safety scans passed.
 - F-016 diff is bounded against `main` at PR #11 merge commit `185e883`; no F-008 domain pricing or domain tests changed.
-- Project PRD and development plan were refreshed after acceptance to show F-016 accepted and B-060 as the next handoff.
+- Project PRD and development plan were refreshed after acceptance and again after B-060 to show F-016 accepted with PR #12 open.
+
+## F-016 PR Handoff
+
+- B-060 is complete.
+- PR #12 is open from `feature/f-016-market-comparison-drilldown-planning` to `main`: https://github.com/fightkimi/hotelprice/pull/12.
+- The PR is bounded to F-016 planning, implementation, tests, screenshots, evaluator report, and status/documentation updates.
+- After PR #12 is merged, Planner should synchronize local `main`, record PR #12 merged / F-016 on `main`, and then choose the next Phase 3 slice.
 
 ## F-015 Generator Result
 
@@ -161,4 +168,4 @@ F-015 must not:
 
 ## Next Step
 
-B-059 is complete. Next, execute B-060 and prepare a bounded F-016 PR from `feature/f-016-market-comparison-drilldown-planning` to `main`. B-048 remains the standing weekly project-documentation maintenance item.
+B-060 is complete and PR #12 is open. Next, wait for PR #12 review/merge; after merge, sync local `main`, record PR #12 merged / F-016 on `main`, and then choose the next Phase 3 slice. B-048 remains the standing weekly project-documentation maintenance item.

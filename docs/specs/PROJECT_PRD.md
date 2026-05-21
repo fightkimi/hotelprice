@@ -4,7 +4,7 @@
 状态: 项目级需求真源, 随每个已验收 feature 更新
 维护角色: Planner
 当前正式产品基线: `main` includes F-015 through PR #11, merge commit `185e883`
-当前交付切片: F-016 Market Comparison Drilldown 已通过 B-059 Evaluator 验收, 待 B-060 PR 收口
+当前交付切片: F-016 Market Comparison Drilldown 已通过 B-059 Evaluator 验收, PR #12 已打开等待 review/merge
 
 ## 1. 产品定位
 
@@ -74,7 +74,7 @@
 
 已验收、待 PR 的当前切片:
 
-- F-016: market comparison drilldown, 新增 `DemoDataset.marketDrilldown`、平台/日期/房型下钻组合、竞品样本行、缺失/过期/不可用/来源暂不可用解释、证据来源、采集时间和可比口径。F-016 已通过 B-059 Evaluator 验收, 仍只使用 fixture/manual seed, 不接真实采集, 不保存状态, 不提供推荐价格或自动调价；待 B-060 准备 PR 后进入 `main`。
+- F-016: market comparison drilldown, 新增 `DemoDataset.marketDrilldown`、平台/日期/房型下钻组合、竞品样本行、缺失/过期/不可用/来源暂不可用解释、证据来源、采集时间和可比口径。F-016 已通过 B-059 Evaluator 验收, 仍只使用 fixture/manual seed, 不接真实采集, 不保存状态, 不提供推荐价格或自动调价；PR #12 已打开, 等待 review/merge 后进入 `main`。
 
 历史 H5 prototype 仍可作为演示灵感和回归测试对象, 但正式产品的实现真源是 React app 和已验收 feature 文档。
 
@@ -98,7 +98,7 @@
 - 按平台展示本店与竞品的价差、覆盖率和样本质量。
 - 保留 platform-bound、competitor-bound、room-type-bound 和 date-bound 边界。
 - 图表 tooltip 和证据必须说明来源、时间和可比口径。
-- F-016 已将平台汇总扩展为 Market Comparison drilldown: 用户可以选择平台、入住日期和房型组合, 查看本酒店价格、核心竞品均价、竞品价格区间、每个核心竞品样本状态、缺失/过期/不可用解释、证据来源、采集时间和 human-review-only 边界。该能力已通过 B-059 验收, 等待 B-060 PR 收口。
+- F-016 已将平台汇总扩展为 Market Comparison drilldown: 用户可以选择平台、入住日期和房型组合, 查看本酒店价格、核心竞品均价、竞品价格区间、每个核心竞品样本状态、缺失/过期/不可用解释、证据来源、采集时间和 human-review-only 边界。该能力已通过 B-059 验收, 并通过 B-060 打开 PR #12 等待 review/merge。
 
 ### 8.4 异常提醒与复核
 

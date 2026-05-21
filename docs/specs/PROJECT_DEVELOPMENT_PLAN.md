@@ -3,7 +3,7 @@
 版本: 2026-05-21
 状态: 项目级 roadmap 真源, 随每个已验收 feature 更新
 当前主线: `main` includes F-015 through PR #11, merge commit `185e883`
-当前交付切片: F-016 market comparison drilldown 已通过 B-059 Evaluator 验收, 待 B-060 PR 收口
+当前交付切片: F-016 market comparison drilldown 已通过 B-059 Evaluator 验收, PR #12 已打开等待 review/merge
 
 ## 1. 开发原则
 
@@ -56,7 +56,7 @@
 
 ### Phase 2: 业务工作流深度
 
-状态: 进行中。F-013 和 F-014 已通过 PR #10 进入 `main`, F-015 已通过 PR #11 进入 `main`, F-016 已通过 B-059 Evaluator 验收并等待 B-060 PR 收口。
+状态: 进行中。F-013 和 F-014 已通过 PR #10 进入 `main`, F-015 已通过 PR #11 进入 `main`, F-016 已通过 B-059 Evaluator 验收并通过 B-060 打开 PR #12。
 
 目标: 让用户不仅看到指标, 还能沿日期、房型、平台和事件追溯到可解释详情。
 
@@ -77,7 +77,7 @@
 4. F-016 market comparison drilldown
    - 平台价差从汇总条扩展到竞品、房型和日期组合。
    - 增加缺失数据、过期样本和不可用样本的解释。
-   - 已通过 B-059 Evaluator 验收；待 B-060 从 `feature/f-016-market-comparison-drilldown-planning` 准备到 `main` 的 bounded PR。
+   - 已通过 B-059 Evaluator 验收；B-060 已从 `feature/f-016-market-comparison-drilldown-planning` 打开到 `main` 的 bounded PR #12。
 
 ### Phase 3: 数据输入和合规来源
 
@@ -193,11 +193,11 @@ Evaluator 必须交付:
 - 数据来源合规风险: Phase 3 前必须先完成 source strategy specification。
 - 价格可比性风险: F-016 已继续保留房型、税费、取消政策和入住人数边界；后续真实数据接入前仍需更严格的来源/归一化规格。
 - 视觉一致性风险: 新 UI 必须复用 F-012 Revenue Observatory primitives。
-- PR 堆叠风险: F-015 已从最新 `main` 落地。F-016 应继续从 PR #11 后的 `main` 创建, 合并后及时同步本地。
+- PR 堆叠风险: F-015 已从最新 `main` 落地。F-016 已从 PR #11 后的 `main` 打开 PR #12, 合并后需要及时同步本地。
 - 文档漂移风险: F-013 建立项目级文档真源、维护门禁和每周固定周更 automation。
 
 ## 8. 当前下一步
 
 1. B-059 已完成: F-016 通过 Evaluator 验收。
-2. 执行 B-060: 从 `feature/f-016-market-comparison-drilldown-planning` 准备 bounded PR 到 `main`。
-3. F-016 PR 合并后, Planner 再选择下一阶段切片；优先考虑 Phase 3 的 source strategy specification 或 manual import preview。
+2. B-060 已完成: PR #12 已从 `feature/f-016-market-comparison-drilldown-planning` 打开到 `main`。
+3. PR #12 合并后, Planner 同步本地 `main` 并记录 F-016 on main；随后再选择下一阶段切片, 优先考虑 Phase 3 的 source strategy specification 或 manual import preview。
