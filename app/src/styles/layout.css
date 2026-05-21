@@ -789,6 +789,88 @@
   gap: var(--space-4);
 }
 
+.market-drilldown-screen {
+  align-items: start;
+}
+
+.market-option-panel,
+.market-detail-panel,
+.market-detail-section,
+.market-option-list,
+.market-sample-list {
+  min-width: 0;
+}
+
+.market-option-list,
+.market-sample-list,
+.market-detail-section {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.market-option-button {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-12);
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  padding: var(--space-12);
+  border: var(--border-width) solid var(--observatory-inset-line);
+  border-radius: var(--radius-panel);
+  background: var(--observatory-node-surface);
+  color: var(--color-ink);
+  text-align: left;
+}
+
+.market-option-button[data-selected="true"] {
+  border-color: var(--color-teal);
+  box-shadow: 0 0 0 3px var(--color-active-surface), var(--shadow-soft);
+}
+
+.market-option-button strong,
+.market-option-button small {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.market-option-button small,
+.market-sample-row small {
+  color: var(--color-muted);
+  font-size: var(--font-meta-size);
+  line-height: var(--font-meta-line);
+}
+
+.market-sample-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-8) var(--space-12);
+  align-items: center;
+  min-width: 0;
+  padding: var(--space-12);
+  border: var(--border-width) solid var(--observatory-inset-line);
+  border-radius: var(--radius-panel);
+  background: var(--observatory-node-surface);
+}
+
+.market-sample-row > small {
+  grid-column: 1 / -1;
+}
+
+.market-sample-row__rate {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: end;
+  text-align: right;
+}
+
+.market-sample-row[data-status="missing-sample"],
+.market-sample-row[data-status="stale"],
+.market-sample-row[data-status="unavailable"],
+.market-sample-row[data-status="source-error"] {
+  border-style: dashed;
+}
+
 .alert-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -1002,6 +1084,16 @@
 
   .metric-lattice {
     grid-template-columns: 1fr;
+  }
+
+  .market-option-button,
+  .market-sample-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .market-sample-row__rate {
+    justify-items: start;
+    text-align: left;
   }
 }
 

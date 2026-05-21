@@ -73,7 +73,7 @@ function CompetitorSampleRow({ sample }: { sample: MarketCompetitorSample }) {
   );
 }
 
-export function MarketComparisonScreen({ dataset, detailOpen = true }: MarketComparisonScreenProps) {
+export function MarketComparisonScreen({ dataset, detailOpen = false }: MarketComparisonScreenProps) {
   const options = dataset.marketDrilldown.options;
   const initialOptionId = dataset.marketDrilldown.byId[dataset.marketDrilldown.selectedOptionId]
     ? dataset.marketDrilldown.selectedOptionId
