@@ -725,7 +725,8 @@ function buildMarketDrilldown(seed: DomainDemoSeed): DemoDataset['marketDrilldow
   const options: MarketDrilldownOption[] = [];
 
   for (const stayDate of displayDates(seed)) {
-    for (const platform of seed.platforms) {
+    const optionPlatforms = stayDate === seed.context.platformFocusDate ? seed.platforms : [seed.platforms[0]];
+    for (const platform of optionPlatforms) {
       const ownerSample = latestAvailableForHotelDateSource(seed, owner.hotelId, stayDate, platform.sourceId);
       const ownerRate = ownerSample ? yuan(ownerSample.priceCents) : null;
       const competitorSamples = marketCompetitorSamples(seed, stayDate, platform.sourceId, ownerRate);
