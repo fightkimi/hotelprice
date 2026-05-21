@@ -3,7 +3,7 @@
 版本: 2026-05-21
 状态: 项目级 roadmap 真源, 随每个已验收 feature 更新
 当前主线: `main` includes F-016 through PR #13 status sync, merge commit `5c4eef3`
-当前交付状态: F-017 source strategy and compliance gate 进入 Planner 验证; Phase 3 先建立来源策略和合规闸门
+当前交付状态: F-017 source strategy and compliance gate 已通过 B-063 Evaluator 验收; 下一步 B-064 准备 F-018 manual import preview
 
 ## 1. 开发原则
 
@@ -91,8 +91,9 @@
 1. F-017 source strategy and compliance gate
    - 定义允许来源类型、授权证据、禁止方法、source decision matrix 和后续 feature 顺序。
    - 不改产品代码, 不接真实数据。
+   - 已通过 B-063 Evaluator 验收。
 2. F-018 manual import preview and field mapping
-   - 在 F-017 accepted 后规划。
+   - B-064 开始规划。
    - 只做本地/手动导入预览、字段映射和 rate-boundary validation。
    - 不做持久化、live collection、credentials、browser automation 或自动调价。
 
@@ -215,6 +216,6 @@ Evaluator 必须交付:
 
 ## 8. 当前下一步
 
-1. B-062 已完成: F-017 source strategy and compliance gate 已被选为 Phase 3 第一个切片, 并已产出 Planner spec 与 plan。
-2. 下一步是 B-063: Evaluator 验证 F-017 是否足够阻止不合规数据来源实现, 并确认它是 documentation/state-only。
-3. F-017 accepted 后, Planner 再准备 F-018 manual import preview and field mapping；在此之前不进入真实 OTA collection、browser automation、credential/session、CAPTCHA、持久化或自动调价相关实现。
+1. B-063 已完成: F-017 source strategy and compliance gate 通过 Evaluator 验收。
+2. 下一步是 B-064: Planner 准备 F-018 manual import preview and field mapping。
+3. F-018 必须保持 preview-only；在另有合规规格前, 不进入真实 OTA collection、browser automation、credential/session、CAPTCHA、持久化或自动调价相关实现。

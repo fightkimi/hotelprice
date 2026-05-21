@@ -1,10 +1,10 @@
 {
   "project": "hotel-pricing-capture",
-  "status": "verifying",
+  "status": "ready-for-planning",
   "batch_id": "source-strategy-compliance",
   "current_sprint": "F-017-source-strategy-and-compliance-gate",
   "total_features": 18,
-  "completed_features": 14,
+  "completed_features": 15,
   "features": [
     "F-000-workflow-bootstrap",
     "F-001-hotel-rate-watch-mvp",

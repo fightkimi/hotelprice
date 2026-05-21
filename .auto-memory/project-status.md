@@ -4,7 +4,7 @@
 
 - Project: Hotel Pricing Capture
 - Workflow: Triad Workflow with Planner / Generator / Evaluator roles
-- Current role for this pass: Planner
+- Current role for this pass: Evaluator
 - Superpowers: mandatory sequence recorded in `.auto-memory/superpowers-workflow.md`
 - Branch rule: feature branch + PR only; no direct push to `main` / `master`
 
@@ -13,7 +13,7 @@
 - Batch id: `source-strategy-compliance`
 - Feature: `F-017-source-strategy-and-compliance-gate`
 - Goal: define the Phase 3 data-source strategy and compliance gate before ingestion implementation
-- Status: Planner spec and plan ready for Evaluator review
+- Status: accepted by Evaluator; ready for B-064 Planner preparation
 - Current branch: `feature/f-017-source-strategy-planning`
 
 ## Current Facts
@@ -72,6 +72,15 @@ F-017 must not:
 
 - F-017 spec: `docs/specs/2026-05-21-source-strategy-and-compliance-gate.md`
 - F-017 plan: `docs/superpowers/plans/2026-05-21-source-strategy-and-compliance-gate.md`
+
+## F-017 Evaluator Evidence
+
+- B-063 accepted F-017 for source-strategy governance, compliance-gate specificity, documentation/state-only scope, next-slice ordering, project-doc freshness, and PR readiness.
+- Evaluator report: `docs/test-reports/2026-05-21-f-017-source-strategy-and-compliance-gate-evaluator.md`.
+- Diff review confirmed F-017 modifies only documentation/status artifacts: project-status, backlog, progress, features, PRD, development plan, F-017 spec and F-017 plan.
+- Product source, product tests, package files, runtime scripts, generated artifacts and screenshot artifacts have no diff.
+- Source classes, prohibited methods, source decision matrix fields and F-018 manual import preview ordering are explicit in the F-017 spec and project docs.
+- Triad doctor, Triad doctor smoke test, JSON parsing, prototype regression, generated-artifact check and `git diff --check` passed.
 
 ## F-016 Generator Result
 
@@ -193,4 +202,4 @@ F-015 must not:
 
 ## Next Step
 
-B-062 is complete. Next, Evaluator should review F-017 source strategy and compliance gate as B-063. After F-017 is accepted, Planner should prepare F-018 manual import preview and field mapping. B-048 remains the standing weekly project-documentation maintenance item.
+B-063 is complete. Next, Planner should execute B-064 and prepare F-018 manual import preview and field mapping. B-048 remains the standing weekly project-documentation maintenance item.

@@ -417,18 +417,19 @@
         {
             "id": "F-017-source-strategy-and-compliance-gate",
             "title": "Source strategy and compliance gate",
-            "status": "verifying",
-            "executor": "planner",
+            "status": "done",
+            "executor": "evaluator",
             "artifacts": [
                 "docs/specs/2026-05-21-source-strategy-and-compliance-gate.md",
                 "docs/superpowers/plans/2026-05-21-source-strategy-and-compliance-gate.md",
                 "docs/specs/PROJECT_PRD.md",
                 "docs/specs/PROJECT_DEVELOPMENT_PLAN.md",
-                ".auto-memory/project-status.md"
+                ".auto-memory/project-status.md",
+                "docs/test-reports/2026-05-21-f-017-source-strategy-and-compliance-gate-evaluator.md"
             ],
             "handoff": {
                 "generator": "No product-code Generator work is allowed in F-017. Future F-018 implementation must wait for F-017 Evaluator acceptance and use strict TDD.",
-                "evaluator": "Verify F-017 as documentation/state-only, confirm source classes, prohibited methods, source decision matrix, next-slice order, project-doc freshness, and JSON/Triad/prototype/diff checks."
+                "evaluator": "Accepted after B-063 verification. F-017 is documentation/state-only, source classes and prohibited methods are explicit, the source decision matrix covers core rate/data boundaries, F-018 manual import preview is the next safe slice, project docs are fresh, and JSON/Triad/prototype/diff checks passed."
             }
         }
   ]
