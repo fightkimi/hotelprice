@@ -431,6 +431,23 @@
                 "generator": "No product-code Generator work is allowed in F-017. Future F-018 implementation must wait for F-017 Evaluator acceptance and use strict TDD.",
                 "evaluator": "Accepted after B-063 verification. F-017 is documentation/state-only, source classes and prohibited methods are explicit, the source decision matrix covers core rate/data boundaries, F-018 manual import preview is the next safe slice, project docs are fresh, and JSON/Triad/prototype/diff checks passed."
             }
+        },
+        {
+            "id": "F-018-manual-import-preview-and-field-mapping",
+            "title": "Manual import preview and field mapping",
+            "status": "planning",
+            "executor": "planner",
+            "artifacts": [
+                "docs/specs/2026-05-21-manual-import-preview-and-field-mapping.md",
+                "docs/superpowers/plans/2026-05-21-manual-import-preview-and-field-mapping.md",
+                "docs/specs/PROJECT_PRD.md",
+                "docs/specs/PROJECT_DEVELOPMENT_PLAN.md",
+                ".auto-memory/project-status.md"
+            ],
+            "handoff": {
+                "generator": "Implement F-018 from the approved plan with strict TDD. Add a local-only manual CSV/pasted-row preview, typed field mapping, validation summary, row preview, rate-boundary completeness and Setup/Data Scope UI. Keep behavior preview-only with no upload, persistence, network calls, live collection, credentials, browser automation, CAPTCHA handling, recommended pricing or automatic pricing.",
+                "evaluator": "Verify local-only preview behavior, all required rate-boundary mappings, validation of required fields/date/time/currency/occupancy/availability/price, no pseudo prices for invalid or non-available rows, responsive Setup/Data Scope interaction, safety scans, full app verification, project-doc freshness and bounded PR hygiene."
+            }
         }
   ]
 }

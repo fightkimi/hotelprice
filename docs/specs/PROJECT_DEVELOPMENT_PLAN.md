@@ -3,7 +3,7 @@
 版本: 2026-05-21
 状态: 项目级 roadmap 真源, 随每个已验收 feature 更新
 当前主线: `main` includes F-016 through PR #13 status sync, merge commit `5c4eef3`
-当前交付状态: F-017 source strategy and compliance gate 已通过 B-063 Evaluator 验收; 下一步 B-064 准备 F-018 manual import preview
+当前交付状态: F-018 manual import preview and field mapping 已完成 B-064 Planner 规划; 下一步 B-065 Generator 实现
 
 ## 1. 开发原则
 
@@ -93,9 +93,10 @@
    - 不改产品代码, 不接真实数据。
    - 已通过 B-063 Evaluator 验收。
 2. F-018 manual import preview and field mapping
-   - B-064 开始规划。
+   - B-064 已完成规划。
    - 只做本地/手动导入预览、字段映射和 rate-boundary validation。
    - 不做持久化、live collection、credentials、browser automation 或自动调价。
+   - 下一步 B-065 由 Generator 严格按 TDD 实现 `DemoDataset.manualImportPreview`、纯本地 parser/mapper/validator、Setup/Data Scope 预览 UI、组件测试、Playwright 流程和安全扫描。
 
 候选 feature:
 
@@ -208,7 +209,7 @@ Evaluator 必须交付:
 
 ## 7. 当前风险与处置
 
-- 数据来源合规风险: Phase 3 前必须先完成 source strategy specification。
+- 数据来源合规风险: F-017 已先完成 source strategy specification；F-018 必须继续保持 manual-import preview-only, 不进入上传、存储、连接器或真实采集。
 - 价格可比性风险: F-016 已继续保留房型、税费、取消政策和入住人数边界；后续真实数据接入前仍需更严格的来源/归一化规格。
 - 视觉一致性风险: 新 UI 必须复用 F-012 Revenue Observatory primitives。
 - PR 堆叠风险: F-016 已通过 PR #12 从 PR #11 后的 `main` 落地, 本地 `main` 已同步到 `d5bcdcf`。后续新切片应继续从最新 `main` 开分支。
@@ -216,6 +217,6 @@ Evaluator 必须交付:
 
 ## 8. 当前下一步
 
-1. B-063 已完成: F-017 source strategy and compliance gate 通过 Evaluator 验收。
-2. 下一步是 B-064: Planner 准备 F-018 manual import preview and field mapping。
-3. F-018 必须保持 preview-only；在另有合规规格前, 不进入真实 OTA collection、browser automation、credential/session、CAPTCHA、持久化或自动调价相关实现。
+1. B-064 已完成: Planner 准备了 F-018 manual import preview and field mapping spec 与 Generator-ready plan。
+2. 下一步是 B-065: Generator 实现 F-018 的本地手工导入预览、字段映射、校验、Setup/Data Scope UI 和测试。
+3. B-066 由 Evaluator 独立验收 F-018；通过前不得进入 PR 收口或真实数据持久化。

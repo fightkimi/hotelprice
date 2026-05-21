@@ -436,8 +436,30 @@
         {
             "id": "B-064",
             "title": "Planner prepares F-018 manual import preview after F-017 acceptance",
+            "status": "done",
+            "feature_id": "F-018-manual-import-preview-and-field-mapping",
+            "notes": "Completed. Created docs/specs/2026-05-21-manual-import-preview-and-field-mapping.md and docs/superpowers/plans/2026-05-21-manual-import-preview-and-field-mapping.md. Scope: local/manual CSV or pasted-row preview, field mapping, rate-boundary validation, no persistence, no live collection, no credentials, no browser automation, no CAPTCHA handling, no automatic pricing."
+        },
+        {
+            "id": "B-065",
+            "title": "Generator implements F-018 manual import preview and field mapping",
             "status": "new",
-            "notes": "B-063 accepted F-017. Recommended scope: local/manual CSV or pasted-row preview, field mapping, rate-boundary validation, no persistence, no live collection, no credentials, no browser automation, no CAPTCHA handling, no automatic pricing."
+            "feature_id": "F-018-manual-import-preview-and-field-mapping",
+            "notes": "Use docs/superpowers/plans/2026-05-21-manual-import-preview-and-field-mapping.md with strict TDD. Implement a local-only CSV/pasted-row preview, field mapping, validation summary, row preview, guardrails and responsive Setup/Data Scope UI. Do not add file upload, persistence, network calls, live collection, credentials, browser automation, CAPTCHA handling, recommended pricing or automatic pricing."
+        },
+        {
+            "id": "B-066",
+            "title": "Evaluator verifies F-018 manual import preview and field mapping",
+            "status": "new",
+            "feature_id": "F-018-manual-import-preview-and-field-mapping",
+            "notes": "Verify local-only preview behavior, mapped required rate-boundary fields, validation rules, pseudo-price suppression, Setup/Data Scope interaction, responsive no-overflow behavior, safety scans, full app verification, project-doc freshness and PR hygiene."
+        },
+        {
+            "id": "B-067",
+            "title": "Prepare F-018 PR after final acceptance",
+            "status": "new",
+            "feature_id": "F-018-manual-import-preview-and-field-mapping",
+            "notes": "Only after B-066 acceptance, prepare the F-018 PR from a clean feature branch. Keep the diff bounded to F-018 implementation, tests, screenshots, Generator notes and Planner/Evaluator status updates."
         }
     ]
 }

@@ -4,17 +4,17 @@
 
 - Project: Hotel Pricing Capture
 - Workflow: Triad Workflow with Planner / Generator / Evaluator roles
-- Current role for this pass: Evaluator
+- Current role for this pass: Planner
 - Superpowers: mandatory sequence recorded in `.auto-memory/superpowers-workflow.md`
 - Branch rule: feature branch + PR only; no direct push to `main` / `master`
 
 ## Current Batch
 
-- Batch id: `source-strategy-compliance`
-- Feature: `F-017-source-strategy-and-compliance-gate`
-- Goal: define the Phase 3 data-source strategy and compliance gate before ingestion implementation
-- Status: accepted by Evaluator; ready for B-064 Planner preparation
-- Current branch: `feature/f-017-source-strategy-planning`
+- Batch id: `manual-import-preview`
+- Feature: `F-018-manual-import-preview-and-field-mapping`
+- Goal: prepare a local-only manual import preview, field mapping and rate-boundary validation workflow
+- Status: B-064 Planner preparation complete; ready for B-065 Generator implementation
+- Current branch: `feature/f-018-manual-import-preview-planning`
 
 ## Current Facts
 
@@ -31,7 +31,8 @@
 - F-016 market comparison drilldown is accepted, merged through PR #12, and available on `main`.
 - PR #13 merged the F-016 post-merge status update into `main`.
 - Latest known main merge commit after PR #13: `5c4eef3`.
-- F-017 selects source strategy and compliance gate as the first Phase 3 slice.
+- F-017 selects source strategy and compliance gate as the first Phase 3 slice and has been accepted by B-063 Evaluator verification.
+- F-018 has been prepared by Planner as the next safe Phase 3 implementation slice: manual import preview and field mapping.
 - Project-level PRD: `docs/specs/PROJECT_PRD.md`.
 - Project-level development plan: `docs/specs/PROJECT_DEVELOPMENT_PLAN.md`.
 - Weekly project-document maintenance automation is active for this workspace and runs as Planner governance work.
@@ -81,6 +82,31 @@ F-017 must not:
 - Product source, product tests, package files, runtime scripts, generated artifacts and screenshot artifacts have no diff.
 - Source classes, prohibited methods, source decision matrix fields and F-018 manual import preview ordering are explicit in the F-017 spec and project docs.
 - Triad doctor, Triad doctor smoke test, JSON parsing, prototype regression, generated-artifact check and `git diff --check` passed.
+
+## F-018 Planner Result
+
+F-018 is a Generator-ready Planner slice for a safe first data-input workflow.
+
+The plan establishes:
+
+- `DemoDataset.manualImportPreview` as a typed preview-only contract;
+- a pure local CSV/pasted-row parser, mapper and validator;
+- required field mappings for hotel name, hotel role, platform, source, room type, stay date, capture time, price, currency, availability, occupancy, meal plan, tax/fee basis and cancellation policy;
+- validation rules for required fields, ISO dates, capture time, CNY currency, positive occupancy, availability values and positive price for available rows;
+- Setup/Data Scope UI for sample/pasted text, field mapping table, validation summary, row preview, rate-boundary completeness and guardrails;
+- acceptance gates for no upload, no persistence, no network calls, no storage writes, no credentials, no browser automation, no CAPTCHA handling, no recommended pricing and no automatic pricing.
+
+F-018 must not:
+
+- implement file upload, Excel binary parsing, backend routes, database writes, localStorage/sessionStorage or connector code;
+- implement live OTA collection, browser automation, credential/cookie/session/CAPTCHA handling or source API calls;
+- change F-008 alert math, F-014 calendar workflow, F-015 alert review workflow or F-016 market drilldown behavior;
+- render invalid or non-available rows as pseudo prices such as `CNY 0` or `CNY null`.
+
+## F-018 Planner Artifacts
+
+- F-018 spec: `docs/specs/2026-05-21-manual-import-preview-and-field-mapping.md`
+- F-018 plan: `docs/superpowers/plans/2026-05-21-manual-import-preview-and-field-mapping.md`
 
 ## F-016 Generator Result
 
@@ -202,4 +228,4 @@ F-015 must not:
 
 ## Next Step
 
-B-063 is complete. Next, Planner should execute B-064 and prepare F-018 manual import preview and field mapping. B-048 remains the standing weekly project-documentation maintenance item.
+B-064 is complete. Next, Generator should execute B-065 and implement F-018 from `docs/superpowers/plans/2026-05-21-manual-import-preview-and-field-mapping.md` with strict TDD. Then Evaluator should execute B-066. B-048 remains the standing weekly project-documentation maintenance item.

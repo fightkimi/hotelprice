@@ -4,7 +4,7 @@
 状态: 项目级需求真源, 随每个已验收 feature 更新
 维护角色: Planner
 当前正式产品基线: `main` includes F-016 through PR #13 status sync, merge commit `5c4eef3`
-当前交付状态: F-017 Source Strategy And Compliance Gate 已通过 B-063 Evaluator 验收; 下一步 B-064 准备 F-018 manual import preview
+当前交付状态: F-018 Manual Import Preview And Field Mapping 已完成 B-064 Planner 规划; 下一步 B-065 Generator 实现本地预览与字段映射
 
 ## 1. 产品定位
 
@@ -74,6 +74,10 @@
 - F-016: market comparison drilldown, 新增 `DemoDataset.marketDrilldown`、平台/日期/房型下钻组合、竞品样本行、缺失/过期/不可用/来源暂不可用解释、证据来源、采集时间和可比口径。F-016 已通过 PR #12 进入 `main`, 仍只使用 fixture/manual seed, 不接真实采集, 不保存状态, 不提供推荐价格或自动调价。
 - F-017: source strategy and compliance gate, 定义 Phase 3 可进入产品路线的来源类型、授权证据、禁止方法、source decision matrix 和 F-018 manual import preview 的前置条件。F-017 已通过 B-063 Evaluator 验收, 不实现真实采集、连接器、存储或自动调价。
 
+当前规划中的下一切片:
+
+- F-018: manual import preview and field mapping, 规划一个 Setup/Data Scope 内的本地手工导入预览。用户可以查看或粘贴 CSV-like 文本, 系统本地解析字段映射、校验结果、样本覆盖、可比口径和 guardrails。F-018 只允许 preview 和 validation, 不允许上传、保存、真实平台连接、凭证处理、浏览器自动化、CAPTCHA 处理、推荐价格或自动调价。
+
 历史 H5 prototype 仍可作为演示灵感和回归测试对象, 但正式产品的实现真源是 React app 和已验收 feature 文档。
 
 ## 8. 核心功能需求
@@ -111,6 +115,7 @@
 - 展示当前启用的酒店、竞品、平台、房型、事件和样本范围。
 - 当前正式产品必须保持 production connection disabled。
 - 后续真实数据只能来自合规来源: 官方 API、合作数据源、channel manager、PMS、用户上传或手动导入。
+- F-018 规划把手动导入推进到本地预览: 展示 sample CSV/pasted rows、字段映射、rate-boundary completeness、校验问题、可比样本数和人工复核边界, 但不把数据写入生产系统。
 
 ### 8.6 视觉与交互体验
 
@@ -126,6 +131,7 @@
 - 未授权 live collection、browser automation、cookie/session、credential、CAPTCHA handling、storage 和 automatic pricing 都在当前禁止范围内。
 - 任何新的数据来源 feature 必须先经过 Planner 合规规格, 再由 Generator TDD 实现, 最后由 Evaluator 独立验收。
 - F-017 要求任何未来 source proposal 先完成 source decision matrix, 覆盖授权证据、terms status、property/competitor/channel/date/capture-time/currency/room/occupancy/tax-fee/cancellation-policy 边界、refresh model、rate limit、secret handling、storage status、audit evidence 和 product permission。
+- F-018 只允许用户手动提供的本地文本预览。它可以校验 `hotelName`, `hotelRole`, `platform`, `source`, `roomType`, `stayDate`, `captureTime`, `price`, `currency`, `availability`, `occupancy`, `mealPlan`, `taxFeeBasis`, `cancellationPolicy`, 但不能上传文件、读取 Excel 二进制、调用网络、写 storage、写数据库或暗示已导入生产。
 
 ## 10. 成功指标
 
@@ -169,6 +175,7 @@
 ## 13. 当前开放问题
 
 - 生产数据来源的合规路径: 官方 API、合作数据源、channel manager、PMS 或用户上传的优先级仍需产品决策。
+- 手工导入从 preview 走向真实保存前, 仍需要单独定义持久化模型、审计字段、文件安全和客户授权证据。
 - 房型归一化策略: 标准大床、双床、亲子房、套房等映射需要真实客户样本验证。
 - 税费和取消政策: 不同平台展示口径不同, 需要在真实数据接入前定义更严格的比较规则。
 - 事件数据来源: 节假日可以内置, 会展和演唱会需要授权或公开可靠来源。
