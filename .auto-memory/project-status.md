@@ -10,10 +10,10 @@
 
 ## Current Batch
 
-- Batch id: `f-015-post-merge-status`
-- Feature: `F-015-alert-review-workflow-depth`
-- Goal: record PR #11 as merged, synchronize `main`, and prepare the project state for F-016 planning
-- Status: PR #11 merged; F-015 is on `main`
+- Batch id: `market-comparison-drilldown`
+- Feature: `F-016-market-comparison-drilldown`
+- Goal: prepare Generator-ready planning for Market Comparison drilldown
+- Status: F-016 spec and implementation plan are ready for Generator handoff
 - Current branch: `feature/f-016-market-comparison-drilldown-planning`
 
 ## Current Facts
@@ -29,6 +29,7 @@
 - F-014 interactive price calendar detail workflow is accepted, merged into the F-013 stacked branch through PR #9, and landed on `main` through PR #10.
 - F-015 alert review workflow depth is accepted, merged through PR #11, and available on `main`.
 - Latest known main merge commit after PR #11: `185e883`.
+- F-016 market comparison drilldown is planned on branch `feature/f-016-market-comparison-drilldown-planning`.
 - Project-level PRD: `docs/specs/PROJECT_PRD.md`.
 - Project-level development plan: `docs/specs/PROJECT_DEVELOPMENT_PLAN.md`.
 - Weekly project-document maintenance automation is active for this workspace and runs as Planner governance work.
@@ -46,6 +47,32 @@ The formal product baseline is the React Revenue Observatory app on `main`:
 - F-013 established project-level PRD, project-level development plan, and weekly maintenance protocol.
 - F-014 added an accepted interactive calendar date-detail workflow with platform gaps, evidence, capture time, rate basis, missing-sample state, and human-review markers.
 - F-015 added an accepted local Alert Review workflow with selectable alerts, selected detail, local review status, local notes, owner/competitor evidence roles, and explicit rate boundaries.
+- F-016 is the current planned slice: Market Comparison drilldown by platform, stay date, room type and competitor sample, using fixture/manual data only.
+
+## F-016 Planner Result
+
+F-016 was prepared as a Planner slice for the Market Comparison screen.
+
+The plan defines:
+
+- `DemoDataset.marketDrilldown` with selectable platform/date/room-type options, selected detail, guardrails and detail lookup;
+- competitor sample rows with hotel identity, sample status, price, source, capture time and rate key boundaries;
+- customer-safe handling for missing, stale, unavailable and source-error samples;
+- Market screen local selection state and selected detail panel;
+- Playwright mobile drilldown coverage and refreshed market screenshots;
+- safety gates for no live collection, no persistence, no recommended price and no automatic pricing.
+
+F-016 must not:
+
+- change F-008 alert math;
+- change F-014 Calendar date-detail workflow;
+- change F-015 Alert Review workflow;
+- add live OTA collection, backend, persistence, credentials, cookies, sessions, CAPTCHA handling, browser storage, file upload, recommended price or automatic pricing.
+
+## F-016 Planner Artifacts
+
+- F-016 spec: `docs/specs/2026-05-21-market-comparison-drilldown.md`
+- F-016 plan: `docs/superpowers/plans/2026-05-21-market-comparison-drilldown.md`
 
 ## F-015 Generator Result
 
@@ -109,4 +136,4 @@ F-015 must not:
 
 ## Next Step
 
-B-056 is complete through PR #11. Next, Planner should prepare F-016 market comparison drilldown from latest `main`. B-048 remains the standing weekly project-documentation maintenance item.
+B-057 is complete. Next, Generator should execute B-058 from `docs/superpowers/plans/2026-05-21-market-comparison-drilldown.md` using strict TDD. B-048 remains the standing weekly project-documentation maintenance item.

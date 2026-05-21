@@ -1,9 +1,9 @@
 # 酒店竞品价格雷达项目开发计划
 
-版本: 2026-05-20
+版本: 2026-05-21
 状态: 项目级 roadmap 真源, 随每个已验收 feature 更新
 当前主线: `main` includes F-015 through PR #11, merge commit `185e883`
-当前规划切片: F-016 market comparison drilldown
+当前规划切片: F-016 market comparison drilldown 已完成 Planner 规格与 Generator-ready plan
 
 ## 1. 开发原则
 
@@ -77,6 +77,7 @@
 4. F-016 market comparison drilldown
    - 平台价差从汇总条扩展到竞品、房型和日期组合。
    - 增加缺失数据、过期样本和不可用样本的解释。
+   - Planner 产物已完成: `docs/specs/2026-05-21-market-comparison-drilldown.md` 和 `docs/superpowers/plans/2026-05-21-market-comparison-drilldown.md`。
 
 ### Phase 3: 数据输入和合规来源
 
@@ -116,17 +117,18 @@
 - Deployment readiness: 环境变量、安全扫描、日志边界和部署文档。
 - Source compliance gate: 对每个生产来源建立条款、授权、rate limit 和审计证据。
 
-## 4. F-016 建议规格方向
+## 4. F-016 已规划规格方向
 
-F-016 应作为下一个产品开发切片, 因为 F-014 已经补强日期详情, F-015 已补强提醒复核, 下一步应把 Market Comparison 从平台汇总扩展到竞品、房型和日期组合的可解释 drilldown。
+F-016 是当前 Generator-ready 产品切片, 因为 F-014 已经补强日期详情, F-015 已补强提醒复核, 下一步应把 Market Comparison 从平台汇总扩展到竞品、房型和日期组合的可解释 drilldown。
 
 建议目标:
 
 - 在 Market Comparison screen 支持按竞品、房型、平台和日期组合查看价差详情。
+- 新增 `DemoDataset.marketDrilldown` 契约, 用 fixture/manual seed 派生 option/detail/competitor sample/evidence/guardrails。
 - Drilldown 详情展示:
   - 本酒店价格、核心竞品价格区间和各竞品样本状态。
   - 平台、房型、入住日期、入住人数、餐食、税费和取消政策。
-  - 可用、缺失、过期、不可用和来源错误样本的客户安全解释。
+  - 可用、缺失、过期、不可用和来源暂不可用样本的客户安全解释。
   - 与 F-014/F-015 一致的证据来源、采集时间和 human-review-only 语义。
 - 移动端保持无横向溢出, 详情区不得遮挡关键证据。
 
@@ -190,4 +192,4 @@ Evaluator 必须交付:
 
 1. B-056 已完成: PR #11 merged, F-015 已在 `main`。
 2. 完成本次 post-merge 文档和状态收口。
-3. Planner 准备 F-016 market comparison drilldown 规格和 Generator-ready plan。
+3. 交给 Generator 执行 B-058: 按 F-016 plan 用严格 TDD 实现 Market Comparison drilldown。

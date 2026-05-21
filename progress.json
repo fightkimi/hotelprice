@@ -1,6 +1,6 @@
 {
   "project": "hotel-pricing-capture",
-  "status": "planning",
+  "status": "ready-for-generator",
   "batch_id": "market-comparison-drilldown",
   "current_sprint": "F-016-market-comparison-drilldown",
   "total_features": 17,
