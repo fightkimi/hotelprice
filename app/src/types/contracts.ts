@@ -144,6 +144,69 @@ export interface PlatformGapRow {
   coverage: number;
 }
 
+export type MarketSampleStatus = 'available' | 'missing-sample' | 'stale' | 'unavailable' | 'source-error';
+
+export interface MarketCompetitorSample {
+  hotelId: string;
+  hotelName: string;
+  competitorLevel: 'core' | 'reference';
+  price: number | null;
+  gapToOwner: number | null;
+  status: MarketSampleStatus;
+  statusLabel: string;
+  explanation: string;
+  source: string;
+  captureTime: string | null;
+  rateKey: RateKey;
+}
+
+export interface MarketDrilldownOption {
+  id: string;
+  label: string;
+  platform: string;
+  stayDate: string;
+  roomType: string;
+  eventLabel: string;
+  status: 'available' | 'missing-sample';
+  gap: number | null;
+  coverage: number;
+  sampleSize: number;
+}
+
+export interface MarketCompetitorRange {
+  min: number;
+  max: number;
+}
+
+export interface MarketDrilldownDetail {
+  id: string;
+  platform: string;
+  stayDate: string;
+  roomType: string;
+  status: 'available' | 'missing-sample';
+  currency: 'CNY';
+  ownerRate: number | null;
+  coreAverage: number | null;
+  gap: number | null;
+  competitorRange: MarketCompetitorRange | null;
+  coverage: number;
+  sampleSize: number;
+  captureTime: string | null;
+  eventImpact: CalendarEventImpact;
+  rateBasis: CalendarRateBasis;
+  competitorSamples: MarketCompetitorSample[];
+  evidenceMarkers: EvidenceMarker[];
+  missingSampleReason?: string;
+  humanReviewRequired: true;
+}
+
+export interface MarketComparisonDrilldown {
+  options: MarketDrilldownOption[];
+  selectedOptionId: string;
+  byId: Record<string, MarketDrilldownDetail>;
+  guardrails: string[];
+}
+
 export interface CalendarPlatformGapRow {
   platform: string;
   ownerRate: number | null;
@@ -264,6 +327,7 @@ export interface DemoDataset {
   heatmap: { days: HeatmapDay[] };
   calendarDetails: { byDate: Record<string, CalendarDayDetail> };
   platformGaps: { rows: PlatformGapRow[]; maxGap: number; unit: 'CNY' };
+  marketDrilldown: MarketComparisonDrilldown;
   signals: Signal[];
   alertReview: AlertReviewWorkflow;
 }
